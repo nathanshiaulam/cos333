@@ -7,12 +7,27 @@
 //
 
 import UIKit
+import Parse
 
 class ViewController: UIViewController {
+    func userLoggedIn() -> Bool{
+        var currentUser = PFUser.currentUser();
+        if ((currentUser) != nil) {
+            return true;
+        }
+        return false;
+        
+    }
+    func userLogOut() {
+        PFUser.logOut();
+        self.performSegueWithIdentifier("toUserLogin", sender: self);
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        if (!self.userLoggedIn()) {
+            self.performSegueWithIdentifier("toUserLogin", sender: self);
+        }
         // Do any additional setup after loading the view.
     }
 

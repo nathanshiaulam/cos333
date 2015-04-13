@@ -19,7 +19,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="jil-kZ-sjm"/>
                     <connections>
-                        <segue destination="wPm-n5-d7n" kind="modal" id="Zzw-3L-sI8"/>
+                        <segue destination="wPm-n5-d7n" kind="modal" identifier="toUserLogin" id="Zzw-3L-sI8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -63,7 +63,7 @@
                                     <segue destination="1uP-vA-RHQ" kind="push" id="Kdm-sB-o0k"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hu5-Hb-caL">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hu5-Hb-caL">
                                 <rect key="frame" x="196" y="195" width="223" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -89,7 +89,7 @@
                                     <action selector="submitButtonClick:" destination="93a-3j-l1Y" eventType="touchUpInside" id="wvK-or-muV"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="K8A-fh-Zqj">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="K8A-fh-Zqj">
                                 <rect key="frame" x="196" y="285" width="223" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -99,6 +99,12 @@
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="hu5-Hb-caL" secondAttribute="centerX" constant="-7.5" id="BEH-wj-wpW"/>
+                            <constraint firstAttribute="centerX" secondItem="K8A-fh-Zqj" secondAttribute="centerX" constant="-7.5" id="hgR-ja-dR0"/>
+                            <constraint firstAttribute="centerY" secondItem="hu5-Hb-caL" secondAttribute="centerY" constant="90" id="mn0-MS-pxj"/>
+                            <constraint firstAttribute="centerY" secondItem="K8A-fh-Zqj" secondAttribute="centerY" id="oYb-va-9EH"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="tJW-xC-9nZ"/>
                     <connections>

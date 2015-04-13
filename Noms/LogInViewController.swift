@@ -8,19 +8,43 @@
 
 import UIKit
 import Parse
-
-
+import Foundation
 
 class LogInViewController: UIViewController {
     
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var usernameField: UITextField!
     @IBAction func submitButtonClick(sender: UIButton) {
-        [self userLogIn:_usernameField.text withPassword:_passwordField.text];
+        userLogin(usernameField.text, password: passwordField.text);
     }
+    
+    func userLogin(username: String, password: String) {
+        var usernameLen = countElements(username);
+        var passwordLen = countElements(password);
+        if (usernameLen == 0 || passwordLen == 0) {
+            var alert = UIAlertController(title: "Submission Failure", message: "Invalid username or password", preferredStyle: UIAlertControllerStyle.Alert);
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil));
+            self.presentViewController(alert, animated: true, completion: nil);
+            return;
+        }
+        PFUser.logInWithUsernameInBackground(username, password: password) {
+            (user: PFUser!, error: NSError!) -> Void in
+            if (user != nil) {
+                self.dismissViewControllerAnimated(true, completion: nil);
+            }
+            else {
+                var alert = UIAlertController(title: "Log-In Failure", message: "Username or password is incorrect", preferredStyle: UIAlertControllerStyle.Alert);
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil));
+                self.presentViewController(alert, animated: true, completion: nil);
+            }
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        passwordField.secureTextEntry = true;
+        
+        
         // Do any additional setup after loading the view.
     }
 
@@ -30,13 +54,17 @@ class LogInViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func(void)userLogIn:(NSString *)username withPassword:(NSString *)password {
-        if (username.length == 0 || password.length == 0) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Invalid username or password." delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
-            [alert show]
-            return;
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if (textField == usernameField) {
+            passwordField.becomeFirstResponder();
         }
+        else {
+            self.userLogin(usernameField.text, password: passwordField.text);
+            textField.resignFirstResponder();
+        }
+        return true;
     }
+  
     /*
     // MARK: - Navigation
 
