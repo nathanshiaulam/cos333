@@ -7,21 +7,36 @@
 //
 
 import UIKit
+import Parse
+
+
 
 class LogInViewController: UIViewController {
-
+    
+    @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var usernameField: UITextField!
+    @IBAction func submitButtonClick(sender: UIButton) {
+        [self userLogIn:_usernameField.text withPassword:_passwordField.text];
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
 
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    func(void)userLogIn:(NSString *)username withPassword:(NSString *)password {
+        if (username.length == 0 || password.length == 0) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Invalid username or password." delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            [alert show]
+            return;
+        }
+    }
     /*
     // MARK: - Navigation
 
