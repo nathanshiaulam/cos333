@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="I0G-7g-b9w">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -15,16 +16,73 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jfK-rm-sO3">
+                                <rect key="frame" x="430" y="347" width="30" height="30"/>
+                                <state key="normal" title="Go">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WJ6-fc-Chg">
+                                <rect key="frame" x="115" y="347" width="37" height="30"/>
+                                <state key="normal" title="Retry">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M2A-5I-KP2">
+                                <rect key="frame" x="497" y="80" width="57" height="30"/>
+                                <state key="normal" title="Settings">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="oUA-AU-Rob" kind="show" id="XHp-EQ-soW"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bpz-W6-Eud">
+                                <rect key="frame" x="61" y="80" width="51" height="30"/>
+                                <state key="normal" title="Profiles">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M6C-fc-9fJ">
+                                <rect key="frame" x="0.0" y="496" width="600" height="60"/>
+                                <state key="normal" title="New Profile">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="M2A-5I-KP2" secondAttribute="trailing" constant="43" id="BYH-1C-JWi"/>
+                            <constraint firstItem="bpz-W6-Eud" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="45" id="Daz-uu-1g8"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="jfK-rm-sO3" secondAttribute="trailing" constant="124" id="T3j-Y3-qqU"/>
+                            <constraint firstAttribute="centerX" secondItem="M6C-fc-9fJ" secondAttribute="centerX" constant="-0.5" id="rs5-YY-qpP"/>
+                            <constraint firstItem="WJ6-fc-Chg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="99" id="w7a-MZ-puv"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="jil-kZ-sjm"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="jil-kZ-sjm">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="Lxl-75-qCl">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="r1c-0E-9rg">
+                                <rect key="frame" x="16" y="550" width="49" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Logout">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="userLogOut:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oXj-Mw-ivS"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="wPm-n5-d7n" kind="modal" identifier="toUserLogin" id="Zzw-3L-sI8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1318" y="351"/>
+            <point key="canvasLocation" x="1416" y="513"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="iln-IP-Eqw">
@@ -40,7 +98,52 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SRP-3Z-bid" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2060" y="-146"/>
+            <point key="canvasLocation" x="2226" y="-460"/>
+        </scene>
+        <!--Preference Menu View Controller-->
+        <scene sceneID="miy-lW-NAh">
+            <objects>
+                <viewController id="oUA-AU-Rob" customClass="PreferenceMenuViewController" customModule="Noms" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Sff-bh-LgZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="BKp-Kf-9zS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5ss-2z-2yv">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ira-tx-BRY">
+                                <rect key="frame" x="110" y="209" width="35" height="30"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bsv-Ka-gQO">
+                                <rect key="frame" x="110" y="215" width="35" height="30"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onClickPriceButton:" destination="oUA-AU-Rob" eventType="touchUpInside" id="MWX-dI-2gg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="751-u0-DTU">
+                                <rect key="frame" x="110" y="133" width="80" height="80"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                    <connections>
+                        <outlet property="priceButton" destination="ira-tx-BRY" id="HU0-kv-zu1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d32-xT-JcO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2744" y="503"/>
         </scene>
         <!--Log In View Controller-->
         <scene sceneID="jMp-7C-tfm">
@@ -116,7 +219,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nUv-TH-eaV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2958" y="-146"/>
+            <point key="canvasLocation" x="2938" y="-466"/>
         </scene>
         <!--Create User View Controller-->
         <scene sceneID="h8w-wW-Gt2">
@@ -179,7 +282,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sBz-3G-T3l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3848" y="-146"/>
+            <point key="canvasLocation" x="3836" y="-466"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="XkU-O7-t9J">

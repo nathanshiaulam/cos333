@@ -1,35 +1,22 @@
 //
-//  ViewController.swift
+//  PreferenceMenuViewController.swift
 //  Noms
 //
-//  Created by Nathan Lam on 4/12/15.
+//  Created by Nathan Lam on 4/14/15.
 //  Copyright (c) 2015 COS333. All rights reserved.
 //
 
 import UIKit
-import Parse
 
-class ViewController: UIViewController {
-    @IBAction func userLogOut(sender: UIButton) {
-        PFUser.logOut();
-        self.performSegueWithIdentifier("toUserLogin", sender: self);
-    }
-    func userLoggedIn() -> Bool{
-        var currentUser = PFUser.currentUser();
-        if ((currentUser) != nil) {
-            return true;
-        }
-        return false;
-        
-    }
+class PreferenceMenuViewController: UIViewController {
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        if (!self.userLoggedIn()) {
-            self.performSegueWithIdentifier("toUserLogin", sender: self);
-        }
+
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

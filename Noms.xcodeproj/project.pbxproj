@@ -32,6 +32,7 @@
 		1620DC711ADB562B00CDA88A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1620DC701ADB562B00CDA88A /* ViewController.swift */; };
 		1620DC731ADB566400CDA88A /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1620DC721ADB566400CDA88A /* LogInViewController.swift */; };
 		1620DC751ADB689F00CDA88A /* CreateUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1620DC741ADB689F00CDA88A /* CreateUserViewController.swift */; };
+		1620DC771ADCF44400CDA88A /* PreferenceMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1620DC761ADCF44400CDA88A /* PreferenceMenuViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		1620DC701ADB562B00CDA88A /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1620DC721ADB566400CDA88A /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		1620DC741ADB689F00CDA88A /* CreateUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateUserViewController.swift; sourceTree = "<group>"; };
+		1620DC761ADCF44400CDA88A /* PreferenceMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceMenuViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +137,7 @@
 			children = (
 				1620DC2D1ADB4FAE00CDA88A /* AppDelegate.swift */,
 				1620DC311ADB4FAE00CDA88A /* Main.storyboard */,
+				1620DC761ADCF44400CDA88A /* PreferenceMenuViewController.swift */,
 				1620DC741ADB689F00CDA88A /* CreateUserViewController.swift */,
 				1620DC701ADB562B00CDA88A /* ViewController.swift */,
 				1620DC721ADB566400CDA88A /* LogInViewController.swift */,
@@ -295,6 +298,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1620DC711ADB562B00CDA88A /* ViewController.swift in Sources */,
+				1620DC771ADCF44400CDA88A /* PreferenceMenuViewController.swift in Sources */,
 				1620DC2E1ADB4FAE00CDA88A /* AppDelegate.swift in Sources */,
 				1620DC731ADB566400CDA88A /* LogInViewController.swift in Sources */,
 				1620DC751ADB689F00CDA88A /* CreateUserViewController.swift in Sources */,

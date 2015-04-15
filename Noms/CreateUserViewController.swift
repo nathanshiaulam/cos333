@@ -13,21 +13,37 @@ class CreateUserViewController: UIViewController {
 
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
-
+    
+    // CREATES USER GIVEN CORRECT USER AND PASSWORD
     @IBAction func enterButtonClicked(sender: UIButton) {
         self.createUser(usernameField.text, password:passwordField.text);
     }
     func createUser(username: String, password: String) {
         var newUser = PFUser();
         
+        // ENSURES FIELDS ARE NOT EMPTY
         if (countElements(username) == 0 || countElements(password) == 0) {
             var alert = UIAlertController(title: "Submission Failure", message: "Invalid username or password", preferredStyle: UIAlertControllerStyle.Alert);
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil));
             self.presentViewController(alert, animated: true, completion: nil);
             return;
         }
+        var profiles = [PFObject(className:"Profile")];
+        
+        // CREATES FIRST PROFILE
+        var firstProfile = PFObject(className:"Profile");
+        firstProfile["Name"] = "";
+        firstProfile["Cuisine"] = "";
+        firstProfile["Cost"] = "";
+        firstProfile["Distance"] = 0.0;
+        firstProfile["Atmosphere"] = "";
+        
+        profiles[0] = (firstProfile);
+        
+        // SETS ATTRIBUTES OF NEW USER
         newUser.username = username;
         newUser.password = password;
+        newUser["profiles"] = profiles;
         
         newUser.signUpInBackgroundWithBlock {
             (succeeded: Bool!, error: NSError!) -> Void in
@@ -35,7 +51,7 @@ class CreateUserViewController: UIViewController {
                 self.dismissViewControllerAnimated(true, completion: nil);
             } else {
                 let errorString = error.userInfo!["error"] as NSString;
-                var alert = UIAlertController(title: "Submission Failure", message: "errorString", preferredStyle: UIAlertControllerStyle.Alert);
+                var alert = UIAlertController(title: "Submission Failure", message: errorString, preferredStyle: UIAlertControllerStyle.Alert);
                 alert.addAction(UIAlertAction(title:"Ok", style: UIAlertActionStyle.Default, handler: nil));
                 self.presentViewController(alert, animated: true, completion: nil);
                 // Show the errorString somewhere and let the user try again.
