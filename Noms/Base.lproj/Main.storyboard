@@ -23,42 +23,95 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WJ6-fc-Chg">
-                                <rect key="frame" x="115" y="347" width="37" height="30"/>
-                                <state key="normal" title="Retry">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M2A-5I-KP2">
-                                <rect key="frame" x="497" y="80" width="57" height="30"/>
-                                <state key="normal" title="Settings">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="oUA-AU-Rob" kind="show" id="XHp-EQ-soW"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bpz-W6-Eud">
                                 <rect key="frame" x="61" y="80" width="51" height="30"/>
                                 <state key="normal" title="Profiles">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M6C-fc-9fJ">
-                                <rect key="frame" x="0.0" y="496" width="600" height="60"/>
-                                <state key="normal" title="New Profile">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M2A-5I-KP2">
+                                <rect key="frame" x="504" y="94" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="0gM-Ht-6c2"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="1200" id="KmV-sI-uEV"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="30" id="WWl-Kj-dxI"/>
+                                    <constraint firstAttribute="height" constant="30" id="s5o-e2-gF4"/>
+                                </constraints>
+                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Settings" image="Cog">
+                                    <color key="titleColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="KmV-sI-uEV"/>
+                                        <exclude reference="WWl-Kj-dxI"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <segue destination="oUA-AU-Rob" kind="show" id="XHp-EQ-soW"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WJ6-fc-Chg">
+                                <rect key="frame" x="128" y="347" width="37" height="30"/>
+                                <state key="normal" title="Retry">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wbe-rU-GWk">
+                                <rect key="frame" x="0.0" y="508" width="600" height="48"/>
+                                <color key="backgroundColor" red="0.95403439153439151" green="0.34825618657092061" blue="0.21116610357272358" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="600" id="0NQ-xU-f50"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="600" id="6Oi-C8-Rps"/>
+                                    <constraint firstAttribute="height" constant="50" id="fdY-BH-Qt0"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="lN6-Wt-fEP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="New Profile">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="lN6-Wt-fEP"/>
+                                        <exclude reference="6Oi-C8-Rps"/>
+                                    </mask>
+                                </variation>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Addprofile" translatesAutoresizingMaskIntoConstraints="NO" id="Ehk-6V-odH">
+                                <rect key="frame" x="229" y="515" width="32" height="34"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="bHn-Py-Ihy"/>
+                                    <constraint firstAttribute="width" constant="32" id="rde-hp-jkb"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.069858337039999996" green="0.12678784030000001" blue="0.26723710319999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="Ehk-6V-odH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="1ON-hx-NMm"/>
                             <constraint firstAttribute="trailingMargin" secondItem="M2A-5I-KP2" secondAttribute="trailing" constant="43" id="BYH-1C-JWi"/>
                             <constraint firstItem="bpz-W6-Eud" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="45" id="Daz-uu-1g8"/>
+                            <constraint firstItem="Ehk-6V-odH" firstAttribute="centerY" secondItem="wbe-rU-GWk" secondAttribute="centerY" id="FTM-qA-G4M"/>
+                            <constraint firstItem="M2A-5I-KP2" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="30" id="Fr7-Zv-OVC"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="wbe-rU-GWk" secondAttribute="bottom" id="Jk7-ti-XCn"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jfK-rm-sO3" secondAttribute="trailing" constant="124" id="T3j-Y3-qqU"/>
-                            <constraint firstAttribute="centerX" secondItem="M6C-fc-9fJ" secondAttribute="centerX" constant="-0.5" id="rs5-YY-qpP"/>
+                            <constraint firstAttribute="centerX" secondItem="wbe-rU-GWk" secondAttribute="centerX" id="TkL-Ra-tJF"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Ehk-6V-odH" secondAttribute="bottom" constant="7" id="X1D-Vf-W9u"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="wbe-rU-GWk" secondAttribute="trailing" constant="-16" id="X1M-hZ-ywv"/>
+                            <constraint firstItem="Ehk-6V-odH" firstAttribute="centerX" secondItem="wbe-rU-GWk" secondAttribute="centerX" constant="-55" id="c5M-qT-QJf"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="M2A-5I-KP2" secondAttribute="bottom" constant="421" id="d01-GO-Hqu"/>
+                            <constraint firstItem="wbe-rU-GWk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="kln-LX-26Z"/>
                             <constraint firstItem="WJ6-fc-Chg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="99" id="w7a-MZ-puv"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="M2A-5I-KP2" secondAttribute="trailing" constant="50" id="wzl-UJ-aTX"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="BYH-1C-JWi"/>
+                                <exclude reference="1ON-hx-NMm"/>
+                                <exclude reference="d01-GO-Hqu"/>
+                            </mask>
+                        </variation>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="jil-kZ-sjm">
@@ -82,7 +135,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1416" y="513"/>
+            <point key="canvasLocation" x="1463" y="544"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="iln-IP-Eqw">
@@ -499,8 +552,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Addprofile" width="1200" height="1200"/>
         <image name="Allergy" width="300" height="300"/>
         <image name="Car" width="300" height="300"/>
+        <image name="Cog" width="1200" height="1200"/>
         <image name="Food" width="300" height="300"/>
         <image name="Gold" width="300" height="300"/>
         <image name="Stopwatch" width="300" height="300"/>
