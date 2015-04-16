@@ -1,28 +1,21 @@
 //
-//  PreferenceMenuViewController.swift
+//  NewProfileViewController.swift
 //  Noms
 //
-//  Created by Nathan Lam on 4/14/15.
+//  Created by Nathan Lam on 4/16/15.
 //  Copyright (c) 2015 COS333. All rights reserved.
 //
 
 import UIKit
-import Parse
 
-class PreferenceMenuViewController: UIViewController {
-    
-    @IBAction func onClickSaveButton(sender: UIButton) {
-        self.dismissViewControllerAnimated(true, completion: nil);
-        
-    }
+class NewProfileViewController: UIViewController {
 
     override func viewDidLoad() {
-        
-   
+        super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
