@@ -22,7 +22,7 @@ class CreateUserViewController: UIViewController {
         var newUser = PFUser();
         
         // ENSURES FIELDS ARE NOT EMPTY
-        if (countElements(username) == 0 || countElements(password) == 0) {
+        if (count(username) == 0 || count(password) == 0) {
             var alert = UIAlertController(title: "Submission Failure", message: "Invalid username or password", preferredStyle: UIAlertControllerStyle.Alert);
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil));
             self.presentViewController(alert, animated: true, completion: nil);
@@ -46,13 +46,13 @@ class CreateUserViewController: UIViewController {
         newUser["profiles"] = profiles;
         
         newUser.signUpInBackgroundWithBlock {
-            (succeeded: Bool!, error: NSError!) -> Void in
+            (succeeded, error) -> Void in
             if (error == nil) {
                 self.dismissViewControllerAnimated(true, completion: nil);
                 self.performSegueWithIdentifier("toNewProfile", sender: self);
             } else {
-                let errorString = error.userInfo!["error"] as NSString;
-                var alert = UIAlertController(title: "Submission Failure", message: errorString, preferredStyle: UIAlertControllerStyle.Alert);
+                let errorString = error!.userInfo!["error"] as! NSString;
+                var alert = UIAlertController(title: "Submission Failure", message: errorString as String, preferredStyle: UIAlertControllerStyle.Alert);
                 alert.addAction(UIAlertAction(title:"Ok", style: UIAlertActionStyle.Default, handler: nil));
                 self.presentViewController(alert, animated: true, completion: nil);
                 // Show the errorString somewhere and let the user try again.

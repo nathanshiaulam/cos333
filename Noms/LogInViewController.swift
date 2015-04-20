@@ -19,8 +19,8 @@ class LogInViewController: UIViewController {
     }
     
     func userLogin(username: String, password: String) {
-        var usernameLen = countElements(username);
-        var passwordLen = countElements(password);
+        var usernameLen = count(username);
+        var passwordLen = count(password);
         if (usernameLen == 0 || passwordLen == 0) {
             var alert = UIAlertController(title: "Submission Failure", message: "Invalid username or password", preferredStyle: UIAlertControllerStyle.Alert);
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil));
@@ -28,7 +28,7 @@ class LogInViewController: UIViewController {
             return;
         }
         PFUser.logInWithUsernameInBackground(username, password: password) {
-            (user: PFUser!, error: NSError!) -> Void in
+            (user, error) -> Void in
             if (user != nil) {
                 self.dismissViewControllerAnimated(true, completion: nil);
             }
