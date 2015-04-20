@@ -49,6 +49,7 @@ class CreateUserViewController: UIViewController {
             (succeeded: Bool!, error: NSError!) -> Void in
             if (error == nil) {
                 self.dismissViewControllerAnimated(true, completion: nil);
+                self.performSegueWithIdentifier("toNewProfile", sender: self);
             } else {
                 let errorString = error.userInfo!["error"] as NSString;
                 var alert = UIAlertController(title: "Submission Failure", message: errorString, preferredStyle: UIAlertControllerStyle.Alert);

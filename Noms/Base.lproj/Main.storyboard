@@ -56,6 +56,14 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AddProfile" translatesAutoresizingMaskIntoConstraints="NO" id="Ehk-6V-odH">
+                                <rect key="frame" x="229" y="515" width="32" height="34"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="bHn-Py-Ihy"/>
+                                    <constraint firstAttribute="width" constant="32" id="rde-hp-jkb"/>
+                                </constraints>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wbe-rU-GWk">
                                 <rect key="frame" x="0.0" y="508" width="600" height="48"/>
                                 <color key="backgroundColor" red="0.95403439153439151" green="0.34825618657092061" blue="0.21116610357272358" alpha="1" colorSpace="calibratedRGB"/>
@@ -76,17 +84,9 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <segue destination="Az2-VD-ALS" kind="show" id="7wX-2c-VVD"/>
+                                    <segue destination="Az2-VD-ALS" kind="show" identifier="toNewProfile" id="fIV-C3-9gz"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AddProfile" translatesAutoresizingMaskIntoConstraints="NO" id="Ehk-6V-odH">
-                                <rect key="frame" x="229" y="515" width="32" height="34"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="34" id="bHn-Py-Ihy"/>
-                                    <constraint firstAttribute="width" constant="32" id="rde-hp-jkb"/>
-                                </constraints>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.069858337039999996" green="0.12678784030000001" blue="0.26723710319999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -141,7 +141,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1371" y="329"/>
+            <point key="canvasLocation" x="1467" y="345"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="iln-IP-Eqw">
@@ -399,7 +399,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d32-xT-JcO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="552" y="1743"/>
+            <point key="canvasLocation" x="2778" y="1207"/>
         </scene>
         <!--Log In View Controller-->
         <scene sceneID="jMp-7C-tfm">
@@ -557,7 +557,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dF9-mm-729" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2288" y="688"/>
+            <point key="canvasLocation" x="2922" y="368"/>
         </scene>
         <!--Name Profile View Controller-->
         <scene sceneID="tfM-df-0Tg">
@@ -603,12 +603,12 @@
                     <navigationItem key="navigationItem" id="jPz-I8-uwH"/>
                     <connections>
                         <outlet property="textField" destination="InQ-dt-2y3" id="itL-ix-2fU"/>
-                        <segue destination="9Hy-ZE-4GU" kind="show" identifier="nameToPreferences" id="QeJ-pa-0mR"/>
+                        <segue destination="oUA-AU-Rob" kind="show" identifier="toNewProfileSettings" id="SXh-3H-3mI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QxE-i8-GIO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3120" y="890"/>
+            <point key="canvasLocation" x="4006" y="368"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="XkU-O7-t9J">
@@ -735,7 +735,6 @@
                                 </variation>
                                 <connections>
                                     <action selector="onClickSaveButton:" destination="9Hy-ZE-4GU" eventType="touchUpInside" id="22u-vb-BMg"/>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="eSJ-JF-WBd"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ymw-zs-wqm">
@@ -867,7 +866,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oqz-Eg-acd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1922" y="1573"/>
+            <point key="canvasLocation" x="2118" y="2617"/>
         </scene>
     </scenes>
     <resources>
@@ -882,6 +881,6 @@
         <image name="Wine" width="300" height="300"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="eSJ-JF-WBd"/>
+        <segue reference="SXh-3H-3mI"/>
     </inferredMetricsTieBreakers>
 </document>

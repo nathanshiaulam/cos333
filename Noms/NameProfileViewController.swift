@@ -23,7 +23,7 @@ class NameProfileViewController: UIViewController {
     }
     func textFieldShouldReturn(textField: UITextField)-> Bool {
         textField.resignFirstResponder();
-        self.performSegueWithIdentifier("nameToPreferences", sender: self);
+        self.performSegueWithIdentifier("toNewProfileSettings", sender: self);
         return true;
     }
 
