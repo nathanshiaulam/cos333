@@ -12,7 +12,7 @@ import Parse
 class PreferenceMenuViewController: UIViewController {
     
     @IBAction func onClickSaveButton(sender: UIButton) {
-        self.dismissViewControllerAnimated(true, completion: nil);
+        self.navigationController?.popToRootViewControllerAnimated(true);
         
     }
 

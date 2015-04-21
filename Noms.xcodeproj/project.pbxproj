@@ -33,8 +33,9 @@
 		1620DC731ADB566400CDA88A /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1620DC721ADB566400CDA88A /* LogInViewController.swift */; };
 		1620DC751ADB689F00CDA88A /* CreateUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1620DC741ADB689F00CDA88A /* CreateUserViewController.swift */; };
 		1620DC771ADCF44400CDA88A /* PreferenceMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1620DC761ADCF44400CDA88A /* PreferenceMenuViewController.swift */; };
+		1632452B1AE5942500D188A9 /* SetPriceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1632452A1AE5942500D188A9 /* SetPriceViewController.swift */; };
+		1632452D1AE5944C00D188A9 /* SetDistanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1632452C1AE5944C00D188A9 /* SetDistanceViewController.swift */; };
 		164FD0101ADF9DAC00E02B2F /* NameProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164FD00F1ADF9DAC00E02B2F /* NameProfileViewController.swift */; };
-		167AEBD21AE0161D005BF8C7 /* NewProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167AEBD11AE0161D005BF8C7 /* NewProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,8 +79,9 @@
 		1620DC721ADB566400CDA88A /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		1620DC741ADB689F00CDA88A /* CreateUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateUserViewController.swift; sourceTree = "<group>"; };
 		1620DC761ADCF44400CDA88A /* PreferenceMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceMenuViewController.swift; sourceTree = "<group>"; };
+		1632452A1AE5942500D188A9 /* SetPriceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetPriceViewController.swift; sourceTree = "<group>"; };
+		1632452C1AE5944C00D188A9 /* SetDistanceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetDistanceViewController.swift; sourceTree = "<group>"; };
 		164FD00F1ADF9DAC00E02B2F /* NameProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameProfileViewController.swift; sourceTree = "<group>"; };
-		167AEBD11AE0161D005BF8C7 /* NewProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,7 +143,8 @@
 			children = (
 				1620DC2D1ADB4FAE00CDA88A /* AppDelegate.swift */,
 				1620DC311ADB4FAE00CDA88A /* Main.storyboard */,
-				167AEBD11AE0161D005BF8C7 /* NewProfileViewController.swift */,
+				1632452A1AE5942500D188A9 /* SetPriceViewController.swift */,
+				1632452C1AE5944C00D188A9 /* SetDistanceViewController.swift */,
 				164FD00F1ADF9DAC00E02B2F /* NameProfileViewController.swift */,
 				1620DC761ADCF44400CDA88A /* PreferenceMenuViewController.swift */,
 				1620DC741ADB689F00CDA88A /* CreateUserViewController.swift */,
@@ -308,8 +311,9 @@
 				1620DC2E1ADB4FAE00CDA88A /* AppDelegate.swift in Sources */,
 				164FD0101ADF9DAC00E02B2F /* NameProfileViewController.swift in Sources */,
 				1620DC731ADB566400CDA88A /* LogInViewController.swift in Sources */,
+				1632452D1AE5944C00D188A9 /* SetDistanceViewController.swift in Sources */,
+				1632452B1AE5942500D188A9 /* SetPriceViewController.swift in Sources */,
 				1620DC751ADB689F00CDA88A /* CreateUserViewController.swift in Sources */,
-				167AEBD21AE0161D005BF8C7 /* NewProfileViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

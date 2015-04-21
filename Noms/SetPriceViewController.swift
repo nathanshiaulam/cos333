@@ -1,16 +1,15 @@
 //
-//  NameProfileViewController.swift
+//  SetPriceViewController.swift
 //  Noms
 //
-//  Created by Nathan Lam on 4/16/15.
+//  Created by Nathan Lam on 4/20/15.
 //  Copyright (c) 2015 COS333. All rights reserved.
 //
 
 import UIKit
 
-class NameProfileViewController: UIViewController {
+class SetPriceViewController: UIViewController {
 
-    @IBOutlet weak var nameProfileField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,13 +20,7 @@ class NameProfileViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    func textFieldShouldReturn(textField: UITextField)-> Bool {
-        textField.resignFirstResponder();
-        if (count(textField.text) > 0) {
-        self.performSegueWithIdentifier("toNewProfileSettings", sender: self);
-        }
-        return true;
-    }
+    
 
     /*
     // MARK: - Navigation

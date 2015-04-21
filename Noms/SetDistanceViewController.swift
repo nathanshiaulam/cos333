@@ -1,14 +1,14 @@
 //
-//  NewProfileViewController.swift
+//  SetDistanceViewController.swift
 //  Noms
 //
-//  Created by Nathan Lam on 4/16/15.
+//  Created by Nathan Lam on 4/20/15.
 //  Copyright (c) 2015 COS333. All rights reserved.
 //
 
 import UIKit
 
-class NewProfileViewController: UIViewController {
+class SetDistanceViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -48,8 +48,10 @@ class CreateUserViewController: UIViewController {
         newUser.signUpInBackgroundWithBlock {
             (succeeded, error) -> Void in
             if (error == nil) {
+                self.dismissViewControllerAnimated(true, completion: { () -> Void in
+                    NSNotificationCenter.defaultCenter().postNotificationName("showTutorial", object: nil);
+                })
                 self.dismissViewControllerAnimated(true, completion: nil);
-                self.performSegueWithIdentifier("toNewProfile", sender: self);
             } else {
                 let errorString = error!.userInfo!["error"] as! NSString;
                 var alert = UIAlertController(title: "Submission Failure", message: errorString as String, preferredStyle: UIAlertControllerStyle.Alert);

@@ -47,7 +47,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <segue destination="oUA-AU-Rob" kind="presentation" identifier="toSettingsPage" id="XHp-EQ-soW"/>
+                                    <segue destination="oUA-AU-Rob" kind="show" identifier="toSettingsPage" id="XHp-EQ-soW"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hhz-Co-GP2">
@@ -56,14 +56,6 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AddProfile" translatesAutoresizingMaskIntoConstraints="NO" id="Ehk-6V-odH">
-                                <rect key="frame" x="229" y="515" width="32" height="34"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="34" id="bHn-Py-Ihy"/>
-                                    <constraint firstAttribute="width" constant="32" id="rde-hp-jkb"/>
-                                </constraints>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wbe-rU-GWk">
                                 <rect key="frame" x="0.0" y="508" width="600" height="48"/>
                                 <color key="backgroundColor" red="0.95403439153439151" green="0.34825618657092061" blue="0.21116610357272358" alpha="1" colorSpace="calibratedRGB"/>
@@ -84,9 +76,17 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <segue destination="CYI-a0-Jqf" kind="show" id="1jY-Rp-8u7"/>
+                                    <segue destination="CYI-a0-Jqf" kind="show" identifier="toNameProfile" id="1jY-Rp-8u7"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AddProfile" translatesAutoresizingMaskIntoConstraints="NO" id="Ehk-6V-odH">
+                                <rect key="frame" x="229" y="515" width="32" height="34"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="bHn-Py-Ihy"/>
+                                    <constraint firstAttribute="width" constant="32" id="rde-hp-jkb"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.069858337039999996" green="0.12678784030000001" blue="0.26723710319999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -399,7 +399,48 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d32-xT-JcO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2848" y="1081"/>
+            <point key="canvasLocation" x="2051" y="1371"/>
+        </scene>
+        <!--Set Price View Controller-->
+        <scene sceneID="ynh-ea-Cyz">
+            <objects>
+                <viewController id="g95-KE-W8Y" customClass="SetPriceViewController" customModule="Noms" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="V75-Iu-Okm"/>
+                        <viewControllerLayoutGuide type="bottom" id="Zdp-Aj-mZJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="spm-HM-Q7A">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.069858337039999996" green="0.12678784030000001" blue="0.26723710319999999" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EPN-y4-nP3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4300" y="898"/>
+        </scene>
+        <!--Set Distance View Controller-->
+        <scene sceneID="wan-Kd-owb">
+            <objects>
+                <viewController id="Do3-0e-wIN" customClass="SetDistanceViewController" customModule="Noms" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RqU-y9-i4c"/>
+                        <viewControllerLayoutGuide type="bottom" id="RP8-76-tyK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="QaW-o4-m3N">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="m7g-LE-H4P">
+                                <rect key="frame" x="241" y="285" width="118" height="31"/>
+                            </slider>
+                        </subviews>
+                        <color key="backgroundColor" red="0.069858337039999996" green="0.12678784030000001" blue="0.26723710319999999" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Lk-iT-Odc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3526" y="1598"/>
         </scene>
         <!--Log In View Controller-->
         <scene sceneID="jMp-7C-tfm">
@@ -417,13 +458,16 @@
                                 <rect key="frame" x="197" y="195" width="225" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="93a-3j-l1Y" id="6MV-Tx-KDm"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="K8A-fh-Zqj">
                                 <rect key="frame" x="198" y="285" width="223" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <outlet property="delegate" destination="93a-3j-l1Y" id="g7q-Wh-RRe"/>
+                                    <outlet property="delegate" destination="93a-3j-l1Y" id="MS0-fF-L3c"/>
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VsJ-OB-cX1">
@@ -456,9 +500,6 @@
                                     <segue destination="1uP-vA-RHQ" kind="push" id="Kdm-sB-o0k"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A4m-Ea-fIn">
-                                <rect key="frame" x="187" y="72" width="240" height="128"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -496,11 +537,17 @@
                                 <rect key="frame" x="189" y="193" width="223" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="1uP-vA-RHQ" id="3qQ-GN-e4g"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wZM-ZN-hcT">
                                 <rect key="frame" x="189" y="283" width="223" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="1uP-vA-RHQ" id="VUo-7n-fXl"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Xb-r2-lQZ">
                                 <rect key="frame" x="261" y="164" width="79" height="21"/>
@@ -568,6 +615,9 @@
                                         <exclude reference="tgl-5Z-p24"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <outlet property="delegate" destination="CYI-a0-Jqf" id="Iue-r2-a67"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Name Your Profile:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rbU-JK-t4v">
                                 <rect key="frame" x="229" y="244" width="143" height="21"/>
@@ -586,12 +636,13 @@
                     </view>
                     <navigationItem key="navigationItem" id="jPz-I8-uwH"/>
                     <connections>
-                        <outlet property="textField" destination="InQ-dt-2y3" id="itL-ix-2fU"/>
+                        <outlet property="nameProfileField" destination="InQ-dt-2y3" id="FLZ-jv-wXz"/>
+                        <segue destination="oUA-AU-Rob" kind="show" identifier="toNewProfileSettings" id="YjK-VM-l3Y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QxE-i8-GIO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2830" y="345"/>
+            <point key="canvasLocation" x="2598" y="627"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="XkU-O7-t9J">
@@ -621,4 +672,7 @@
         <image name="Stopwatch" width="300" height="300"/>
         <image name="Wine" width="300" height="300"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="XHp-EQ-soW"/>
+    </inferredMetricsTieBreakers>
 </document>

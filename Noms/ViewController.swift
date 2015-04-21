@@ -20,13 +20,17 @@ class ViewController: UIViewController {
             return true;
         }
         return false;
-        
+    }
+    func showTutorial() {
+        self.performSegueWithIdentifier("toNameProfile", sender: self);
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         if (!self.userLoggedIn()) {
             self.performSegueWithIdentifier("toUserLogin", sender: self);
         }
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "showTutorial", name: "showTutorial", object: nil);
         // Do any additional setup after loading the view.
     }
 
