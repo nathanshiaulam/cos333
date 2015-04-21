@@ -1,5 +1,5 @@
 //
-//  SetDistanceViewController.swift
+//  ProfileListViewController.swift
 //  Noms
 //
 //  Created by Nathan Lam on 4/20/15.
@@ -8,23 +8,18 @@
 
 import UIKit
 
-class SetDistanceViewController: UIViewController {
-
-    @IBAction func saveButton(sender: UIButton) {
-        self.navigationController?.popViewControllerAnimated(true);
+class ProfileListViewController: UIViewController {
+    
+    func handleTap(recognizer: UITapGestureRecognizer) {
+        self.dismissViewControllerAnimated(true, completion: nil);
     }
-    @IBOutlet weak var distanceSlider: UISlider!
-    @IBOutlet weak var distanceTextField: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "handleTap:"));
 
         // Do any additional setup after loading the view.
     }
-
-    @IBAction func sliderValueChanged(sender: UISlider) {
-        var distance = ceil(sender.value * 50);
-        self.distanceTextField.text = NSString(format:"%.0f", distance) as String + " miles";
-    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

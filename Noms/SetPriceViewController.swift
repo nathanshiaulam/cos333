@@ -10,8 +10,62 @@ import UIKit
 
 class SetPriceViewController: UIViewController {
 
+    @IBOutlet weak var oneDollarSignButton: UIButton!
+    @IBOutlet weak var twoDollarSignButton: UIButton!
+    @IBOutlet weak var threeDollarSignButton: UIButton!
+    @IBAction func onClickOneDollar(sender: UIButton) {
+        if (oneDollarSignButton.selected == true && twoDollarSignButton.selected == false && threeDollarSignButton.selected == false) {
+            oneDollarSignButton.selected = false;
+        }
+        else if (oneDollarSignButton.selected == true && twoDollarSignButton.selected == true && threeDollarSignButton.selected == false) {
+            oneDollarSignButton.selected = true;
+            twoDollarSignButton.selected = false;
+        }
+        else if (oneDollarSignButton.selected == true && twoDollarSignButton.selected == true && threeDollarSignButton.selected == true) {
+            oneDollarSignButton.selected = true;
+            twoDollarSignButton.selected = false;
+            threeDollarSignButton.selected = false;
+        }
+        else {
+            oneDollarSignButton.selected = true;
+        }
+    }
+    @IBAction func onClickTwoDollar(sender: UIButton) {
+        if (oneDollarSignButton.selected == true && twoDollarSignButton.selected == true && threeDollarSignButton.selected == false) {
+            oneDollarSignButton.selected = false;
+            twoDollarSignButton.selected = false;
+        }
+        else if (oneDollarSignButton.selected == true && twoDollarSignButton.selected == true && threeDollarSignButton.selected == true) {
+            oneDollarSignButton.selected = true;
+            twoDollarSignButton.selected = true;
+            threeDollarSignButton.selected = false;
+            
+        }
+        else {
+            oneDollarSignButton.selected = true;
+            twoDollarSignButton.selected = true;
+        }
+    }
+    @IBAction func onClickThreeDollar(sender: UIButton) {
+        if (oneDollarSignButton.selected == true && twoDollarSignButton.selected == true && threeDollarSignButton.selected == true) {
+            oneDollarSignButton.selected = false;
+            twoDollarSignButton.selected = false;
+            threeDollarSignButton.selected = false;
+        }
+        else {
+            oneDollarSignButton.selected = true;
+            twoDollarSignButton.selected = true;
+            threeDollarSignButton.selected = true;
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        oneDollarSignButton.setTitleColor(UIColor.yellowColor(), forState: UIControlState.Selected);
+        twoDollarSignButton.setTitleColor(UIColor.yellowColor(), forState: UIControlState.Selected);
+        threeDollarSignButton.setTitleColor(UIColor.yellowColor(), forState: UIControlState.Selected);
+
+        
+        
 
         // Do any additional setup after loading the view.
     }

@@ -35,6 +35,7 @@
 		1620DC771ADCF44400CDA88A /* PreferenceMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1620DC761ADCF44400CDA88A /* PreferenceMenuViewController.swift */; };
 		1632452B1AE5942500D188A9 /* SetPriceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1632452A1AE5942500D188A9 /* SetPriceViewController.swift */; };
 		1632452D1AE5944C00D188A9 /* SetDistanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1632452C1AE5944C00D188A9 /* SetDistanceViewController.swift */; };
+		163245311AE5EA6700D188A9 /* ProfileListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163245301AE5EA6700D188A9 /* ProfileListViewController.swift */; };
 		164FD0101ADF9DAC00E02B2F /* NameProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164FD00F1ADF9DAC00E02B2F /* NameProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -81,6 +82,7 @@
 		1620DC761ADCF44400CDA88A /* PreferenceMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceMenuViewController.swift; sourceTree = "<group>"; };
 		1632452A1AE5942500D188A9 /* SetPriceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetPriceViewController.swift; sourceTree = "<group>"; };
 		1632452C1AE5944C00D188A9 /* SetDistanceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetDistanceViewController.swift; sourceTree = "<group>"; };
+		163245301AE5EA6700D188A9 /* ProfileListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileListViewController.swift; sourceTree = "<group>"; };
 		164FD00F1ADF9DAC00E02B2F /* NameProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -143,6 +145,7 @@
 			children = (
 				1620DC2D1ADB4FAE00CDA88A /* AppDelegate.swift */,
 				1620DC311ADB4FAE00CDA88A /* Main.storyboard */,
+				163245301AE5EA6700D188A9 /* ProfileListViewController.swift */,
 				1632452A1AE5942500D188A9 /* SetPriceViewController.swift */,
 				1632452C1AE5944C00D188A9 /* SetDistanceViewController.swift */,
 				164FD00F1ADF9DAC00E02B2F /* NameProfileViewController.swift */,
@@ -310,6 +313,7 @@
 				1620DC771ADCF44400CDA88A /* PreferenceMenuViewController.swift in Sources */,
 				1620DC2E1ADB4FAE00CDA88A /* AppDelegate.swift in Sources */,
 				164FD0101ADF9DAC00E02B2F /* NameProfileViewController.swift in Sources */,
+				163245311AE5EA6700D188A9 /* ProfileListViewController.swift in Sources */,
 				1620DC731ADB566400CDA88A /* LogInViewController.swift in Sources */,
 				1632452D1AE5944C00D188A9 /* SetDistanceViewController.swift in Sources */,
 				1632452B1AE5942500D188A9 /* SetPriceViewController.swift in Sources */,
