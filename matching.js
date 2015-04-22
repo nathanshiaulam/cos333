@@ -20,21 +20,26 @@ hours is a string in the format given by yelp,
 and current_time is in __:__ format, military time*/
 function isOpen (current_time, day, hours){
 	splitted = hours.split(",", 5)
-	for (var i = 0; i < splitted.length; i++) {
-		line = splitted[i]
-		start = line.substring(0, line.indexOf("-")-1)
-		start_time = start.substring(0, start.indexOf(":") + 3)
-		if (start.indexOf("pm") != -1)
-			start_time += 12
-		end = line.substring(line.indexOf("-") + 2, line.length)
-		end_time = start.substring(0, end.indexOf(":") + 3)
-		if (end.indexOf("pm") != -1)
-			end_time += 12
-		current_hour = current_time.substring(0, 2)
-		current_minute = current_time.substring(3, 5)
-		if (current_hour > start_time.substring(0, 2) && current_minute > start_time.substring(3, 5) &&
-			current_hour < end_time.substring(0, 2) && current_minute < end_time.substring(3, 5))
-			return true
+	for (var i = 0; i < 7; i++) {
+		line = hours[i]
+		if (line.indexOf("-") != -1) {
+			start = line.substring(0, line.indexOf("-")-1)
+			start_time = start.substring(0, start.indexOf(":") + 3)
+			if (start.indexOf("pm") != -1)
+				start_time += 12
+			end = line.substring(line.indexOf("-") + 2, line.length)
+			end_time = start.substring(0, end.indexOf(":") + 3)
+			if (end.indexOf("pm") != -1)
+				end_time += 12
+			current_hour = current_time.substring(0, 2)
+			current_minute = current_time.substring(3, 5)
+			if (current_hour > start_time.substring(0, 2) && current_minute > start_time.substring(3, 5) &&
+				current_hour < end_time.substring(0, 2) && current_minute < end_time.substring(3, 5))
+				return true
+		}
+		else {
+			return false
+		}
 	}
 	return false
 }
@@ -44,9 +49,35 @@ function isOpen (current_time, day, hours){
 function checkCuisine(preference, categories) {
 	preference = preference.toLowerCase();
 	for (var i = 0; i < categories.length; i++) {
-		if (categories[i]toLowerCase().indexOf(preference) != -1) {
+		if (categories[i].toLowerCase().indexOf(preference) != -1) {
 			return true
 		}
 	}
 	return false
+}
+
+// use this for matching ambience, type of cuisine, and parking
+function matchStringOption(rest_ambience, user_ambience) {
+	splitted = rest_ambience.split(",", 5)
+	user_split = user_ambience.split(",", 10)
+	for (var i = 0; i < splitted.length; i++) {
+		for (var j = 0; j < user_split.length; j++) {
+			if (splitted[i].toLowerCase() == user_split[j].toLowerCase()) {
+				return true
+			}
+		}
+	}
+	return false
+}
+
+/* given a String of length 12 with the options (0,1, 2), calculates their similarity*/
+function compareOptions (rest_options, user_options) {
+	total = 0
+	for (var i = 0; i < 12; i++) {
+		if (rest_options.charAt(i) == user_options.charAt(i))
+			total++
+		else if (rest_options.charAt(i) != 0 && user_options.charAt(i) != 0)
+			total--
+	}
+	return total
 }
