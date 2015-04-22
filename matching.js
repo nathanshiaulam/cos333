@@ -18,7 +18,7 @@ function distance(lat1, lon1, lat2, lon2) {
 /* assumes that day is an NSInteger representing day of week,
 hours is a string in the format given by yelp,
 and current_time is in __:__ format, military time*/
-function isOpen (current_time, day, hours){
+function isOpen (current_hour, current_minute, day, hours){
 	splitted = hours.split(",", 5)
 	for (var i = 0; i < 7; i++) {
 		line = hours[i]
@@ -31,8 +31,6 @@ function isOpen (current_time, day, hours){
 			end_time = start.substring(0, end.indexOf(":") + 3)
 			if (end.indexOf("pm") != -1)
 				end_time += 12
-			current_hour = current_time.substring(0, 2)
-			current_minute = current_time.substring(3, 5)
 			if (current_hour > start_time.substring(0, 2) && current_minute > start_time.substring(3, 5) &&
 				current_hour < end_time.substring(0, 2) && current_minute < end_time.substring(3, 5))
 				return true
