@@ -33,10 +33,10 @@ class CreateUserViewController: UIViewController {
         // CREATES FIRST PROFILE
         var firstProfile = PFObject(className:"Profile");
         firstProfile["Name"] = "";
-        firstProfile["Cuisine"] = "";
+        firstProfile["Cuisine"] = [];
         firstProfile["Cost"] = "";
-        firstProfile["Distance"] = 0.0;
-        firstProfile["Atmosphere"] = "";
+        firstProfile["Distance"] = 0;
+        firstProfile["Misc"] = "";
         
         profiles[0] = (firstProfile);
         

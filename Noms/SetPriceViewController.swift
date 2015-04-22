@@ -58,6 +58,9 @@ class SetPriceViewController: UIViewController {
             threeDollarSignButton.selected = true;
         }
     }
+    @IBAction func onClickSavePrice(sender: UIButton) {
+        self.navigationController?.popViewControllerAnimated(true);
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         oneDollarSignButton.setTitleColor(UIColor.yellowColor(), forState: UIControlState.Selected);
