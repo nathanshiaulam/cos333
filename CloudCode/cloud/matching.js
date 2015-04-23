@@ -87,7 +87,7 @@ function matchStringOption(rest_ambience, user_ambience) {
 	return false
 }
 
-/* given a String of length 12 with the options (0,1, 2), calculates their similarity*/
+/* given a String of length 12 with the options (0,1,2), calculates their similarity*/
 function compareOptions (rest_options, user_options) {
 	total = 0
 	for (var i = 0; i < 12; i++) {
@@ -101,5 +101,43 @@ function compareOptions (rest_options, user_options) {
 
 /* cost1 and cost2 are dollar sign strings */ 
 function costDiff (cost1, cost2) {
-	return abs(cost1 - cost2)
+	return abs(cost.length - cost2.length)
+}
+
+/* returns the similarity score given user vector and rstaurant data */
+function giveSimScore(user, restaurant) {
+	//ideally the numbers should be between 0 and 5
+	var scaling = 5 //magic number to scale the values
+	var difdist = 0
+	var difcost = 0
+	var difoptions = 0
+	var difcuisine = 0
+	var weights = [w1,w2,w3,w4]
+	var score = 0
+
+	//cost
+	difcost = costDiff(user["cost"], restaurant["cost"])
+	//distance
+	difdist = costDist(user["dist"], restaurant["dist"])
+	//options and ambience
+	difoptions = 5 - compareOptions(user["options"], restaurant["options"])
+	if (matchStringOption(user["ambience]", restaurant["ambience"]))
+		difoptions--
+	else difoptions++
+	//cuisine match
+	if (checkCuisine(user["cuisine"], restaurant["cuisine"])
+		difcuisine = 0
+	else difcuisine = scaling
+	
+	//compute vector norm
+	score = Math.sqrt((Math.pow(difdist*w1, 2))+Math.pow(difcost*w2, 2))
+				+Math.pow(difoptions*w3, 2))+Math.pow(difcuisine*w4, 2)))
+	
+	return score
+}
+
+/*run a for loop over all open restaurants and get the score sortmin*/
+function finsAllScore(){
+	var restlist //list of restaurants sorted by their score
+	return restlist
 }
