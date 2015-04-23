@@ -39,9 +39,15 @@ class LogInViewController: UIViewController {
             }
         }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        var usernamePlaceholder = NSAttributedString(string: "Username", attributes: [NSForegroundColorAttributeName : UIColor.grayColor()]);
+        var passwordPlaceholder = NSAttributedString(string: "Password", attributes: [NSForegroundColorAttributeName : UIColor.grayColor()]);
+        usernameField.attributedPlaceholder = usernamePlaceholder;
+        passwordField.attributedPlaceholder = passwordPlaceholder;
+        usernameField.layer.cornerRadius = 0;
+        passwordField.layer.cornerRadius = 0;
         passwordField.secureTextEntry = true;
         
         
@@ -54,6 +60,7 @@ class LogInViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         if (textField == usernameField) {
             passwordField.becomeFirstResponder();

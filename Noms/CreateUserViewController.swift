@@ -72,6 +72,12 @@ class CreateUserViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        var usernamePlaceholder = NSAttributedString(string: "Username", attributes: [NSForegroundColorAttributeName : UIColor.grayColor()]);
+        var passwordPlaceholder = NSAttributedString(string: "Password", attributes: [NSForegroundColorAttributeName : UIColor.grayColor()]);
+        usernameField.attributedPlaceholder = usernamePlaceholder;
+        passwordField.attributedPlaceholder = passwordPlaceholder;
+        usernameField.layer.cornerRadius = 0;
+        passwordField.layer.cornerRadius = 0;
         passwordField.secureTextEntry = true;
         // Do any additional setup after loading the view.
     }
