@@ -10,18 +10,30 @@ function distance(lat1, lon1, lat2, lon2) {
     dist = Math.acos(dist)
     dist = dist * 180/Math.PI
     dist = dist * 60 * 1.1515
+    //need to categorize from 1 - 5 based on dist
     return dist
 }
 
-/* current time may be given as NSDate */
-/* given string for time, check if restaurant is open*/
-/* assumes that day is an NSInteger representing day of week,
+/* current time may be given as NSDate 
+given array of open times in hours, check if restaurant is open
 hours is a string in the format given by yelp,
 and current_time is in __:__ format, military time*/
+<<<<<<< Updated upstream:matching.js
 function isOpen (current_hour, current_minute, day, hours){
 	splitted = hours.split(",", 5)
 	for (var i = 0; i < 7; i++) {
 		line = hours[i]
+=======
+function isOpen (current_time, hours){
+	if (hours.length == 0) {
+		return true;
+	}
+	splitted = hours[current_time.getDay()].split(",", 5)
+	current_hour = current_time.getHours()
+	current_minute = current_time.getMinutes()
+	for (var i = 0; i < splitted.length; i++) {
+		line = splitted[i]
+>>>>>>> Stashed changes:CloudCode/cloud/matching.js
 		if (line.indexOf("-") != -1) {
 			start = line.substring(0, line.indexOf("-")-1)
 			start_time = start.substring(0, start.indexOf(":") + 3)
@@ -35,20 +47,27 @@ function isOpen (current_hour, current_minute, day, hours){
 				current_hour < end_time.substring(0, 2) && current_minute < end_time.substring(3, 5))
 				return true
 		}
-		else {
-			return false
+		//equivalent to open 24 hours
+		else if (line == "24") {
+			return true;
+		}
+		//equivalent to closed
+		else if (line == "0") {
+			return false;
 		}
 	}
-	return false
+	return false;
 }
 
 /* Yelp data has categories in array form, which includes the cuisine type */
 /* preference is a String representing cuisine type */
-function checkCuisine(preference, categories) {
-	preference = preference.toLowerCase();
-	for (var i = 0; i < categories.length; i++) {
-		if (categories[i].toLowerCase().indexOf(preference) != -1) {
-			return true
+function checkCuisine(preferences, categories) {
+	for (var j = 0; j < preferences.length; j++) {
+		var pref = preference[j].toLowerCase();
+		for (var i = 0; i < categories.length; i++) {
+			if (categories[i].toLowerCase().indexOf(preference) != -1) {
+				return true
+			}
 		}
 	}
 	return false
@@ -78,4 +97,9 @@ function compareOptions (rest_options, user_options) {
 			total--
 	}
 	return total
+}
+
+/* cost1 and cost2 are dollar sign strings */ 
+function costDiff (cost1, cost2) {
+	return abs(cost1 - cost2)
 }
