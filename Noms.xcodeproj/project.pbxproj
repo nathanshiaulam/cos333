@@ -38,6 +38,7 @@
 		163245311AE5EA6700D188A9 /* ProfileListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163245301AE5EA6700D188A9 /* ProfileListViewController.swift */; };
 		164FD0101ADF9DAC00E02B2F /* NameProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164FD00F1ADF9DAC00E02B2F /* NameProfileViewController.swift */; };
 		165E99171AE7351700120B03 /* SetCuisineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165E99161AE7351700120B03 /* SetCuisineViewController.swift */; };
+		16DEA5F81AE9A1C70010A4B6 /* RestaurantDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DEA5F71AE9A1C70010A4B6 /* RestaurantDisplayViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +87,7 @@
 		163245301AE5EA6700D188A9 /* ProfileListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileListViewController.swift; sourceTree = "<group>"; };
 		164FD00F1ADF9DAC00E02B2F /* NameProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameProfileViewController.swift; sourceTree = "<group>"; };
 		165E99161AE7351700120B03 /* SetCuisineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetCuisineViewController.swift; sourceTree = "<group>"; };
+		16DEA5F71AE9A1C70010A4B6 /* RestaurantDisplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDisplayViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 			children = (
 				1620DC2D1ADB4FAE00CDA88A /* AppDelegate.swift */,
 				1620DC311ADB4FAE00CDA88A /* Main.storyboard */,
+				16DEA5F71AE9A1C70010A4B6 /* RestaurantDisplayViewController.swift */,
 				165E99161AE7351700120B03 /* SetCuisineViewController.swift */,
 				163245301AE5EA6700D188A9 /* ProfileListViewController.swift */,
 				1632452A1AE5942500D188A9 /* SetPriceViewController.swift */,
@@ -320,6 +323,7 @@
 				1620DC731ADB566400CDA88A /* LogInViewController.swift in Sources */,
 				1632452D1AE5944C00D188A9 /* SetDistanceViewController.swift in Sources */,
 				1632452B1AE5942500D188A9 /* SetPriceViewController.swift in Sources */,
+				16DEA5F81AE9A1C70010A4B6 /* RestaurantDisplayViewController.swift in Sources */,
 				165E99171AE7351700120B03 /* SetCuisineViewController.swift in Sources */,
 				1620DC751ADB689F00CDA88A /* CreateUserViewController.swift in Sources */,
 			);

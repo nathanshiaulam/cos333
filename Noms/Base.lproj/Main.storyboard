@@ -176,6 +176,9 @@
                                         <exclude reference="XFf-Hr-sS1"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <segue destination="IBk-Sv-qJv" kind="show" id="ffX-Ku-QZb"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uUx-ag-0NP">
                                 <rect key="frame" x="294" y="288" width="80" height="80"/>
@@ -263,7 +266,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1775" y="445"/>
+            <point key="canvasLocation" x="1885" y="397"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="iln-IP-Eqw">
@@ -280,6 +283,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SRP-3Z-bid" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2226" y="-460"/>
+        </scene>
+        <!--Restaurant Display View Controller-->
+        <scene sceneID="krN-Kg-LX4">
+            <objects>
+                <viewController id="IBk-Sv-qJv" customClass="RestaurantDisplayViewController" customModule="Noms" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3SS-NH-mVb"/>
+                        <viewControllerLayoutGuide type="bottom" id="3Zo-Vy-hf7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="CMd-MA-6fH">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hx4-CX-UJc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1126" y="792"/>
         </scene>
         <!--Preference Menu View Controller-->
         <scene sceneID="miy-lW-NAh">
