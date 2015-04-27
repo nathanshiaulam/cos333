@@ -1,5 +1,24 @@
+// less than user distance = 5
+// 0-3 miles more than user distance = 4
+// 4-5 miles more than user distance = 3
+// 6-10 miles more than user distance = 2
+// more than 10 miles more than user distance = 1
+function distance (lat1, lon1, lat2, lon2, user_dist) {
+	rest_dist = computeDistance (lat1, lon1, lat2, lon2);
+	if (rest_dist <= user_dist)
+		return 5
+	else if (rest_dist <= user_dist + 3)
+		return 4
+	else if (rest_dist <= user_dist + 5)
+		return 3
+	else if (rest_dist <= user_dist + 10)
+		return 2
+	else
+		return 1
+}
+
 /* given point A (lat1, lon1) and point B (lat2, lon2), return the dist between the two points in miles*/
-function distance(lat1, lon1, lat2, lon2) {
+function computeDistance(lat1, lon1, lat2, lon2) {
     var radlat1 = Math.PI * lat1/180
     var radlat2 = Math.PI * lat2/180
     var radlon1 = Math.PI * lon1/180
@@ -18,12 +37,6 @@ function distance(lat1, lon1, lat2, lon2) {
 given array of open times in hours, check if restaurant is open
 hours is a string in the format given by yelp,
 and current_time is in __:__ format, military time*/
-<<<<<<< Updated upstream:matching.js
-function isOpen (current_hour, current_minute, day, hours){
-	splitted = hours.split(",", 5)
-	for (var i = 0; i < 7; i++) {
-		line = hours[i]
-=======
 function isOpen (current_time, hours){
 	if (hours.length == 0) {
 		return true;
@@ -33,7 +46,6 @@ function isOpen (current_time, hours){
 	current_minute = current_time.getMinutes()
 	for (var i = 0; i < splitted.length; i++) {
 		line = splitted[i]
->>>>>>> Stashed changes:CloudCode/cloud/matching.js
 		if (line.indexOf("-") != -1) {
 			start = line.substring(0, line.indexOf("-")-1)
 			start_time = start.substring(0, start.indexOf(":") + 3)
@@ -60,7 +72,7 @@ function isOpen (current_time, hours){
 }
 
 /* Yelp data has categories in array form, which includes the cuisine type */
-/* preference is a String representing cuisine type */
+/* preferences is a String representing cuisine type */
 function checkCuisine(preferences, categories) {
 	for (var j = 0; j < preferences.length; j++) {
 		var pref = preference[j].toLowerCase();
@@ -102,38 +114,6 @@ function compareOptions (rest_options, user_options) {
 /* cost1 and cost2 are dollar sign strings */ 
 function costDiff (cost1, cost2) {
 	return abs(cost.length - cost2.length)
-}
-
-/* returns the similarity score given user vector and rstaurant data */
-function giveSimScore(user, restaurant) {
-	//ideally the numbers should be between 0 and 5
-	var scaling = 5 //magic number to scale the values
-	var difdist = 0
-	var difcost = 0
-	var difoptions = 0
-	var difcuisine = 0
-	var weights = [w1,w2,w3,w4]
-	var score = 0
-
-	//cost
-	difcost = costDiff(user["cost"], restaurant["cost"])
-	//distance
-	difdist = costDist(user["dist"], restaurant["dist"])
-	//options and ambience
-	difoptions = 5 - compareOptions(user["options"], restaurant["options"])
-	if (matchStringOption(user["ambience]", restaurant["ambience"]))
-		difoptions--
-	else difoptions++
-	//cuisine match
-	if (checkCuisine(user["cuisine"], restaurant["cuisine"])
-		difcuisine = 0
-	else difcuisine = scaling
-	
-	//compute vector norm
-	score = Math.sqrt((Math.pow(difdist*w1, 2))+Math.pow(difcost*w2, 2))
-				+Math.pow(difoptions*w3, 2))+Math.pow(difcuisine*w4, 2)))
-	
-	return score
 }
 
 /*run a for loop over all open restaurants and get the score sortmin*/
