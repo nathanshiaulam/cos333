@@ -261,6 +261,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="restaurantImage" destination="lZb-Hi-wXf" id="sgE-02-UHu"/>
                         <segue destination="wPm-n5-d7n" kind="presentation" identifier="toUserLogin" id="Zzw-3L-sI8"/>
                     </connections>
                 </viewController>
