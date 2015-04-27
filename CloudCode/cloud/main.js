@@ -45,10 +45,31 @@ Parse.Cloud.define("MatchRestaurant", function(request, response) {
 		skipnum = skipnum + 1000;
 	}
 	for (var i = 0; i < results.length; ++i) {
+	//ideally the numbers should be between 0 and 5
+		var scaling = 5; //magic number to scale the values	
+		var weights = [w1,w2,w3,w4];	
 		var rest = results[i];
+		//dist
         var distval = helper.distance(rest.get("latitude"), rest.get("longitude"), currloc[0], currloc[1]);
+        //cost
         var costval = helper.costDiff(rest.get("cost").len, cost);
-        var categoryval = helper.checkCuisine(cuisine, rest.get("categories"));
+        //cuisine
+		var cuisineval = 0;
+		if (helper.checkCuisine(cuisine, rest.get("categories")))
+			cuisineval = 0;
+		else
+			cuisineval = scaling;
+        //options and ambience
+        var optionsval = scaling - helper.compareOptions(user.get("options"), rest.get("options"));
+        if (helper.matchStringOption(user.get("ambience"), rest.get("ambience")))
+			optionsval--;
+		else optionsval++;
+
+		//compute vector norm
+		var score = Math.sqrt((Math.pow(distval*w1, 2))+Math.pow(costval*w2, 2))
+				+Math.pow(optionsval*w3, 2))+Math.pow(cuisine*w4, 2)))
+
+
 
     }
 });
