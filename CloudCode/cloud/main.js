@@ -43,7 +43,7 @@ Parse.Cloud.define("MatchRestaurant", function(request, response) {
 				    	results.concat(res[i])
 				    }
 				}
-		  		if (res.length !=== 1000) {
+		  		if (res.length !== 1000) {
 		  			foundall = true;
 		  		}
 		  	},
@@ -55,8 +55,11 @@ Parse.Cloud.define("MatchRestaurant", function(request, response) {
 	}
 	for (var i = 0; i < results.length; ++i) {
 	//ideally the numbers should be between 0 and 5
-		var scaling = 5; //magic number to scale the values	
-		var weights = [w1,w2,w3,w4];	
+		var scaling = 5; //magic number to scale the values
+		var w1 = 1;
+		var w2 = 1;
+		var w3 = 1;
+		var w4 = 1;
 		var rest = results[i];
 		//dist
         var distval = helper.distance(rest.get("latitude"), rest.get("longitude"), currloc[0], currloc[1]);
@@ -75,8 +78,8 @@ Parse.Cloud.define("MatchRestaurant", function(request, response) {
 		else optionsval++;
 
 		//compute vector norm
-		var restscore = Math.sqrt((Math.pow(distval*w1, 2))+Math.pow(costval*w2, 2))
-				+Math.pow(optionsval*w3, 2))+Math.pow(cuisine*w4, 2)));
+		var restscore = Math.sqrt(Math.pow(distval*w1, 2)+Math.pow(costval*w2, 2)
+				+Math.pow(optionsval*w3, 2)+Math.pow(cuisine*w4, 2));
 
 		//adds the rest score pair to restscorearray
 		restscorearray[restscorearray.length] = {id:res.get('business_id'), score: restscore};
