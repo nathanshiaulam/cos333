@@ -21,27 +21,33 @@ function sortfunction(a,b) {
 */
 
 Parse.Cloud.define("MatchRestaurant", function(request, response) {
-	var helper = require('cloud/helper.js');
-  	var distance = request.params.distance;
-  	var currloc = request.params.loc;
-  	var cost = request.params.cost;
-  	var cuisine = request.params.cuisine;
+	response.success("Hello world!");
+	var helper = require('cloud/matching.js');
+
+  	var distance = request.params.distance; //int of miles
+  	var currloc = request.params.loc; //double array
+  	var cost = request.params.cost; //dollar sign string
+  	var cuisine = request.params.cuisine; //string array
+  	var preferences = request.params.pref //bit string
   	var skipnum = 0;
+
 	var query = new Parse.Query("Restaurant");
 	var results = [];
 	var foundall = false;
 	var currentdate = new Date();
 	var restscorearray = []; // scores associated with each restaurnt
 	//gets everything that's open
+	
 	while (!foundall) {
 		query.limit(1000);
 		query.skip(skipnum);
 		query.find({
 		  	success: function(res) {
 				for (var i = 0; i < res.length; ++i) {
-				    if (helper.isOpen(currentdate, res[i].get("Hours"))) {
-				    	results.concat(res[i])
-				    }
+				    /*if (helper.isOpen(currentdate, res[i].get("Hours"))) {
+				    	results[results.length] = res[i]
+				    }*/
+				    results.concat(res);
 				}
 		  		if (res.length !== 1000) {
 		  			foundall = true;
@@ -64,7 +70,7 @@ Parse.Cloud.define("MatchRestaurant", function(request, response) {
 		//dist
         var distval = helper.distance(rest.get("latitude"), rest.get("longitude"), currloc[0], currloc[1]);
         //cost
-        var costval = helper.costDiff(rest.get("cost").len, cost);
+        var costval = helper.costDiff(rest.get("cost"), cost);
         //cuisine
 		var cuisineval = 0;
 		if (helper.checkCuisine(cuisine, rest.get("categories")))
@@ -72,10 +78,10 @@ Parse.Cloud.define("MatchRestaurant", function(request, response) {
 		else
 			cuisineval = scaling;
         //options and ambience
-        var optionsval = scaling - helper.compareOptions(user.get("options"), rest.get("options"));
-        if (helper.matchStringOption(user.get("ambience"), rest.get("ambience")))
+        var optionsval = scaling - helper.compareOptions(pref, rest.get("options"));
+        /*if (helper.matchStringOption(user.get("ambience"), rest.get("ambience")))
 			optionsval--;
-		else optionsval++;
+		else optionsval++;*/
 
 		//compute vector norm
 		var restscore = Math.sqrt(Math.pow(distval*w1, 2)+Math.pow(costval*w2, 2)
@@ -89,5 +95,6 @@ Parse.Cloud.define("MatchRestaurant", function(request, response) {
     restscorearray.sort(sortfunction);
 
     return restscorearray;
+    //response.success("Hello world!");
 });
 
