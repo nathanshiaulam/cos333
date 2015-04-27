@@ -151,10 +151,13 @@ Parse.Cloud.define("MatchRestaurant", function(request, response) {
 	var restscorearray = []; // scores associated with each restaurnt
 	
 	query.limit(1000);
+	//filter by coordinates
 	query.greaterThan("latitude", currloc[0] - .5);
 	query.lessThan("latitude", currloc[0] + .5);
 	query.greaterThan("longitude", currloc[1] - .5);
 	query.lessThan("longitude", currloc[1] + .5);
+
+	//the entire algorithm here
 	query.find({
 	  	success: function(res) {
 	  		//find all restaurants that are open
@@ -163,7 +166,7 @@ Parse.Cloud.define("MatchRestaurant", function(request, response) {
 			    	results[results.length] = res[i];
 			    }
 			}
-			//console.log(results.length);
+			//find vector score for all matching restaurants
 			for (var i = 0; i < results.length; ++i) {
 				var distance = request.params.distance; //int of miles
 		  	  	var cost = request.params.cost; //dollar sign string
