@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="I0G-7g-b9w">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="I0G-7g-b9w">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -63,7 +63,7 @@
                                     <constraint firstAttribute="width" constant="45" id="8N2-FA-dDt"/>
                                     <constraint firstAttribute="height" constant="45" id="Om7-NU-cBY"/>
                                 </constraints>
-                                <state key="normal" title="Profiles" image="Menu">
+                                <state key="normal" title="Profiles" image="menu">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -79,7 +79,7 @@
                                     <constraint firstAttribute="height" constant="30" id="s5o-e2-gF4"/>
                                 </constraints>
                                 <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="Settings" image="Cog">
+                                <state key="normal" title="Settings" image="cog">
                                     <color key="titleColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -122,7 +122,7 @@
                                     <segue destination="CYI-a0-Jqf" kind="show" identifier="toNameProfile" id="1jY-Rp-8u7"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AddProfile" translatesAutoresizingMaskIntoConstraints="NO" id="Ehk-6V-odH">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="addprofile" translatesAutoresizingMaskIntoConstraints="NO" id="Ehk-6V-odH">
                                 <rect key="frame" x="229" y="515" width="32" height="34"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -130,7 +130,7 @@
                                     <constraint firstAttribute="width" constant="32" id="rde-hp-jkb"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Dummyrestaurant" translatesAutoresizingMaskIntoConstraints="NO" id="lZb-Hi-wXf">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dummyrestaurant" translatesAutoresizingMaskIntoConstraints="NO" id="lZb-Hi-wXf">
                                 <rect key="frame" x="284" y="128" width="260" height="240"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="240" id="4tB-d5-zeH"/>
@@ -167,7 +167,7 @@
                                     <constraint firstAttribute="width" constant="80" id="egC-ik-tzL"/>
                                     <constraint firstAttribute="height" constant="80" id="kAN-2R-vke"/>
                                 </constraints>
-                                <state key="normal" title="Button" image="Go">
+                                <state key="normal" title="Button" image="go">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="default">
@@ -185,7 +185,7 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="99" id="PvC-73-s2c"/>
                                     <constraint firstAttribute="width" constant="80" id="kEW-el-8P9"/>
                                 </constraints>
-                                <state key="normal" title="Button" image="Retry">
+                                <state key="normal" title="Button" image="retry">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="default">
@@ -314,7 +314,7 @@
                                             <constraint firstAttribute="width" constant="100" id="bms-Kq-p2C"/>
                                             <constraint firstAttribute="height" constant="100" id="kAh-wD-srk"/>
                                         </constraints>
-                                        <state key="normal" image="Gold">
+                                        <state key="normal" image="gold">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -327,7 +327,7 @@
                                             <constraint firstAttribute="width" constant="100" id="Gs4-Zm-JcZ"/>
                                             <constraint firstAttribute="height" constant="100" id="iMP-dI-eDF"/>
                                         </constraints>
-                                        <state key="normal" image="Wine">
+                                        <state key="normal" image="wine">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
@@ -404,7 +404,7 @@
                                             <constraint firstAttribute="width" constant="100" id="ksZ-eP-P6h"/>
                                             <constraint firstAttribute="height" constant="100" id="q3S-nN-vsc"/>
                                         </constraints>
-                                        <state key="normal" image="Stopwatch">
+                                        <state key="normal" image="stopwatch">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <variation key="default">
@@ -425,7 +425,7 @@
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="p7K-zK-cRq"/>
                                             <constraint firstAttribute="width" constant="100" id="yTg-la-JFg"/>
                                         </constraints>
-                                        <state key="normal" image="Food">
+                                        <state key="normal" image="food">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <variation key="default">
@@ -978,17 +978,17 @@
         </scene>
     </scenes>
     <resources>
-        <image name="AddProfile" width="1200" height="1200"/>
         <image name="AppIcon" width="80" height="80"/>
-        <image name="Cog" width="1125" height="1126"/>
-        <image name="Dummyrestaurant" width="1251" height="1125"/>
-        <image name="Food" width="300" height="300"/>
-        <image name="Go" width="400" height="400"/>
-        <image name="Gold" width="300" height="300"/>
-        <image name="Menu" width="1126" height="1125"/>
-        <image name="Retry" width="400" height="400"/>
-        <image name="Stopwatch" width="300" height="300"/>
-        <image name="Wine" width="300" height="300"/>
+        <image name="addprofile" width="1200" height="1200"/>
+        <image name="cog" width="1125" height="1126"/>
+        <image name="dummyrestaurant" width="1251" height="1125"/>
+        <image name="food" width="300" height="300"/>
+        <image name="go" width="400" height="400"/>
+        <image name="gold" width="300" height="300"/>
+        <image name="menu" width="1126" height="1125"/>
+        <image name="retry" width="400" height="400"/>
+        <image name="stopwatch" width="300" height="300"/>
+        <image name="wine" width="300" height="300"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="XHp-EQ-soW"/>
