@@ -5,6 +5,14 @@ Parse.Cloud.define("hello", function(request, response) {
   response.success("Hello world!");
 });
 
+// function to sort restscorearray
+function sortfunction(a,b) {
+	if (a.score == b.score)
+		return 0;
+	else
+		return (a.score >= b.score) ? 1 :-1;
+}
+
 /*request should have the following parameters
 *distance: int 1 - 5
 *cost: int 1 - 4
@@ -23,6 +31,7 @@ Parse.Cloud.define("MatchRestaurant", function(request, response) {
 	var results = [];
 	var foundall = false;
 	var currentdate = new Date();
+	var restscorearray = []; // scores associated with each restaurnt
 	//gets everything that's open
 	while (!foundall) {
 		query.limit(1000);
@@ -66,11 +75,16 @@ Parse.Cloud.define("MatchRestaurant", function(request, response) {
 		else optionsval++;
 
 		//compute vector norm
-		var score = Math.sqrt((Math.pow(distval*w1, 2))+Math.pow(costval*w2, 2))
-				+Math.pow(optionsval*w3, 2))+Math.pow(cuisine*w4, 2)))
+		var restscore = Math.sqrt((Math.pow(distval*w1, 2))+Math.pow(costval*w2, 2))
+				+Math.pow(optionsval*w3, 2))+Math.pow(cuisine*w4, 2)));
 
-
-
+		//adds the rest score pair to restscorearray
+		restscorearray[restscorearray.length] = {id:res.get('business_id'), score: restscore};
     }
+
+    // sort restscorearray by score
+    restscorearray.sort(sortfunction);
+
+    return restscorearray;
 });
 
