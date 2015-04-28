@@ -26,30 +26,6 @@ class NameProfileViewController: UIViewController {
     func textFieldShouldReturn(textField: UITextField)-> Bool {
         textField.resignFirstResponder();
         
-        // CREATES FIRST PROFILE
-        var firstProfile = PFObject(className:"Preferences");
-        firstProfile["ID"] = PFUser.currentUser()!.objectId;
-        firstProfile["Name"] = textField.text;
-        firstProfile["Cuisine"] = "";
-        firstProfile["Cost"] = 1;
-        firstProfile["Distance"] = 1;
-        firstProfile["Parking"] = "";
-        firstProfile["Ambience"] = "";
-        firstProfile["Caters"] = -1;
-        firstProfile["CreditCards"] = -1;
-        firstProfile["Delivery"] = -1;
-        firstProfile["GoodFor"] = -1;
-        firstProfile["Groups"] = -1;
-        firstProfile["Kids"] = -1;
-        firstProfile["OutdoorSeating"] = -1;
-        firstProfile["Reservations"] = -1;
-        firstProfile["TakeOut"] = -1;
-        firstProfile["WaiterService"] = -1;
-        firstProfile["Wheelchair"] = -1;
-        firstProfile["Wifi"] = -1;
-        firstProfile["Alcohol"] = -1;
-        
-        
         if (count(textField.text) > 0) {
         self.performSegueWithIdentifier("toNewProfileSettings", sender: self);
         }
@@ -58,7 +34,26 @@ class NameProfileViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "toNewProfileSettings") {
             let VC = segue.destinationViewController as! PreferenceMenuViewController;
-            VC.newProfileName = nameProfileField.text;
+            VC.currentProfileName = nameProfileField.text;
+            VC.fromNew = true;
+            VC.price = 1;
+            VC.distance = 1;
+            VC.cuisine = "Chinese";
+            VC.parking = "";
+            VC.goodFor = "";
+            VC.ambience  = "";
+            VC.caters = -1;
+            VC.creditCards = -1;
+            VC.delivery = -1;
+            VC.groups = -1;
+            VC.kids = -1;
+            VC.outdoorSeating = -1;
+            VC.reservations = -1;
+            VC.takeOut = -1;
+            VC.waiterService = -1;
+            VC.wheelChair = -1;
+            VC.wifi = -1;
+            VC.alcohol = -1;
         }
     
     }

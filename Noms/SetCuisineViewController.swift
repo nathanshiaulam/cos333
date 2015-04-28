@@ -10,6 +10,7 @@ import UIKit
 
 class SetCuisineViewController: UIViewController{
     
+    var cuisine:String!;
     var pickerData = ["Chinese", "Indian", "Mexican", "American", "Coffee & Tea", "Thai", "Greek", "Japanese", "French", "Italian", "German", "Mediterranean", "Vietnamese", "Bubble Tea", "Korean", "African", "Spanish", "Brazillian", "Cupcakes", "Filipino", "Greek", "Seafood", "Steakhouses", "Breweries", "Malaysian", "Bakeries", "Dessert"];
     @IBOutlet weak var cuisinePickerView: UIPickerView!
     
@@ -36,9 +37,18 @@ class SetCuisineViewController: UIViewController{
     func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         let titleData = pickerData[row];
         var myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 15.0)!,NSForegroundColorAttributeName:UIColor.whiteColor()]);
+        cuisine = String(_cocoaString: myTitle);
         return myTitle;
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "preferenceToPrice") {
+            let VC = segue.destinationViewController as! PreferenceMenuViewController;
+            VC.cuisine = cuisine;
+            
+        }
+        
+    }
     
 
     /*

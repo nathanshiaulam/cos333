@@ -19,6 +19,7 @@ class ProfileListViewController: UIViewController, UITableViewDelegate, UITableV
         self.dismissViewControllerAnimated(true, completion: nil);
     }
     override func viewDidLoad() {
+
         super.viewDidLoad()
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "handleTap:"));
         

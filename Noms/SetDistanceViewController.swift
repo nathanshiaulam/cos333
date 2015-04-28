@@ -9,7 +9,8 @@
 import UIKit
 
 class SetDistanceViewController: UIViewController {
-
+    
+    var distance:Float!;
     @IBAction func saveButton(sender: UIButton) {
         self.navigationController?.popViewControllerAnimated(true);
     }
@@ -22,7 +23,7 @@ class SetDistanceViewController: UIViewController {
     }
 
     @IBAction func sliderValueChanged(sender: UISlider) {
-        var distance = ceil(sender.value * 50);
+        distance = ceil(sender.value * 50);
         self.distanceTextField.text = NSString(format:"%.0f", distance) as String + " miles";
     }
     override func didReceiveMemoryWarning() {
@@ -30,6 +31,15 @@ class SetDistanceViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "preferenceToPrice") {
+            let VC = segue.destinationViewController as! PreferenceMenuViewController;
+            VC.distance = Int(distance);
+            
+        }
+        
+    }
 
     /*
     // MARK: - Navigation
