@@ -8,14 +8,22 @@
 
 import UIKit
 
-class ProfileListViewController: UIViewController {
+class ProfileListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    
+
+    @IBOutlet weak var profileList: UITableView!
+    
+    var items: [String] = ["Temp"]
     func handleTap(recognizer: UITapGestureRecognizer) {
         self.dismissViewControllerAnimated(true, completion: nil);
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "handleTap:"));
+        
+        self.profileList.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        self.items = ["Temp", "Hi", "Lol", "kek"] //load the things here
 
         // Do any additional setup after loading the view.
     }
@@ -23,6 +31,21 @@ class ProfileListViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    func tableView(profileList: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.items.count;
+    }
+    
+    func tableView(profileList: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cell:UITableViewCell = self.profileList.dequeueReusableCellWithIdentifier("cell") as! UITableViewCell
+        
+        cell.textLabel?.text = self.items[indexPath.row]
+        
+        return cell
+    }
+    
+    func tableView(profileList: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        println("You selected cell #\(indexPath.row)!")
     }
     
 
