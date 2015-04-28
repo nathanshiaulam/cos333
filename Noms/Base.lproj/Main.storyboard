@@ -30,6 +30,10 @@
                                         <exclude reference="zfT-Cb-yjx"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <outlet property="dataSource" destination="gmH-8N-laA" id="9Dr-wn-bLN"/>
+                                    <outlet property="delegate" destination="gmH-8N-laA" id="kKA-2Q-dtu"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -40,6 +44,9 @@
                             <constraint firstAttribute="trailingMargin" secondItem="7Oz-cA-3z8" secondAttribute="trailing" constant="25" id="g3P-vT-Lzy"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="profileList" destination="7Oz-cA-3z8" id="NIY-Bi-YkP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A4O-IL-85c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
