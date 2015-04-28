@@ -28,22 +28,12 @@ class CreateUserViewController: UIViewController {
             self.presentViewController(alert, animated: true, completion: nil);
             return;
         }
-        var profiles = [PFObject(className:"Profile")];
-        
-        // CREATES FIRST PROFILE
-        var firstProfile = PFObject(className:"Profile");
-        firstProfile["Name"] = "";
-        firstProfile["Cuisine"] = [];
-        firstProfile["Cost"] = "";
-        firstProfile["Distance"] = 0;
-        firstProfile["Misc"] = "";
-        
-        profiles[0] = (firstProfile);
+        var profiles = [PFObject(className:"Preferences")] as Array;
         
         // SETS ATTRIBUTES OF NEW USER
         newUser.username = username;
         newUser.password = password;
-        newUser["profiles"] = profiles;
+        newUser["preferences"] = profiles;
         
         newUser.signUpInBackgroundWithBlock {
             (succeeded, error) -> Void in
@@ -60,6 +50,7 @@ class CreateUserViewController: UIViewController {
                 // Show the errorString somewhere and let the user try again.
             }
         }
+
     }
     func textFieldShouldReturn(textField: UITextField)-> Bool {
         if (textField == usernameField) {

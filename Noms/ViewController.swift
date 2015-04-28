@@ -14,6 +14,7 @@ class ViewController: UIViewController {
         PFUser.logOut();
         self.performSegueWithIdentifier("toUserLogin", sender: self);
     }
+    @IBOutlet weak var restaurantNameLabel: UILabel!
     @IBOutlet weak var restaurantImage: UIImageView!
     func userLoggedIn() -> Bool{
         var currentUser = PFUser.currentUser();

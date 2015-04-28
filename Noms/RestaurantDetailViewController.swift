@@ -1,30 +1,21 @@
 //
-//  PreferenceMenuViewController.swift
+//  RestaurantDetailViewController.swift
 //  Noms
 //
-//  Created by Nathan Lam on 4/14/15.
+//  Created by Nathan Lam on 4/26/15.
 //  Copyright (c) 2015 COS333. All rights reserved.
 //
 
 import UIKit
-import Parse
 
-class PreferenceMenuViewController: UIViewController {
-    
-    @IBOutlet weak var profileName: UILabel!
-    var newProfileName:NSString!;
-    @IBAction func onClickSaveButton(sender: UIButton) {
-        self.navigationController?.popToRootViewControllerAnimated(true);
-        
-    }
+class RestaurantDetailViewController: UIViewController {
 
     override func viewDidLoad() {
-        
-   
+        super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
