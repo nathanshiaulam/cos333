@@ -138,8 +138,8 @@ class PreferenceMenuViewController: UIViewController {
         defaults.setObject(currentProfileName, forKey: "Name")
 
         if (fromNew == true) {
+            
             // CREATES NEW PROFILE
-
             var newProfile = PFObject(className:"Preferences");
             newProfile["ID"] = PFUser.currentUser()!.objectId;
             newProfile["Name"] = currentProfileName
@@ -176,7 +176,7 @@ class PreferenceMenuViewController: UIViewController {
             }
         }
         else {
-            var query = PFQuery(className:"Preference");
+            var query = PFQuery(className:"Preferences");
             var currentID = PFUser.currentUser()!.objectId;
             query.whereKey("ID", equalTo:currentID!);
             query.whereKey("Name", equalTo:currentProfileName);
@@ -205,7 +205,7 @@ class PreferenceMenuViewController: UIViewController {
                     preference["Wifi"] = self.wifi;
                     preference["Alcohol"] = self.alcohol;
                     preference.saveInBackground();
-
+                    self.navigationController?.popToRootViewControllerAnimated(true);
                 }
             }
             

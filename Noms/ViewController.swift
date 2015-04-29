@@ -35,20 +35,31 @@ class ViewController: UIViewController {
         return false;
     }
     
-    // SHOW TUTORIAL SEGUE
+    // SHOW TUTORIAL SEGUE VIA ALERT
     func showTutorial() {
         self.performSegueWithIdentifier("toNameProfile", sender: self);
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // ChECKS THE DATASTORE FOR PROFILE NAME
+    override func viewDidAppear(animated: Bool) {
+        // CHECKS THE DATASTORE FOR PROFILE NAME
         var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults();
         if let currentProfileNameIsNotNil = defaults.objectForKey("Name") as? String {
             currentProfileName = defaults.objectForKey("Name") as! String
         }
-        NSLog(currentProfileName);
+        
+        self.profileNameLabel.text = currentProfileName;
+    }
+    
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // CHECKS THE DATASTORE FOR PROFILE NAME
+        var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults();
+        if let currentProfileNameIsNotNil = defaults.objectForKey("Name") as? String {
+            currentProfileName = defaults.objectForKey("Name") as! String
+        }
         
         self.profileNameLabel.text = currentProfileName;
 
