@@ -26,6 +26,24 @@ class NameProfileViewController: UIViewController {
     func textFieldShouldReturn(textField: UITextField)-> Bool {
         textField.resignFirstResponder();
         
+        var query = PFQuery(className:"Preferences");
+        var currentID = PFUser.currentUser()!.objectId;
+        query.whereKey("ID", equalTo:currentID!);
+        query.whereKey("Name", equalTo:textField.text);
+        
+        var preference = query.getFirstObject();
+        println(currentID!);
+        println(textField.text);
+        println(preference);
+        
+        if (preference != nil) {
+            let errorString = "Already Exists";
+            var alert = UIAlertController(title: "Can't Create Profile", message: errorString as String, preferredStyle: UIAlertControllerStyle.Alert);
+            alert.addAction(UIAlertAction(title:"Ok", style: UIAlertActionStyle.Default, handler: nil));
+            self.presentViewController(alert, animated: true, completion: nil);
+        }
+
+        
         if (count(textField.text) > 0) {
         self.performSegueWithIdentifier("toNewProfileSettings", sender: self);
         }
