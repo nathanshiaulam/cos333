@@ -43,12 +43,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // ChECKS THE DATASTORE FOR PROFILE NAME
+        // CHECKS THE DATASTORE FOR PROFILE NAME
         var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults();
         if let currentProfileNameIsNotNil = defaults.objectForKey("Name") as? String {
             currentProfileName = defaults.objectForKey("Name") as! String
         }
-        NSLog(currentProfileName);
+        //NSLog(currentProfileName);
         
         self.profileNameLabel.text = currentProfileName;
 

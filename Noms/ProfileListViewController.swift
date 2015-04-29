@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Parse
+import Bolts
 
 class ProfileListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -24,7 +26,19 @@ class ProfileListViewController: UIViewController, UITableViewDelegate, UITableV
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "handleTap:"));
         
         self.profileList.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        self.items = ["Temp", "Hi", "Lol", "kek"] //load the things here
+        
+        self.items = [];//["Temp", "Hi", "Lol", "kek"] //load the things here
+        var query = PFQuery(className:"Preferences");
+        var currentID = PFUser.currentUser()!.objectId;
+        query.whereKey("ID", equalTo:currentID!);
+        var objects = query.findObjects();
+        if (objects != nil) {
+           for object in objects! {
+                self.items.append(object["Name"]! as! String);
+            }
+        
+        }
+        
 
         // Do any additional setup after loading the view.
     }
