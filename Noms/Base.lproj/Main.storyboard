@@ -269,6 +269,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="profileNameLabel" destination="hhz-Co-GP2" id="LGy-KQ-iF4"/>
                         <outlet property="restaurantImage" destination="lZb-Hi-wXf" id="sgE-02-UHu"/>
                         <outlet property="restaurantNameLabel" destination="NgN-IB-TBu" id="mMU-9p-HRT"/>
                         <segue destination="wPm-n5-d7n" kind="presentation" identifier="toUserLogin" id="Zzw-3L-sI8"/>

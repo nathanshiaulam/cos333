@@ -134,8 +134,12 @@ class PreferenceMenuViewController: UIViewController {
     
     // SAVE ITEM
     @IBAction func onClickSaveButton(sender: UIButton) {
+        var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        defaults.setObject(currentProfileName, forKey: "Name")
+
         if (fromNew == true) {
             // CREATES NEW PROFILE
+
             var newProfile = PFObject(className:"Preferences");
             newProfile["ID"] = PFUser.currentUser()!.objectId;
             newProfile["Name"] = currentProfileName
@@ -176,7 +180,7 @@ class PreferenceMenuViewController: UIViewController {
             var currentID = PFUser.currentUser()!.objectId;
             query.whereKey("ID", equalTo:currentID!);
             query.whereKey("Name", equalTo:currentProfileName);
-            
+
             query.getFirstObjectInBackgroundWithBlock {
                 (preference: PFObject?, error: NSError?) -> Void in
                 if error != nil || preference == nil {
@@ -201,6 +205,7 @@ class PreferenceMenuViewController: UIViewController {
                     preference["Wifi"] = self.wifi;
                     preference["Alcohol"] = self.alcohol;
                     preference.saveInBackground();
+
                 }
             }
             

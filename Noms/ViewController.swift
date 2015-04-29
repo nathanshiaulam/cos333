@@ -10,12 +10,23 @@ import UIKit
 import Parse
 
 class ViewController: UIViewController {
+    
+    var currentProfileName:String!;
+    
+    // PROFILE NAME LABEL
+    @IBOutlet weak var profileNameLabel: UILabel!
+    
+    // RESTAURANT IMAGE AND LABEL
+    @IBOutlet weak var restaurantNameLabel: UILabel!
+    @IBOutlet weak var restaurantImage: UIImageView!
+    
+    // LOGS USER OUT
     @IBAction func userLogOut(sender: UIButton) {
         PFUser.logOut();
         self.performSegueWithIdentifier("toUserLogin", sender: self);
     }
-    @IBOutlet weak var restaurantNameLabel: UILabel!
-    @IBOutlet weak var restaurantImage: UIImageView!
+    
+    // CHECKS FOR USER LOGIN
     func userLoggedIn() -> Bool{
         var currentUser = PFUser.currentUser();
         if ((currentUser) != nil) {
@@ -23,11 +34,24 @@ class ViewController: UIViewController {
         }
         return false;
     }
+    
+    // SHOW TUTORIAL SEGUE
     func showTutorial() {
         self.performSegueWithIdentifier("toNameProfile", sender: self);
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // ChECKS THE DATASTORE FOR PROFILE NAME
+        var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults();
+        if let currentProfileNameIsNotNil = defaults.objectForKey("Name") as? String {
+            currentProfileName = defaults.objectForKey("Name") as! String
+        }
+        NSLog(currentProfileName);
+        
+        self.profileNameLabel.text = currentProfileName;
+
         if (!self.userLoggedIn()) {
             self.performSegueWithIdentifier("toUserLogin", sender: self);
         }
@@ -39,6 +63,15 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // SETS VALUES FOR SETTINGS PAGE
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "toSettingsPage" {
+            let VC = segue.destinationViewController as! PreferenceMenuViewController;
+            VC.fromNew = false;
+            
+        }
     }
     
 
