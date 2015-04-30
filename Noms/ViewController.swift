@@ -14,6 +14,8 @@ class ViewController: UIViewController {
     var currentProfileName:String!;
     var latitude:Double!;
     var longitude:Double!;
+    var restaurantList:[String]!;
+    
     // PROFILE NAME LABEL
     @IBOutlet weak var profileNameLabel: UILabel!
     
@@ -77,8 +79,6 @@ class ViewController: UIViewController {
             if error != nil || preference == nil {
                 println(error);
             } else if let preference = preference{
-                // GET STORED GEOPOINT
-                var geoPoint:PFGeoPoint = defaults.objectForKey("Geo-Point") as! PFGeoPoint;
                 
                 // GET DATE INFO
                 let date = NSDate();
@@ -87,11 +87,28 @@ class ViewController: UIViewController {
                 let hour = components.hour;
                 let minutes = components.minute;
                 let day = components.weekday;
+                let nsDay = NSInteger(day);
+                // FORMAT TIME STRING
+                var hourString = String(hour);
+                var minuteString = String(minutes);
+                if hour < 10 {
+                    hourString = "0" + hourString;
+                }
+                let timeString = hourString + ":" + minuteString;
                 
                 // SET COMPONENTS OF RESPONSE OBJECT
                 var response = Dictionary<String, Any>();
-                response["loc"] = [geoPoint.latitude, geoPoint.longitude];
+                response["loc"] = [self.latitude, self.longitude];
                 response["objid"] = preference.objectId;
+                response["currtime"] = timeString;
+                response["day"] = String(day);
+
+                PFCloud.callFunctionInBackground("matchRestaurants", withParameters: ["dict": response]) {
+                    (result: AnyObject?, error: NSError?) -> Void in
+                    if error == nil {
+                        
+                    }
+                }
                 
             }
         }
@@ -99,17 +116,6 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let date = NSDate();
-        let calendar = NSCalendar.currentCalendar();
-        let components = calendar.components(.CalendarUnitHour | .CalendarUnitMinute | .CalendarUnitWeekday, fromDate:date)
-        let hour = components.hour;
-        let minutes = components.minute;
-        let day = components.weekday;
-        
-        println("Hour" + String(hour));
-        println("Minutes" + String(minutes));
-        println("Day" + String(day));
         
         // SETS UP DATASTORE
         var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults();
