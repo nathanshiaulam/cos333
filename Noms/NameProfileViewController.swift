@@ -60,12 +60,7 @@ class NameProfileViewController: UIViewController {
             
             // OPTIONAL FIELDS
             VC.ambience  = [];
-            VC.creditCards = 0;
-            VC.outdoorSeating = 0;
-            VC.reservations = 0;
-            VC.takeOut = 0;
-            VC.wifi = 0;
-            VC.alcohol = 0;
+            VC.options = "000000";
         }
     
     }

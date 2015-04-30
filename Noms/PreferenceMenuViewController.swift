@@ -34,12 +34,13 @@ class PreferenceMenuViewController: UIViewController {
     
     // OPTIONAL FIELDS
     var ambience:[String]!;
-    var creditCards:Int!;
-    var outdoorSeating:Int!;
-    var reservations:Int!;
-    var takeOut:Int!;
-    var wifi:Int!;
-    var alcohol:Int!;
+    var options:String!;
+//    var creditCards:Int!;
+//    var outdoorSeating:Int!;
+//    var reservations:Int!;
+//    var takeOut:Int!;
+//    var wifi:Int!;
+//    var alcohol:Int!;
     
     // VAR PICKER DATA
     var pickerData = ["Chinese", "Indian", "Mexican", "American", "Coffee & Tea", "Thai", "Greek", "Japanese", "French", "Italian", "German", "Mediterranean", "Vietnamese", "Bubble Tea", "Korean", "African", "Spanish", "Brazillian", "Cupcakes", "Filipino", "Greek", "Seafood", "Steakhouses", "Breweries", "Malaysian", "Bakeries", "Dessert"];
@@ -142,12 +143,13 @@ class PreferenceMenuViewController: UIViewController {
             newProfile["Cost"] = price;
             newProfile["Distance"] = distance;
             newProfile["Ambience"] = ambience;
-            newProfile["CreditCards"] = creditCards;
-            newProfile["OutdoorSeating"] = outdoorSeating;
-            newProfile["Reservations"] = reservations;
-            newProfile["TakeOut"] = takeOut;
-            newProfile["Wifi"] = wifi;
-            newProfile["Alcohol"] = alcohol;
+            newProfile["Options"] = options;
+//            newProfile["CreditCards"] = creditCards;
+//            newProfile["OutdoorSeating"] = outdoorSeating;
+//            newProfile["Reservations"] = reservations;
+//            newProfile["TakeOut"] = takeOut;
+//            newProfile["Wifi"] = wifi;
+//            newProfile["Alcohol"] = alcohol;
             
             // SAVES NEW PROFILE
             newProfile.saveInBackgroundWithBlock {
@@ -177,12 +179,13 @@ class PreferenceMenuViewController: UIViewController {
                     preference["Cost"] = self.price;
                     preference["Distance"] = self.distance;
                     preference["Ambience"] = self.ambience;
-                    preference["CreditCards"] = self.creditCards;
-                    preference["OutdoorSeating"] = self.outdoorSeating;
-                    preference["Reservations"] = self.reservations;
-                    preference["TakeOut"] = self.takeOut;
-                    preference["Wifi"] = self.wifi;
-                    preference["Alcohol"] = self.alcohol;
+                    preference["Options"] = self.options;
+//                    preference["CreditCards"] = self.creditCards;
+//                    preference["OutdoorSeating"] = self.outdoorSeating;
+//                    preference["Reservations"] = self.reservations;
+//                    preference["TakeOut"] = self.takeOut;
+//                    preference["Wifi"] = self.wifi;
+//                    preference["Alcohol"] = self.alcohol;
                     preference.saveInBackground();
                     self.navigationController?.popToRootViewControllerAnimated(true);
                 }
