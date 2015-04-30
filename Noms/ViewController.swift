@@ -40,7 +40,6 @@ class ViewController: UIViewController {
         else {
             indexOfRestaurant = 0;
         }
-
         var currentRestaurantID = restaurantList[indexOfRestaurant];
         findRestaurantWithID(currentRestaurantID);
     }
@@ -134,7 +133,7 @@ class ViewController: UIViewController {
                 
                 // FORMAT IMAGE WITH FUNCTION http://www.appcoda.com/ios-programming-circular-image-calayer/
                 // FOLLOW THE GUIDE ABOVE, SHOULD TAKE IN AN IMAGE AS A PARAMETER AND RETURN AN IMAGE WITH THE RIGHT DIMENSIONS
-                
+                self.formatImage(self.restaurantImage);
                 // CALCULATE DISTANCE AND SET DISTANCE TEXT
                 
             }
@@ -142,15 +141,16 @@ class ViewController: UIViewController {
 
     }
     
-    // FORMATS IMAGE
-    func formatImage(var restaurantImage: UIImage) {
+    // FORMATS IMAGE, RETURNS UIIMAGEVIEW WTIH DESIRED PROPERTIES
+    func formatImage(var restaurantImage: UIImageView) {
         
     }
     
-    // ON REPEAT, INCREMENTS POINTER
-    func nextRestaurant(var indexOfRestaurant: Int) {
+    // RETURNS A STRING IN THE FORMAT OF "[distance] miles away"
+    func calcDistance(var userDistance: PFGeoPoint, var restaurantDistance: PFGeoPoint) {
         
     }
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
