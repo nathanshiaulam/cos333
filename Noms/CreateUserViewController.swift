@@ -33,7 +33,6 @@ class CreateUserViewController: UIViewController {
         // SETS ATTRIBUTES OF NEW USER
         newUser.username = username;
         newUser.password = password;
-        newUser["preferences"] = profiles;
         
         newUser.signUpInBackgroundWithBlock {
             (succeeded, error) -> Void in

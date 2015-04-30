@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="I0G-7g-b9w">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="I0G-7g-b9w">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -181,6 +181,9 @@
                                         <exclude reference="PvC-73-s2c"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="refreshOption:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iNx-wm-1TW"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M2A-5I-KP2">
                                 <rect key="frame" x="524" y="94" width="30" height="30"/>
@@ -270,6 +273,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="profileNameLabel" destination="hhz-Co-GP2" id="LGy-KQ-iF4"/>
+                        <outlet property="restaurantDistance" destination="9Wa-82-ghx" id="PTt-Wn-FZ9"/>
                         <outlet property="restaurantImage" destination="lZb-Hi-wXf" id="sgE-02-UHu"/>
                         <outlet property="restaurantNameLabel" destination="NgN-IB-TBu" id="mMU-9p-HRT"/>
                         <segue destination="wPm-n5-d7n" kind="presentation" identifier="toUserLogin" id="Zzw-3L-sI8"/>

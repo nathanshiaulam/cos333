@@ -56,22 +56,16 @@ class NameProfileViewController: UIViewController {
             VC.fromNew = true;
             VC.price = 1;
             VC.distance = 1;
-            VC.cuisine = "Chinese";
-            VC.parking = "";
-            VC.goodFor = "";
-            VC.ambience  = "";
-            VC.caters = -1;
-            VC.creditCards = -1;
-            VC.delivery = -1;
-            VC.groups = -1;
-            VC.kids = -1;
-            VC.outdoorSeating = -1;
-            VC.reservations = -1;
-            VC.takeOut = -1;
-            VC.waiterService = -1;
-            VC.wheelChair = -1;
-            VC.wifi = -1;
-            VC.alcohol = -1;
+            VC.cuisine = ["Chinese"];
+            
+            // OPTIONAL FIELDS
+            VC.ambience  = [];
+            VC.creditCards = 0;
+            VC.outdoorSeating = 0;
+            VC.reservations = 0;
+            VC.takeOut = 0;
+            VC.wifi = 0;
+            VC.alcohol = 0;
         }
     
     }

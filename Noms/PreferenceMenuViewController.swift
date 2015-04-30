@@ -30,22 +30,14 @@ class PreferenceMenuViewController: UIViewController {
     var currentProfileName:String!;
     var price:Int!;
     var distance:Int!;
-    var cuisine:String!;
+    var cuisine:[String]!;
     
     // OPTIONAL FIELDS
-    var parking:String!;
-    var ambience:String!;
-    var goodFor:String!;
-    var caters:Int!;
+    var ambience:[String]!;
     var creditCards:Int!;
-    var delivery:Int!;
-    var groups:Int!;
-    var kids:Int!;
     var outdoorSeating:Int!;
     var reservations:Int!;
     var takeOut:Int!;
-    var waiterService:Int!;
-    var wheelChair:Int!;
     var wifi:Int!;
     var alcohol:Int!;
     
@@ -128,7 +120,8 @@ class PreferenceMenuViewController: UIViewController {
     func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         let titleData = pickerData[row];
         var myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 15.0)!,NSForegroundColorAttributeName:UIColor.whiteColor()]);
-        cuisine = myTitle.string;
+        var stringArray = [myTitle.string];
+        cuisine = stringArray;
         return myTitle;
     }
     
@@ -136,6 +129,8 @@ class PreferenceMenuViewController: UIViewController {
     @IBAction func onClickSaveButton(sender: UIButton) {
         var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         defaults.setObject(currentProfileName, forKey: "Name")
+        NSNotificationCenter.defaultCenter().postNotificationName("updateProfilePage", object: nil);
+
 
         if (fromNew == true) {
             
@@ -146,19 +141,11 @@ class PreferenceMenuViewController: UIViewController {
             newProfile["Cuisine"] = cuisine;
             newProfile["Cost"] = price;
             newProfile["Distance"] = distance;
-            newProfile["Parking"] = parking;
             newProfile["Ambience"] = ambience;
-            newProfile["Caters"] = caters;
             newProfile["CreditCards"] = creditCards;
-            newProfile["Delivery"] = delivery;
-            newProfile["GoodFor"] = goodFor;
-            newProfile["Groups"] = groups;
-            newProfile["Kids"] = kids;
             newProfile["OutdoorSeating"] = outdoorSeating;
             newProfile["Reservations"] = reservations;
             newProfile["TakeOut"] = takeOut;
-            newProfile["WaiterService"] = waiterService;
-            newProfile["Wheelchair"] = wheelChair;
             newProfile["Wifi"] = wifi;
             newProfile["Alcohol"] = alcohol;
             
@@ -189,19 +176,11 @@ class PreferenceMenuViewController: UIViewController {
                     preference["Cuisine"] = self.cuisine;
                     preference["Cost"] = self.price;
                     preference["Distance"] = self.distance;
-                    preference["Parking"] = self.parking;
                     preference["Ambience"] = self.ambience;
-                    preference["Caters"] = self.caters;
                     preference["CreditCards"] = self.creditCards;
-                    preference["Delivery"] = self.delivery;
-                    preference["GoodFor"] = self.goodFor;
-                    preference["Groups"] = self.groups;
-                    preference["Kids"] = self.kids;
                     preference["OutdoorSeating"] = self.outdoorSeating;
                     preference["Reservations"] = self.reservations;
                     preference["TakeOut"] = self.takeOut;
-                    preference["WaiterService"] = self.waiterService;
-                    preference["Wheelchair"] = self.wheelChair;
                     preference["Wifi"] = self.wifi;
                     preference["Alcohol"] = self.alcohol;
                     preference.saveInBackground();
