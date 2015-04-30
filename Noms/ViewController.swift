@@ -129,11 +129,14 @@ class ViewController: UIViewController {
                 self.restaurantNameLabel.text = restaurant["name"] as! String;
                 let url = NSURL(string: restaurant["big_image_url"] as! String);
                 let data = NSData(contentsOfURL: url!);
+                let latit1 = restaurant["latitude"] as! Double;
+                let longi1 = restaurant["longitude"] as! Double;
                 self.restaurantImage.image = UIImage(data:data!);
                 
                 // FORMAT IMAGE WITH FUNCTION http://www.appcoda.com/ios-programming-circular-image-calayer/
                 // FOLLOW THE GUIDE ABOVE, SHOULD TAKE IN AN IMAGE AS A PARAMETER AND RETURN AN IMAGE WITH THE RIGHT DIMENSIONS
-                self.formatImage(self.restaurantImage);
+                self.formatImage(self.restaurantImage); //do pointers work like this?
+                self.restaurantDistance = self.calcDistance(latit1, lon1: longi1, lat2: self.latitude, lon2: self.longitude);
                 // CALCULATE DISTANCE AND SET DISTANCE TEXT
                 
             }
@@ -143,15 +146,16 @@ class ViewController: UIViewController {
     
     // FORMATS IMAGE, RETURNS UIIMAGEVIEW WTIH DESIRED PROPERTIES
     func formatImage(var restaurantImage: UIImageView) {
-        
+        restaurantImage.layer.cornerRadius = restaurantImage.frame.size.width / 2;
+        restaurantImage.clipsToBounds = true;
     }
     
     // RETURNS A STRING IN THE FORMAT OF "[distance] miles away"
-    func calcDistance(var userDistance: PFGeoPoint, var restaurantDistance: PFGeoPoint) -> String {
-        var radlat1 = M_PI * userDistance.latitude/180;
-        var radlat2 = M_PI * userDistance.longitude/180;
-        var radlon1 = M_PI * restaurantDistance.latitude/180;
-        var radlon2 = M_PI * restaurantDistance.longitude/180;
+    func calcDistance(var lat1: Double, var lon1: Double, var lat2: Double, var lon2: Double) -> String {
+        var radlat1 = M_PI * lat1/180;
+        var radlat2 = M_PI * lon1/180;
+        var radlon1 = M_PI * lat2/180;
+        var radlon2 = M_PI * lon2/180;
         var theta = userDistance.longitude-restaurantDistance.longitude;
         var radtheta = M_PI * theta/180;
         var dist = sin(radlat1) * sin(radlat2) + cos(radlat1) * cos(radlat2) * cos(radtheta);
