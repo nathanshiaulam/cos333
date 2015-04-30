@@ -205,7 +205,7 @@ Parse.Cloud.define("MatchRestaurant", function(request, response) {
                   //compute vector norm
                   var restscore = Math.sqrt(Math.pow(distval*distweight, 2)+Math.pow(costval*costweight, 2)+Math.pow(optionsval*optionsweight, 2)+Math.pow(cuisineval*cuisineweight, 2));
                   //adds the rest score pair to restscorearrays
-                  restscorearray[restscorearray.length] = {name: rest.get("url"), score: restscore, options: cuisineval};
+                  restscorearray[restscorearray.length] = {name: rest.get("url"), score: restscore, id: rest.get("objectId")};
 
                   // sort restscorearray by score
                   restscorearray.sort(sortfunction);
