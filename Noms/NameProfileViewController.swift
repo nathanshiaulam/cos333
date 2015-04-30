@@ -52,15 +52,18 @@ class NameProfileViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "toNewProfileSettings") {
             let VC = segue.destinationViewController as! PreferenceMenuViewController;
+            
+            var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+            defaults.setObject(nameProfileField.text, forKey: "Name");
+            defaults.setObject(1, forKey:"Price");
+            defaults.setObject(5, forKey:"Distance");
+            defaults.setObject(["Chinese"], forKey:"Cuisine");
+            defaults.setObject([], forKey:"Ambience");
+            defaults.setObject("000000", forKey:"Options");
+            
             VC.currentProfileName = nameProfileField.text;
             VC.fromNew = true;
-            VC.price = 1;
-            VC.distance = 1;
-            VC.cuisine = ["Chinese"];
-            
-            // OPTIONAL FIELDS
-            VC.ambience  = [];
-            VC.options = "000000";
+
         }
     
     }

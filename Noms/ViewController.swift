@@ -126,7 +126,7 @@ class ViewController: UIViewController {
             } else if let restaurant = restaurant{
                 
                 // LOADS IN FIELDS OF RESTAURANT
-                self.restaurantNameLabel.text = restaurant["name"] as! String;
+                self.restaurantNameLabel.text = restaurant["name"] as? String;
                 let url = NSURL(string: restaurant["big_image_url"] as! String);
                 let data = NSData(contentsOfURL: url!);
                 self.restaurantImage.image = UIImage(data:data!);
@@ -134,8 +134,14 @@ class ViewController: UIViewController {
                 // FORMAT IMAGE WITH FUNCTION http://www.appcoda.com/ios-programming-circular-image-calayer/
                 // FOLLOW THE GUIDE ABOVE, SHOULD TAKE IN AN IMAGE AS A PARAMETER AND RETURN AN IMAGE WITH THE RIGHT DIMENSIONS
                 self.formatImage(self.restaurantImage);
-                // CALCULATE DISTANCE AND SET DISTANCE TEXT
                 
+                // CALCULATE DISTANCE AND SET DISTANCE TEXT
+                let restaurantLatitude = restaurant["latitude"] as! Double
+                let restaurantLongitude = restaurant["longitude"] as! Double
+                var distString:String = self.calcDistance(self.latitude, userDistanceLongitude: self.longitude, restaurantDistanceLatitude: restaurantLatitude, restaurantDistanceLongitude: restaurantLongitude);
+                
+                distString = distString + " miles away";
+                self.restaurantDistance.text = distString;
             }
         }
 
@@ -147,12 +153,13 @@ class ViewController: UIViewController {
     }
     
     // RETURNS A STRING IN THE FORMAT OF "[distance] miles away"
-    func calcDistance(var userDistance: PFGeoPoint, var restaurantDistance: PFGeoPoint) -> String {
-        var radlat1 = M_PI * userDistance.latitude/180;
-        var radlat2 = M_PI * userDistance.longitude/180;
-        var radlon1 = M_PI * restaurantDistance.latitude/180;
-        var radlon2 = M_PI * restaurantDistance.longitude/180;
-        var theta = userDistance.longitude-restaurantDistance.longitude;
+    func calcDistance(var userDistanceLatitude: Double, var userDistanceLongitude: Double, var restaurantDistanceLatitude: Double, var restaurantDistanceLongitude: Double) -> String {
+        
+        var radlat1 = M_PI * userDistanceLatitude/180;
+        var radlat2 = M_PI * userDistanceLongitude/180;
+        var radlon1 = M_PI * restaurantDistanceLatitude/180;
+        var radlon2 = M_PI * restaurantDistanceLongitude/180;
+        var theta = userDistanceLongitude-restaurantDistanceLongitude;
         var radtheta = M_PI * theta/180;
         var dist = sin(radlat1) * sin(radlat2) + cos(radlat1) * cos(radlat2) * cos(radtheta);
         dist = acos(dist);
@@ -226,7 +233,8 @@ class ViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "toSettingsPage" {
             let VC = segue.destinationViewController as! PreferenceMenuViewController;
-            VC.fromNew = false;
+            
+            VC.fromNew = false; // Tells next VC that we don't create new Pref
         }
     }
     

@@ -281,7 +281,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1885" y="397"/>
+            <point key="canvasLocation" x="1749" y="450"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="iln-IP-Eqw">
@@ -403,7 +403,7 @@
                                     <action selector="onClickThreeDollar:" destination="oUA-AU-Rob" eventType="touchUpInside" id="Qpu-id-czW"/>
                                 </connections>
                             </button>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.10000000149011612" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="0P4-gb-rgx">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="1" maxValue="50" translatesAutoresizingMaskIntoConstraints="NO" id="0P4-gb-rgx">
                                 <rect key="frame" x="52" y="254" width="304" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="Mb0-B0-IEe"/>
@@ -501,7 +501,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d32-xT-JcO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1885" y="1556"/>
+            <point key="canvasLocation" x="2045" y="1298"/>
         </scene>
         <!--Optional Menu View Controller-->
         <scene sceneID="pBn-1d-eZB">

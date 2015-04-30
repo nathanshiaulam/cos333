@@ -28,13 +28,8 @@ class PreferenceMenuViewController: UIViewController {
     // DECLARE VARIABLES
     var fromNew:Bool!;
     var currentProfileName:String!;
-    var price:Int!;
-    var distance:Int!;
-    var cuisine:[String]!;
     
     // OPTIONAL FIELDS
-    var ambience:[String]!;
-    var options:String!;
 //    var creditCards:Int!;
 //    var outdoorSeating:Int!;
 //    var reservations:Int!;
@@ -47,65 +42,67 @@ class PreferenceMenuViewController: UIViewController {
     
     // DOLLAR SIGN CHANGE
     @IBAction func onClickOneDollar(sender: UIButton) {
+        var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        defaults.setObject(1, forKey:"Price");
         if (oneDollarSignButton.selected == true && twoDollarSignButton.selected == false && threeDollarSignButton.selected == false) {
             oneDollarSignButton.selected = true;
-            price = 1;
         }
         else if (oneDollarSignButton.selected == true && twoDollarSignButton.selected == true && threeDollarSignButton.selected == false) {
             oneDollarSignButton.selected = true;
             twoDollarSignButton.selected = false;
-            price = 1;
         }
         else if (oneDollarSignButton.selected == true && twoDollarSignButton.selected == true && threeDollarSignButton.selected == true) {
             oneDollarSignButton.selected = true;
             twoDollarSignButton.selected = false;
             threeDollarSignButton.selected = false;
-            price = 1;
         }
         else {
             oneDollarSignButton.selected = true;
-            price = 1;
         }
     }
     @IBAction func onClickTwoDollar(sender: UIButton) {
+        var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults();
+        
         if (oneDollarSignButton.selected == true && twoDollarSignButton.selected == true && threeDollarSignButton.selected == false) {
             oneDollarSignButton.selected = true;
             twoDollarSignButton.selected = false;
-            price = 1;
+            defaults.setObject(1, forKey:"Price");
         }
         else if (oneDollarSignButton.selected == true && twoDollarSignButton.selected == true && threeDollarSignButton.selected == true) {
             oneDollarSignButton.selected = true;
             twoDollarSignButton.selected = true;
             threeDollarSignButton.selected = false;
-            price = 2;
+            defaults.setObject(2, forKey:"Price");
             
         }
         else {
             oneDollarSignButton.selected = true;
             twoDollarSignButton.selected = true;
-            price = 2;
+            defaults.setObject(2, forKey:"Price");
         }
     }
     @IBAction func onClickThreeDollar(sender: UIButton) {
+        var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         if (oneDollarSignButton.selected == true && twoDollarSignButton.selected == true && threeDollarSignButton.selected == true) {
             oneDollarSignButton.selected = true;
             twoDollarSignButton.selected = false;
             threeDollarSignButton.selected = false;
-            price = 1;
+            defaults.setObject(1, forKey:"Price");
         }
         else {
             oneDollarSignButton.selected = true;
             twoDollarSignButton.selected = true;
             threeDollarSignButton.selected = true;
-            price = 3;
+            defaults.setObject(3, forKey:"Price");
         }
     }
     
     // ON SLIDER CHANGE
     @IBAction func sliderValueChanged(sender: UISlider) {
-        var floatDistance = ceil(sender.value * 50);
+        var floatDistance = floor(sender.value);
+        var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         self.distanceTextField.text = NSString(format:"%.0f", floatDistance) as String + " miles";
-        distance = Int(floatDistance);
+        defaults.setObject(Int(floatDistance), forKey:"Distance");
     }
     
     // FUNCTIONS FOR PICKER 
@@ -120,9 +117,10 @@ class PreferenceMenuViewController: UIViewController {
     }
     func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         let titleData = pickerData[row];
+        var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         var myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 15.0)!,NSForegroundColorAttributeName:UIColor.whiteColor()]);
         var stringArray = [myTitle.string];
-        cuisine = stringArray;
+        defaults.setObject(stringArray, forKey:"Cuisine");
         return myTitle;
     }
     
@@ -131,19 +129,18 @@ class PreferenceMenuViewController: UIViewController {
         var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         defaults.setObject(currentProfileName, forKey: "Name")
         NSNotificationCenter.defaultCenter().postNotificationName("updateProfilePage", object: nil);
-
-
+    
         if (fromNew == true) {
             
             // CREATES NEW PROFILE
             var newProfile = PFObject(className:"Preferences");
             newProfile["ID"] = PFUser.currentUser()!.objectId;
             newProfile["Name"] = currentProfileName
-            newProfile["Cuisine"] = cuisine;
-            newProfile["Cost"] = price;
-            newProfile["Distance"] = distance;
-            newProfile["Ambience"] = ambience;
-            newProfile["Options"] = options;
+            newProfile["Cuisine"] =  defaults.objectForKey("Cuisine") as! [String];
+            newProfile["Cost"] = defaults.objectForKey("Price") as! Int;
+            newProfile["Distance"] = defaults.objectForKey("Distance") as! Int;
+            newProfile["Ambience"] = defaults.objectForKey("Ambience") as! [String];
+            newProfile["Options"] = defaults.objectForKey("Options") as! String;
 //            newProfile["CreditCards"] = creditCards;
 //            newProfile["OutdoorSeating"] = outdoorSeating;
 //            newProfile["Reservations"] = reservations;
@@ -175,11 +172,11 @@ class PreferenceMenuViewController: UIViewController {
                 if error != nil || preference == nil {
                     println(error);
                 } else if let preference = preference{
-                    preference["Cuisine"] = self.cuisine;
-                    preference["Cost"] = self.price;
-                    preference["Distance"] = self.distance;
-                    preference["Ambience"] = self.ambience;
-                    preference["Options"] = self.options;
+                    preference["Cuisine"] = defaults.objectForKey("Cuisine") as! [String];
+                    preference["Cost"] = defaults.objectForKey("Price") as! Int;
+                    preference["Distance"] = defaults.objectForKey("Distance") as! Int;
+                    preference["Ambience"] = defaults.objectForKey("Ambience") as! [String];
+                    preference["Options"] = defaults.objectForKey("Options") as! String;
 //                    preference["CreditCards"] = self.creditCards;
 //                    preference["OutdoorSeating"] = self.outdoorSeating;
 //                    preference["Reservations"] = self.reservations;
@@ -201,6 +198,26 @@ class PreferenceMenuViewController: UIViewController {
         oneDollarSignButton.setTitleColor(UIColor.yellowColor(), forState: UIControlState.Selected);
         twoDollarSignButton.setTitleColor(UIColor.yellowColor(), forState: UIControlState.Selected);
         threeDollarSignButton.setTitleColor(UIColor.yellowColor(), forState: UIControlState.Selected);
+        var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults();
+        
+        var amount = defaults.objectForKey("Price") as! Int;
+        var distance = defaults.objectForKey("Distance") as! Int;
+        
+        // SETS PRICE
+        if amount == 1 {
+            oneDollarSignButton.selected = true;
+        } else if amount == 2 {
+            oneDollarSignButton.selected = true;
+            twoDollarSignButton.selected = true;
+        } else {
+            oneDollarSignButton.selected = true;
+            twoDollarSignButton.selected = true;
+            threeDollarSignButton.selected = true;
+        }
+        
+        // SETS DISTANCE VALUE
+        distanceTextField.text = NSString(format:"%.0f", Float(distance)) as String + " miles";
+        distanceSlider.setValue(Float(distance), animated: true);
         
         
         // Do any additional setup after loading the view.
