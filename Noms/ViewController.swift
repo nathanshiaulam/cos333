@@ -96,16 +96,19 @@ class ViewController: UIViewController {
                 }
                 let timeString = hourString + ":" + minuteString;
                 
+                
                 // SET COMPONENTS OF RESPONSE OBJECT
                 var response = Dictionary<String, Any>();
                 response["loc"] = [self.latitude, self.longitude];
                 response["objid"] = preference.objectId;
                 response["currtime"] = timeString;
                 response["day"] = String(day);
-
-                PFCloud.callFunctionInBackground("matchRestaurants", withParameters: ["dict": response]) {
+                
+//{"loc":[self.latitude, self.longitude], "objid":preference.objectId, "currtime":timeString, "day":String(day)}
+                PFCloud.callFunctionInBackground("MatchRestaurant", withParameters:["loc":[String(stringInterpolationSegment: self.latitude), String(stringInterpolationSegment: self.longitude)], "objid":[String(stringInterpolationSegment: preference.objectId)], "currtime":[String(stringInterpolationSegment: timeString)], "day":[String(stringInterpolationSegment: day)]]) {
                     (result: AnyObject?, error: NSError?) -> Void in
                     if error == nil {
+                        var ans = result;
                         
                     }
                 }
