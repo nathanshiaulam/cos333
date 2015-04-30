@@ -6,17 +6,17 @@
 // 6-10 miles more than user distance = 2
 // more than 10 miles more than user distance = 1
 function distanceeval(lat1, lon1, lat2, lon2, user_dist) {
-	rest_dist = computeDistance (lat1, lon1, lat2, lon2);
-	if (rest_dist <= user_dist)
-		return 1
-	else if (rest_dist <= user_dist + 3)
-		return 2
-	else if (rest_dist <= user_dist + 5)
-		return 3
-	else if (rest_dist <= user_dist + 10)
-		return 4
-	else
-		return 5
+   rest_dist = computeDistance (lat1, lon1, lat2, lon2);
+   if (rest_dist <= user_dist)
+      return 1
+   else if (rest_dist <= user_dist + 3)
+      return 2
+   else if (rest_dist <= user_dist + 5)
+      return 3
+   else if (rest_dist <= user_dist + 10)
+      return 4
+   else
+      return 5
 }
 
 /* given point A (lat1, lon1) and point B (lat2, lon2), return the dist between the two points in miles*/
@@ -39,98 +39,99 @@ function computeDistance(lat1, lon1, lat2, lon2) {
 given array of open times in hours, check if restaurant is open
 hours is a string in the format given by yelp,
 and current_time is in __:__ format, military time*/
-function isOpen (current_time, hours){
-	if (hours.length == 0) {
-		return true;
-	}
-	splitted = hours[current_time.getDay()].split(",", 5)
-	current_hour = current_time.getHours()
-	current_minute = current_time.getMinutes()
-	for (var i = 0; i < splitted.length; i++) {
-		line = splitted[i]
-		if (line.indexOf("-") != -1) {
-			start = line.substring(0, line.indexOf("-")-1)
-			start_time = start.substring(0, start.indexOf(":") + 3)
-			if (start.indexOf("pm") != -1)
-				start_time += 12
-			end = line.substring(line.indexOf("-") + 2, line.length)
-			end_time = start.substring(0, end.indexOf(":") + 3)
-			if (end.indexOf("pm") != -1)
-				end_time += 12
-			if (current_hour > start_time.substring(0, 2) && current_minute > start_time.substring(3, 5) &&
-				current_hour < end_time.substring(0, 2) && current_minute < end_time.substring(3, 5))
-				return true
-		}
-		//equivalent to open 24 hours
-		else if (line == "24") {
-			return true;
-		}
-		//equivalent to closed
-		else if (line == "0") {
-			return false;
-		}
-	}
-	return false;
+function isOpen (current_time, current_day, hours){
+   if (hours.length == 0) {
+      return true;
+   }
+   splitted = hours[current_day].split(",", 5)
+   current_hour = parseInt(current_time.substring(0, 2));
+   current_minute = parseInt(current_time.substring(3));
+   for (var i = 0; i < splitted.length; i++) {
+      line = splitted[i]
+      if (line.indexOf("-") != -1) {
+         start = line.substring(0, line.indexOf("-"))
+         start_hour = parseInt(start.substring(0, start.indexOf(":")))
+         start_min = parseInt(start.substring(start.indexOf(":") + 1, start.indexOf(":") + 3))
+         if (start.indexOf("pm") != -1)
+            start_hour += 12
+         end = line.substring(line.indexOf("-") + 1, line.length)
+         end_hour = parseInt(end.substring(0, end.indexOf(":")))
+         end_min = parseInt(end.substring(end.indexOf(":")+1, end.indexOf(":")+3))
+         if (end.indexOf("pm") != -1)
+            end_hour += 12
+         if (current_hour >= start_hour && current_hour < end_hour)
+            return true
+      }
+      //equivalent to open 24 hours
+      else if (line === "24") {
+         return true;
+      }
+      //equivalent to closed
+      else if (line === "0") {
+         return false;
+      }
+   }
+   return false;
 }
 
 /* Yelp data has categories in array form, which includes the cuisine type */
 /* preferences is a String representing cuisine type */
 function checkCuisine(preferences, categories) {
-	for (var j = 0; j < preferences.length; j++) {
-		var pref = preferences[j].toLowerCase();
-		for (var i = 0; i < categories.length; i++) {
-			if (categories[i].toLowerCase() === pref) {
-				return true
-			}
-		}
-	}
-	return false
+   for (var j = 0; j < preferences.length; j++) {
+      var pref = preferences[j].toLowerCase();
+      for (var i = 0; i < categories.length; i++) {
+         if (categories[i].toLowerCase() === pref) {
+            return true
+         }
+      }
+   }
+   return false
 }
 
 // use this for matching ambience, type of cuisine, and parking
 function matchStringOption(rest_ambience, user_ambience) {
-	splitted = rest_ambience.split(",", 5)
-	user_split = user_ambience.split(",", 10)
-	for (var i = 0; i < splitted.length; i++) {
-		for (var j = 0; j < user_split.length; j++) {
-			if (splitted[i].toLowerCase() == user_split[j].toLowerCase()) {
-				return true
-			}
-		}
-	}
-	return false
+   for (var i = 0; i < rest_ambience.length; i++) {
+      for (var j = 0; j < user_ambience.length; j++) {
+         if (rest_ambience[i].toLowerCase() === user_ambience[j].toLowerCase()) {
+            return true
+         }
+      }
+   }
+   return false
 }
 
 /* given a String of length 12 with the options (0,1,2), calculates their similarity*/
 function compareOptions (rest_options, user_options) {
-	total = 0
-	for (var i = 0; i < 12; i++) {
-		if (rest_options.charAt(i) == user_options.charAt(i))
-			total++
-		else if (rest_options.charAt(i) != 0 && user_options.charAt(i) != 0)
-			total--
-	}
-	return total
+   total = 0
+   for (var i = 0; i < 12; i++) {
+      if (rest_options.charAt(i) !== "0") {
+         if ((rest_options.charAt(i) === user_options.charAt(i)))
+            total++
+         else if (rest_options.charAt(i) !== 0 && user_options.charAt(i) !== 0)
+            total--
+      }
+   }
+   return total
 }
 
 /* cost1 and cost2 are dollar sign strings */ 
 function costDiff (cost1, cost2) {
-	return Math.abs(cost1.length - cost2.length)
+   return Math.abs(cost1 - cost2)
 }
 
 /*run a for loop over all open restaurants and get the score sortmin*/
 function finsAllScore(){
-	var restlist //list of restaurants sorted by their score
-	return restlist
+   var restlist //list of restaurants sorted by their score
+   return restlist
 }
 
 
 // function to sort restscorearray
 function sortfunction(a,b) {
-	if (a.score == b.score)
-		return 0;
-	else
-		return (a.score >= b.score) ? 1 :-1;
+   if (a.score == b.score)
+      return 0;
+   else
+      return (a.score >= b.score) ? 1 :-1;
 }
 
 /*------------------------------------------------------------------------------*/
@@ -143,73 +144,83 @@ function sortfunction(a,b) {
 */
 
 Parse.Cloud.define("MatchRestaurant", function(request, response) {
-  	
-  	var currloc = request.params.loc; //double array
-	var query = new Parse.Query("Restaurants");
-	var results = [];
-	var currentdate = new Date();
-	var restscorearray = []; // scores associated with each restaurnt
-	
-	query.limit(1000);
-	//filter by coordinates
-	query.greaterThan("latitude", currloc[0] - .5);
-	query.lessThan("latitude", currloc[0] + .5);
-	query.greaterThan("longitude", currloc[1] - .5);
-	query.lessThan("longitude", currloc[1] + .5);
+   
+   var currloc = request.params.loc; //double array
+   var query = new Parse.Query("Restaurants");
+   var prefquery = new Parse.Query("Preferences");
+   var results = [];
+   var restscorearray = []; // scores associated with each restaurnt
+   
+   query.limit(1000);
 
-	//the entire algorithm here
-	query.find({
-	  	success: function(res) {
-	  		//find all restaurants that are open
-			for (var i = 0; i < res.length; ++i) {
-			    if (isOpen(currentdate, res[i].get("hours"))) {
-			    	results[results.length] = res[i];
-			    }
-			}
-			//find vector score for all matching restaurants
-			for (var i = 0; i < results.length; ++i) {
-				var distance = request.params.distance; //int of distance category
-		  	  	var cost = request.params.cost; //dollar sign string
-				var cuisine = request.params.cuisine; //string array
- 				var preferences = request.params.pref; //bit string
- 				//var ambience = request.params.ambience; //string
-				//ideally the numbers should be between 0 and 5
-				var scaling = 5; //magic number to scale the values
-				var distweight = 1;
-				var costweight = 1;
-				var optionsweight = 1;
-				var cuisineweight = 1;
-				var rest = results[i];
-				//dist
-				var distval = distanceeval(rest.get("latitude"), rest.get("longitude"), currloc[0], currloc[1], distance);
-		        //cost
-		        var costval = costDiff(rest.get("cost"), cost);
-		        //cuisine
-				var cuisineval = 0;
-				if (checkCuisine(cuisine, rest.get("categories")))
-					cuisineval = 0;
-				else
-					cuisineval = scaling;
-		        //options and ambience
-		        var optionsval = scaling - compareOptions(preferences, rest.get("options"));
-				/*if (matchStringOption(ambience, rest.get("ambience")))
-				 	optionsval--;
-				else optionsval++;*/
+   //filter by coordinates
+   query.greaterThan("latitude", currloc[0] - .5);
+   query.lessThan("latitude", currloc[0] + .5);
+   query.greaterThan("longitude", currloc[1] - .5);
+   query.lessThan("longitude", currloc[1] + .5);
 
-				//compute vector norm
-				var restscore = Math.sqrt(Math.pow(distval*distweight, 2)+Math.pow(costval*costweight, 2)+Math.pow(optionsval*optionsweight, 2)+Math.pow(cuisineval*cuisineweight, 2));
-				//adds the rest score pair to restscorearrays
-				restscorearray[restscorearray.length] = {name: rest.get("url"), id:rest.get('business_id'), score: restscore};
+   prefquery.get(request.params.objid, {
+      success: function(pref) {
+         query.find({
+            success: function(res) {
+               var time = request.params.currtime //string
+               var dayofweek = request.params.day //int
+               //find all restaurants that are open
+               for (var i = 0; i < res.length; ++i) {
+                  if (isOpen(time, dayofweek, res[i].get("hours"))) {
+                     results[results.length] = res[i];
+                  }
+               }
+               //find vector score for all matching restaurants
+               for (var i = 0; i < results.length; ++i) {
+                  var distance = pref.get("Distance"); //int of distance category
+                  var cost = pref.get("Cost"); //dollar sign string
+                  var cuisine = pref.get("Cuisine"); //string array
+                  var options = "" + pref.get("Reservations") + "0" + pref.get("TakeOut") + pref.get("CreditCards") + "000" + pref.get("Alcohol") + pref.get("OutdoorSeating") + "0" + pref.get("Wifi") + "0";
+                  var ambience = pref.get("Ambience"); //string
 
-				// sort restscorearray by score
-    			restscorearray.sort(sortfunction);
-			}
-			response.success(restscorearray[0])
-	  	},
-	  	error: function(error) {
-	    	alert("Error: " + error.code + " " + error.message);
-	  	}	
-	});
+                  //ideally the numbers should be between 0 and 5
+                  var scaling = 5; //magic number to scale the values
+                  var distweight = 1;
+                  var costweight = 1;
+                  var optionsweight = 1;
+                  var cuisineweight = 1.5;
+                  var rest = results[i];
+                  //dist
+                  var distval = distanceeval(rest.get("latitude"), rest.get("longitude"), currloc[0], currloc[1], distance);
+                  //cost
+                  var costval = costDiff(rest.get("cost").length, cost);
+                  //cuisine
+                  var cuisineval = 0;
+                  if (checkCuisine(cuisine, rest.get("categories")))
+                     cuisineval = 0;
+                  else
+                     cuisineval = scaling;
+                  //options and ambience
+                  var optionsval = scaling - compareOptions(options, rest.get("options"));
+                  if (matchStringOption(ambience, rest.get("ambience")))
+                     optionsval--;
+                  else optionsval++;
+
+                  //compute vector norm
+                  var restscore = Math.sqrt(Math.pow(distval*distweight, 2)+Math.pow(costval*costweight, 2)+Math.pow(optionsval*optionsweight, 2)+Math.pow(cuisineval*cuisineweight, 2));
+                  //adds the rest score pair to restscorearrays
+                  restscorearray[restscorearray.length] = {name: rest.get("url"), score: restscore, options: cuisineval};
+
+                  // sort restscorearray by score
+                  restscorearray.sort(sortfunction);
+               }
+               response.success(restscorearray.slice(0, 20));
+            },
+            error: function(error) {
+               alert("Error: " + error.code + " " + error.message);
+            }  
+         });
+      },
+      error: function(error) {
+         alert("Error: " + error.code + " " + error.message);
+      }
+   });
 });
 
 // Use Parse.Cloud.define to define as many cloud functions as you want.
