@@ -99,8 +99,6 @@ class ViewController: UIViewController {
                     hourString = "0" + hourString;
                 }
                 let timeString = hourString + ":" + minuteString;
-<<<<<<< Updated upstream
-                
                 
                 // SET COMPONENTS OF RESPONSE OBJECT
                 PFCloud.callFunctionInBackground("MatchRestaurant", withParameters:["loc":[String(stringInterpolationSegment: self.latitude), String(stringInterpolationSegment: self.longitude)], "objid":[String(stringInterpolationSegment: preference.objectId)], "currtime":[String(stringInterpolationSegment: timeString)], "day":[String(stringInterpolationSegment: day)]]) {
