@@ -1,14 +1,14 @@
 //
-//  RestaurantDisplayViewController.swift
+//  OptionalMenuViewController.swift
 //  Noms
 //
-//  Created by Nathan Lam on 4/23/15.
+//  Created by Nathan Lam on 4/30/15.
 //  Copyright (c) 2015 COS333. All rights reserved.
 //
 
 import UIKit
 
-class RestaurantDisplayViewController: UIViewController {
+class OptionalMenuViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
