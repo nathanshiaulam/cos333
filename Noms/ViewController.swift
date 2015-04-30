@@ -11,10 +11,12 @@ import Parse
 
 class ViewController: UIViewController {
     
+    // LOCAL CONSTANTS
     var currentProfileName:String!;
     var latitude:Double!;
     var longitude:Double!;
     var restaurantList:[String]!;
+    var indexOfRestaurant:Int!;
     
     // PROFILE NAME LABEL
     @IBOutlet weak var profileNameLabel: UILabel!
@@ -32,24 +34,23 @@ class ViewController: UIViewController {
     
     // ON CLICK RED BUTTON
     @IBAction func refreshOption(sender: AnyObject) {
-    }
-    
-    // CHECKS FOR USER LOGIN
-    func userLoggedIn() -> Bool{
-        var currentUser = PFUser.currentUser();
-        if ((currentUser) != nil) {
-            return true;
+        if (indexOfRestaurant < 20) {
+            indexOfRestaurant = indexOfRestaurant + 1;
         }
-        return false;
-    }
-    
-    // SHOW TUTORIAL SEGUE VIA ALERT
-    func showTutorial() {
-        self.performSegueWithIdentifier("toNameProfile", sender: self);
+        else {
+            indexOfRestaurant = 0;
+        }
+
+        var currentRestaurantID = restaurantList[indexOfRestaurant];
+        findRestaurantWithID(currentRestaurantID);
     }
     
     // THIS FUNCTION IS CALLED WHEN YOU POP FROM PREFERENCES OR WHEN YOU HIT THE REFRESH BUTTON
     func updateProfilePage() {
+        
+        // SETS INDEX OF ARRAY TO ZERO AT START
+        indexOfRestaurant = 0;
+        
         // CHECKS THE DATASTORE FOR PROFILE NAME ON VIEW POP
         var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults();
         if let currentProfileNameIsNotNil = defaults.objectForKey("Name") as? String {
@@ -65,8 +66,12 @@ class ViewController: UIViewController {
                 self.longitude = geoPoint?.longitude; // STORES LONGITUDE
             }
         }
+        
+        // FORMATS THE VIEW ACCORDING TO RESTAURANT
+        findTopImage();
     }
     
+    // RUNS NTH CALL
     func findTopImage() {
         var query = PFQuery(className:"Preferences");
         var currentID = PFUser.currentUser()!.objectId;
@@ -98,27 +103,60 @@ class ViewController: UIViewController {
                 
                 
                 // SET COMPONENTS OF RESPONSE OBJECT
-                var response = Dictionary<String, Any>();
-                response["loc"] = [self.latitude, self.longitude];
-                response["objid"] = preference.objectId;
-                response["currtime"] = timeString;
-                response["day"] = String(day);
-                
-//{"loc":[self.latitude, self.longitude], "objid":preference.objectId, "currtime":timeString, "day":String(day)}
                 PFCloud.callFunctionInBackground("MatchRestaurant", withParameters:["loc":[String(stringInterpolationSegment: self.latitude), String(stringInterpolationSegment: self.longitude)], "objid":[String(stringInterpolationSegment: preference.objectId)], "currtime":[String(stringInterpolationSegment: timeString)], "day":[String(stringInterpolationSegment: day)]]) {
                     (result: AnyObject?, error: NSError?) -> Void in
                     if error == nil {
-                        var ans = result;
-                        
+                        self.restaurantList = result as! [String];
+                        var currentRestaurantID = self.restaurantList[0];
+                        self.findRestaurantWithID(currentRestaurantID);
                     }
                 }
                 
             }
         }
     }
+    
+    // QUERIES FOR RESTAURANT
+    func findRestaurantWithID(var restaurantID: String) {
+        var query = PFQuery(className: "Restaurants");
+        query.whereKey("objectId", equalTo: restaurantID);
+        query.getFirstObjectInBackgroundWithBlock{
+            (restaurant: PFObject?, error: NSError?) -> Void in
+            if error != nil || restaurant == nil {
+                println(error);
+            } else if let restaurant = restaurant{
+                
+                // LOADS IN FIELDS OF RESTAURANT
+                self.restaurantNameLabel.text = restaurant["name"] as! String;
+                let url = NSURL(string: restaurant["big_image_url"] as! String);
+                let data = NSData(contentsOfURL: url!);
+                self.restaurantImage.image = UIImage(data:data!);
+                
+                // FORMAT IMAGE WITH FUNCTION http://www.appcoda.com/ios-programming-circular-image-calayer/
+                // FOLLOW THE GUIDE ABOVE, SHOULD TAKE IN AN IMAGE AS A PARAMETER AND RETURN AN IMAGE WITH THE RIGHT DIMENSIONS
+                
+                // CALCULATE DISTANCE AND SET DISTANCE TEXT
+                
+            }
+        }
+
+    }
+    
+    // FORMATS IMAGE
+    func formatImage(var restaurantImage: UIImage) {
+        
+    }
+    
+    // ON REPEAT, INCREMENTS POINTER
+    func nextRestaurant(var indexOfRestaurant: Int) {
+        
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // SETS INDEX OF ARRAY TO ZERO AT START
+        indexOfRestaurant = 0;
         
         // SETS UP DATASTORE
         var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults();
@@ -138,6 +176,9 @@ class ViewController: UIViewController {
         }
         self.profileNameLabel.text = currentProfileName;
         
+        // FORMATS THE VIEW ACCORDING TO RESTAURANT
+        findTopImage();
+        
         // SEGUE IF USER IS NOT LOGGED IN
         if (!self.userLoggedIn()) {
             self.performSegueWithIdentifier("toUserLogin", sender: self);
@@ -149,6 +190,21 @@ class ViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    
+    // CHECKS FOR USER LOGIN
+    func userLoggedIn() -> Bool{
+        var currentUser = PFUser.currentUser();
+        if ((currentUser) != nil) {
+            return true;
+        }
+        return false;
+    }
+    
+    // SHOW TUTORIAL SEGUE VIA ALERT
+    func showTutorial() {
+        self.performSegueWithIdentifier("toNameProfile", sender: self);
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
