@@ -150,21 +150,24 @@ Parse.Cloud.define("MatchRestaurant", function(request, response) {
    var prefquery = new Parse.Query("Preferences");
    var results = [];
    var restscorearray = []; // scores associated with each restaurnt
+   var ans = [];
    
    query.limit(1000);
 
+   var lat = parseFloat(currloc[0]);
+   var lon = parseFloat(currloc[1]);
    //filter by coordinates
-   query.greaterThan("latitude", currloc[0] - .5);
-   query.lessThan("latitude", currloc[0] + .5);
-   query.greaterThan("longitude", currloc[1] - .5);
-   query.lessThan("longitude", currloc[1] + .5);
+   query.greaterThan("latitude", lat - .5);
+   query.lessThan("latitude", lat + .5);
+   query.greaterThan("longitude", lon - .5);
+   query.lessThan("longitude", lon + .5);
 
-   prefquery.get(request.params.objid, {
+   prefquery.get(request.params.objid[0], {
       success: function(pref) {
          query.find({
             success: function(res) {
-               var time = request.params.currtime //string
-               var dayofweek = request.params.day //int
+               var time = request.params.currtime[0] //string
+               var dayofweek = parseInt(request.params.day[0]) //int
                //find all restaurants that are open
                for (var i = 0; i < res.length; ++i) {
                   if (isOpen(time, dayofweek, res[i].get("hours"))) {
@@ -176,7 +179,7 @@ Parse.Cloud.define("MatchRestaurant", function(request, response) {
                   var distance = pref.get("Distance"); //int of distance category
                   var cost = pref.get("Cost"); //dollar sign string
                   var cuisine = pref.get("Cuisine"); //string array
-                  var options = "" + pref.get("Reservations") + "0" + pref.get("TakeOut") + pref.get("CreditCards") + "000" + pref.get("Alcohol") + pref.get("OutdoorSeating") + "0" + pref.get("Wifi") + "0";
+                  var options = pref.get("Options"); //string
                   var ambience = pref.get("Ambience"); //string
 
                   //ideally the numbers should be between 0 and 5
@@ -205,12 +208,15 @@ Parse.Cloud.define("MatchRestaurant", function(request, response) {
                   //compute vector norm
                   var restscore = Math.sqrt(Math.pow(distval*distweight, 2)+Math.pow(costval*costweight, 2)+Math.pow(optionsval*optionsweight, 2)+Math.pow(cuisineval*cuisineweight, 2));
                   //adds the rest score pair to restscorearrays
-                  restscorearray[restscorearray.length] = {name: rest.get("url"), score: restscore, options: cuisineval};
+                  restscorearray[restscorearray.length] = {name: rest.get("url"), score: restscore, objid: rest.id.toString()};
 
-                  // sort restscorearray by score
-                  restscorearray.sort(sortfunction);
                }
-               response.success(restscorearray.slice(0, 20));
+               // sort restscorearray by score
+               restscorearray.sort(sortfunction);
+               for (var i = 0; i < 20; i++) {
+                  ans[ans.length] = restscorearray[i]["objid"];
+               }
+               response.success(ans);
             },
             error: function(error) {
                alert("Error: " + error.code + " " + error.message);

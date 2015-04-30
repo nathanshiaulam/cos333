@@ -23,7 +23,11 @@ class ProfileListViewController: UIViewController, UITableViewDelegate, UITableV
     override func viewDidLoad() {
 
         super.viewDidLoad()
-        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "handleTap:"));
+        //self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "handleTap:"));
+        
+        self.profileList.delegate = self;
+        //self.profileList.allowsSelectionDuringEditing = true;
+        self.profileList.dataSource = self;
         
         self.profileList.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
@@ -60,7 +64,8 @@ class ProfileListViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(profileList: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        println("You selected cell #\(indexPath.row)!")
+        println("Loading profile "+self.items[indexPath.row])
+        self.dismissViewControllerAnimated(true, completion: {});
     }
     
 

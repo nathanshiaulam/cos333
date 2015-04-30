@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import Darwin
 
 class ViewController: UIViewController {
     
@@ -100,7 +101,6 @@ class ViewController: UIViewController {
                 }
                 let timeString = hourString + ":" + minuteString;
                 
-                
                 // SET COMPONENTS OF RESPONSE OBJECT
                 PFCloud.callFunctionInBackground("MatchRestaurant", withParameters:["loc":[String(stringInterpolationSegment: self.latitude), String(stringInterpolationSegment: self.longitude)], "objid":[String(stringInterpolationSegment: preference.objectId)], "currtime":[String(stringInterpolationSegment: timeString)], "day":[String(stringInterpolationSegment: day)]]) {
                     (result: AnyObject?, error: NSError?) -> Void in
@@ -147,8 +147,19 @@ class ViewController: UIViewController {
     }
     
     // RETURNS A STRING IN THE FORMAT OF "[distance] miles away"
-    func calcDistance(var userDistance: PFGeoPoint, var restaurantDistance: PFGeoPoint) {
-        
+    func calcDistance(var userDistance: PFGeoPoint, var restaurantDistance: PFGeoPoint) -> String {
+        var radlat1 = M_PI * userDistance.latitude/180;
+        var radlat2 = M_PI * userDistance.longitude/180;
+        var radlon1 = M_PI * restaurantDistance.latitude/180;
+        var radlon2 = M_PI * restaurantDistance.longitude/180;
+        var theta = userDistance.longitude-restaurantDistance.longitude;
+        var radtheta = M_PI * theta/180;
+        var dist = sin(radlat1) * sin(radlat2) + cos(radlat1) * cos(radlat2) * cos(radtheta);
+        dist = acos(dist);
+        dist = dist * 180/M_PI;
+        dist = dist * 60 * 1.1515;
+        var str:String = String(format:"%f",dist);
+        return str;
     }
 
 
