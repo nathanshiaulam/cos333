@@ -35,8 +35,8 @@
 		1620DC771ADCF44400CDA88A /* PreferenceMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1620DC761ADCF44400CDA88A /* PreferenceMenuViewController.swift */; };
 		163245311AE5EA6700D188A9 /* ProfileListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163245301AE5EA6700D188A9 /* ProfileListViewController.swift */; };
 		164FD0101ADF9DAC00E02B2F /* NameProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164FD00F1ADF9DAC00E02B2F /* NameProfileViewController.swift */; };
-		167CCD431AF21699001B85DF /* OptionalMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167CCD421AF21699001B85DF /* OptionalMenuViewController.swift */; };
 		16DEA5FA1AEDDAEF0010A4B6 /* RestaurantDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DEA5F91AEDDAEF0010A4B6 /* RestaurantDetailViewController.swift */; };
+		D185B3AE1AF33BB6002C4BF3 /* OptionalMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D185B3AD1AF33BB6002C4BF3 /* OptionalMenuTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,8 +82,8 @@
 		1620DC761ADCF44400CDA88A /* PreferenceMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceMenuViewController.swift; sourceTree = "<group>"; };
 		163245301AE5EA6700D188A9 /* ProfileListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileListViewController.swift; sourceTree = "<group>"; };
 		164FD00F1ADF9DAC00E02B2F /* NameProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameProfileViewController.swift; sourceTree = "<group>"; };
-		167CCD421AF21699001B85DF /* OptionalMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionalMenuViewController.swift; sourceTree = "<group>"; };
 		16DEA5F91AEDDAEF0010A4B6 /* RestaurantDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDetailViewController.swift; sourceTree = "<group>"; };
+		D185B3AD1AF33BB6002C4BF3 /* OptionalMenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OptionalMenuTableViewController.swift; path = ../OptionalMenuTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,7 +145,7 @@
 			children = (
 				1620DC2D1ADB4FAE00CDA88A /* AppDelegate.swift */,
 				1620DC311ADB4FAE00CDA88A /* Main.storyboard */,
-				167CCD421AF21699001B85DF /* OptionalMenuViewController.swift */,
+				D185B3AD1AF33BB6002C4BF3 /* OptionalMenuTableViewController.swift */,
 				16DEA5F91AEDDAEF0010A4B6 /* RestaurantDetailViewController.swift */,
 				163245301AE5EA6700D188A9 /* ProfileListViewController.swift */,
 				164FD00F1ADF9DAC00E02B2F /* NameProfileViewController.swift */,
@@ -311,11 +311,11 @@
 			files = (
 				1620DC711ADB562B00CDA88A /* ViewController.swift in Sources */,
 				1620DC771ADCF44400CDA88A /* PreferenceMenuViewController.swift in Sources */,
+				D185B3AE1AF33BB6002C4BF3 /* OptionalMenuTableViewController.swift in Sources */,
 				1620DC2E1ADB4FAE00CDA88A /* AppDelegate.swift in Sources */,
 				164FD0101ADF9DAC00E02B2F /* NameProfileViewController.swift in Sources */,
 				163245311AE5EA6700D188A9 /* ProfileListViewController.swift in Sources */,
 				1620DC731ADB566400CDA88A /* LogInViewController.swift in Sources */,
-				167CCD431AF21699001B85DF /* OptionalMenuViewController.swift in Sources */,
 				16DEA5FA1AEDDAEF0010A4B6 /* RestaurantDetailViewController.swift in Sources */,
 				1620DC751ADB689F00CDA88A /* CreateUserViewController.swift in Sources */,
 			);
@@ -442,6 +442,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -449,6 +450,7 @@
 				INFOPLIST_FILE = Noms/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -456,6 +458,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

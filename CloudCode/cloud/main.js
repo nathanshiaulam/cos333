@@ -20,7 +20,7 @@ function distanceeval(lat1, lon1, lat2, lon2, user_dist) {
 }
 
 /* given point A (lat1, lon1) and point B (lat2, lon2), return the dist between the two points in miles*/
-function computeDistance(lat1, lon1, lat2, lon2) {
+function computeDistance1(lat1, lon1, lat2, lon2) {
     var radlat1 = Math.PI * lat1/180
     var radlat2 = Math.PI * lat2/180
     var radlon1 = Math.PI * lon1/180
@@ -33,6 +33,12 @@ function computeDistance(lat1, lon1, lat2, lon2) {
     dist = dist * 60 * 1.1515
     //need to categorize from 1 - 5 based on dist
     return dist
+}
+
+function computeDistance(lat1, lon1, lat2, lon2) {
+    var point1 = new Parse.GeoPoint(lat1, lon1);
+    var point2 = new Parse.GeoPoint(lat2, lon2);
+    return point1.milesTo(point2);
 }
 
 /* current time may be given as NSDate 
