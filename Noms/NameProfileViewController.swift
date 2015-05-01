@@ -34,11 +34,13 @@ class NameProfileViewController: UIViewController {
         var preference = query.getFirstObject();
         
         if (preference != nil) {
+            println(preference?.objectForKey("Name") as! String)
             let errorString = "Already Exists";
             var alert = UIAlertController(title: "Can't Create Profile", message: errorString as String, preferredStyle: UIAlertControllerStyle.Alert);
             alert.addAction(UIAlertAction(title:"Ok", style: UIAlertActionStyle.Default, handler: nil));
             self.presentViewController(alert, animated: true, completion: nil);
         }
+
 
         
         if (count(textField.text) > 0) {
