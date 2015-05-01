@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="I0G-7g-b9w">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="I0G-7g-b9w">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -840,22 +840,61 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pdl-bp-O0B">
+                                <rect key="frame" x="116" y="246" width="71" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OHW-hF-p7K">
+                                <rect key="frame" x="413" y="246" width="71" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aMa-c3-XQr">
+                                <rect key="frame" x="128" y="297" width="46" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hlw-J3-Hx3">
+                                <rect key="frame" x="425" y="297" width="46" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ENa-5C-UjU">
+                                <rect key="frame" x="16" y="518" width="568" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.069858337039999996" green="0.12678784030000001" blue="0.26723710319999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="aMa-c3-XQr" firstAttribute="baseline" secondItem="Hlw-J3-Hx3" secondAttribute="baseline" id="0vn-xk-Vb7"/>
                             <constraint firstItem="7t5-gQ-eTI" firstAttribute="top" secondItem="DMo-41-AjJ" secondAttribute="bottom" constant="42" id="6P4-IQ-X17"/>
                             <constraint firstItem="Ett-f6-mSx" firstAttribute="leading" secondItem="dQS-Yf-E5c" secondAttribute="leadingMargin" constant="100" id="BTl-IZ-cAZ"/>
                             <constraint firstAttribute="centerX" secondItem="7t5-gQ-eTI" secondAttribute="centerX" id="CY2-bh-iLz"/>
                             <constraint firstAttribute="trailingMargin" secondItem="IrZ-7F-npE" secondAttribute="trailing" constant="100" id="Dlm-Q3-q1v"/>
                             <constraint firstAttribute="trailing" secondItem="7t5-gQ-eTI" secondAttribute="trailing" id="Hds-PH-GHQ"/>
+                            <constraint firstItem="Ett-f6-mSx" firstAttribute="centerX" secondItem="pdl-bp-O0B" secondAttribute="centerX" id="Hwh-Ns-nA0"/>
                             <constraint firstItem="Ett-f6-mSx" firstAttribute="height" secondItem="IrZ-7F-npE" secondAttribute="height" id="INU-pA-Yzm"/>
                             <constraint firstItem="Ett-f6-mSx" firstAttribute="width" secondItem="IrZ-7F-npE" secondAttribute="width" id="LF7-md-4CO"/>
+                            <constraint firstAttribute="centerX" secondItem="ENa-5C-UjU" secondAttribute="centerX" id="MLl-K2-Jgc"/>
                             <constraint firstItem="0JH-BV-DSx" firstAttribute="top" secondItem="DMo-41-AjJ" secondAttribute="bottom" id="OeJ-wg-Bpi"/>
+                            <constraint firstItem="Hlw-J3-Hx3" firstAttribute="leading" secondItem="aMa-c3-XQr" secondAttribute="trailing" constant="251" id="T91-YB-D9h"/>
                             <constraint firstItem="Ett-f6-mSx" firstAttribute="bottom" secondItem="IrZ-7F-npE" secondAttribute="bottom" id="TIz-3N-vX8"/>
+                            <constraint firstItem="Xmg-ii-kLi" firstAttribute="top" secondItem="ENa-5C-UjU" secondAttribute="bottom" constant="8" id="V9R-ZY-iMS"/>
+                            <constraint firstItem="OHW-hF-p7K" firstAttribute="centerY" secondItem="pdl-bp-O0B" secondAttribute="centerY" id="ahj-rH-rGl"/>
                             <constraint firstItem="0JH-BV-DSx" firstAttribute="leading" secondItem="dQS-Yf-E5c" secondAttribute="leadingMargin" id="bDH-vs-K6c"/>
                             <constraint firstAttribute="centerY" secondItem="Ett-f6-mSx" secondAttribute="centerY" constant="116.5" id="fOq-rx-8r5"/>
+                            <constraint firstItem="aMa-c3-XQr" firstAttribute="centerX" secondItem="pdl-bp-O0B" secondAttribute="centerX" constant="-0.5" id="jGU-Sm-jiZ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="0JH-BV-DSx" secondAttribute="trailing" id="jvn-sh-S8Y"/>
                             <constraint firstAttribute="centerX" secondItem="0JH-BV-DSx" secondAttribute="centerX" id="kwF-O3-M5q"/>
+                            <constraint firstItem="OHW-hF-p7K" firstAttribute="centerX" secondItem="IrZ-7F-npE" secondAttribute="centerX" id="qT2-66-JV0"/>
+                            <constraint firstItem="pdl-bp-O0B" firstAttribute="top" secondItem="Ett-f6-mSx" secondAttribute="bottom" constant="52" id="vFj-8a-3oT"/>
                         </constraints>
                     </view>
                 </viewController>
