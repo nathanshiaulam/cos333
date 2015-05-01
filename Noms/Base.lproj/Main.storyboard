@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="I0G-7g-b9w">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="I0G-7g-b9w">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -1015,6 +1015,9 @@
                                     <action selector="click_call:" destination="vAP-qy-9hN" eventType="touchUpInside" id="UQq-Kk-D2F"/>
                                 </connections>
                             </button>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="8hp-S1-X2O">
+                                <rect key="frame" x="-20" y="325" width="620" height="181"/>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" red="0.069858337039999996" green="0.12678784030000001" blue="0.26723710319999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -1056,8 +1059,10 @@
                         <outlet property="navButton" destination="ENa-5C-UjU" id="iMK-K7-jR9"/>
                         <outlet property="priceLabel" destination="IrZ-7F-npE" id="6wQ-Hz-vRE"/>
                         <outlet property="ratingLabel" destination="OHW-hF-p7K" id="Yc6-0m-V5k"/>
+                        <outlet property="restMap" destination="8hp-S1-X2O" id="q8r-bu-hBv"/>
                         <outlet property="restNameLabel" destination="7t5-gQ-eTI" id="aGn-RJ-Y6I"/>
                         <outlet property="yelpButton" destination="aMa-c3-XQr" id="JPe-I1-86Y"/>
+                        <outletCollection property="restMap" destination="8hp-S1-X2O" collectionClass="NSMutableArray" id="Jjs-jc-9nm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3O2-bV-acr" userLabel="First Responder" sceneMemberID="firstResponder"/>
