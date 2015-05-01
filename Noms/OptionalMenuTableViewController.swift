@@ -10,8 +10,8 @@ import UIKit
 import Parse
 
 class OptionalMenuTableViewController: UITableViewController {
-
-    @IBAction func saveButton(sender: UIButton) {
+    
+    override func viewWillDisappear(animated: Bool) {
         var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults();
         
         var ambi = [String]();
@@ -81,6 +81,8 @@ class OptionalMenuTableViewController: UITableViewController {
             options = options + "0"
         }
         println(options + " options\n");
+        defaults.setObject(ambi, forKey:"Ambience");
+        defaults.setObject(options, forKey:"Options");
         var currentProfileName = defaults.objectForKey("Name") as! String;
         var query = PFQuery(className:"Preferences");
         var currentID = PFUser.currentUser()!.objectId;
@@ -97,9 +99,97 @@ class OptionalMenuTableViewController: UITableViewController {
                 preference.saveInBackground();
             }
         }
-        
-        
+        super.viewWillDisappear(true);
     }
+//    @IBAction func saveButton(sender: UIButton) {
+//        var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults();
+//        
+//        var ambi = [String]();
+//        if (loveSwitch.on) {
+//            ambi.append("Romantic");
+//        }
+//        if (casualSwitch.on) {
+//            ambi.append("Casual");
+//        }
+//        if (classySwitch.on) {
+//            ambi.append("Classy");
+//        }
+//        
+//        var options = "";
+//        if (reserveSwitch.selectedSegmentIndex == 0) {
+//            options = options + "1"
+//        }
+//        else if (reserveSwitch.selectedSegmentIndex == 1) {
+//            options = options + "2"
+//        }
+//        else {
+//            options = options + "0"
+//        }
+//        if (takeoutSwitch.selectedSegmentIndex == 0) {
+//            options = options + "1"
+//        }
+//        else if (takeoutSwitch.selectedSegmentIndex == 1) {
+//            options = options + "2"
+//        }
+//        else {
+//            options = options + "0"
+//        }
+//        if (creditSwitch.selectedSegmentIndex == 0) {
+//            options = options + "1"
+//        }
+//        else if (creditSwitch.selectedSegmentIndex == 1) {
+//            options = options + "2"
+//        }
+//        else {
+//            options = options + "0"
+//        }
+//        if (alcSwitch.selectedSegmentIndex == 0) {
+//            options = options + "1"
+//        }
+//        else if (alcSwitch.selectedSegmentIndex == 1) {
+//            options = options + "2"
+//        }
+//        else {
+//            options = options + "0"
+//        }
+//        if (outSwitch.selectedSegmentIndex == 0) {
+//            options = options + "1"
+//        }
+//        else if (outSwitch.selectedSegmentIndex == 1) {
+//            options = options + "2"
+//        }
+//        else {
+//            options = options + "0"
+//        }
+//        if (wifiSwitch.selectedSegmentIndex == 0) {
+//            options = options + "1"
+//        }
+//        else if (wifiSwitch.selectedSegmentIndex == 1) {
+//            options = options + "2"
+//        }
+//        else {
+//            options = options + "0"
+//        }
+//        println(options + " options\n");
+//        var currentProfileName = defaults.objectForKey("Name") as! String;
+//        var query = PFQuery(className:"Preferences");
+//        var currentID = PFUser.currentUser()!.objectId;
+//        query.whereKey("ID", equalTo:currentID!);
+//        query.whereKey("Name", equalTo:currentProfileName);
+//        query.getFirstObjectInBackgroundWithBlock {
+//            (preference: PFObject?, error: NSError?) -> Void in
+//            if error != nil || preference == nil {
+//                println(error);
+//            } else if let preference = preference{
+//                preference["Options"] = options;
+//                println(ambi);
+//                preference["Ambience"] = ambi;
+//                preference.saveInBackground();
+//            }
+//        }
+//        
+//        
+//    }
     @IBOutlet weak var reserveSwitch: UISegmentedControl!
     @IBOutlet weak var takeoutSwitch: UISegmentedControl!
     @IBOutlet weak var wifiSwitch: UISegmentedControl!
