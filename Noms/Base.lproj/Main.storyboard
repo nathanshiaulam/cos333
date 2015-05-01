@@ -428,33 +428,16 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4BO-gi-QGu">
-                                <rect key="frame" x="39" y="320" width="147" height="162"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PVv-7W-vEF" customClass="KSTokenView" customModule="Noms" customModuleProvider="target">
+                                <rect key="frame" x="53" y="361" width="300" height="45"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="152" id="4Vp-62-pH3"/>
-                                    <constraint firstAttribute="width" constant="217" id="4iN-SV-Cgg"/>
-                                    <constraint firstAttribute="height" constant="139" id="VU5-vK-bMa"/>
-                                    <constraint firstAttribute="height" constant="140" id="VkH-Dp-IaW"/>
-                                    <constraint firstAttribute="width" constant="147" id="fVj-fq-cG7"/>
-                                    <constraint firstAttribute="height" constant="198" id="iy2-Oj-2Um"/>
-                                    <constraint firstAttribute="height" constant="148" id="n1G-I3-q5c"/>
+                                    <constraint firstAttribute="width" constant="300" id="6K9-lY-xjj"/>
+                                    <constraint firstAttribute="height" constant="45" id="dGU-1R-R7u"/>
                                 </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="4Vp-62-pH3"/>
-                                        <exclude reference="4iN-SV-Cgg"/>
-                                        <exclude reference="VkH-Dp-IaW"/>
-                                        <exclude reference="iy2-Oj-2Um"/>
-                                        <exclude reference="n1G-I3-q5c"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <outlet property="dataSource" destination="oUA-AU-Rob" id="46w-7F-raT"/>
-                                    <outlet property="delegate" destination="oUA-AU-Rob" id="1Rl-kD-XM6"/>
-                                </connections>
-                            </pickerView>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D4X-FT-mdb">
-                                <rect key="frame" x="53" y="500" width="70" height="30"/>
+                                <rect key="frame" x="53" y="445" width="70" height="30"/>
                                 <color key="backgroundColor" red="0.81748098540000003" green="0.15212695434947068" blue="0.20436376539559722" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="dMB-dP-ABa"/>
@@ -467,10 +450,6 @@
                                     <segue destination="BHu-M2-fDx" kind="show" id="mal-qK-djS"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PVv-7W-vEF" customClass="KSTokenView" customModule="Noms" customModuleProvider="target">
-                                <rect key="frame" x="224" y="336" width="300" height="45"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.069858337039999996" green="0.12678784030000001" blue="0.26723710319999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -482,16 +461,17 @@
                             <constraint firstItem="4zi-9L-9re" firstAttribute="top" secondItem="UaZ-kg-Tmc" secondAttribute="bottom" constant="70" id="BiZ-x6-nxb"/>
                             <constraint firstItem="UaZ-kg-Tmc" firstAttribute="centerX" secondItem="4zi-9L-9re" secondAttribute="centerX" constant="-13" id="EIS-qZ-uIw"/>
                             <constraint firstItem="aOi-jc-JLo" firstAttribute="leading" secondItem="5ss-2z-2yv" secondAttribute="leadingMargin" constant="38" id="EbW-bd-AAp"/>
+                            <constraint firstItem="PVv-7W-vEF" firstAttribute="leading" secondItem="5ss-2z-2yv" secondAttribute="leadingMargin" constant="37" id="ICS-hQ-jQv"/>
                             <constraint firstItem="0P4-gb-rgx" firstAttribute="top" secondItem="4zi-9L-9re" secondAttribute="bottom" constant="8" id="PSa-Da-wDf"/>
                             <constraint firstItem="UaZ-kg-Tmc" firstAttribute="top" secondItem="Sff-bh-LgZ" secondAttribute="bottom" constant="70" id="RQU-Y4-Bfs"/>
                             <constraint firstItem="9vA-3L-UQ4" firstAttribute="leading" secondItem="4zi-9L-9re" secondAttribute="trailing" constant="17" id="Std-3H-0WS"/>
-                            <constraint firstItem="4BO-gi-QGu" firstAttribute="leading" secondItem="5ss-2z-2yv" secondAttribute="leadingMargin" constant="23" id="X6k-hX-Xah"/>
-                            <constraint firstItem="4BO-gi-QGu" firstAttribute="top" secondItem="a27-zQ-2Qo" secondAttribute="bottom" constant="-6" id="YFy-KA-JQ2"/>
                             <constraint firstAttribute="trailingMargin" secondItem="qRy-PS-Qey" secondAttribute="trailing" constant="-16" id="ZCP-8S-krv"/>
                             <constraint firstItem="a27-zQ-2Qo" firstAttribute="top" secondItem="4zi-9L-9re" secondAttribute="bottom" constant="70" id="a0P-9e-NBq"/>
-                            <constraint firstItem="D4X-FT-mdb" firstAttribute="top" secondItem="4BO-gi-QGu" secondAttribute="bottom" constant="30" id="fNG-uU-6OP"/>
+                            <constraint firstItem="qRy-PS-Qey" firstAttribute="top" secondItem="D4X-FT-mdb" secondAttribute="bottom" constant="31" id="ay3-MH-bK6"/>
                             <constraint firstAttribute="centerX" secondItem="qRy-PS-Qey" secondAttribute="centerX" id="j6L-8i-AD3"/>
+                            <constraint firstItem="PVv-7W-vEF" firstAttribute="top" secondItem="a27-zQ-2Qo" secondAttribute="bottom" constant="24" id="jdH-1h-orK"/>
                             <constraint firstAttribute="centerX" secondItem="tPK-vs-cCs" secondAttribute="centerX" id="ktc-ze-lL1"/>
+                            <constraint firstItem="D4X-FT-mdb" firstAttribute="top" secondItem="PVv-7W-vEF" secondAttribute="bottom" constant="39" id="lSA-Ks-5Xb"/>
                             <constraint firstItem="8Fp-dh-zxL" firstAttribute="leading" secondItem="pLd-BM-1Kc" secondAttribute="trailing" constant="-7" id="mu4-HC-ye7"/>
                             <constraint firstItem="D4X-FT-mdb" firstAttribute="leading" secondItem="5ss-2z-2yv" secondAttribute="leadingMargin" constant="37" id="mwO-IV-pND"/>
                             <constraint firstItem="aOi-jc-JLo" firstAttribute="top" secondItem="UaZ-kg-Tmc" secondAttribute="bottom" constant="-5" id="sVa-td-bha"/>
@@ -501,10 +481,14 @@
                             <constraint firstItem="0P4-gb-rgx" firstAttribute="leading" secondItem="5ss-2z-2yv" secondAttribute="leadingMargin" constant="38" id="xLb-Nt-5gN"/>
                             <constraint firstItem="pLd-BM-1Kc" firstAttribute="centerY" secondItem="8Fp-dh-zxL" secondAttribute="centerY" id="y9K-Dc-R0i"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="ay3-MH-bK6"/>
+                            </mask>
+                        </variation>
                     </view>
                     <toolbarItems/>
                     <connections>
-                        <outlet property="cuisinePickerView" destination="4BO-gi-QGu" id="ZA5-fg-mvS"/>
                         <outlet property="distanceSlider" destination="0P4-gb-rgx" id="Bdb-gO-pbp"/>
                         <outlet property="distanceTextField" destination="9vA-3L-UQ4" id="DaI-dA-TWJ"/>
                         <outlet property="oneDollarSignButton" destination="aOi-jc-JLo" id="bgS-PJ-tLS"/>

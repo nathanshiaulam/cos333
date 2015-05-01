@@ -23,7 +23,7 @@ class PreferenceMenuViewController: UIViewController {
     @IBOutlet weak var distanceSlider: UISlider!
     
     // CUISINE PICKER
-    @IBOutlet weak var cuisinePickerView: UIPickerView!
+//    @IBOutlet weak var cuisinePickerView: UIPickerView!
     
     @IBOutlet var tokenView: KSTokenView!
     let names: Array<String> = List.names()
@@ -40,7 +40,7 @@ class PreferenceMenuViewController: UIViewController {
 //    var alcohol:Int!;
     
     // VAR PICKER DATA
-    var pickerData = ["Chinese", "Indian", "Mexican", "American", "Coffee & Tea", "Thai", "Greek", "Japanese", "French", "Italian", "German", "Mediterranean", "Vietnamese", "Bubble Tea", "Korean", "African", "Spanish", "Brazillian", "Cupcakes", "Filipino", "Greek", "Seafood", "Steakhouses", "Breweries", "Malaysian", "Bakeries", "Dessert"];
+//    var pickerData = ["Chinese", "Indian", "Mexican", "American", "Coffee & Tea", "Thai", "Greek", "Japanese", "French", "Italian", "German", "Mediterranean", "Vietnamese", "Bubble Tea", "Korean", "African", "Spanish", "Brazillian", "Cupcakes", "Filipino", "Greek", "Seafood", "Steakhouses", "Breweries", "Malaysian", "Bakeries", "Dessert"];
     
     // DOLLAR SIGN CHANGE
     @IBAction func onClickOneDollar(sender: UIButton) {
@@ -107,24 +107,24 @@ class PreferenceMenuViewController: UIViewController {
         defaults.setObject(Int(floatDistance), forKey:"Distance");
     }
     
-    // FUNCTIONS FOR PICKER 
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
-        return 1;
-    }
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerData.count;
-    }
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
-        return pickerData[row];
-    }
-    func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        let titleData = pickerData[row];
-        var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        var myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 15.0)!,NSForegroundColorAttributeName:UIColor.whiteColor()]);
-        var stringArray = [myTitle.string];
-        defaults.setObject(stringArray, forKey:"Cuisine");
-        return myTitle;
-    }
+//    // FUNCTIONS FOR PICKER 
+//    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+//        return 1;
+//    }
+//    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+//        return pickerData.count;
+//    }
+//    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
+//        return pickerData[row];
+//    }
+//    func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+//        let titleData = pickerData[row];
+//        var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+//        var myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 15.0)!,NSForegroundColorAttributeName:UIColor.whiteColor()]);
+//        var stringArray = [myTitle.string];
+//        defaults.setObject(stringArray, forKey:"Cuisine");
+//        return myTitle;
+//    }
     
     // SAVE ITEM
     @IBAction func onClickSaveButton(sender: UIButton) {
@@ -133,7 +133,15 @@ class PreferenceMenuViewController: UIViewController {
         NSLog(currentProfileName);
         defaults.setObject(currentProfileName, forKey: "Name")
         NSNotificationCenter.defaultCenter().postNotificationName("updateProfilePage", object: nil);
-    
+        
+        // Sets the text from the tokens
+        var tokens: Array<KSToken> = tokenView.tokens()!;
+        var cuisineArray:[String] = [];
+        for (var i = 0; i < count(tokens); i++) {
+            cuisineArray.append(tokens[i].description2())
+        }
+        defaults.setObject(cuisineArray, forKey:"Cuisine");
+        
         if (fromNew == true) {
             
             // CREATES NEW PROFILE
@@ -205,7 +213,7 @@ class PreferenceMenuViewController: UIViewController {
         tokenView.placeholder = "Type to search"
         tokenView.descriptionText = "Languages"
         tokenView.maxTokenLimit = 5
-        tokenView.style = .Squared
+        tokenView.style = .Rounded
         
         profileName.text = currentProfileName;
         oneDollarSignButton.setTitleColor(UIColor.yellowColor(), forState: UIControlState.Selected);

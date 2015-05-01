@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>4BC59F45-2E02-48AB-A759-CA8C9FAB1BF8</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>Noms</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>BCDD5A578F3E9303C8A6DB75648F854CB13585EA</key>
 		<string>https://github.com/nathanshiaulam/cos333.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Noms.xcodeproj/project.xcworkspace</string>
+	<string>Noms.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>BCDD5A578F3E9303C8A6DB75648F854CB13585EA</key>
@@ -34,7 +34,7 @@
 			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>BCDD5A578F3E9303C8A6DB75648F854CB13585EA</string>
 			<key>IDESourceControlWCCName</key>
-			<string>cos333</string>
+			<string>Noms</string>
 		</dict>
 	</array>
 </dict>
