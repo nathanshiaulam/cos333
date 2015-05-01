@@ -429,7 +429,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4BO-gi-QGu">
-                                <rect key="frame" x="39" y="319.5" width="147" height="162"/>
+                                <rect key="frame" x="39" y="320" width="147" height="162"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="152" id="4Vp-62-pH3"/>
                                     <constraint firstAttribute="width" constant="217" id="4iN-SV-Cgg"/>
@@ -955,7 +955,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="W9V-RV-Cmo"/>
                                 </constraints>
-                                <state key="normal" title="Button">
+                                <state key="normal" title="Go to Yelp">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -985,7 +985,7 @@
                                     <constraint firstAttribute="width" constant="300" id="QIV-FY-ZLP"/>
                                 </constraints>
                                 <size key="titleShadowOffset" width="1" height="1"/>
-                                <state key="normal" title="Button">
+                                <state key="normal" title="Call Restaurant">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>

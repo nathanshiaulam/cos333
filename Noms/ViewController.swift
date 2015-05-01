@@ -19,6 +19,7 @@ class ViewController: UIViewController {
     var restaurantList:[String]!;
     var indexOfRestaurant:Int!;
     var currentRestaurantID:String!;
+    var distString:String!;
     
     // PROFILE NAME LABEL
     @IBOutlet weak var profileNameLabel: UILabel!
@@ -39,6 +40,8 @@ class ViewController: UIViewController {
         println(currentRestaurantID);
         let defaults = NSUserDefaults.standardUserDefaults();
         defaults.setObject(currentRestaurantID, forKey: "rest_id");
+        defaults.setObject(self.distString, forKey:"dist_string");
+        
     }
     
     // ON CLICK RED BUTTON
@@ -162,10 +165,10 @@ class ViewController: UIViewController {
                 
                 let loc1 = PFGeoPoint(latitude: latit1, longitude: longi1);
                 let loc2 = PFGeoPoint(latitude: self.latitude, longitude: self.longitude);
-                var distString:String = String(format:"%.1f", loc1.distanceInMilesTo(loc2));
+                var distString_orig:String = String(format:"%.1f", loc1.distanceInMilesTo(loc2));
                 
-                distString = distString + " miles away";
-                self.restaurantDistance.text = distString;
+                self.distString = distString_orig + " miles away";
+                self.restaurantDistance.text = self.distString;
             }
         }
 

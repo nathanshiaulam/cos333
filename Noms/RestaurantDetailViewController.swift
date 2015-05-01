@@ -22,6 +22,9 @@ class RestaurantDetailViewController: UIViewController {
     var state:String!;
     var zip:String!;
     var placemarkMade:CLPlacemark!;
+    var latitude:Double!;
+    var longitude:Double!;
+    var categories:[String]!;
     
     @IBOutlet weak var yelpButton: UIButton!
     @IBOutlet weak var callButton: UIButton!
@@ -35,6 +38,8 @@ class RestaurantDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        categoryLabel.numberOfLines = 0;
 
         var query = PFQuery(className: "Restaurants");
         let defaults = NSUserDefaults.standardUserDefaults()
@@ -55,18 +60,19 @@ class RestaurantDetailViewController: UIViewController {
                 self.yelp_link = restaurant["url"] as! String;
                 //let yelp_link = NSURL(string: temp_rest_url);
                 let price = restaurant["cost"] as! String;
+                self.priceLabel.text = price;
                 let price_length = count(price)
                 let stars = restaurant["stars"] as! Double;
+                self.ratingLabel.text = String(format:"%.1f stars", stars);
                 self.address = restaurant["full_address"] as! String;
+                self.distLabel.text = defaults.stringForKey("dist_string");
+                self.categories = restaurant["categories"] as! [String];
+                let string_cat = ", ".join(self.categories)
+                self.categoryLabel.text = string_cat;
+                self.restNameLabel.text = restaurant["name"] as! String;
                 
             }
         }
-        
-        
-        // make map show up
-        
-        // figure out how to add categories array
-        /*let categories = restaurant["categories"] as!*/
         
         // load map from yelp site
         
