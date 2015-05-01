@@ -48,7 +48,7 @@ class RestaurantDetailViewController: UIViewController {
             } else if let restaurant = restaurant{
                 
                 // LOADS IN FIELDS OF RESTAURANT
-                self.number = "4086468663"
+                self.number = "4086468633"
                 if self.number == nil {
                     // delete call button
                 }
@@ -57,7 +57,7 @@ class RestaurantDetailViewController: UIViewController {
                 let price = restaurant["cost"] as! String;
                 let price_length = count(price)
                 let stars = restaurant["stars"] as! Double;
-                let address = restaurant["full_address"] as! String;
+                self.address = restaurant["full_address"] as! String;
                 
             }
         }
@@ -65,15 +65,10 @@ class RestaurantDetailViewController: UIViewController {
         
         // make map show up
         
-        
-        
         // figure out how to add categories array
         /*let categories = restaurant["categories"] as!*/
         
-        
         // load map from yelp site
-
-        
         
     }
 
@@ -82,42 +77,40 @@ class RestaurantDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     @IBAction func click_yelp(sender: AnyObject) {
-        UIApplication.sharedApplication().openURL(NSURL(string: yelp_link)!)/*{
+        if UIApplication.sharedApplication().openURL(NSURL(string: yelp_link)!){
             println("url successfully opened")
         } else {
             println("invalid url")
-        }*/
-    }
-    
-    
-    @IBAction func click_call(sender: UIButton) {
-        var url:NSURL = NSURL(string: "tel://" + self.number)!
-        UIApplication.sharedApplication().openURL(url)
+        }
     }
     
     @IBAction func click_navigate(sender: UIButton) {
-        let length = count(address)
+        let length = count(self.address)
         let geoCoder = CLGeocoder()
-        geoCoder.geocodeAddressString(address, completionHandler:
+        println(self.address);
+        geoCoder.geocodeAddressString(self.address, completionHandler:
             {(placemarks: [AnyObject]!, error: NSError!) in
                 if error != nil {
                     println("Geocode failed with error: \(error.localizedDescription)")
+                    
                 } else if placemarks.count > 0 {
-                    let placemarkMade = placemarks[0] as! CLPlacemark
-                    let location = placemarkMade.location
+                    self.placemarkMade = placemarks[0] as! CLPlacemark
+                    let location = self.placemarkMade.location
                     self.showMap()
                 }
         })
     }
     
+    @IBAction func click_call(sender: UIButton) {
+        UIApplication.sharedApplication().openURL(NSURL(string: "tel://" + self.number)!)
+
+    }
+    
     func showMap() {
         let place = MKPlacemark(placemark: placemarkMade);
-        
         let mapItem = MKMapItem(placemark: place)
-        
         let options = [MKLaunchOptionsDirectionsModeKey:
         MKLaunchOptionsDirectionsModeDriving]
-        
         mapItem.openInMapsWithLaunchOptions(options)
     }
     
