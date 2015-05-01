@@ -10,6 +10,31 @@ import UIKit
 
 class OptionalMenuTableViewController: UITableViewController {
 
+    @IBAction func saveButton(sender: UIButton) {
+        var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults();
+        
+        var ambi = [String]();
+        if (loveSwitch.on) {
+            ambi.append("Romantic");
+        }
+        if (casualSwitch.on) {
+            ambi.append("Casual");
+        }
+        if (classySwitch.on) {
+            ambi.append("Classy");
+        }
+        
+        
+    }
+    @IBOutlet weak var reserveSwitch: UISegmentedControl!
+    @IBOutlet weak var takeoutSwitch: UISegmentedControl!
+    @IBOutlet weak var wifiSwitch: UISegmentedControl!
+    @IBOutlet weak var outSwitch: UISegmentedControl!
+    @IBOutlet weak var alcSwitch: UISegmentedControl!
+    @IBOutlet weak var creditSwitch: UISegmentedControl!
+    @IBOutlet weak var loveSwitch: UISwitch!
+    @IBOutlet weak var classySwitch: UISwitch!
+    @IBOutlet weak var casualSwitch: UISwitch!
     override func viewDidLoad() {
         super.viewDidLoad()
 
