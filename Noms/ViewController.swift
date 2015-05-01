@@ -18,6 +18,8 @@ class ViewController: UIViewController {
     var longitude:Double!;
     var restaurantList:[String]!;
     var indexOfRestaurant:Int!;
+    var currentRestaurantID:String!;
+    var distString:String!;
     
     // PROFILE NAME LABEL
     @IBOutlet weak var profileNameLabel: UILabel!
@@ -31,6 +33,15 @@ class ViewController: UIViewController {
     @IBAction func userLogOut(sender: UIButton) {
         PFUser.logOut();
         self.performSegueWithIdentifier("toUserLogin", sender: self);
+    }
+    
+    // ON CLICK GREEN BUTTON
+    @IBAction func more_details(sender: UIButton) {
+        println(currentRestaurantID);
+        let defaults = NSUserDefaults.standardUserDefaults();
+        defaults.setObject(currentRestaurantID, forKey: "rest_id");
+        defaults.setObject(self.distString, forKey:"dist_string");
+        
     }
     
     // ON CLICK RED BUTTON
@@ -111,8 +122,8 @@ class ViewController: UIViewController {
                     (result: AnyObject?, error: NSError?) -> Void in
                     if error == nil {
                         self.restaurantList = result as! [String];
-                        var currentRestaurantID = self.restaurantList[0];
-                        self.findRestaurantWithID(currentRestaurantID); // FINDS RESTAURANT WITH ID
+                        self.currentRestaurantID = self.restaurantList[0];
+                        self.findRestaurantWithID(self.currentRestaurantID); // FINDS RESTAURANT WITH ID
                     }
                 }
             }
@@ -154,10 +165,10 @@ class ViewController: UIViewController {
                 
                 let loc1 = PFGeoPoint(latitude: latit1, longitude: longi1);
                 let loc2 = PFGeoPoint(latitude: self.latitude, longitude: self.longitude);
-                var distString:String = String(format:"%.1f", loc1.distanceInMilesTo(loc2));
+                var distString_orig:String = String(format:"%.1f", loc1.distanceInMilesTo(loc2));
                 
-                distString = distString + " miles away";
-                self.restaurantDistance.text = distString;
+                self.distString = distString_orig + " miles away";
+                self.restaurantDistance.text = self.distString;
             }
         }
 

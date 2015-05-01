@@ -35,8 +35,13 @@
 		1620DC771ADCF44400CDA88A /* PreferenceMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1620DC761ADCF44400CDA88A /* PreferenceMenuViewController.swift */; };
 		163245311AE5EA6700D188A9 /* ProfileListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163245301AE5EA6700D188A9 /* ProfileListViewController.swift */; };
 		164FD0101ADF9DAC00E02B2F /* NameProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164FD00F1ADF9DAC00E02B2F /* NameProfileViewController.swift */; };
-		167CCD431AF21699001B85DF /* OptionalMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167CCD421AF21699001B85DF /* OptionalMenuViewController.swift */; };
 		16DEA5FA1AEDDAEF0010A4B6 /* RestaurantDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DEA5F91AEDDAEF0010A4B6 /* RestaurantDetailViewController.swift */; };
+		37D6ACA61AF359CA002E239A /* OptionalMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D6ACA51AF359CA002E239A /* OptionalMenuTableViewController.swift */; };
+		D185B3BA1AF367EA002C4BF3 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = D185B3B91AF367EA002C4BF3 /* List.swift */; };
+		D185B3C31AF3731A002C4BF3 /* KSToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = D185B3BF1AF3731A002C4BF3 /* KSToken.swift */; };
+		D185B3C41AF3731A002C4BF3 /* KSTokenField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D185B3C01AF3731A002C4BF3 /* KSTokenField.swift */; };
+		D185B3C51AF3731A002C4BF3 /* KSTokenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D185B3C11AF3731A002C4BF3 /* KSTokenView.swift */; };
+		D185B3C61AF3731A002C4BF3 /* KSUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D185B3C21AF3731A002C4BF3 /* KSUtils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,8 +87,13 @@
 		1620DC761ADCF44400CDA88A /* PreferenceMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceMenuViewController.swift; sourceTree = "<group>"; };
 		163245301AE5EA6700D188A9 /* ProfileListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileListViewController.swift; sourceTree = "<group>"; };
 		164FD00F1ADF9DAC00E02B2F /* NameProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameProfileViewController.swift; sourceTree = "<group>"; };
-		167CCD421AF21699001B85DF /* OptionalMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionalMenuViewController.swift; sourceTree = "<group>"; };
 		16DEA5F91AEDDAEF0010A4B6 /* RestaurantDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDetailViewController.swift; sourceTree = "<group>"; };
+		37D6ACA51AF359CA002E239A /* OptionalMenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionalMenuTableViewController.swift; sourceTree = "<group>"; };
+		D185B3B91AF367EA002C4BF3 /* List.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
+		D185B3BF1AF3731A002C4BF3 /* KSToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KSToken.swift; sourceTree = "<group>"; };
+		D185B3C01AF3731A002C4BF3 /* KSTokenField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KSTokenField.swift; sourceTree = "<group>"; };
+		D185B3C11AF3731A002C4BF3 /* KSTokenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KSTokenView.swift; sourceTree = "<group>"; };
+		D185B3C21AF3731A002C4BF3 /* KSUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KSUtils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,13 +153,18 @@
 		1620DC2A1ADB4FAE00CDA88A /* Noms */ = {
 			isa = PBXGroup;
 			children = (
+				D185B3BF1AF3731A002C4BF3 /* KSToken.swift */,
+				D185B3C01AF3731A002C4BF3 /* KSTokenField.swift */,
+				D185B3C11AF3731A002C4BF3 /* KSTokenView.swift */,
+				D185B3C21AF3731A002C4BF3 /* KSUtils.swift */,
+				37D6ACA51AF359CA002E239A /* OptionalMenuTableViewController.swift */,
 				1620DC2D1ADB4FAE00CDA88A /* AppDelegate.swift */,
 				1620DC311ADB4FAE00CDA88A /* Main.storyboard */,
-				167CCD421AF21699001B85DF /* OptionalMenuViewController.swift */,
 				16DEA5F91AEDDAEF0010A4B6 /* RestaurantDetailViewController.swift */,
 				163245301AE5EA6700D188A9 /* ProfileListViewController.swift */,
 				164FD00F1ADF9DAC00E02B2F /* NameProfileViewController.swift */,
 				1620DC761ADCF44400CDA88A /* PreferenceMenuViewController.swift */,
+				D185B3B91AF367EA002C4BF3 /* List.swift */,
 				1620DC701ADB562B00CDA88A /* ViewController.swift */,
 				1620DC721ADB566400CDA88A /* LogInViewController.swift */,
 				1620DC741ADB689F00CDA88A /* CreateUserViewController.swift */,
@@ -311,11 +326,16 @@
 			files = (
 				1620DC711ADB562B00CDA88A /* ViewController.swift in Sources */,
 				1620DC771ADCF44400CDA88A /* PreferenceMenuViewController.swift in Sources */,
+				37D6ACA61AF359CA002E239A /* OptionalMenuTableViewController.swift in Sources */,
 				1620DC2E1ADB4FAE00CDA88A /* AppDelegate.swift in Sources */,
 				164FD0101ADF9DAC00E02B2F /* NameProfileViewController.swift in Sources */,
+				D185B3C61AF3731A002C4BF3 /* KSUtils.swift in Sources */,
+				D185B3C31AF3731A002C4BF3 /* KSToken.swift in Sources */,
+				D185B3C51AF3731A002C4BF3 /* KSTokenView.swift in Sources */,
 				163245311AE5EA6700D188A9 /* ProfileListViewController.swift in Sources */,
 				1620DC731ADB566400CDA88A /* LogInViewController.swift in Sources */,
-				167CCD431AF21699001B85DF /* OptionalMenuViewController.swift in Sources */,
+				D185B3C41AF3731A002C4BF3 /* KSTokenField.swift in Sources */,
+				D185B3BA1AF367EA002C4BF3 /* List.swift in Sources */,
 				16DEA5FA1AEDDAEF0010A4B6 /* RestaurantDetailViewController.swift in Sources */,
 				1620DC751ADB689F00CDA88A /* CreateUserViewController.swift in Sources */,
 			);
@@ -442,6 +462,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -449,6 +470,7 @@
 				INFOPLIST_FILE = Noms/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -456,6 +478,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
