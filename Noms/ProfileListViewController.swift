@@ -23,7 +23,9 @@ class ProfileListViewController: UIViewController, UITableViewDelegate, UITableV
     override func viewDidLoad() {
 
         super.viewDidLoad()
-        //self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "handleTap:"));
+        let test = UITapGestureRecognizer(target: self, action: "handleCancel:");
+        test.cancelsTouchesInView = false;
+        self.view.addGestureRecognizer(test);
         
         self.profileList.delegate = self;
         //self.profileList.allowsSelectionDuringEditing = true;
@@ -42,9 +44,30 @@ class ProfileListViewController: UIViewController, UITableViewDelegate, UITableV
             }
         
         }
+        var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults();
+        let index = find(items, defaults.objectForKey("Name")! as! String);
+        if (index != nil) {
+            let ip = NSIndexPath(forRow: index!, inSection: 0);
+            self.profileList.selectRowAtIndexPath(ip, animated: true, scrollPosition: UITableViewScrollPosition.Middle);
+        }
+        else {
+            let ip = NSIndexPath(forRow: 0, inSection: 0);
+            self.profileList.selectRowAtIndexPath(ip, animated: true, scrollPosition: UITableViewScrollPosition.Middle);
+        }
         
 
         // Do any additional setup after loading the view.
+    }
+    
+    func handleCancel(sender: UIGestureRecognizer) -> Void {
+
+        if (!self.view.pointInside(sender.locationInView(self.profileList), withEvent: nil)) {
+            var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults();
+            var index:NSIndexPath = self.profileList.indexPathForSelectedRow()!;
+            defaults.setObject(self.items[index.row], forKey: "Name");
+            self.dismissViewControllerAnimated(true, completion: {});
+
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -65,7 +88,9 @@ class ProfileListViewController: UIViewController, UITableViewDelegate, UITableV
     
     func tableView(profileList: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         println("Loading profile "+self.items[indexPath.row])
-        self.dismissViewControllerAnimated(true, completion: {});
+        var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults();
+        defaults.setObject(self.items[indexPath.row], forKey: "Name");
+        //self.dismissViewControllerAnimated(true, completion: {});
     }
     
 
