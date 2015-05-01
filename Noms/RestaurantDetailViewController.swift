@@ -21,7 +21,15 @@ class RestaurantDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBOutlet weak var yelpButton: UIButton!
+    @IBOutlet weak var callButton: UIButton!
+    @IBOutlet weak var navButton: UIButton!
 
+    @IBOutlet weak var distLabel: UILabel!
+    @IBOutlet weak var ratingLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var restNameLabel: UILabel!
+    @IBOutlet weak var categoryLabel: UILabel!
     /*
     // MARK: - Navigation
 
