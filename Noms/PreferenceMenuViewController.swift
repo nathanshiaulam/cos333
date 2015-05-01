@@ -25,6 +25,8 @@ class PreferenceMenuViewController: UIViewController {
     // CUISINE PICKER
     @IBOutlet weak var cuisinePickerView: UIPickerView!
     
+    @IBOutlet var tokenView: KSTokenView!
+    let names: Array<String> = List.names()
     // DECLARE VARIABLES
     var fromNew:Bool!;
     var currentProfileName:String!;
@@ -196,6 +198,15 @@ class PreferenceMenuViewController: UIViewController {
     
 
     override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        tokenView.delegate = self
+        tokenView.promptText = "Top 5: "
+        tokenView.placeholder = "Type to search"
+        tokenView.descriptionText = "Languages"
+        tokenView.maxTokenLimit = 5
+        tokenView.style = .Squared
+        
         profileName.text = currentProfileName;
         oneDollarSignButton.setTitleColor(UIColor.yellowColor(), forState: UIControlState.Selected);
         twoDollarSignButton.setTitleColor(UIColor.yellowColor(), forState: UIControlState.Selected);
@@ -221,7 +232,6 @@ class PreferenceMenuViewController: UIViewController {
         distanceTextField.text = NSString(format:"%.0f", Float(distance)) as String + " miles";
         distanceSlider.setValue(Float(distance), animated: true);
         
-        
         // Do any additional setup after loading the view.
     }
     
@@ -232,3 +242,18 @@ class PreferenceMenuViewController: UIViewController {
     }
 }
 
+extension PreferenceMenuViewController: KSTokenViewDelegate {
+    func tokenView(token: KSTokenView, performSearchWithString string: String, completion: ((results: Array<AnyObject>) -> Void)?) {
+        var data: Array<String> = []
+        for value: String in List.names() {
+            if value.lowercaseString.rangeOfString(string.lowercaseString) != nil {
+                data.append(value)
+            }
+        }
+        completion!(results: data)
+    }
+    
+    func tokenView(token: KSTokenView, displayTitleForObject object: AnyObject) -> String {
+        return object as! String
+    }
+}

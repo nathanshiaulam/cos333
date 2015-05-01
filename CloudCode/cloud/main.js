@@ -176,7 +176,7 @@ Parse.Cloud.define("MatchRestaurant", function(request, response) {
                var dayofweek = parseInt(request.params.day[0]) //int
                //find all restaurants that are open
                for (var i = 0; i < res.length; ++i) {
-                  if (isOpen(time, dayofweek, res[i].get("hours"))) {
+                  if (isOpen(time, dayofweek, res[i].get("hours")) && res[i].id.toString() !== "3ciH3tuf3m") {
                      results[results.length] = res[i];
                   }
                }
@@ -219,8 +219,15 @@ Parse.Cloud.define("MatchRestaurant", function(request, response) {
                }
                // sort restscorearray by score
                restscorearray.sort(sortfunction);
-               for (var i = 0; i < 20; i++) {
+               var len = 20;
+               if (restscorearray.length < 20) {
+                  len = 20;
+               }
+               for (var i = 0; i < len; i++) {
                   ans[ans.length] = restscorearray[i]["objid"];
+               }
+               if (ans.length === 0) {
+                  ans[0] = "3ciH3tuf3m";
                }
                response.success(ans);
             },
