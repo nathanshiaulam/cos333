@@ -50,7 +50,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A4O-IL-85c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="983" y="1512"/>
+            <point key="canvasLocation" x="459" y="1192"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -281,7 +281,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1885" y="397"/>
+            <point key="canvasLocation" x="1369" y="125"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="iln-IP-Eqw">
@@ -297,7 +297,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SRP-3Z-bid" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2226" y="-460"/>
+            <point key="canvasLocation" x="2178" y="-554"/>
         </scene>
         <!--Preference Menu View Controller-->
         <scene sceneID="miy-lW-NAh">
@@ -501,7 +501,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d32-xT-JcO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1885" y="1556"/>
+            <point key="canvasLocation" x="1489" y="1204"/>
         </scene>
         <!--Optional Menu View Controller-->
         <scene sceneID="pBn-1d-eZB">
@@ -518,7 +518,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eFU-Xy-CNy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1317" y="2462"/>
+            <point key="canvasLocation" x="3005" y="2454"/>
         </scene>
         <!--Log In View Controller-->
         <scene sceneID="jMp-7C-tfm">
@@ -583,7 +583,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="appIcon" translatesAutoresizingMaskIntoConstraints="NO" id="DVP-bC-tUa">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppIcon" translatesAutoresizingMaskIntoConstraints="NO" id="DVP-bC-tUa">
                                 <rect key="frame" x="255" y="154" width="90" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="90" id="RyQ-vE-VTJ"/>
@@ -631,7 +631,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nUv-TH-eaV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3052" y="-466"/>
+            <point key="canvasLocation" x="3048" y="-554"/>
         </scene>
         <!--Create User View Controller-->
         <scene sceneID="h8w-wW-Gt2">
@@ -679,7 +679,7 @@
                                     <action selector="enterButtonClicked:" destination="1uP-vA-RHQ" eventType="touchUpInside" id="D82-ib-pr9"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="appIcon" translatesAutoresizingMaskIntoConstraints="NO" id="xom-hX-c5G">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppIcon" translatesAutoresizingMaskIntoConstraints="NO" id="xom-hX-c5G">
                                 <rect key="frame" x="255" y="154" width="90" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="90" id="SKR-bT-e6U"/>
@@ -717,7 +717,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sBz-3G-T3l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3836" y="-466"/>
+            <point key="canvasLocation" x="3916" y="-570"/>
         </scene>
         <!--Restaurant Detail View Controller-->
         <scene sceneID="Jhs-5h-9Mx">
@@ -735,7 +735,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3O2-bV-acr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2780" y="210"/>
+            <point key="canvasLocation" x="2904" y="134"/>
         </scene>
         <!--Name Profile View Controller-->
         <scene sceneID="tfM-df-0Tg">
@@ -789,7 +789,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QxE-i8-GIO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3166" y="851"/>
+            <point key="canvasLocation" x="2950" y="1083"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="XkU-O7-t9J">
@@ -805,12 +805,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YXd-tT-8NI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="496" y="345"/>
+            <point key="canvasLocation" x="472" y="125"/>
         </scene>
     </scenes>
     <resources>
+        <image name="AppIcon" width="80" height="80"/>
         <image name="addprofile" width="1200" height="1200"/>
-        <image name="appIcon" width="80" height="80"/>
         <image name="cog" width="1125" height="1126"/>
         <image name="dummyrestaurant" width="1251" height="1125"/>
         <image name="go" width="400" height="400"/>

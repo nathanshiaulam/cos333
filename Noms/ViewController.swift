@@ -48,8 +48,6 @@ class ViewController: UIViewController {
     // THIS FUNCTION IS CALLED WHEN YOU POP FROM PREFERENCES OR WHEN YOU HIT THE REFRESH BUTTON
     func updateProfilePage() {
         
-        // SETS INDEX OF ARRAY TO ZERO AT START
-        indexOfRestaurant = 0;
         
         // CHECKS THE DATASTORE FOR PROFILE NAME ON VIEW POP
         var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults();
@@ -67,8 +65,6 @@ class ViewController: UIViewController {
             }
         }
         
-        // FORMATS THE VIEW ACCORDING TO RESTAURANT
-        findTopImage();
     }
     
     // RUNS NTH CALL
@@ -110,7 +106,6 @@ class ViewController: UIViewController {
                         self.findRestaurantWithID(currentRestaurantID);
                     }
                 }
-                
             }
         }
     }
@@ -136,7 +131,7 @@ class ViewController: UIViewController {
                 // FORMAT IMAGE WITH FUNCTION http://www.appcoda.com/ios-programming-circular-image-calayer/
                 // FOLLOW THE GUIDE ABOVE, SHOULD TAKE IN AN IMAGE AS A PARAMETER AND RETURN AN IMAGE WITH THE RIGHT DIMENSIONS
                 self.formatImage(self.restaurantImage); //do pointers work like this?
-                self.restaurantDistance = self.calcDistance(latit1, lon1: longi1, lat2: self.latitude, lon2: self.longitude);
+                self.restaurantDistance.text = self.calcDistance(latit1, lon1: longi1, lat2: self.latitude, lon2: self.longitude);
                 // CALCULATE DISTANCE AND SET DISTANCE TEXT
                 
             }
@@ -156,7 +151,7 @@ class ViewController: UIViewController {
         var radlat2 = M_PI * lon1/180;
         var radlon1 = M_PI * lat2/180;
         var radlon2 = M_PI * lon2/180;
-        var theta = userDistance.longitude-restaurantDistance.longitude;
+        var theta = lon1-lon2;
         var radtheta = M_PI * theta/180;
         var dist = sin(radlat1) * sin(radlat2) + cos(radlat1) * cos(radlat2) * cos(radtheta);
         dist = acos(dist);
@@ -170,39 +165,42 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // SETS INDEX OF ARRAY TO ZERO AT START
-        indexOfRestaurant = 0;
-        
-        // SETS UP DATASTORE
-        var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults();
-        
-        // GETS GEOPOINT ON PAGE LOAD
-        PFGeoPoint.geoPointForCurrentLocationInBackground {
-            (geoPoint: PFGeoPoint?, error:NSError?) -> Void in
-            if error == nil {
-                self.latitude = geoPoint?.latitude; // STORES LATITUDE
-                self.longitude = geoPoint?.longitude; // STORES LONGITUDE
-            }
-        }
-        
-        // FINDS CURRENT PROFILE NAME
-        if let currentProfileNameIsNotNil = defaults.objectForKey("Name") as? String {
-            currentProfileName = defaults.objectForKey("Name") as! String
-        }
-        self.profileNameLabel.text = currentProfileName;
-        
-        // FORMATS THE VIEW ACCORDING TO RESTAURANT
-        findTopImage();
-        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "showTutorial", name: "showTutorial", object: nil);
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateProfilePage", name: "updateProfilePage", object: nil);
+
         // SEGUE IF USER IS NOT LOGGED IN
         if (!self.userLoggedIn()) {
             self.performSegueWithIdentifier("toUserLogin", sender: self);
         }
+        else {
+            
+            // SETS INDEX OF ARRAY TO ZERO AT START
+            indexOfRestaurant = 0;
         
-        // ADDS IN NOTIFICATION CENTER
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "showTutorial", name: "showTutorial", object: nil);
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateProfilePage", name: "updateProfilePage", object: nil);
-
+            // SETS UP DATASTORE
+            var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults();
+        
+            // GETS GEOPOINT ON PAGE LOAD
+            PFGeoPoint.geoPointForCurrentLocationInBackground {
+                (geoPoint: PFGeoPoint?, error:NSError?) -> Void in
+                if error == nil {
+                    self.latitude = geoPoint?.latitude; // STORES LATITUDE
+                    self.longitude = geoPoint?.longitude; // STORES LONGITUDE
+                }
+            }
+            if (currentProfileName != nil) {
+                // FINDS CURRENT PROFILE NAME
+                if let currentProfileNameIsNotNil = defaults.objectForKey("Name") as? String {
+                    currentProfileName = defaults.objectForKey("Name") as! String
+                }
+                self.profileNameLabel.text = currentProfileName;
+        
+                // FORMATS THE VIEW ACCORDING TO RESTAURANT
+                findTopImage();
+                
+                // ADDS IN NOTIFICATION CENTER
+            }
+        }
         // Do any additional setup after loading the view.
     }
     
