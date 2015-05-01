@@ -127,6 +127,8 @@ class PreferenceMenuViewController: UIViewController {
     // SAVE ITEM
     @IBAction func onClickSaveButton(sender: UIButton) {
         var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        currentProfileName = defaults.objectForKey("Name") as! String;
+        NSLog(currentProfileName);
         defaults.setObject(currentProfileName, forKey: "Name")
         NSNotificationCenter.defaultCenter().postNotificationName("updateProfilePage", object: nil);
     

@@ -32,9 +32,6 @@ class NameProfileViewController: UIViewController {
         query.whereKey("Name", equalTo:textField.text);
         
         var preference = query.getFirstObject();
-        println(currentID!);
-        println(textField.text);
-        println(preference);
         
         if (preference != nil) {
             let errorString = "Already Exists";
@@ -51,8 +48,11 @@ class NameProfileViewController: UIViewController {
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "toNewProfileSettings") {
+
             let VC = segue.destinationViewController as! PreferenceMenuViewController;
-            
+            VC.currentProfileName = nameProfileField.text;
+            VC.fromNew = true;
+
             var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
             defaults.setObject(nameProfileField.text, forKey: "Name");
             defaults.setObject(1, forKey:"Price");
@@ -61,9 +61,7 @@ class NameProfileViewController: UIViewController {
             defaults.setObject([], forKey:"Ambience");
             defaults.setObject("000000", forKey:"Options");
             
-            VC.currentProfileName = nameProfileField.text;
-            VC.fromNew = true;
-
+           
         }
     
     }

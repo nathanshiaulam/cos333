@@ -35,7 +35,8 @@ class ViewController: UIViewController {
     
     // ON CLICK RED BUTTON
     @IBAction func refreshOption(sender: AnyObject) {
-        if (indexOfRestaurant < 20) {
+        let arrLength = count(restaurantList);
+        if (indexOfRestaurant < arrLength - 1) {
             indexOfRestaurant = indexOfRestaurant + 1;
         }
         else {
@@ -47,10 +48,10 @@ class ViewController: UIViewController {
     
     // THIS FUNCTION IS CALLED WHEN YOU POP FROM PREFERENCES OR WHEN YOU HIT THE REFRESH BUTTON
     func updateProfilePage() {
-        
-        
-        // CHECKS THE DATASTORE FOR PROFILE NAME ON VIEW POP
         var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults();
+
+        NSLog(defaults.objectForKey("Name") as! String);
+        // CHECKS THE DATASTORE FOR PROFILE NAME ON VIEW POP
         if let currentProfileNameIsNotNil = defaults.objectForKey("Name") as? String {
             currentProfileName = defaults.objectForKey("Name") as! String
         }
@@ -60,15 +61,20 @@ class ViewController: UIViewController {
         PFGeoPoint.geoPointForCurrentLocationInBackground {
             (geoPoint: PFGeoPoint?, error:NSError?) -> Void in
             if error == nil {
+                
                 self.latitude = geoPoint?.latitude; // STORES LATITUDE
                 self.longitude = geoPoint?.longitude; // STORES LONGITUDE
+                self.findTopImage();
             }
         }
+        NSLog("Second Function Called");
+        
         
     }
     
-    // RUNS NTH CALL
+    // RUNS FINDS THE IMAGE OF THE FIRST RESTAURANT IN LIST
     func findTopImage() {
+        NSLog("In Function: Second Function Called");
         var query = PFQuery(className:"Preferences");
         var currentID = PFUser.currentUser()!.objectId;
         query.whereKey("ID", equalTo:currentID!);
@@ -80,7 +86,7 @@ class ViewController: UIViewController {
             if error != nil || preference == nil {
                 println(error);
             } else if let preference = preference{
-                
+                NSLog("In First Async Call");
                 // GET DATE INFO
                 let date = NSDate();
                 let calendar = NSCalendar.currentCalendar();
@@ -96,21 +102,24 @@ class ViewController: UIViewController {
                     hourString = "0" + hourString;
                 }
                 let timeString = hourString + ":" + minuteString;
-                
-                // SET COMPONENTS OF RESPONSE OBJECT
-                PFCloud.callFunctionInBackground("MatchRestaurant", withParameters:["loc":[String(stringInterpolationSegment: self.latitude), String(stringInterpolationSegment: self.longitude)], "objid":[String(stringInterpolationSegment: preference.objectId)], "currtime":[String(stringInterpolationSegment: timeString)], "day":[String(stringInterpolationSegment: day)]]) {
+                NSLog("THIS IS YO ID SON")
+                NSLog(String(stringInterpolationSegment: preference.objectId!));
+                NSLog(String(stringInterpolationSegment: self.latitude));
+                NSLog(String(stringInterpolationSegment: self.longitude));
+                // SET COMPONENTS OF RESPONSE OBJECT AND FINDS RESTAURANT ID
+                PFCloud.callFunctionInBackground("MatchRestaurant", withParameters:["loc":[String(stringInterpolationSegment: self.latitude), String(stringInterpolationSegment: self.longitude)], "objid":[String(stringInterpolationSegment: preference.objectId!)], "currtime":[String(stringInterpolationSegment: timeString)], "day":[String(stringInterpolationSegment: day)]]) {
                     (result: AnyObject?, error: NSError?) -> Void in
                     if error == nil {
                         self.restaurantList = result as! [String];
                         var currentRestaurantID = self.restaurantList[0];
-                        self.findRestaurantWithID(currentRestaurantID);
+                        self.findRestaurantWithID(currentRestaurantID); // FINDS RESTAURANT WITH ID
                     }
                 }
             }
         }
     }
     
-    // QUERIES FOR RESTAURANT
+    // QUERIES FOR RESTAURANT AND SETS IMAGE + DISTANCE
     func findRestaurantWithID(var restaurantID: String) {
         var query = PFQuery(className: "Restaurants");
         query.whereKey("objectId", equalTo: restaurantID);
@@ -119,23 +128,33 @@ class ViewController: UIViewController {
             if error != nil || restaurant == nil {
                 println(error);
             } else if let restaurant = restaurant{
-                
+                NSLog("LOLOLOL NOT WORKING");
                 // LOADS IN FIELDS OF RESTAURANT
                 self.restaurantNameLabel.text = restaurant["name"] as? String;
-                let url = NSURL(string: restaurant["big_image_url"] as! String);
-                let data = NSData(contentsOfURL: url!);
-                let latit1 = restaurant["latitude"] as! Double;
-                let longi1 = restaurant["longitude"] as! Double;
-                self.restaurantImage.image = UIImage(data:data!);
+                NSLog("YOU EATIN HERE SON");
+                NSLog(self.restaurantNameLabel.text!);
+                NSLog(String(count(String(stringInterpolationSegment: restaurant["big_img_url"]!))));
+                if count(String(stringInterpolationSegment: restaurant["big_img_url"]!)) != 0{
+                    let url = NSURL(string: restaurant["big_img_url"]! as! String);
+                    let data = NSData(contentsOfURL: url!);
+                    self.restaurantImage.image = UIImage(data:data!);
+                } else if count(String(stringInterpolationSegment:restaurant["photo_url"])) != 0 {
+                    let url = NSURL(string: restaurant["photo_url"] as! String);
+                    let data = NSData(contentsOfURL: url!);
+                    self.restaurantImage.image = UIImage(data:data!);
+                }
                 
                 // FORMAT IMAGE WITH FUNCTION http://www.appcoda.com/ios-programming-circular-image-calayer/
                 // FOLLOW THE GUIDE ABOVE, SHOULD TAKE IN AN IMAGE AS A PARAMETER AND RETURN AN IMAGE WITH THE RIGHT DIMENSIONS
                 self.formatImage(self.restaurantImage); //do pointers work like this?
 
                 // CALCULATE DISTANCE AND SET DISTANCE TEXT
-                let restaurantLatitude = restaurant["latitude"] as! Double
-                let restaurantLongitude = restaurant["longitude"] as! Double
-                var distString:String = self.calcDistance(latit1, lon1: longi1, lat2: self.latitude, lon2: self.longitude);
+                let latit1 = restaurant["latitude"] as! Double;
+                let longi1 = restaurant["longitude"] as! Double;
+                
+                let loc1 = PFGeoPoint(latitude: latit1, longitude: longi1);
+                let loc2 = PFGeoPoint(latitude: self.latitude, longitude: self.longitude);
+                var distString:String = String(format:"%.1f", loc1.distanceInMilesTo(loc2));
                 
                 distString = distString + " miles away";
                 self.restaurantDistance.text = distString;
@@ -171,9 +190,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // CREATES LISTENERS WHEN SEGUING FROM OTHER VCS
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "showTutorial", name: "showTutorial", object: nil);
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateProfilePage", name: "updateProfilePage", object: nil);
-
         // SEGUE IF USER IS NOT LOGGED IN
         if (!self.userLoggedIn()) {
             self.performSegueWithIdentifier("toUserLogin", sender: self);
@@ -185,26 +204,23 @@ class ViewController: UIViewController {
         
             // SETS UP DATASTORE
             var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults();
-        
+            
+            // FINDS CURRENT PROFILE NAME
+            if let currentProfileNameIsNotNil = defaults.objectForKey("Name") as? String {
+                currentProfileName = defaults.objectForKey("Name") as! String
+            }
+            self.profileNameLabel.text = currentProfileName;
+            
             // GETS GEOPOINT ON PAGE LOAD
             PFGeoPoint.geoPointForCurrentLocationInBackground {
                 (geoPoint: PFGeoPoint?, error:NSError?) -> Void in
                 if error == nil {
                     self.latitude = geoPoint?.latitude; // STORES LATITUDE
                     self.longitude = geoPoint?.longitude; // STORES LONGITUDE
+                    if (self.currentProfileName != nil) {
+                        self.findTopImage();
+                    }
                 }
-            }
-            if (currentProfileName != nil) {
-                // FINDS CURRENT PROFILE NAME
-                if let currentProfileNameIsNotNil = defaults.objectForKey("Name") as? String {
-                    currentProfileName = defaults.objectForKey("Name") as! String
-                }
-                self.profileNameLabel.text = currentProfileName;
-        
-                // FORMATS THE VIEW ACCORDING TO RESTAURANT
-                findTopImage();
-                
-                // ADDS IN NOTIFICATION CENTER
             }
         }
         // Do any additional setup after loading the view.
