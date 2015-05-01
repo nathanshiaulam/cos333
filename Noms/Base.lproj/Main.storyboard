@@ -198,18 +198,21 @@
                                     <segue destination="oUA-AU-Rob" kind="show" identifier="toSettingsPage" id="XHp-EQ-soW"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Halo Pub" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NgN-IB-TBu">
-                                <rect key="frame" x="314" y="215" width="200" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Halo Pub" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NgN-IB-TBu">
+                                <rect key="frame" x="274" y="166" width="280" height="70"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="Hrw-hh-rUG"/>
+                                    <constraint firstAttribute="height" constant="70" id="Hrw-hh-rUG"/>
                                     <constraint firstAttribute="width" constant="200" id="ndK-5N-KZO"/>
+                                    <constraint firstAttribute="width" constant="280" id="wze-80-qgu"/>
                                     <constraint firstAttribute="width" constant="96" id="xvo-1P-adb"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <variation key="default">
                                     <mask key="constraints">
+                                        <exclude reference="ndK-5N-KZO"/>
                                         <exclude reference="xvo-1P-adb"/>
                                     </mask>
                                 </variation>
@@ -813,6 +816,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0JH-BV-DSx">
+                                <rect key="frame" x="16" y="64" width="568" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="chq-AX-stD"/>
+                                </constraints>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restaurant Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7t5-gQ-eTI">
                                 <rect key="frame" x="0.0" y="106" width="600" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -841,8 +850,12 @@
                             <constraint firstAttribute="trailing" secondItem="7t5-gQ-eTI" secondAttribute="trailing" id="Hds-PH-GHQ"/>
                             <constraint firstItem="Ett-f6-mSx" firstAttribute="height" secondItem="IrZ-7F-npE" secondAttribute="height" id="INU-pA-Yzm"/>
                             <constraint firstItem="Ett-f6-mSx" firstAttribute="width" secondItem="IrZ-7F-npE" secondAttribute="width" id="LF7-md-4CO"/>
+                            <constraint firstItem="0JH-BV-DSx" firstAttribute="top" secondItem="DMo-41-AjJ" secondAttribute="bottom" id="OeJ-wg-Bpi"/>
                             <constraint firstItem="Ett-f6-mSx" firstAttribute="bottom" secondItem="IrZ-7F-npE" secondAttribute="bottom" id="TIz-3N-vX8"/>
+                            <constraint firstItem="0JH-BV-DSx" firstAttribute="leading" secondItem="dQS-Yf-E5c" secondAttribute="leadingMargin" id="bDH-vs-K6c"/>
                             <constraint firstAttribute="centerY" secondItem="Ett-f6-mSx" secondAttribute="centerY" constant="116.5" id="fOq-rx-8r5"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="0JH-BV-DSx" secondAttribute="trailing" id="jvn-sh-S8Y"/>
+                            <constraint firstAttribute="centerX" secondItem="0JH-BV-DSx" secondAttribute="centerX" id="kwF-O3-M5q"/>
                         </constraints>
                     </view>
                 </viewController>

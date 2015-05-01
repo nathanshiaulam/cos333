@@ -65,7 +65,9 @@ class ProfileListViewController: UIViewController, UITableViewDelegate, UITableV
             var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults();
             var index:NSIndexPath = self.profileList.indexPathForSelectedRow()!;
             defaults.setObject(self.items[index.row], forKey: "Name");
-            self.dismissViewControllerAnimated(true, completion: {});
+            self.dismissViewControllerAnimated(true, completion: {
+                NSNotificationCenter.defaultCenter().postNotificationName("updateProfilePage", object: nil);
+            });
 
         }
     }

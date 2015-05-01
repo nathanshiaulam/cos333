@@ -189,6 +189,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.restaurantNameLabel.numberOfLines = 0;
         restaurantNameLabel.textAlignment = NSTextAlignment.Center;
         // CREATES LISTENERS WHEN SEGUING FROM OTHER VCS
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "showTutorial", name: "showTutorial", object: nil);
