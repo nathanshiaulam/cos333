@@ -111,6 +111,51 @@ class OptionalMenuTableViewController: UITableViewController {
     @IBOutlet weak var casualSwitch: UISwitch!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults();
+        var currentProfileName = defaults.objectForKey("Name") as! String;
+        var query = PFQuery(className:"Preferences");
+        var currentID = PFUser.currentUser()!.objectId;
+        query.whereKey("ID", equalTo:currentID!);
+        query.whereKey("Name", equalTo:currentProfileName);
+        query.getFirstObjectInBackgroundWithBlock {
+            (preference: PFObject?, error: NSError?) -> Void in
+            if error != nil || preference == nil {
+                println(error);
+            } else if let preference = preference{
+                let options = Array(preference["Options"] as! String);
+                println(options);
+                if (options[0] == "2") {
+                    self.reserveSwitch.selectedSegmentIndex = 1;
+                }
+                if (options[1] == "2") {
+                    self.takeoutSwitch.selectedSegmentIndex = 1;
+                }
+                if (options[2] == "2") {
+                    self.creditSwitch.selectedSegmentIndex = 1;
+                }
+                if (options[3] == "2") {
+                    self.alcSwitch.selectedSegmentIndex = 1;
+                }
+                if (options[4] == "2") {
+                    self.outSwitch.selectedSegmentIndex = 1;
+                }
+                if (options[5] == "2") {
+                    self.wifiSwitch.selectedSegmentIndex = 1;
+                }
+                let am = preference["Ambience"] as! [String];
+                println(am);
+                if (find(am, "Romantic") == nil) {
+                    self.loveSwitch.on = false;
+                }
+                if (find(am, "Classy") == nil) {
+                    self.classySwitch.on = false;
+                }
+                if (find(am, "Casual") == nil) {
+                    self.casualSwitch.on = false;
+                }
+            }
+        }
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
