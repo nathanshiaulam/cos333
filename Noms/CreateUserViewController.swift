@@ -14,6 +14,9 @@ class CreateUserViewController: UIViewController {
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     
+    @IBAction func onClickLogIn(sender: UIButton) {
+        self.navigationController?.popViewControllerAnimated(true);
+    }
     // CREATES USER GIVEN CORRECT USER AND PASSWORD
     @IBAction func enterButtonClicked(sender: UIButton) {
         self.createUser(usernameField.text, password:passwordField.text);
