@@ -55,8 +55,8 @@ class RestaurantDetailViewController: UIViewController {
         
         var query = PFQuery(className: "Restaurants");
         let defaults = NSUserDefaults.standardUserDefaults()
-        let restaurantID = defaults.stringForKey("rest_id")
-        query.whereKey("objectId", equalTo: restaurantID!);
+        let restaurantID: String = defaults.objectForKey("rest_id") as! String;
+        query.whereKey("objectId", equalTo: restaurantID);
         query.getFirstObjectInBackgroundWithBlock{
             (restaurant: PFObject?, error: NSError?) -> Void in
             if error != nil || restaurant == nil {

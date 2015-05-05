@@ -38,7 +38,7 @@ class ViewController: UIViewController {
     // ON CLICK GREEN BUTTON
     @IBAction func more_details(sender: UIButton) {
         let defaults = NSUserDefaults.standardUserDefaults();
-        defaults.setObject(currentRestaurantID, forKey: "rest_id");
+//        defaults.setObject(currentRestaurantID, forKey: "rest_id");
         defaults.setDouble(self.distSend, forKey:"dist_string");
         NSNotificationCenter.defaultCenter().postNotificationName("updateDetailInfo", object: nil);
 
@@ -46,6 +46,8 @@ class ViewController: UIViewController {
     
     // ON CLICK RED BUTTON
     @IBAction func refreshOption(sender: AnyObject) {
+        var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+
         let arrLength = count(self.restaurantList);
         if (indexOfRestaurant < arrLength - 1) {
             indexOfRestaurant = indexOfRestaurant + 1;
@@ -54,10 +56,12 @@ class ViewController: UIViewController {
             indexOfRestaurant = 0;
         }
         NSLog(String(indexOfRestaurant));
+        
         var currentRestaurantID = self.restaurantList[indexOfRestaurant];
-        findRestaurantWithID(currentRestaurantID);
-        var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        NSLog(currentRestaurantID);
         defaults.setObject(currentRestaurantID, forKey:"rest_id");
+
+        findRestaurantWithID(currentRestaurantID);
     }
     
     // THIS FUNCTION IS CALLED WHEN YOU POP FROM PREFERENCES OR WHEN YOU HIT THE REFRESH BUTTON
