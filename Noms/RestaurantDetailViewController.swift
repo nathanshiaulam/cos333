@@ -26,6 +26,7 @@ class RestaurantDetailViewController: UIViewController {
     var longitude:Double!;
     var categories:[String]!;
     
+    @IBOutlet weak var restMap: MKMapView!
     @IBOutlet weak var yelpButton: UIButton!
     @IBOutlet weak var callButton: UIButton!
     @IBOutlet weak var navButton: UIButton!
@@ -38,6 +39,8 @@ class RestaurantDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         
         categoryLabel.numberOfLines = 0;
 
@@ -70,6 +73,17 @@ class RestaurantDetailViewController: UIViewController {
                 let string_cat = ", ".join(self.categories)
                 self.categoryLabel.text = string_cat;
                 self.restNameLabel.text = restaurant["name"] as! String;
+                
+                let latitude = restaurant["latitude"] as! Double;
+                let longitude = restaurant["longitude"] as! Double;
+                
+                let userLocation = CLLocationCoordinate2D(latitude: latitude, longitude: longitude);
+                
+                let region = MKCoordinateRegionMakeWithDistance(
+                    userLocation, 2000, 2000)
+                
+                self.restMap.setRegion(region, animated: true)
+                
                 
             }
         }
