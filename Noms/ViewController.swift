@@ -200,6 +200,7 @@ class ViewController: UIViewController {
 
 
     override func viewDidLoad() {
+        println("went to view load");
         super.viewDidLoad()
         self.restaurantNameLabel.numberOfLines = 0;
         restaurantNameLabel.textAlignment = NSTextAlignment.Center;
@@ -218,6 +219,7 @@ class ViewController: UIViewController {
             // SETS UP DATASTORE
             var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults();
             
+            println("please work now");
             // FINDS CURRENT PROFILE NAME
             if let currentProfileNameIsNotNil = defaults.objectForKey("Name") as? String {
                 currentProfileName = defaults.objectForKey("Name") as! String

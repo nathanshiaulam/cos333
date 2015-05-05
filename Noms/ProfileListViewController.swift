@@ -92,7 +92,9 @@ class ProfileListViewController: UIViewController, UITableViewDelegate, UITableV
         println("Loading profile "+self.items[indexPath.row])
         var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults();
         defaults.setObject(self.items[indexPath.row], forKey: "Name");
-        //self.dismissViewControllerAnimated(true, completion: {});
+        self.dismissViewControllerAnimated(true, completion: {
+            NSNotificationCenter.defaultCenter().postNotificationName("updateProfilePage", object: nil);
+        });
     }
     
 

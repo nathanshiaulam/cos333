@@ -59,7 +59,7 @@ class RestaurantDetailViewController: UIViewController {
                 let num = restaurant["phone_number"] as! String;
                 self.number = self.stripNum(num);
                 if self.number == nil {
-                    // delete call button
+                    self.callButton.hidden = true;
                 }
                 self.yelp_link = restaurant["url"] as! String;
                 //let yelp_link = NSURL(string: temp_rest_url);
