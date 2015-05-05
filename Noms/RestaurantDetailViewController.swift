@@ -78,7 +78,7 @@ class RestaurantDetailViewController: UIViewController {
                 let stars = restaurant["stars"] as! Double;
                 self.ratingLabel.text = String(format:"%.1f stars", stars);
                 self.address = restaurant["full_address"] as! String;
-                var distString_orig:String = String(format:"%.1f", defaults.stringForKey("dist_string")!);
+                var distString_orig:String = String(format:"%.1f", defaults.doubleForKey("dist_string"));
                 let distString = distString_orig + " miles away";
                 self.distLabel.text = distString;
                 self.categories = restaurant["categories"] as! [String];
