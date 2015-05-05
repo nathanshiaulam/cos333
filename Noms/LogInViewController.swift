@@ -39,7 +39,24 @@ class LogInViewController: UIViewController {
             }
         }
     }
+    func keyboardWillShow (sender: NSNotification) {
+        self.view.frame.origin.y -= 48
+    }
+    func keyboardWillHide (sender: NSNotification) {
+        self.view.frame.origin.y += 148
+    }
+//    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidShow", name: UIKeyboardDidShowNotification, object: nil);
+//        return true;
+//    }
+//    
+//    func textFieldShouldEndEditing(textField: UITextField) -> Bool {
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidHide", name: UIKeyboardDidHideNotification, object: nil);
+//        self.view.endEditing(true);
+//        return true;
+//    }
     
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         var usernamePlaceholder = NSAttributedString(string: "Username", attributes: [NSForegroundColorAttributeName : UIColor.grayColor()]);
@@ -49,6 +66,8 @@ class LogInViewController: UIViewController {
         usernameField.layer.cornerRadius = 0;
         passwordField.layer.cornerRadius = 0;
         passwordField.secureTextEntry = true;
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil);
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil);
         
         
         // Do any additional setup after loading the view.
