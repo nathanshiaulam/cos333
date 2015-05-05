@@ -41,7 +41,8 @@ class ViewController: UIViewController {
         let defaults = NSUserDefaults.standardUserDefaults();
         defaults.setObject(currentRestaurantID, forKey: "rest_id");
         defaults.setObject(self.distString, forKey:"dist_string");
-        
+        NSNotificationCenter.defaultCenter().postNotificationName("updateDetailInfo", object: nil);
+
     }
     
     // ON CLICK RED BUTTON
@@ -56,6 +57,8 @@ class ViewController: UIViewController {
         NSLog(String(indexOfRestaurant));
         var currentRestaurantID = restaurantList[indexOfRestaurant];
         findRestaurantWithID(currentRestaurantID);
+        var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        defaults.setObject(currentRestaurantID, forKey:"rest_id");
     }
     
     // THIS FUNCTION IS CALLED WHEN YOU POP FROM PREFERENCES OR WHEN YOU HIT THE REFRESH BUTTON

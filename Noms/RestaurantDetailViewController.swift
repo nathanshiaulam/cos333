@@ -26,6 +26,7 @@ class RestaurantDetailViewController: UIViewController {
     var longitude:Double!;
     var categories:[String]!;
     
+    @IBOutlet weak var restaurantImage: UIImageView!
     @IBOutlet weak var restMap: MKMapView!
     @IBOutlet weak var yelpButton: UIButton!
     @IBOutlet weak var callButton: UIButton!
@@ -39,11 +40,19 @@ class RestaurantDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
-        categoryLabel.numberOfLines = 0;
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateDetailInfo", name: "updateDetailInfo", object: nil);
 
+        updateDetailInfo();
+        
+    }
+//    override func viewDidAppear(animated:Bool) {
+//        updateDetailInfo();
+//        super.viewDidAppear(true);
+//    }
+//    
+    func updateDetailInfo() {
+        categoryLabel.numberOfLines = 0;
+        
         var query = PFQuery(className: "Restaurants");
         let defaults = NSUserDefaults.standardUserDefaults()
         let restaurantID = defaults.stringForKey("rest_id")
@@ -85,14 +94,14 @@ class RestaurantDetailViewController: UIViewController {
                 
                 self.restMap.setRegion(region, animated: true)
                 
-                
+                let url = NSURL(string: restaurant["big_img_url"]! as! String);
+                let data = NSData(contentsOfURL: url!);
+                self.restaurantImage.image = UIImage(data:data!);
+                //                self.restaurantImage.contentMode = UIViewContentMode.ScaleAspectFit;
+            
             }
         }
-        
-        // load map from yelp site
-        
     }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
