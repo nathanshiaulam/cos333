@@ -56,7 +56,8 @@ class RestaurantDetailViewController: UIViewController {
             } else if let restaurant = restaurant{
                 
                 // LOADS IN FIELDS OF RESTAURANT
-                self.number = stripNum(restaurant["phone_number"]);
+                let num = restaurant["phone_number"] as! String;
+                self.number = self.stripNum(num);
                 if self.number == nil {
                     // delete call button
                 }
