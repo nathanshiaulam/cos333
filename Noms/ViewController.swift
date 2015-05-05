@@ -53,6 +53,7 @@ class ViewController: UIViewController {
         else {
             indexOfRestaurant = 0;
         }
+        NSLog(String(indexOfRestaurant));
         var currentRestaurantID = restaurantList[indexOfRestaurant];
         findRestaurantWithID(currentRestaurantID);
     }

@@ -252,9 +252,9 @@ class PreferenceMenuViewController: UIViewController {
         super.viewDidLoad()
         
         tokenView.delegate = self
-        tokenView.promptText = "Top 5: "
+        tokenView.promptText = ""
         tokenView.placeholder = "Type to search"
-        tokenView.descriptionText = "Languages"
+        tokenView.descriptionText = "Cuisines"
         tokenView.maxTokenLimit = 5
         tokenView.style = .Rounded
         
