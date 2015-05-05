@@ -56,7 +56,8 @@ class RestaurantDetailViewController: UIViewController {
             } else if let restaurant = restaurant{
                 
                 // LOADS IN FIELDS OF RESTAURANT
-                self.number = "4086468633"
+                let num = restaurant["phone_number"] as! String;
+                self.number = self.stripNum(num);
                 if self.number == nil {
                     // delete call button
                 }
@@ -134,6 +135,13 @@ class RestaurantDetailViewController: UIViewController {
         mapItem.openInMapsWithLaunchOptions(options)
     }
     
+    func stripNum(var num: String) -> String{
+        num = num.stringByReplacingOccurrencesOfString("(", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil);
+        num = num.stringByReplacingOccurrencesOfString(")", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil);
+        num = num.stringByReplacingOccurrencesOfString(" ", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil);
+        num = num.stringByReplacingOccurrencesOfString("-", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil);
+        return num;
+    }
 
     /*
     // MARK: - Navigation
