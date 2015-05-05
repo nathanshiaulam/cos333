@@ -17,6 +17,7 @@ class PreferenceMenuViewController: UIViewController {
     @IBOutlet weak var oneDollarSignButton: UIButton!
     @IBOutlet weak var twoDollarSignButton: UIButton!
     @IBOutlet weak var threeDollarSignButton: UIButton!
+    @IBOutlet weak var fourDollarSignButton: UIButton!
     
     // DISTANCE SLIDER OUTLETS
     @IBOutlet weak var distanceTextField: UILabel!
@@ -44,38 +45,58 @@ class PreferenceMenuViewController: UIViewController {
     
     // DOLLAR SIGN CHANGE
     @IBAction func onClickOneDollar(sender: UIButton) {
+        println("1");
         var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         defaults.setObject(1, forKey:"Price");
-        if (oneDollarSignButton.selected == true && twoDollarSignButton.selected == false && threeDollarSignButton.selected == false) {
+        if (oneDollarSignButton.selected == true && twoDollarSignButton.selected == false && threeDollarSignButton.selected == false && fourDollarSignButton.selected == false) {
             oneDollarSignButton.selected = true;
+            defaults.setObject(1, forKey:"Price");
         }
-        else if (oneDollarSignButton.selected == true && twoDollarSignButton.selected == true && threeDollarSignButton.selected == false) {
-            oneDollarSignButton.selected = true;
-            twoDollarSignButton.selected = false;
-        }
-        else if (oneDollarSignButton.selected == true && twoDollarSignButton.selected == true && threeDollarSignButton.selected == true) {
-            oneDollarSignButton.selected = true;
-            twoDollarSignButton.selected = false;
-            threeDollarSignButton.selected = false;
-        }
-        else {
-            oneDollarSignButton.selected = true;
-        }
-    }
-    @IBAction func onClickTwoDollar(sender: UIButton) {
-        var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults();
-        
-        if (oneDollarSignButton.selected == true && twoDollarSignButton.selected == true && threeDollarSignButton.selected == false) {
+        else if (oneDollarSignButton.selected == true && twoDollarSignButton.selected == true && threeDollarSignButton.selected == false && fourDollarSignButton.selected == false) {
             oneDollarSignButton.selected = true;
             twoDollarSignButton.selected = false;
             defaults.setObject(1, forKey:"Price");
         }
-        else if (oneDollarSignButton.selected == true && twoDollarSignButton.selected == true && threeDollarSignButton.selected == true) {
+        else if (oneDollarSignButton.selected == true && twoDollarSignButton.selected == true && threeDollarSignButton.selected == true && fourDollarSignButton.selected == false) {
+            oneDollarSignButton.selected = true;
+            twoDollarSignButton.selected = false;
+            threeDollarSignButton.selected = false;
+            defaults.setObject(1, forKey:"Price");
+        }
+        else if (oneDollarSignButton.selected == true && twoDollarSignButton.selected == true && threeDollarSignButton.selected == true && fourDollarSignButton.selected == true) {
+            oneDollarSignButton.selected = true;
+            twoDollarSignButton.selected = false;
+            threeDollarSignButton.selected = false;
+            fourDollarSignButton.selected = false;
+            defaults.setObject(1, forKey:"Price");
+        }
+        else {
+            oneDollarSignButton.selected = true;
+            defaults.setObject(1, forKey:"Price");
+        }
+    }
+    @IBAction func onClickTwoDollar(sender: UIButton) {
+        println("2");
+        var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults();
+        
+        if (oneDollarSignButton.selected == true && twoDollarSignButton.selected == true && threeDollarSignButton.selected == false && fourDollarSignButton.selected == false) {
+            oneDollarSignButton.selected = true;
+            twoDollarSignButton.selected = false;
+            defaults.setObject(1, forKey:"Price");
+        }
+        else if (oneDollarSignButton.selected == true && twoDollarSignButton.selected == true && threeDollarSignButton.selected == true && fourDollarSignButton.selected == false) {
             oneDollarSignButton.selected = true;
             twoDollarSignButton.selected = true;
             threeDollarSignButton.selected = false;
             defaults.setObject(2, forKey:"Price");
             
+        }
+        else if (oneDollarSignButton.selected == true && twoDollarSignButton.selected == true && threeDollarSignButton.selected == true && fourDollarSignButton.selected == true) {
+            oneDollarSignButton.selected = true;
+            twoDollarSignButton.selected = true;
+            threeDollarSignButton.selected = false;
+            fourDollarSignButton.selected = false;
+            defaults.setObject(2, forKey:"Price");
         }
         else {
             oneDollarSignButton.selected = true;
@@ -84,12 +105,14 @@ class PreferenceMenuViewController: UIViewController {
         }
     }
     @IBAction func onClickThreeDollar(sender: UIButton) {
+        println("3");
         var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        if (oneDollarSignButton.selected == true && twoDollarSignButton.selected == true && threeDollarSignButton.selected == true) {
+        if (oneDollarSignButton.selected == true && twoDollarSignButton.selected == true && threeDollarSignButton.selected == true
+            && fourDollarSignButton.selected == false) {
             oneDollarSignButton.selected = true;
-            twoDollarSignButton.selected = false;
+            twoDollarSignButton.selected = true;
             threeDollarSignButton.selected = false;
-            defaults.setObject(1, forKey:"Price");
+            defaults.setObject(2, forKey:"Price");
         }
         else {
             oneDollarSignButton.selected = true;
@@ -97,6 +120,26 @@ class PreferenceMenuViewController: UIViewController {
             threeDollarSignButton.selected = true;
             defaults.setObject(3, forKey:"Price");
         }
+    }
+    
+    @IBAction func onClickFourDollar(sender: UIButton) {
+        println("went here\n");
+        var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        if (oneDollarSignButton.selected == true && twoDollarSignButton.selected == true && threeDollarSignButton.selected == true && fourDollarSignButton.selected == true) {
+            oneDollarSignButton.selected = true;
+            twoDollarSignButton.selected = true;
+            threeDollarSignButton.selected = true;
+            fourDollarSignButton.selected = false;
+            defaults.setObject(3, forKey:"Price");
+        }
+        else {
+            oneDollarSignButton.selected = true;
+            twoDollarSignButton.selected = true;
+            threeDollarSignButton.selected = true;
+            fourDollarSignButton.selected = true;
+            defaults.setObject(4, forKey:"Price");
+        }
+
     }
     
     // ON SLIDER CHANGE
@@ -219,6 +262,7 @@ class PreferenceMenuViewController: UIViewController {
         oneDollarSignButton.setTitleColor(UIColor.yellowColor(), forState: UIControlState.Selected);
         twoDollarSignButton.setTitleColor(UIColor.yellowColor(), forState: UIControlState.Selected);
         threeDollarSignButton.setTitleColor(UIColor.yellowColor(), forState: UIControlState.Selected);
+        fourDollarSignButton.setTitleColor(UIColor.yellowColor(), forState: UIControlState.Selected);
         var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults();
         
         var amount = defaults.objectForKey("Price") as! Int;
@@ -230,10 +274,15 @@ class PreferenceMenuViewController: UIViewController {
         } else if amount == 2 {
             oneDollarSignButton.selected = true;
             twoDollarSignButton.selected = true;
+        } else if amount == 3 {
+            oneDollarSignButton.selected = true;
+            twoDollarSignButton.selected = true;
+            threeDollarSignButton.selected = true;
         } else {
             oneDollarSignButton.selected = true;
             twoDollarSignButton.selected = true;
             threeDollarSignButton.selected = true;
+            fourDollarSignButton.selected = true;
         }
         
         // SETS DISTANCE VALUE

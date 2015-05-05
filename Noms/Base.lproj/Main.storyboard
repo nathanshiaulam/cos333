@@ -450,13 +450,32 @@
                                     <segue destination="BHu-M2-fDx" kind="show" id="mal-qK-djS"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W5K-QP-aPi">
+                                <rect key="frame" x="125" y="150" width="30" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="D06-iR-Z0k"/>
+                                    <constraint firstAttribute="height" constant="60" id="ibD-a4-fil"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="37"/>
+                                <state key="normal" title="$">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onClickFourDollar:" destination="oUA-AU-Rob" eventType="touchUpInside" id="0es-oX-Her"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.069858337039999996" green="0.12678784030000001" blue="0.26723710319999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="W5K-QP-aPi" firstAttribute="leading" secondItem="8Fp-dh-zxL" secondAttribute="trailing" constant="-5" id="1BD-da-ULc"/>
                             <constraint firstItem="qRy-PS-Qey" firstAttribute="leading" secondItem="5ss-2z-2yv" secondAttribute="leadingMargin" constant="-16" id="1Iw-7c-jJW"/>
+                            <constraint firstItem="W5K-QP-aPi" firstAttribute="leading" secondItem="aOi-jc-JLo" secondAttribute="trailing" constant="41" id="1Xq-a7-MHJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="W5K-QP-aPi" secondAttribute="trailing" constant="429" id="49D-6k-hRs"/>
                             <constraint firstItem="a27-zQ-2Qo" firstAttribute="centerX" secondItem="4zi-9L-9re" secondAttribute="centerX" constant="-8" id="4PR-zd-Xbn"/>
                             <constraint firstItem="0P4-gb-rgx" firstAttribute="top" secondItem="9vA-3L-UQ4" secondAttribute="bottom" constant="8" id="4tD-8f-gls"/>
                             <constraint firstItem="tPK-vs-cCs" firstAttribute="top" secondItem="Sff-bh-LgZ" secondAttribute="bottom" constant="25" id="7r1-kE-kNw"/>
+                            <constraint firstItem="8Fp-dh-zxL" firstAttribute="centerY" secondItem="W5K-QP-aPi" secondAttribute="centerY" id="9md-Bu-DD1"/>
                             <constraint firstItem="UaZ-kg-Tmc" firstAttribute="leading" secondItem="5ss-2z-2yv" secondAttribute="leadingMargin" constant="40" id="AxG-CE-rqP"/>
                             <constraint firstItem="4zi-9L-9re" firstAttribute="top" secondItem="UaZ-kg-Tmc" secondAttribute="bottom" constant="70" id="BiZ-x6-nxb"/>
                             <constraint firstItem="UaZ-kg-Tmc" firstAttribute="centerX" secondItem="4zi-9L-9re" secondAttribute="centerX" constant="-13" id="EIS-qZ-uIw"/>
@@ -465,9 +484,12 @@
                             <constraint firstItem="0P4-gb-rgx" firstAttribute="top" secondItem="4zi-9L-9re" secondAttribute="bottom" constant="8" id="PSa-Da-wDf"/>
                             <constraint firstItem="UaZ-kg-Tmc" firstAttribute="top" secondItem="Sff-bh-LgZ" secondAttribute="bottom" constant="70" id="RQU-Y4-Bfs"/>
                             <constraint firstItem="9vA-3L-UQ4" firstAttribute="leading" secondItem="4zi-9L-9re" secondAttribute="trailing" constant="17" id="Std-3H-0WS"/>
+                            <constraint firstItem="W5K-QP-aPi" firstAttribute="leading" secondItem="8Fp-dh-zxL" secondAttribute="trailing" constant="-5" id="VMq-i2-7tR"/>
+                            <constraint firstItem="W5K-QP-aPi" firstAttribute="leading" secondItem="8Fp-dh-zxL" secondAttribute="trailing" constant="-5" id="Yoe-eh-0lp"/>
                             <constraint firstAttribute="trailingMargin" secondItem="qRy-PS-Qey" secondAttribute="trailing" constant="-16" id="ZCP-8S-krv"/>
                             <constraint firstItem="a27-zQ-2Qo" firstAttribute="top" secondItem="4zi-9L-9re" secondAttribute="bottom" constant="70" id="a0P-9e-NBq"/>
                             <constraint firstItem="qRy-PS-Qey" firstAttribute="top" secondItem="D4X-FT-mdb" secondAttribute="bottom" constant="31" id="ay3-MH-bK6"/>
+                            <constraint firstItem="W5K-QP-aPi" firstAttribute="trailing" secondItem="8Fp-dh-zxL" secondAttribute="trailing" constant="-5" id="dCX-IW-0zy"/>
                             <constraint firstAttribute="centerX" secondItem="qRy-PS-Qey" secondAttribute="centerX" id="j6L-8i-AD3"/>
                             <constraint firstItem="PVv-7W-vEF" firstAttribute="top" secondItem="a27-zQ-2Qo" secondAttribute="bottom" constant="24" id="jdH-1h-orK"/>
                             <constraint firstAttribute="centerX" secondItem="tPK-vs-cCs" secondAttribute="centerX" id="ktc-ze-lL1"/>
@@ -483,6 +505,11 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="1BD-da-ULc"/>
+                                <exclude reference="1Xq-a7-MHJ"/>
+                                <exclude reference="49D-6k-hRs"/>
+                                <exclude reference="VMq-i2-7tR"/>
+                                <exclude reference="dCX-IW-0zy"/>
                                 <exclude reference="ay3-MH-bK6"/>
                             </mask>
                         </variation>
@@ -491,6 +518,7 @@
                     <connections>
                         <outlet property="distanceSlider" destination="0P4-gb-rgx" id="Bdb-gO-pbp"/>
                         <outlet property="distanceTextField" destination="9vA-3L-UQ4" id="DaI-dA-TWJ"/>
+                        <outlet property="fourDollarSignButton" destination="W5K-QP-aPi" id="dx0-b2-5El"/>
                         <outlet property="oneDollarSignButton" destination="aOi-jc-JLo" id="bgS-PJ-tLS"/>
                         <outlet property="profileName" destination="tPK-vs-cCs" id="LOk-yd-cyG"/>
                         <outlet property="threeDollarSignButton" destination="8Fp-dh-zxL" id="DVX-8W-hl9"/>
