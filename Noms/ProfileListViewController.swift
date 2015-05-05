@@ -33,7 +33,7 @@ class ProfileListViewController: UIViewController, UITableViewDelegate, UITableV
         
         self.profileList.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
-        self.items = [];//["Temp", "Hi", "Lol", "kek"] //load the things here
+        self.items = []; //load the things here
         var query = PFQuery(className:"Preferences");
         var currentID = PFUser.currentUser()!.objectId;
         query.whereKey("ID", equalTo:currentID!);
@@ -92,6 +92,7 @@ class ProfileListViewController: UIViewController, UITableViewDelegate, UITableV
         println("Loading profile "+self.items[indexPath.row])
         var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults();
         defaults.setObject(self.items[indexPath.row], forKey: "Name");
+        // Return to ViewController with updated profile
         self.dismissViewControllerAnimated(true, completion: {
             NSNotificationCenter.defaultCenter().postNotificationName("updateProfilePage", object: nil);
         });

@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     var restaurantList:[String]!;
     var indexOfRestaurant:Int!;
     var currentRestaurantID:String!;
-    var distString:String!;
+    var distSend:Double!;
     
     // PROFILE NAME LABEL
     @IBOutlet weak var profileNameLabel: UILabel!
@@ -37,17 +37,16 @@ class ViewController: UIViewController {
     
     // ON CLICK GREEN BUTTON
     @IBAction func more_details(sender: UIButton) {
-        println(currentRestaurantID);
         let defaults = NSUserDefaults.standardUserDefaults();
         defaults.setObject(currentRestaurantID, forKey: "rest_id");
-        defaults.setObject(self.distString, forKey:"dist_string");
+        defaults.setDouble(self.distSend, forKey:"dist_string");
         NSNotificationCenter.defaultCenter().postNotificationName("updateDetailInfo", object: nil);
 
     }
     
     // ON CLICK RED BUTTON
     @IBAction func refreshOption(sender: AnyObject) {
-        let arrLength = count(restaurantList);
+        let arrLength = count(self.restaurantList);
         if (indexOfRestaurant < arrLength - 1) {
             indexOfRestaurant = indexOfRestaurant + 1;
         }
@@ -55,7 +54,7 @@ class ViewController: UIViewController {
             indexOfRestaurant = 0;
         }
         NSLog(String(indexOfRestaurant));
-        var currentRestaurantID = restaurantList[indexOfRestaurant];
+        var currentRestaurantID = self.restaurantList[indexOfRestaurant];
         findRestaurantWithID(currentRestaurantID);
         var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         defaults.setObject(currentRestaurantID, forKey:"rest_id");
@@ -171,8 +170,9 @@ class ViewController: UIViewController {
                 let loc2 = PFGeoPoint(latitude: self.latitude, longitude: self.longitude);
                 var distString_orig:String = String(format:"%.1f", loc1.distanceInMilesTo(loc2));
                 
-                self.distString = distString_orig + " miles away";
-                self.restaurantDistance.text = self.distString;
+                let distString = distString_orig + " miles away";
+                self.restaurantDistance.text = distString;
+                self.distSend = loc1.distanceInMilesTo(loc2);
             }
         }
 
@@ -203,7 +203,6 @@ class ViewController: UIViewController {
 
 
     override func viewDidLoad() {
-        println("went to view load");
         super.viewDidLoad()
         self.restaurantNameLabel.numberOfLines = 0;
         restaurantNameLabel.textAlignment = NSTextAlignment.Center;
@@ -222,7 +221,6 @@ class ViewController: UIViewController {
             // SETS UP DATASTORE
             var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults();
             
-            println("please work now");
             // FINDS CURRENT PROFILE NAME
             if let currentProfileNameIsNotNil = defaults.objectForKey("Name") as? String {
                 currentProfileName = defaults.objectForKey("Name") as! String

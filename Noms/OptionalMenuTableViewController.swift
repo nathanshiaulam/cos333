@@ -80,7 +80,6 @@ class OptionalMenuTableViewController: UITableViewController {
         else {
             options = options + "0"
         }
-        println(options + " options\n");
         defaults.setObject(ambi, forKey:"Ambience");
         defaults.setObject(options, forKey:"Options");
         var currentProfileName = defaults.objectForKey("Name") as! String;
