@@ -214,20 +214,21 @@ Parse.Cloud.define("MatchRestaurant", function(request, response) {
                   //compute vector norm
                   var restscore = Math.sqrt(Math.pow(distval*distweight, 2)+Math.pow(costval*costweight, 2)+Math.pow(optionsval*optionsweight, 2)+Math.pow(cuisineval*cuisineweight, 2));
                   //adds the rest score pair to restscorearrays
-                  restscorearray[restscorearray.length] = {name: rest.get("url"), score: restscore, objid: rest.id.toString()};
+                  if (rest.get("big_img_url") !== "")
+                     restscorearray[restscorearray.length] = {name: rest.get("url"), score: restscore, objid: rest.id.toString()};
 
                }
                // sort restscorearray by score
                restscorearray.sort(sortfunction);
                var len = 20;
                if (restscorearray.length < 20) {
-                  len = 20;
+                  len = restscorearray;
                }
                for (var i = 0; i < len; i++) {
                   ans[ans.length] = restscorearray[i]["objid"];
                }
                if (ans.length === 0) {
-                  ans[0] = "3ciH3tuf3m";
+                  ans[0] = "AcrRPC4Bmf";
                }
                response.success(ans);
             },
