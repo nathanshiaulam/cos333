@@ -21,9 +21,9 @@ class RestaurantDetailViewController: UIViewController {
     var city:String!;
     var state:String!;
     var zip:String!;
+    var curr_lat:Double!;
+    var curr_long:Double!;
     var placemarkMade:CLPlacemark!;
-    var latitude:Double!;
-    var longitude:Double!;
     var categories:[String]!;
     
     @IBOutlet weak var restaurantImage: UIImageView!
@@ -41,7 +41,7 @@ class RestaurantDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateDetailInfo", name: "updateDetailInfo", object: nil);
-
+        
         updateDetailInfo();
         
     }
@@ -78,7 +78,9 @@ class RestaurantDetailViewController: UIViewController {
                 let stars = restaurant["stars"] as! Double;
                 self.ratingLabel.text = String(format:"%.1f stars", stars);
                 self.address = restaurant["full_address"] as! String;
-                self.distLabel.text = defaults.stringForKey("dist_string");
+                var distString_orig:String = String(format:"%.1f", defaults.stringForKey("dist_string")!);
+                let distString = distString_orig + " miles away";
+                self.distLabel.text = distString;
                 self.categories = restaurant["categories"] as! [String];
                 let string_cat = ", ".join(self.categories)
                 self.categoryLabel.text = string_cat;
@@ -87,16 +89,33 @@ class RestaurantDetailViewController: UIViewController {
                 let latitude = restaurant["latitude"] as! Double;
                 let longitude = restaurant["longitude"] as! Double;
                 
-                let userLocation = CLLocationCoordinate2D(latitude: latitude, longitude: longitude);
+                let restLocation = CLLocationCoordinate2D(latitude: latitude, longitude: longitude);
+                
+                let locationManager = CLLocationManager()
+                locationManager.desiredAccuracy = kCLLocationAccuracyBest
+                locationManager.requestAlwaysAuthorization()
+                locationManager.startUpdatingLocation()
+                let locValue = locationManager.location.coordinate
+                self.curr_lat = locValue.latitude as Double;
+                self.curr_long = locValue.longitude as Double;
+                let new_lat = 0.5 * (restLocation.latitude + self.curr_lat);
+                let new_long = 0.5 * (restLocation.longitude + self.curr_long);
+                let middleLocation = CLLocationCoordinate2D(latitude: new_lat, longitude: new_long);
+                var distBetw = defaults.doubleForKey("dist_string") as Double;
+                distBetw = distBetw * 1609.34;
+
                 
                 let region = MKCoordinateRegionMakeWithDistance(
-                    userLocation, 2000, 2000)
+                    middleLocation, distBetw + 30, distBetw+30);
                 
                 // Create pin for map of restaurant
                 let locationAnnotation = MKPointAnnotation();
                 //set properties of the MKPointAnnotation object
-                locationAnnotation.coordinate = userLocation;
+                locationAnnotation.coordinate = restLocation;
                 locationAnnotation.title = self.restNameLabel.text;
+                
+                // Show current user location (blue dot)
+                self.restMap.showsUserLocation = true;
                 
                 //add the annotation to the map
                 self.restMap.addAnnotation(locationAnnotation);
@@ -110,6 +129,14 @@ class RestaurantDetailViewController: UIViewController {
             }
         }
     }
+    
+    func locationManager(manager: CLLocationManager!,   didUpdateLocations locations: [AnyObject]!) {
+        let locValue = manager.location.coordinate
+        curr_lat = locValue.latitude
+        curr_long = locValue.longitude
+        println("locations = \(locValue.latitude) \(locValue.longitude)")
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
