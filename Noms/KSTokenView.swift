@@ -108,7 +108,7 @@ class KSTokenView: UIView {
    var shouldDeleteTokenOnBackspace = true
    
    /// Only works for iPhone now, not iPad devices. default is false. If true, search results are hidden when one of them is selected
-   var shouldHideSearchResultsOnSelect = false
+   var shouldHideSearchResultsOnSelect = true
    
    /// default is false. If true, already added token still appears in search results
    var shouldDisplayAlreadyTokenized = false
@@ -117,7 +117,7 @@ class KSTokenView: UIView {
    var shouldSortResultsAlphabatically = true
    
    /// default is true. If false, token can only be added from picking search results. All the text input would be ignored
-   var shouldAddTokenFromTextInput = true
+   var shouldAddTokenFromTextInput = false
    
    /// default is 1
    var minimumCharactersToSearch = 1
