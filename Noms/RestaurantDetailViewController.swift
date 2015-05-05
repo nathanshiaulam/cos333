@@ -68,7 +68,7 @@ class RestaurantDetailViewController: UIViewController {
                 let num = restaurant["phone_number"] as! String;
                 self.number = self.stripNum(num);
                 if self.number == nil {
-                    // delete call button
+                    self.callButton.hidden = true;
                 }
                 self.yelp_link = restaurant["url"] as! String;
                 //let yelp_link = NSURL(string: temp_rest_url);
@@ -92,6 +92,13 @@ class RestaurantDetailViewController: UIViewController {
                 let region = MKCoordinateRegionMakeWithDistance(
                     userLocation, 2000, 2000)
                 
+                let locationAnnotation = MKPointAnnotation();
+                //set properties of the MKPointAnnotation object
+                locationAnnotation.coordinate = userLocation;
+                locationAnnotation.title = self.restNameLabel.text;
+                
+                //add the annotation to the map
+                self.restMap.addAnnotation(locationAnnotation);
                 self.restMap.setRegion(region, animated: true)
                 
                 let url = NSURL(string: restaurant["big_img_url"]! as! String);
