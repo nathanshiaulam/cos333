@@ -32,20 +32,12 @@ class PreferenceMenuViewController: UIViewController {
     var fromNew:Bool!;
     var currentProfileName:String!;
     
-    // OPTIONAL FIELDS
-//    var creditCards:Int!;
-//    var outdoorSeating:Int!;
-//    var reservations:Int!;
-//    var takeOut:Int!;
-//    var wifi:Int!;
-//    var alcohol:Int!;
     
     // VAR PICKER DATA
 //    var pickerData = ["Chinese", "Indian", "Mexican", "American", "Coffee & Tea", "Thai", "Greek", "Japanese", "French", "Italian", "German", "Mediterranean", "Vietnamese", "Bubble Tea", "Korean", "African", "Spanish", "Brazillian", "Cupcakes", "Filipino", "Greek", "Seafood", "Steakhouses", "Breweries", "Malaysian", "Bakeries", "Dessert"];
     
     // DOLLAR SIGN CHANGE
     @IBAction func onClickOneDollar(sender: UIButton) {
-        println("1");
         var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         defaults.setObject(1, forKey:"Price");
         if (oneDollarSignButton.selected == true && twoDollarSignButton.selected == false && threeDollarSignButton.selected == false && fourDollarSignButton.selected == false) {
@@ -76,7 +68,6 @@ class PreferenceMenuViewController: UIViewController {
         }
     }
     @IBAction func onClickTwoDollar(sender: UIButton) {
-        println("2");
         var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults();
         
         if (oneDollarSignButton.selected == true && twoDollarSignButton.selected == true && threeDollarSignButton.selected == false && fourDollarSignButton.selected == false) {
@@ -105,7 +96,6 @@ class PreferenceMenuViewController: UIViewController {
         }
     }
     @IBAction func onClickThreeDollar(sender: UIButton) {
-        println("3");
         var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         if (oneDollarSignButton.selected == true && twoDollarSignButton.selected == true && threeDollarSignButton.selected == true
             && fourDollarSignButton.selected == false) {
@@ -123,7 +113,6 @@ class PreferenceMenuViewController: UIViewController {
     }
     
     @IBAction func onClickFourDollar(sender: UIButton) {
-        println("went here\n");
         var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         if (oneDollarSignButton.selected == true && twoDollarSignButton.selected == true && threeDollarSignButton.selected == true && fourDollarSignButton.selected == true) {
             oneDollarSignButton.selected = true;
@@ -196,12 +185,6 @@ class PreferenceMenuViewController: UIViewController {
             newProfile["Distance"] = defaults.objectForKey("Distance") as! Int;
             newProfile["Ambience"] = defaults.objectForKey("Ambience") as! [String];
             newProfile["Options"] = defaults.objectForKey("Options") as! String;
-//            newProfile["CreditCards"] = creditCards;
-//            newProfile["OutdoorSeating"] = outdoorSeating;
-//            newProfile["Reservations"] = reservations;
-//            newProfile["TakeOut"] = takeOut;
-//            newProfile["Wifi"] = wifi;
-//            newProfile["Alcohol"] = alcohol;
             
             // SAVES NEW PROFILE
             newProfile.saveInBackgroundWithBlock {
@@ -232,12 +215,6 @@ class PreferenceMenuViewController: UIViewController {
                     preference["Distance"] = defaults.objectForKey("Distance") as! Int;
                     preference["Ambience"] = defaults.objectForKey("Ambience") as! [String];
                     preference["Options"] = defaults.objectForKey("Options") as! String;
-//                    preference["CreditCards"] = self.creditCards;
-//                    preference["OutdoorSeating"] = self.outdoorSeating;
-//                    preference["Reservations"] = self.reservations;
-//                    preference["TakeOut"] = self.takeOut;
-//                    preference["Wifi"] = self.wifi;
-//                    preference["Alcohol"] = self.alcohol;
                     preference.saveInBackground();
                     self.navigationController?.popToRootViewControllerAnimated(true);
                 }

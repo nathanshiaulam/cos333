@@ -56,7 +56,6 @@ class RestaurantDetailViewController: UIViewController {
         var query = PFQuery(className: "Restaurants");
         let defaults = NSUserDefaults.standardUserDefaults()
         let restaurantID = defaults.stringForKey("rest_id")
-        println(restaurantID);
         query.whereKey("objectId", equalTo: restaurantID!);
         query.getFirstObjectInBackgroundWithBlock{
             (restaurant: PFObject?, error: NSError?) -> Void in
@@ -70,8 +69,9 @@ class RestaurantDetailViewController: UIViewController {
                 if self.number == nil {
                     self.callButton.hidden = true;
                 }
+                // Create yelp link, price label, distance label, rating label, address for navigation
                 self.yelp_link = restaurant["url"] as! String;
-                //let yelp_link = NSURL(string: temp_rest_url);
+                
                 let price = restaurant["cost"] as! String;
                 self.priceLabel.text = price;
                 let price_length = count(price)
@@ -92,6 +92,7 @@ class RestaurantDetailViewController: UIViewController {
                 let region = MKCoordinateRegionMakeWithDistance(
                     userLocation, 2000, 2000)
                 
+                // Create pin for map of restaurant
                 let locationAnnotation = MKPointAnnotation();
                 //set properties of the MKPointAnnotation object
                 locationAnnotation.coordinate = userLocation;
@@ -104,7 +105,7 @@ class RestaurantDetailViewController: UIViewController {
                 let url = NSURL(string: restaurant["big_img_url"]! as! String);
                 let data = NSData(contentsOfURL: url!);
                 self.restaurantImage.image = UIImage(data:data!);
-                //                self.restaurantImage.contentMode = UIViewContentMode.ScaleAspectFit;
+                //  self.restaurantImage.contentMode = UIViewContentMode.ScaleAspectFit;
             
             }
         }
@@ -113,6 +114,8 @@ class RestaurantDetailViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    // Send to Yelp page of restaurant
     @IBAction func click_yelp(sender: AnyObject) {
         if UIApplication.sharedApplication().openURL(NSURL(string: yelp_link)!){
             println("url successfully opened")
@@ -121,10 +124,10 @@ class RestaurantDetailViewController: UIViewController {
         }
     }
     
+    // Navigate from current location to restaurant
     @IBAction func click_navigate(sender: UIButton) {
         let length = count(self.address)
         let geoCoder = CLGeocoder()
-        println(self.address);
         geoCoder.geocodeAddressString(self.address, completionHandler:
             {(placemarks: [AnyObject]!, error: NSError!) in
                 if error != nil {
@@ -138,11 +141,13 @@ class RestaurantDetailViewController: UIViewController {
         })
     }
     
+    // Call restaurant's number
     @IBAction func click_call(sender: UIButton) {
         UIApplication.sharedApplication().openURL(NSURL(string: "tel://" + self.number)!)
 
     }
     
+    // Show restaurant pin on map
     func showMap() {
         let place = MKPlacemark(placemark: placemarkMade);
         let mapItem = MKMapItem(placemark: place)
@@ -151,6 +156,7 @@ class RestaurantDetailViewController: UIViewController {
         mapItem.openInMapsWithLaunchOptions(options)
     }
     
+    // Strip restaurant's number from Parse
     func stripNum(var num: String) -> String{
         num = num.stringByReplacingOccurrencesOfString("(", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil);
         num = num.stringByReplacingOccurrencesOfString(")", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil);

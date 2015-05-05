@@ -37,7 +37,6 @@ class ViewController: UIViewController {
     
     // ON CLICK GREEN BUTTON
     @IBAction func more_details(sender: UIButton) {
-        println(currentRestaurantID);
         let defaults = NSUserDefaults.standardUserDefaults();
         defaults.setObject(currentRestaurantID, forKey: "rest_id");
         defaults.setObject(self.distString, forKey:"dist_string");
@@ -203,7 +202,6 @@ class ViewController: UIViewController {
 
 
     override func viewDidLoad() {
-        println("went to view load");
         super.viewDidLoad()
         self.restaurantNameLabel.numberOfLines = 0;
         restaurantNameLabel.textAlignment = NSTextAlignment.Center;
@@ -222,7 +220,6 @@ class ViewController: UIViewController {
             // SETS UP DATASTORE
             var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults();
             
-            println("please work now");
             // FINDS CURRENT PROFILE NAME
             if let currentProfileNameIsNotNil = defaults.objectForKey("Name") as? String {
                 currentProfileName = defaults.objectForKey("Name") as! String
