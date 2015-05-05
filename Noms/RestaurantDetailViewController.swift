@@ -83,6 +83,13 @@ class RestaurantDetailViewController: UIViewController {
                 let region = MKCoordinateRegionMakeWithDistance(
                     userLocation, 2000, 2000)
                 
+                let locationAnnotation = MKPointAnnotation();
+                //set properties of the MKPointAnnotation object
+                locationAnnotation.coordinate = userLocation;
+                locationAnnotation.title = self.restNameLabel.text;
+                
+                //add the annotation to the map
+                self.restMap.addAnnotation(locationAnnotation);
                 self.restMap.setRegion(region, animated: true)
                 
                 
