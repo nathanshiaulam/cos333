@@ -230,7 +230,9 @@ class ViewController: UIViewController {
                 currentProfileName = defaults.objectForKey("Name") as! String
             }
             self.profileNameLabel.text = currentProfileName;
-            
+            if currentRestaurantID != nil {
+                defaults.setObject(currentRestaurantID, forKey: "rest_id");
+            }
             // GETS GEOPOINT ON PAGE LOAD
             PFGeoPoint.geoPointForCurrentLocationInBackground {
                 (geoPoint: PFGeoPoint?, error:NSError?) -> Void in
