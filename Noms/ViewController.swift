@@ -28,6 +28,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var restaurantNameLabel: UILabel!
     @IBOutlet weak var restaurantImage: UIImageView!
     @IBOutlet weak var restaurantDistance: UILabel!
+    @IBOutlet weak var grayOverlay: UIView!
     
     // LOGS USER OUT
     @IBAction func userLogOut(sender: UIButton) {
@@ -184,8 +185,14 @@ class ViewController: UIViewController {
     
     // FORMATS IMAGE, RETURNS UIIMAGEVIEW WTIH DESIRED PROPERTIES
     func formatImage(var restaurantImage: UIImageView) {
-        restaurantImage.layer.cornerRadius = restaurantImage.frame.size.width / 2;
+        restaurantImage.layer.cornerRadius = restaurantImage.frame.size.width / 2.2;
         restaurantImage.clipsToBounds = true;
+    }
+    
+    // FORMATS IMAGE, RETURNS UIIMAGEVIEW WTIH DESIRED PROPERTIES
+    func formatView(var view: UIView) {
+        view.layer.cornerRadius = view.frame.size.width / 2.2;
+        view.clipsToBounds = true;
     }
     
     // RETURNS A STRING IN THE FORMAT OF "[distance] miles away"
@@ -208,6 +215,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        formatView(grayOverlay); 
         self.restaurantNameLabel.numberOfLines = 0;
         restaurantNameLabel.textAlignment = NSTextAlignment.Center;
         // CREATES LISTENERS WHEN SEGUING FROM OTHER VCS
