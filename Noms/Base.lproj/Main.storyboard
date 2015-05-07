@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="I0G-7g-b9w">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="I0G-7g-b9w">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -333,11 +333,11 @@
                                 <exclude reference="V7o-vf-IK2"/>
                                 <exclude reference="jXp-Wh-AF5"/>
                                 <exclude reference="pzz-do-tK9"/>
-                                <exclude reference="BYH-1C-JWi"/>
                                 <exclude reference="A6E-jQ-Akh"/>
                                 <exclude reference="W9F-gN-Tfr"/>
                                 <exclude reference="fwF-MC-crC"/>
                                 <exclude reference="h2l-RR-CPg"/>
+                                <exclude reference="BYH-1C-JWi"/>
                                 <exclude reference="d01-GO-Hqu"/>
                                 <exclude reference="1ON-hx-NMm"/>
                                 <exclude reference="FTM-qA-G4M"/>
@@ -1004,11 +1004,11 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="NbL-wv-T6m"/>
                                 <exclude reference="1fm-g2-5CT"/>
                                 <exclude reference="N4U-OQ-LDz"/>
                                 <exclude reference="aJp-jg-DYz"/>
                                 <exclude reference="jgd-qp-sFw"/>
+                                <exclude reference="NbL-wv-T6m"/>
                                 <exclude reference="dpI-Th-tq9"/>
                                 <exclude reference="acx-FQ-oUd"/>
                                 <exclude reference="lCw-ZS-Bzo"/>
