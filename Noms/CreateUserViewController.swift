@@ -20,13 +20,13 @@ class CreateUserViewController: UIViewController {
     }
     // CREATES USER GIVEN CORRECT USER AND PASSWORD
     @IBAction func enterButtonClicked(sender: UIButton) {
-        self.createUser(usernameField.text, password:passwordField.text);
+        self.createUser(usernameField.text, password:passwordField.text, email:emailField.text);
     }
-    func createUser(username: String, password: String) {
+    func createUser(username: String, password: String, email: String) {
         var newUser = PFUser();
         
         // ENSURES FIELDS ARE NOT EMPTY
-        if (count(username) == 0 || count(password) == 0) {
+        if (count(username) == 0 || count(password) == 0 || count(email) == 0) {
             var alert = UIAlertController(title: "Submission Failure", message: "Invalid username or password", preferredStyle: UIAlertControllerStyle.Alert);
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil));
             self.presentViewController(alert, animated: true, completion: nil);
@@ -37,6 +37,7 @@ class CreateUserViewController: UIViewController {
         // SETS ATTRIBUTES OF NEW USER
         newUser.username = username;
         newUser.password = password;
+        newUser.email = email;
         
         newUser.signUpInBackgroundWithBlock {
             (succeeded, error) -> Void in
@@ -60,7 +61,7 @@ class CreateUserViewController: UIViewController {
             passwordField.becomeFirstResponder();
         }
         else {
-            self.createUser(usernameField.text, password: passwordField.text);
+            self.createUser(usernameField.text, password: passwordField.text, email:emailField.text);
         }
         return true;
     }
