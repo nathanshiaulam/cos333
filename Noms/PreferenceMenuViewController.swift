@@ -228,6 +228,7 @@ class PreferenceMenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults();
         tokenView.delegate = self
         tokenView.promptText = ""
         tokenView.placeholder = "Type to search"
@@ -235,12 +236,11 @@ class PreferenceMenuViewController: UIViewController {
         tokenView.maxTokenLimit = 5
         tokenView.style = .Rounded
         
-        profileName.text = currentProfileName;
+        profileName.text = defaults.objectForKey("Name") as! String;
         oneDollarSignButton.setTitleColor(UIColor.yellowColor(), forState: UIControlState.Selected);
         twoDollarSignButton.setTitleColor(UIColor.yellowColor(), forState: UIControlState.Selected);
         threeDollarSignButton.setTitleColor(UIColor.yellowColor(), forState: UIControlState.Selected);
         fourDollarSignButton.setTitleColor(UIColor.yellowColor(), forState: UIControlState.Selected);
-        var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults();
         
         var amount = defaults.objectForKey("Price") as! Int;
         var distance = defaults.objectForKey("Distance") as! Int;
