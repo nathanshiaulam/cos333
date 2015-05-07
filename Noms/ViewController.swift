@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     var currentProfileName:String!;
     var latitude:Double!;
     var longitude:Double!;
-    var restaurantList:[String]!;
+    var restaurantList:[String]! = ["kepseEzLQJ"];
     var indexOfRestaurant:Int!;
     var currentRestaurantID:String!;
     var distSend:Double!;
@@ -38,6 +38,9 @@ class ViewController: UIViewController {
     
     // ON CLICK GREEN BUTTON
     @IBAction func more_details(sender: UIButton) {
+        if (count(self.restaurantList) == 1 && self.restaurantList[0] == "kepseEzLQJ") {
+            return;
+        }
         let defaults = NSUserDefaults.standardUserDefaults();
 //        defaults.setObject(currentRestaurantID, forKey: "rest_id");
         defaults.setDouble(self.distSend, forKey:"dist_string");
