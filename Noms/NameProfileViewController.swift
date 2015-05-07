@@ -15,7 +15,8 @@ class NameProfileViewController: UIViewController {
     @IBOutlet weak var nameProfileField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        nameProfileField.layer.cornerRadius = 0;
+        nameProfileField.textColor = UIColor.whiteColor();
         // Do any additional setup after loading the view.
     }
 
