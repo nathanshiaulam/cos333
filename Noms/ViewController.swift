@@ -191,13 +191,13 @@ class ViewController: UIViewController {
     
     // FORMATS IMAGE, RETURNS UIIMAGEVIEW WTIH DESIRED PROPERTIES
     func formatImage(var restaurantImage: UIImageView) {
-        restaurantImage.layer.cornerRadius = restaurantImage.frame.size.width / 2.2;
+        restaurantImage.layer.cornerRadius = restaurantImage.frame.size.width / 2;
         restaurantImage.clipsToBounds = true;
     }
     
     // FORMATS IMAGE, RETURNS UIIMAGEVIEW WTIH DESIRED PROPERTIES
     func formatView(var view: UIView) {
-        view.layer.cornerRadius = view.frame.size.width / 2.2;
+        view.layer.cornerRadius = view.frame.size.width / 2;
         view.clipsToBounds = true;
     }
     
