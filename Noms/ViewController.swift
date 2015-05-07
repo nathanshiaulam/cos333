@@ -198,6 +198,7 @@ class ViewController: UIViewController {
                 // FORMAT IMAGE WITH FUNCTION http://www.appcoda.com/ios-programming-circular-image-calayer/
                 // FOLLOW THE GUIDE ABOVE, SHOULD TAKE IN AN IMAGE AS A PARAMETER AND RETURN AN IMAGE WITH THE RIGHT DIMENSIONS
                 self.formatImage(self.restaurantImage); //do pointers work like this?
+                
                 self.address = restaurant["full_address"] as! String;
                 
                 // CALCULATE DISTANCE AND SET DISTANCE TEXT
