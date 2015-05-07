@@ -133,8 +133,10 @@ class ViewController: UIViewController {
                     (result: AnyObject?, error: NSError?) -> Void in
                     if error == nil {
                         println(result);
+                        var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults();
                         self.restaurantList = result as! [String];
                         self.currentRestaurantID = self.restaurantList[0];
+                        defaults.setObject(self.currentRestaurantID, forKey:"rest_id");
                         self.findRestaurantWithID(self.currentRestaurantID); // FINDS RESTAURANT WITH ID
                     }
                 }
