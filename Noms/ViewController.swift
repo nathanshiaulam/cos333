@@ -9,16 +9,19 @@
 import UIKit
 import Parse
 import Darwin
+import MapKit
 
 class ViewController: UIViewController {
     
     // LOCAL CONSTANTS
+    var address:String!;
     var currentProfileName:String!;
     var latitude:Double!;
     var longitude:Double!;
     var restaurantList:[String]! = ["kepseEzLQJ"];
     var indexOfRestaurant:Int!;
     var currentRestaurantID:String!;
+    var placemarkMade:CLPlacemark!;
     var distSend:Double!;
     
     // PROFILE NAME LABEL
@@ -37,6 +40,19 @@ class ViewController: UIViewController {
     }
     
     @IBAction func goToMap(sender: UIButton) {
+        let length = count(self.address)
+        let geoCoder = CLGeocoder()
+        geoCoder.geocodeAddressString(self.address, completionHandler:
+            {(placemarks: [AnyObject]!, error: NSError!) in
+                if error != nil {
+                    println("Geocode failed with error: \(error.localizedDescription)")
+                    
+                } else if placemarks.count > 0 {
+                    self.placemarkMade = placemarks[0] as! CLPlacemark;
+                    let location = self.placemarkMade.location;
+                    self.showMap();
+                }
+        })
     }
     // ON CLICK PURPLE BUTTON
     @IBAction func more_details(sender: UIButton) {
@@ -68,6 +84,14 @@ class ViewController: UIViewController {
         defaults.setObject(currentRestaurantID, forKey:"rest_id");
 
         findRestaurantWithID(currentRestaurantID);
+    }
+    
+    func showMap() {
+        let place = MKPlacemark(placemark: placemarkMade);
+        let mapItem = MKMapItem(placemark: place)
+        let options = [MKLaunchOptionsDirectionsModeKey:
+        MKLaunchOptionsDirectionsModeDriving]
+        mapItem.openInMapsWithLaunchOptions(options)
     }
     
     // THIS FUNCTION IS CALLED WHEN YOU POP FROM PREFERENCES OR WHEN YOU HIT THE REFRESH BUTTON
@@ -174,7 +198,8 @@ class ViewController: UIViewController {
                 // FORMAT IMAGE WITH FUNCTION http://www.appcoda.com/ios-programming-circular-image-calayer/
                 // FOLLOW THE GUIDE ABOVE, SHOULD TAKE IN AN IMAGE AS A PARAMETER AND RETURN AN IMAGE WITH THE RIGHT DIMENSIONS
                 self.formatImage(self.restaurantImage); //do pointers work like this?
-
+                self.address = restaurant["full_address"] as! String;
+                
                 // CALCULATE DISTANCE AND SET DISTANCE TEXT
                 let latit1 = restaurant["latitude"] as! Double;
                 let longi1 = restaurant["longitude"] as! Double;
@@ -261,6 +286,14 @@ class ViewController: UIViewController {
                 }
             }
         }
+        var pulseAnimation:CABasicAnimation = CABasicAnimation(keyPath: "opacity");
+        pulseAnimation.duration = 30.0;
+        pulseAnimation.toValue = NSNumber(float: 1.0);
+        pulseAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut);
+        pulseAnimation.autoreverses = true;
+        pulseAnimation.repeatCount = FLT_MAX;
+        self.view.layer.addAnimation(pulseAnimation, forKey: nil)
+
         // Do any additional setup after loading the view.
     }
     

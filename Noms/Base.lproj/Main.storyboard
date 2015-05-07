@@ -958,18 +958,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pao-Px-vGO">
-                                <rect key="frame" x="189" y="285" width="223" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="223" id="VM3-6D-ue2"/>
-                                    <constraint firstAttribute="height" constant="30" id="adV-gi-zWI"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="1uP-vA-RHQ" id="3qQ-GN-e4g"/>
-                                </connections>
-                            </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wZM-ZN-hcT">
                                 <rect key="frame" x="189" y="315" width="223" height="30"/>
                                 <constraints>
@@ -1011,6 +999,18 @@
                                     <action selector="onClickLogIn:" destination="1uP-vA-RHQ" eventType="touchUpInside" id="Rxu-dq-krO"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pao-Px-vGO">
+                                <rect key="frame" x="189" y="285" width="223" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="223" id="VM3-6D-ue2"/>
+                                    <constraint firstAttribute="height" constant="30" id="adV-gi-zWI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="1uP-vA-RHQ" id="3qQ-GN-e4g"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.0039215686269999999" green="0.79215686269999996" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
