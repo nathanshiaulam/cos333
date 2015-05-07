@@ -78,11 +78,6 @@
                                     <segue destination="gmH-8N-laA" kind="presentation" modalPresentationStyle="currentContext" modalTransitionStyle="crossDissolve" id="Mxr-sM-s2e"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile Name" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hhz-Co-GP2">
-                                <rect key="frame" x="74" y="100" width="69" height="14"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wbe-rU-GWk">
                                 <rect key="frame" x="0.0" y="506" width="600" height="50"/>
                                 <color key="backgroundColor" red="0.95403439153439151" green="0.34825618657092061" blue="0.21116610357272358" alpha="1" colorSpace="calibratedRGB"/>
@@ -260,9 +255,14 @@
                                 </variation>
                                 <connections>
                                     <action selector="more_details:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2Xt-Ck-pAp"/>
-                                    <segue destination="vAP-qy-9hN" kind="show" id="hB9-sz-kwW"/>
+                                    <segue destination="vAP-qy-9hN" kind="show" identifier="toDetails" id="hB9-sz-kwW"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Profile Name" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hhz-Co-GP2">
+                                <rect key="frame" x="74" y="100" width="69" height="14"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -298,7 +298,7 @@
                             <constraint firstItem="3us-3A-FnD" firstAttribute="top" secondItem="20y-x6-m25" secondAttribute="bottom" constant="15" id="dhK-oD-dMr"/>
                             <constraint firstItem="lZb-Hi-wXf" firstAttribute="leading" secondItem="uUx-ag-0NP" secondAttribute="trailing" constant="-90" id="feO-oF-67m"/>
                             <constraint firstItem="A6r-4V-1h8" firstAttribute="height" secondItem="uUx-ag-0NP" secondAttribute="height" id="fwF-MC-crC"/>
-                            <constraint firstItem="hhz-Co-GP2" firstAttribute="centerX" secondItem="bpz-W6-Eud" secondAttribute="centerX" constant="60" id="gFc-ef-Mbc"/>
+                            <constraint firstItem="hhz-Co-GP2" firstAttribute="centerX" secondItem="bpz-W6-Eud" secondAttribute="centerX" constant="70" id="gFc-ef-Mbc"/>
                             <constraint firstItem="20y-x6-m25" firstAttribute="centerX" secondItem="uUx-ag-0NP" secondAttribute="centerX" constant="-29" id="gYI-5M-pHS"/>
                             <constraint firstItem="lZb-Hi-wXf" firstAttribute="height" secondItem="20y-x6-m25" secondAttribute="height" id="gsh-hW-2Oj"/>
                             <constraint firstItem="A6r-4V-1h8" firstAttribute="width" secondItem="uUx-ag-0NP" secondAttribute="width" id="h2l-RR-CPg"/>

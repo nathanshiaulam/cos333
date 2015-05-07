@@ -39,7 +39,11 @@ class ViewController: UIViewController {
         self.performSegueWithIdentifier("toUserLogin", sender: self);
     }
     
+    //ON CLICK GREEN BUTTON
     @IBAction func goToMap(sender: UIButton) {
+        if (count(self.restaurantList) == 1 && self.restaurantList[0] == "kepseEzLQJ") {
+            return;
+        }
         let length = count(self.address)
         let geoCoder = CLGeocoder()
         geoCoder.geocodeAddressString(self.address, completionHandler:
@@ -54,7 +58,7 @@ class ViewController: UIViewController {
                 }
         })
     }
-    // ON CLICK PURPLE BUTTON
+    // ON CLICK BLUE BUTTON
     @IBAction func more_details(sender: UIButton) {
         if (count(self.restaurantList) == 1 && self.restaurantList[0] == "kepseEzLQJ") {
             return;
@@ -63,13 +67,15 @@ class ViewController: UIViewController {
 //        defaults.setObject(currentRestaurantID, forKey: "rest_id");
         defaults.setDouble(self.distSend, forKey:"dist_string");
         NSNotificationCenter.defaultCenter().postNotificationName("updateDetailInfo", object: nil);
-
+        performSegueWithIdentifier("toDetails", sender: self)
     }
     
     // ON CLICK RED BUTTON
     @IBAction func refreshOption(sender: AnyObject) {
         var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
-
+        if (count(self.restaurantList) == 1 && self.restaurantList[0] == "kepseEzLQJ") {
+            return;
+        }
         let arrLength = count(self.restaurantList);
         if (indexOfRestaurant < arrLength - 1) {
             indexOfRestaurant = indexOfRestaurant + 1;
@@ -324,6 +330,14 @@ class ViewController: UIViewController {
             let VC = segue.destinationViewController as! PreferenceMenuViewController;
             
             VC.fromNew = false; // Tells next VC that we don't create new Pref
+        }
+        if segue.identifier == "toDetails" {
+            if (count(self.restaurantList) == 1 && self.restaurantList[0] == "kepseEzLQJ") {
+            let errorString = "Please wait for a restaurant to load!"
+            var alert = UIAlertController(title: "Still loading.", message: errorString as String, preferredStyle: UIAlertControllerStyle.Alert);
+            alert.addAction(UIAlertAction(title:"Ok", style: UIAlertActionStyle.Default, handler: nil));
+            self.presentViewController(alert, animated: true, completion: nil);
+            }
         }
     }
     
