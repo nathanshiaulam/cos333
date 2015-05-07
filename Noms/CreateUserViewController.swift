@@ -27,7 +27,7 @@ class CreateUserViewController: UIViewController {
         
         // ENSURES FIELDS ARE NOT EMPTY
         if (count(username) == 0 || count(password) == 0 || count(email) == 0) {
-            var alert = UIAlertController(title: "Submission Failure", message: "Invalid username or password", preferredStyle: UIAlertControllerStyle.Alert);
+            var alert = UIAlertController(title: "Submission Failure", message: "Invalid username, password, or email", preferredStyle: UIAlertControllerStyle.Alert);
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil));
             self.presentViewController(alert, animated: true, completion: nil);
             return;
