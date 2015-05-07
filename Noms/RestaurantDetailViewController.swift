@@ -10,7 +10,6 @@ import UIKit
 import Parse
 import MapKit
 import AddressBook
-import MapKit
 import CoreLocation
 
 class RestaurantDetailViewController: UIViewController {
