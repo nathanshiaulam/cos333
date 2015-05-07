@@ -333,11 +333,11 @@
                                 <exclude reference="V7o-vf-IK2"/>
                                 <exclude reference="jXp-Wh-AF5"/>
                                 <exclude reference="pzz-do-tK9"/>
-                                <exclude reference="BYH-1C-JWi"/>
                                 <exclude reference="A6E-jQ-Akh"/>
                                 <exclude reference="W9F-gN-Tfr"/>
                                 <exclude reference="fwF-MC-crC"/>
                                 <exclude reference="h2l-RR-CPg"/>
+                                <exclude reference="BYH-1C-JWi"/>
                                 <exclude reference="d01-GO-Hqu"/>
                                 <exclude reference="1ON-hx-NMm"/>
                                 <exclude reference="FTM-qA-G4M"/>
@@ -1648,23 +1648,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j9J-xG-ttj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1722" y="2096"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="s9M-gW-o2c">
-            <objects>
-                <viewController id="MCf-l8-55N" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="tkv-bR-Aul"/>
-                        <viewControllerLayoutGuide type="bottom" id="Cfo-zQ-B3O"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="yS9-6f-AKi">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="PbV-bo-0JR" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
         </scene>
         <!--Create User View Controller-->
         <scene sceneID="4n0-60-gII">
