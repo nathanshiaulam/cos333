@@ -190,7 +190,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uUx-ag-0NP">
-                                <rect key="frame" x="178" y="475" width="95" height="95"/>
+                                <rect key="frame" x="168" y="475" width="95" height="95"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="95" id="3xi-TD-odZ"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="99" id="JR3-Br-W9K"/>
@@ -211,7 +211,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A6r-4V-1h8">
-                                <rect key="frame" x="332" y="479" width="87" height="87"/>
+                                <rect key="frame" x="342" y="479" width="87" height="87"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="87" id="Aii-xc-xfU"/>
                                     <constraint firstAttribute="width" constant="87" id="g4q-mQ-5fa"/>
@@ -280,7 +280,7 @@
                             <constraint firstAttribute="centerX" secondItem="wbe-rU-GWk" secondAttribute="centerX" id="TkL-Ra-tJF"/>
                             <constraint firstItem="wbe-rU-GWk" firstAttribute="top" secondItem="20y-x6-m25" secondAttribute="bottom" constant="140" id="V7o-vf-IK2"/>
                             <constraint firstItem="A6r-4V-1h8" firstAttribute="height" secondItem="3us-3A-FnD" secondAttribute="height" id="W9F-gN-Tfr"/>
-                            <constraint firstItem="20y-x6-m25" firstAttribute="centerX" secondItem="uUx-ag-0NP" secondAttribute="centerX" constant="75" id="WUe-Am-s88"/>
+                            <constraint firstItem="20y-x6-m25" firstAttribute="centerX" secondItem="uUx-ag-0NP" secondAttribute="centerX" constant="85" id="WUe-Am-s88"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Ehk-6V-odH" secondAttribute="bottom" constant="7" id="X1D-Vf-W9u"/>
                             <constraint firstAttribute="trailingMargin" secondItem="wbe-rU-GWk" secondAttribute="trailing" constant="-16" id="X1M-hZ-ywv"/>
                             <constraint firstAttribute="centerY" secondItem="3us-3A-FnD" secondAttribute="centerY" constant="-252" id="XJd-U5-Weg"/>
@@ -303,7 +303,7 @@
                             <constraint firstItem="20y-x6-m25" firstAttribute="centerY" secondItem="lZb-Hi-wXf" secondAttribute="centerY" id="nqT-gL-mg9"/>
                             <constraint firstItem="wbe-rU-GWk" firstAttribute="top" secondItem="uUx-ag-0NP" secondAttribute="bottom" constant="140" id="pzz-do-tK9"/>
                             <constraint firstItem="lZb-Hi-wXf" firstAttribute="width" secondItem="20y-x6-m25" secondAttribute="width" id="sFC-JY-nPb"/>
-                            <constraint firstItem="A6r-4V-1h8" firstAttribute="centerX" secondItem="20y-x6-m25" secondAttribute="centerX" constant="75" id="sXv-xF-0AY"/>
+                            <constraint firstItem="A6r-4V-1h8" firstAttribute="centerX" secondItem="20y-x6-m25" secondAttribute="centerX" constant="85" id="sXv-xF-0AY"/>
                             <constraint firstItem="20y-x6-m25" firstAttribute="centerX" secondItem="lZb-Hi-wXf" secondAttribute="centerX" id="vAy-z9-y3r"/>
                             <constraint firstItem="20y-x6-m25" firstAttribute="centerX" secondItem="3us-3A-FnD" secondAttribute="centerX" id="via-wS-qEN"/>
                             <constraint firstAttribute="trailingMargin" secondItem="M2A-5I-KP2" secondAttribute="trailing" constant="30" id="wzl-UJ-aTX"/>
@@ -1207,11 +1207,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aMa-c3-XQr" userLabel="Yelp">
-                                <rect key="frame" x="0.0" y="264" width="300" height="30"/>
+                                <rect key="frame" x="0.0" y="264" width="300" height="50"/>
                                 <color key="backgroundColor" red="0.95712989270000004" green="0.34767149190000002" blue="0.23050950349999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="W9V-RV-Cmo"/>
-                                    <constraint firstAttribute="height" constant="30" id="f3u-JK-4kY"/>
+                                    <constraint firstAttribute="height" constant="50" id="f3u-JK-4kY"/>
                                 </constraints>
                                 <state key="normal" title="Check Yelp!">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1242,7 +1242,7 @@
                                 </connections>
                             </button>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="8hp-S1-X2O">
-                                <rect key="frame" x="0.0" y="294" width="600" height="212"/>
+                                <rect key="frame" x="0.0" y="314" width="600" height="192"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="190" id="IAD-83-d8A"/>
                                     <constraint firstAttribute="width" constant="600" id="wXb-Ca-kVL"/>
@@ -1257,14 +1257,14 @@
                                 </variation>
                             </mapView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yelpBurst" translatesAutoresizingMaskIntoConstraints="NO" id="dPW-JC-9l8">
-                                <rect key="frame" x="16" y="253" width="83" height="51"/>
+                                <rect key="frame" x="16" y="263" width="83" height="51"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="51" id="Eaf-EM-cau"/>
                                     <constraint firstAttribute="width" constant="83" id="RcF-hF-Abr"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hlw-J3-Hx3" userLabel="Call">
-                                <rect key="frame" x="300" y="264" width="300" height="30"/>
+                                <rect key="frame" x="300" y="264" width="300" height="50"/>
                                 <color key="backgroundColor" red="0.60484436868226255" green="0.7280245893148356" blue="0.8385811237373737" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="QIV-FY-ZLP"/>
