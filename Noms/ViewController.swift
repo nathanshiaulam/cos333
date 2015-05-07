@@ -132,6 +132,7 @@ class ViewController: UIViewController {
                 PFCloud.callFunctionInBackground("MatchRestaurant", withParameters:["loc":[String(stringInterpolationSegment: self.latitude), String(stringInterpolationSegment: self.longitude)], "objid":[String(stringInterpolationSegment: preference.objectId!)], "currtime":[String(stringInterpolationSegment: timeString)], "day":[String(stringInterpolationSegment: day)]]) {
                     (result: AnyObject?, error: NSError?) -> Void in
                     if error == nil {
+                        println(result);
                         self.restaurantList = result as! [String];
                         self.currentRestaurantID = self.restaurantList[0];
                         self.findRestaurantWithID(self.currentRestaurantID); // FINDS RESTAURANT WITH ID
