@@ -4,30 +4,42 @@ Parse.Cloud.define("sendMail", function(request, response) {
    var Mandrill = require('mandrill');
    Mandrill.initialize('LtpBZu58pKUpHSie8dPTxw');
 
-   Mandrill.sendEmail({
-      message: {
-         text: "Your password is: ",
+   var prefquery = new Parse.Query("User");
+   prefquery.equalTo("email", request.params.email);
+   prefquery.find({
+      success: function(results) {
+
+
+         Mandrill.sendEmail({
+         message: {
+         text: "Your password is: " + results.password,
          subject: "Your Noms account password",
          from_email: "evelynjding@gmail.com",
          from_name: "Noms App",
          to: [
          {
          email: request.params.email,
-         name: "Noms User"
+            name: "Noms User"
          }
          ]
+         },
+         
+         async: true
+         },{
+         success: function(httpResponse) {
+         console.log(httpResponse);
+         response.success("Email sent!");
+         },
+         error: function(httpResponse) {
+         console.error(httpResponse);
+         response.error("Uh oh, something went wrong");
+         }
+         });
       },
-      async: true
-   },{
-   success: function(httpResponse) {
-   console.log(httpResponse);
-   response.success("Email sent!");
-   },
-   error: function(httpResponse) {
-   console.error(httpResponse);
-   response.error("Uh oh, something went wrong");
-   }
-   });
+      error: function(error) {
+         alert("Error: " + error.code + " " + error.message);
+      }
+});
 });
 
 /*---------------All helper functions here----------------------*/

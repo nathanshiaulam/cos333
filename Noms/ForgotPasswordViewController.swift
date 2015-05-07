@@ -25,17 +25,12 @@ class ForgotPasswordViewController: UIViewController, MFMailComposeViewControlle
         // preferably gives some response that it has sent its password
         // need to send email the password of their account
         let email = emailAddr.text;
-        if (email != nil) {
-            let emailTitle = "Your Noms account password"
-            let messageBody = "Your password is: "
-            var toRecipients = [String]()
-            toRecipients.append(email);
-            var mc: MFMailComposeViewController = MFMailComposeViewController();
-            mc.mailComposeDelegate = self
-            mc.setSubject(emailTitle)
-            mc.setMessageBody(messageBody, isHTML: false);
-            mc.setToRecipients(toRecipients);
-            //self.presentViewController(mc, animated: false, completion: nil);
+        println(email)
+        PFCloud.callFunctionInBackground("sendMail", withParameters:["email":email]) {
+            (result: AnyObject?, error: NSError?) -> Void in
+            if error == nil {
+                println(result);
+            }
         }
     }
     
