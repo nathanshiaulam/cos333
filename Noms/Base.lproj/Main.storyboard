@@ -1012,6 +1012,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pao-Px-vGO">
+                                <rect key="frame" x="189" y="285" width="223" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="223" id="VM3-6D-ue2"/>
+                                    <constraint firstAttribute="height" constant="30" id="adV-gi-zWI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="1uP-vA-RHQ" id="3qQ-GN-e4g"/>
+                                </connections>
+                            </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wZM-ZN-hcT">
                                 <rect key="frame" x="189" y="315" width="223" height="30"/>
                                 <constraints>
@@ -1043,7 +1055,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U4Y-2w-Sse">
-                                <rect key="frame" x="273" y="345" width="139" height="26"/>
+                                <rect key="frame" x="273" y="375" width="139" height="26"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                 <state key="normal" title="Already have an account?">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1053,17 +1065,10 @@
                                     <action selector="onClickLogIn:" destination="1uP-vA-RHQ" eventType="touchUpInside" id="Rxu-dq-krO"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pao-Px-vGO">
-                                <rect key="frame" x="189" y="285" width="223" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="223" id="VM3-6D-ue2"/>
-                                    <constraint firstAttribute="height" constant="30" id="adV-gi-zWI"/>
-                                </constraints>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UGk-Nz-mP1">
+                                <rect key="frame" x="189" y="345" width="223" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="1uP-vA-RHQ" id="3qQ-GN-e4g"/>
-                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.0039215686269999999" green="0.79215686269999996" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1073,11 +1078,16 @@
                             <constraint firstItem="pao-Px-vGO" firstAttribute="top" secondItem="xom-hX-c5G" secondAttribute="bottom" constant="41" id="Afq-S9-zVN"/>
                             <constraint firstItem="HbH-XX-P0F" firstAttribute="top" secondItem="wZM-ZN-hcT" secondAttribute="bottom" constant="120" id="CDA-tD-pi3"/>
                             <constraint firstItem="wZM-ZN-hcT" firstAttribute="top" secondItem="pao-Px-vGO" secondAttribute="bottom" id="DdC-yT-MAS"/>
-                            <constraint firstItem="U4Y-2w-Sse" firstAttribute="top" secondItem="wZM-ZN-hcT" secondAttribute="bottom" id="WL4-n4-46O"/>
+                            <constraint firstItem="UGk-Nz-mP1" firstAttribute="height" secondItem="wZM-ZN-hcT" secondAttribute="height" id="Rb3-mE-CkI"/>
+                            <constraint firstItem="UGk-Nz-mP1" firstAttribute="width" secondItem="wZM-ZN-hcT" secondAttribute="width" id="UBO-fv-TF3"/>
+                            <constraint firstItem="U4Y-2w-Sse" firstAttribute="top" secondItem="wZM-ZN-hcT" secondAttribute="bottom" constant="30" id="WL4-n4-46O"/>
                             <constraint firstItem="HbH-XX-P0F" firstAttribute="centerX" secondItem="wZM-ZN-hcT" secondAttribute="centerX" id="bIA-bg-nhc"/>
                             <constraint firstAttribute="centerX" secondItem="pao-Px-vGO" secondAttribute="centerX" id="cZ8-yB-jts"/>
                             <constraint firstAttribute="centerX" secondItem="pao-Px-vGO" secondAttribute="centerX" constant="-0.5" id="cf4-H4-W06"/>
+                            <constraint firstItem="UGk-Nz-mP1" firstAttribute="centerX" secondItem="wZM-ZN-hcT" secondAttribute="centerX" id="crR-1t-abF"/>
                             <constraint firstAttribute="centerY" secondItem="pao-Px-vGO" secondAttribute="centerY" id="d18-tS-JX8"/>
+                            <constraint firstItem="UGk-Nz-mP1" firstAttribute="top" secondItem="wZM-ZN-hcT" secondAttribute="bottom" id="dAN-gs-kLJ"/>
+                            <constraint firstItem="UGk-Nz-mP1" firstAttribute="top" secondItem="pao-Px-vGO" secondAttribute="bottom" constant="29" id="eu9-Ej-37j"/>
                             <constraint firstAttribute="centerX" secondItem="HbH-XX-P0F" secondAttribute="centerX" constant="4.5" id="icq-Am-h6g"/>
                             <constraint firstItem="wZM-ZN-hcT" firstAttribute="width" secondItem="HbH-XX-P0F" secondAttribute="width" id="mBu-gw-H2m"/>
                             <constraint firstItem="wZM-ZN-hcT" firstAttribute="centerX" secondItem="U4Y-2w-Sse" secondAttribute="centerX" constant="-42" id="nJs-tc-xgR"/>
@@ -1087,12 +1097,14 @@
                             <mask key="constraints">
                                 <exclude reference="cf4-H4-W06"/>
                                 <exclude reference="90L-DO-9d8"/>
+                                <exclude reference="eu9-Ej-37j"/>
                                 <exclude reference="icq-Am-h6g"/>
                             </mask>
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="vJt-dZ-9YB"/>
                     <connections>
+                        <outlet property="emailField" destination="UGk-Nz-mP1" id="0Uz-GG-b8v"/>
                         <outlet property="passwordField" destination="wZM-ZN-hcT" id="hY8-l1-X9J"/>
                         <outlet property="usernameField" destination="pao-Px-vGO" id="7qh-Hd-dD4"/>
                     </connections>
