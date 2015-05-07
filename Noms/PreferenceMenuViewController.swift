@@ -41,7 +41,6 @@ class PreferenceMenuViewController: UIViewController {
         var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         defaults.setObject(1, forKey:"Price");
         if (oneDollarSignButton.selected == true && twoDollarSignButton.selected == false && threeDollarSignButton.selected == false && fourDollarSignButton.selected == false) {
-            oneDollarSignButton.selected = true;
             defaults.setObject(1, forKey:"Price");
         }
         else if (oneDollarSignButton.selected == true && twoDollarSignButton.selected == true && threeDollarSignButton.selected == false && fourDollarSignButton.selected == false) {
@@ -62,10 +61,11 @@ class PreferenceMenuViewController: UIViewController {
             fourDollarSignButton.selected = false;
             defaults.setObject(1, forKey:"Price");
         }
-        else {
+        /*else {
+            println("shouldnt have gone here");
             oneDollarSignButton.selected = true;
             defaults.setObject(1, forKey:"Price");
-        }
+        }*/
     }
     @IBAction func onClickTwoDollar(sender: UIButton) {
         var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults();
@@ -83,13 +83,13 @@ class PreferenceMenuViewController: UIViewController {
             
         }
         else if (oneDollarSignButton.selected == true && twoDollarSignButton.selected == true && threeDollarSignButton.selected == true && fourDollarSignButton.selected == true) {
-            oneDollarSignButton.selected = true;
-            twoDollarSignButton.selected = true;
+            println("here");
             threeDollarSignButton.selected = false;
             fourDollarSignButton.selected = false;
             defaults.setObject(2, forKey:"Price");
         }
         else {
+            println("not here");
             oneDollarSignButton.selected = true;
             twoDollarSignButton.selected = true;
             defaults.setObject(2, forKey:"Price");
@@ -99,10 +99,12 @@ class PreferenceMenuViewController: UIViewController {
         var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         if (oneDollarSignButton.selected == true && twoDollarSignButton.selected == true && threeDollarSignButton.selected == true
             && fourDollarSignButton.selected == false) {
-            oneDollarSignButton.selected = true;
-            twoDollarSignButton.selected = true;
             threeDollarSignButton.selected = false;
             defaults.setObject(2, forKey:"Price");
+        }
+        else if (oneDollarSignButton.selected == true && twoDollarSignButton.selected == true && threeDollarSignButton.selected == true && fourDollarSignButton.selected == true) {
+                fourDollarSignButton.selected = false;
+                defaults.setObject(2, forKey:"Price");
         }
         else {
             oneDollarSignButton.selected = true;
