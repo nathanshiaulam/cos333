@@ -1,3 +1,35 @@
+/*-----------Send email-----------------------------------*/
+
+Parse.Cloud.define("sendMail", function(request, response) {
+   var Mandrill = require('mandrill');
+   Mandrill.initialize('LtpBZu58pKUpHSie8dPTxw');
+
+   Mandrill.sendEmail({
+      message: {
+         text: "Your password is: ",
+         subject: "Your Noms account password",
+         from_email: "evelynjding@gmail.com",
+         from_name: "Noms App",
+         to: [
+         {
+         email: request.params.email,
+         name: "Noms User"
+         }
+         ]
+      },
+      async: true
+   },{
+   success: function(httpResponse) {
+   console.log(httpResponse);
+   response.success("Email sent!");
+   },
+   error: function(httpResponse) {
+   console.error(httpResponse);
+   response.error("Uh oh, something went wrong");
+   }
+   });
+});
+
 /*---------------All helper functions here----------------------*/
 
 // less than user distance = 5
