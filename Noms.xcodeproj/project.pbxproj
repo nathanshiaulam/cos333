@@ -42,6 +42,7 @@
 		D185B3C41AF3731A002C4BF3 /* KSTokenField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D185B3C01AF3731A002C4BF3 /* KSTokenField.swift */; };
 		D185B3C51AF3731A002C4BF3 /* KSTokenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D185B3C11AF3731A002C4BF3 /* KSTokenView.swift */; };
 		D185B3C61AF3731A002C4BF3 /* KSUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D185B3C21AF3731A002C4BF3 /* KSUtils.swift */; };
+		E56D93AA1AFB2E2300F9A401 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56D93A91AFB2E2300F9A401 /* ForgotPasswordViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +95,7 @@
 		D185B3C01AF3731A002C4BF3 /* KSTokenField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KSTokenField.swift; sourceTree = "<group>"; };
 		D185B3C11AF3731A002C4BF3 /* KSTokenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KSTokenView.swift; sourceTree = "<group>"; };
 		D185B3C21AF3731A002C4BF3 /* KSUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KSUtils.swift; sourceTree = "<group>"; };
+		E56D93A91AFB2E2300F9A401 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +170,7 @@
 				1620DC701ADB562B00CDA88A /* ViewController.swift */,
 				1620DC721ADB566400CDA88A /* LogInViewController.swift */,
 				1620DC741ADB689F00CDA88A /* CreateUserViewController.swift */,
+				E56D93A91AFB2E2300F9A401 /* ForgotPasswordViewController.swift */,
 				1620DC341ADB4FAE00CDA88A /* Images.xcassets */,
 				1620DC361ADB4FAE00CDA88A /* LaunchScreen.xib */,
 				1620DC2B1ADB4FAE00CDA88A /* Supporting Files */,
@@ -335,6 +338,7 @@
 				163245311AE5EA6700D188A9 /* ProfileListViewController.swift in Sources */,
 				1620DC731ADB566400CDA88A /* LogInViewController.swift in Sources */,
 				D185B3C41AF3731A002C4BF3 /* KSTokenField.swift in Sources */,
+				E56D93AA1AFB2E2300F9A401 /* ForgotPasswordViewController.swift in Sources */,
 				D185B3BA1AF367EA002C4BF3 /* List.swift in Sources */,
 				16DEA5FA1AEDDAEF0010A4B6 /* RestaurantDetailViewController.swift in Sources */,
 				1620DC751ADB689F00CDA88A /* CreateUserViewController.swift in Sources */,
