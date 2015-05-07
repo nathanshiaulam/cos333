@@ -13,6 +13,7 @@ class CreateUserViewController: UIViewController {
 
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var emailField: UITextField!
     
     @IBAction func onClickLogIn(sender: UIButton) {
         self.navigationController?.popViewControllerAnimated(true);
@@ -67,10 +68,13 @@ class CreateUserViewController: UIViewController {
         super.viewDidLoad()
         var usernamePlaceholder = NSAttributedString(string: "Username", attributes: [NSForegroundColorAttributeName : UIColor.grayColor()]);
         var passwordPlaceholder = NSAttributedString(string: "Password", attributes: [NSForegroundColorAttributeName : UIColor.grayColor()]);
+        var emailPlaceholder = NSAttributedString(string: "Email", attributes: [NSForegroundColorAttributeName : UIColor.grayColor()]);
         usernameField.attributedPlaceholder = usernamePlaceholder;
         passwordField.attributedPlaceholder = passwordPlaceholder;
+        emailField.attributedPlaceholder = emailPlaceholder;
         usernameField.layer.cornerRadius = 0;
         passwordField.layer.cornerRadius = 0;
+        emailField.layer.cornerRadius = 0;
         passwordField.secureTextEntry = true;
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil);
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil);
