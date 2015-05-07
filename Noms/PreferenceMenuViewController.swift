@@ -235,12 +235,14 @@ class PreferenceMenuViewController: UIViewController {
         tokenView.descriptionText = "Cuisines"
         tokenView.maxTokenLimit = 5
         tokenView.style = .Rounded
+        tokenView.searchResultSize.height = 100;
+        //tokenView.searchResultBackgroundColor = UIColor.lightGrayColor();
         
-        profileName.text = defaults.objectForKey("Name") as! String;
-        oneDollarSignButton.setTitleColor(UIColor.yellowColor(), forState: UIControlState.Selected);
-        twoDollarSignButton.setTitleColor(UIColor.yellowColor(), forState: UIControlState.Selected);
-        threeDollarSignButton.setTitleColor(UIColor.yellowColor(), forState: UIControlState.Selected);
-        fourDollarSignButton.setTitleColor(UIColor.yellowColor(), forState: UIControlState.Selected);
+        profileName.text = defaults.objectForKey("Name") as! String!;
+        oneDollarSignButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Selected);
+        twoDollarSignButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Selected);
+        threeDollarSignButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Selected);
+        fourDollarSignButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Selected);
         
         var amount = defaults.objectForKey("Price") as! Int;
         var distance = defaults.objectForKey("Distance") as! Int;
