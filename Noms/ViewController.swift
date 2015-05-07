@@ -36,7 +36,9 @@ class ViewController: UIViewController {
         self.performSegueWithIdentifier("toUserLogin", sender: self);
     }
     
-    // ON CLICK GREEN BUTTON
+    @IBAction func goToMap(sender: UIButton) {
+    }
+    // ON CLICK PURPLE BUTTON
     @IBAction func more_details(sender: UIButton) {
         if (count(self.restaurantList) == 1 && self.restaurantList[0] == "kepseEzLQJ") {
             return;
