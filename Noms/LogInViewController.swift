@@ -39,11 +39,21 @@ class LogInViewController: UIViewController {
             }
         }
     }
-    func keyboardWillShow (sender: NSNotification) {
-        self.view.frame.origin.y -= 32
-    }
-    func keyboardWillHide (sender: NSNotification) {
-        self.view.frame.origin.y += 96
+//    func keyboardWillShowTop (sender: NSNotification) {
+//        self.view.frame.origin.y -= 32
+//    }
+//    func keyboardWillHideTop (sender: NSNotification) {
+//        self.view.frame.origin.y += 92
+//    }
+//    func keyboardWillShowBottom (sender: NSNotification) {
+//        self.view.frame.origin.y -= 32
+//    }
+//    func keyboardWillHideBottom (sender: NSNotification) {
+//        self.view.frame.origin.y += 92
+//    }
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        self.view.endEditing(true);
+        
     }
 //    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
 //        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidShow", name: UIKeyboardDidShowNotification, object: nil);
@@ -66,9 +76,9 @@ class LogInViewController: UIViewController {
         usernameField.layer.cornerRadius = 0;
         passwordField.layer.cornerRadius = 0;
         passwordField.secureTextEntry = true;
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil);
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil);
-        
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShowTop:"), name:UIKeyboardWillShowNotification, object: nil);
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHideTop:"), name:UIKeyboardWillHideNotification, object: nil);
+//        
         
         // Do any additional setup after loading the view.
     }

@@ -20,7 +20,10 @@ class ForgotPasswordViewController: UIViewController, MFMailComposeViewControlle
         super.viewDidLoad()
         
     }
-    
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        self.view.endEditing(true);
+        
+    }
     @IBAction func sendPass(sender: UIButton) {
         // preferably gives some response that it has sent its password
         // need to send email the password of their account

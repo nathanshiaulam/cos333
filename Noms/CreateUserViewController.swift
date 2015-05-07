@@ -86,21 +86,25 @@ class CreateUserViewController: UIViewController {
         passwordField.layer.cornerRadius = 0;
         emailField.layer.cornerRadius = 0;
         passwordField.secureTextEntry = true;
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil);
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil);
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil);
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil);
         
         // Do any additional setup after loading the view.
     }
-    func keyboardWillShow (sender: NSNotification) {
-        self.view.frame.origin.y -= 32
-    }
-    func keyboardWillHide (sender: NSNotification) {
-        self.view.frame.origin.y += 96
-    }
+//    func keyboardWillShow (sender: NSNotification) {
+//        self.view.frame.origin.y -= 32
+//    }
+//    func keyboardWillHide (sender: NSNotification) {
+//        self.view.frame.origin.y += 96
+//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        self.view.endEditing(true);
+        
     }
     
 
