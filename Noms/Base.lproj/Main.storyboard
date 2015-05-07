@@ -1606,9 +1606,9 @@
                                     <outlet property="delegate" destination="CYI-a0-Jqf" id="Iue-r2-a67"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name Your Profile:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rbU-JK-t4v">
-                                <rect key="frame" x="226" y="250" width="149" height="25"/>
-                                <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Name Your Profile:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rbU-JK-t4v">
+                                <rect key="frame" x="225" y="251" width="152" height="24"/>
+                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1805,7 +1805,7 @@
         <image name="yelpBurst" width="417" height="251"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="XHp-EQ-soW"/>
+        <segue reference="YjK-VM-l3Y"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.34913581392782034" green="0.60402588873659435" blue="0.84394728535353536" alpha="1" colorSpace="calibratedRGB"/>
 </document>
