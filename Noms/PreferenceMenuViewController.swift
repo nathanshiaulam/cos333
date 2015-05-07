@@ -165,7 +165,13 @@ class PreferenceMenuViewController: UIViewController {
         var tokens: Array<KSToken> = tokenView.tokens()!;
         var cuisineArray:[String] = [];
         for (var i = 0; i < count(tokens); i++) {
-            cuisineArray.append(tokens[i].description2())
+            cuisineArray.append(tokens[i].description2());
+        }
+        if (count(cuisineArray) == 0) {
+            let errorString = "You haven't entered any cuisine choices!";
+            var alert = UIAlertController(title: "Enter a cuisine:", message: errorString as String, preferredStyle: UIAlertControllerStyle.Alert);
+            alert.addAction(UIAlertAction(title:"Ok", style: UIAlertActionStyle.Default, handler: nil));
+            self.presentViewController(alert, animated: true, completion: nil);
         }
         defaults.setObject(cuisineArray, forKey:"Cuisine");
         
@@ -241,6 +247,12 @@ class PreferenceMenuViewController: UIViewController {
         
         var amount = defaults.objectForKey("Price") as! Int;
         var distance = defaults.objectForKey("Distance") as! Int;
+        var cuisine = defaults.objectForKey("Cuisine") as! [String];
+        if (fromNew == false) {
+            for (var i = 0; i < count(cuisine); i++) {
+                tokenView.addTokenWithTitle(cuisine[i]);
+            }
+        }
         
         // SETS PRICE
         if amount == 1 {
