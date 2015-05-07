@@ -17,7 +17,7 @@ class LogInViewController: UIViewController {
     @IBAction func submitButtonClick(sender: UIButton) {
         userLogin(usernameField.text, password: passwordField.text);
     }
-    
+
     func userLogin(username: String, password: String) {
         var usernameLen = count(username);
         var passwordLen = count(password);

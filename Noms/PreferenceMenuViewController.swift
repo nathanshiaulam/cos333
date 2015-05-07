@@ -61,11 +61,6 @@ class PreferenceMenuViewController: UIViewController {
             fourDollarSignButton.selected = false;
             defaults.setObject(1, forKey:"Price");
         }
-        /*else {
-            println("shouldnt have gone here");
-            oneDollarSignButton.selected = true;
-            defaults.setObject(1, forKey:"Price");
-        }*/
     }
     @IBAction func onClickTwoDollar(sender: UIButton) {
         var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults();
@@ -83,13 +78,11 @@ class PreferenceMenuViewController: UIViewController {
             
         }
         else if (oneDollarSignButton.selected == true && twoDollarSignButton.selected == true && threeDollarSignButton.selected == true && fourDollarSignButton.selected == true) {
-            println("here");
             threeDollarSignButton.selected = false;
             fourDollarSignButton.selected = false;
             defaults.setObject(2, forKey:"Price");
         }
         else {
-            println("not here");
             oneDollarSignButton.selected = true;
             twoDollarSignButton.selected = true;
             defaults.setObject(2, forKey:"Price");
