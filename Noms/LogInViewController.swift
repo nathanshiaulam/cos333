@@ -40,10 +40,10 @@ class LogInViewController: UIViewController {
         }
     }
     func keyboardWillShow (sender: NSNotification) {
-        self.view.frame.origin.y -= 48
+        self.view.frame.origin.y -= 32
     }
     func keyboardWillHide (sender: NSNotification) {
-        self.view.frame.origin.y += 148
+        self.view.frame.origin.y += 96
     }
 //    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
 //        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidShow", name: UIKeyboardDidShowNotification, object: nil);

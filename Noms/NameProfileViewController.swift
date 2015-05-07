@@ -59,7 +59,7 @@ class NameProfileViewController: UIViewController {
             defaults.setObject(nameProfileField.text, forKey: "Name");
             defaults.setObject(1, forKey:"Price");
             defaults.setObject(5, forKey:"Distance");
-            defaults.setObject(["Chinese"], forKey:"Cuisine");
+            defaults.setObject([""], forKey:"Cuisine");
             defaults.setObject([], forKey:"Ambience");
             defaults.setObject("000000", forKey:"Options");
             

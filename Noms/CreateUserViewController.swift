@@ -57,14 +57,23 @@ class CreateUserViewController: UIViewController {
 
     }
     func textFieldShouldReturn(textField: UITextField)-> Bool {
+        NSLog("first here");
         if (textField == usernameField) {
+            NSLog("here");
             passwordField.becomeFirstResponder();
         }
+        else if (textField == passwordField) {
+            NSLog("here");
+            emailField.becomeFirstResponder();
+        }
         else {
+            NSLog("here");
             self.createUser(usernameField.text, password: passwordField.text, email:emailField.text);
+            textField.resignFirstResponder();
         }
         return true;
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         var usernamePlaceholder = NSAttributedString(string: "Username", attributes: [NSForegroundColorAttributeName : UIColor.grayColor()]);
@@ -83,10 +92,10 @@ class CreateUserViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     func keyboardWillShow (sender: NSNotification) {
-        self.view.frame.origin.y -= 45
+        self.view.frame.origin.y -= 32
     }
     func keyboardWillHide (sender: NSNotification) {
-        self.view.frame.origin.y += 145
+        self.view.frame.origin.y += 96
     }
 
     override func didReceiveMemoryWarning() {
