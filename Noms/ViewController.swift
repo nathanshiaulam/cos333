@@ -67,7 +67,6 @@ class ViewController: UIViewController {
 //        defaults.setObject(currentRestaurantID, forKey: "rest_id");
         defaults.setDouble(self.distSend, forKey:"dist_string");
         NSNotificationCenter.defaultCenter().postNotificationName("updateDetailInfo", object: nil);
-        performSegueWithIdentifier("toDetails", sender: self)
     }
     
     // ON CLICK RED BUTTON
@@ -77,6 +76,9 @@ class ViewController: UIViewController {
             return;
         }
         let arrLength = count(self.restaurantList);
+        if self.restaurantList == nil {
+            return;
+        }
         if (indexOfRestaurant < arrLength - 1) {
             indexOfRestaurant = indexOfRestaurant + 1;
         }
@@ -280,6 +282,8 @@ class ViewController: UIViewController {
             self.profileNameLabel.text = currentProfileName;
             if currentRestaurantID != nil {
                 defaults.setObject(currentRestaurantID, forKey: "rest_id");
+            } else {
+                defaults.setObject("kepseEzLQJ", forKey:"rest_id");
             }
             // GETS GEOPOINT ON PAGE LOAD
             PFGeoPoint.geoPointForCurrentLocationInBackground {
