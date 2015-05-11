@@ -63,21 +63,6 @@ function distanceeval(lat1, lon1, lat2, lon2, user_dist) {
       return 5
 }
 
-/* given point A (lat1, lon1) and point B (lat2, lon2), return the dist between the two points in miles*/
-function computeDistance1(lat1, lon1, lat2, lon2) {
-    var radlat1 = Math.PI * lat1/180
-    var radlat2 = Math.PI * lat2/180
-    var radlon1 = Math.PI * lon1/180
-    var radlon2 = Math.PI * lon2/180
-    var theta = lon1-lon2
-    var radtheta = Math.PI * theta/180
-    var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
-    dist = Math.acos(dist)
-    dist = dist * 180/Math.PI
-    dist = dist * 60 * 1.1515
-    //need to categorize from 1 - 5 based on dist
-    return dist
-}
 
 function computeDistance(lat1, lon1, lat2, lon2) {
     var point1 = new Parse.GeoPoint(lat1, lon1);
@@ -190,19 +175,19 @@ Parse.Cloud.define("ChangeWeights", function(request, response) {
    var currrest = new Parse.Query("Restaurants");
    var currloc = request.params.loc; //double array
 
-   currpref.get(request.params.objid[0], {
+   currpref.get(request.params.prefid[0], {
       success: function(pref) {
-         currrest.get(request.params.objid[1], {
-            success: function(res) {
+         currrest.get(request.params.restid[0], {
+            success: function(rest) {
                var scaling = 5;
                var prefdist = pref.get("Distance");
                var prefcost = pref.get("Cost");
                var prefoptions = pref.get("Options");
-               var prefcousine = = pref.get("Cousine");
-               var restdist = res.get
+               var prefcuisine = pref.get("Cuisine");
+               var prefdist = pref.get("Distance");
 
                //dist
-               var distval = distanceeval(rest.get("latitude"), rest.get("longitude"), currloc[0], currloc[1], distance);
+               var distval = computeDistance(rest.get("latitude"), rest.get("longitude"), currloc[0], currloc[1]);
                //cost
                var costval = costDiff(rest.get("cost").length, prefcost);
                //cuisine
@@ -214,19 +199,30 @@ Parse.Cloud.define("ChangeWeights", function(request, response) {
                //options
                var optionsval = compareOptions(prefoptions, rest.get("options"));
 
+               var weights = pref.get("Weights");
                //change weights hierarchically
                if (cuisineval != 0) {
-                  pref.get("Weights")[3]+=0.05;
-               };
-               else if (distval != prefdist) {
-                  pref.get("Weights")[0]+=0.05;
-               };
+                  weights[3]+=0.05;
+               }
+               else if (distval > prefdist) {
+                  weights[0]+=0.05;
+               }
                else if (costval != 0) {
-                  pref.get("Weights")[1]+=0.05;
-               };
+                  weights[1]+=0.05;
+               }
                else {
-                  pref.get("Weights")[2]+=0.05;
+                  weights[2]+=0.05;
                };
+
+               pref.set("Weights", weights);
+               pref.save(null,{
+                  success: function (object) { 
+                    response.success(object);
+                  }, 
+                  error: function (object, error) { 
+                     response.error(error);
+                  }
+               });
             },
             error: function(error) {
                alert("Error: " + error.code + " " + error.message);

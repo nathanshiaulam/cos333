@@ -19,10 +19,12 @@ class ViewController: UIViewController {
     var latitude:Double!;
     var longitude:Double!;
     var restaurantList:[String]! = ["kepseEzLQJ"];
+    var rejectedRestList:[String]! = [];
     var indexOfRestaurant:Int!;
     var currentRestaurantID:String!;
     var placemarkMade:CLPlacemark!;
     var distSend:Double!;
+    var preferenceID:String!;
     
     // PROFILE NAME LABEL
     @IBOutlet weak var profileNameLabel: UILabel!
@@ -41,7 +43,7 @@ class ViewController: UIViewController {
     
     //ON CLICK GREEN BUTTON
     @IBAction func goToMap(sender: UIButton) {
-        if (count(self.restaurantList) == 1 && self.restaurantList[0] == "kepseEzLQJ") {
+        if (self.restaurantList == nil || (count(self.restaurantList) == 1 && self.restaurantList[0] == "kepseEzLQJ")) {
             return;
         }
         let length = count(self.address)
@@ -60,7 +62,7 @@ class ViewController: UIViewController {
     }
     // ON CLICK BLUE BUTTON
     @IBAction func more_details(sender: UIButton) {
-        if (count(self.restaurantList) == 1 && self.restaurantList[0] == "kepseEzLQJ") {
+        if (self.restaurantList == nil || (count(self.restaurantList) == 1 && self.restaurantList[0] == "kepseEzLQJ")) {
             return;
         }
         let defaults = NSUserDefaults.standardUserDefaults();
@@ -71,24 +73,39 @@ class ViewController: UIViewController {
     
     // ON CLICK RED BUTTON
     @IBAction func refreshOption(sender: AnyObject) {
-        var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        if (count(self.restaurantList) == 1 && self.restaurantList[0] == "kepseEzLQJ") {
+        var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults();
+        if (self.restaurantList == nil || (count(self.restaurantList) == 1 && self.restaurantList[0] == "kepseEzLQJ")) {
             return;
         }
-        let arrLength = count(self.restaurantList);
-        if self.restaurantList == nil {
+        if (self.restaurantNameLabel.text == "No More Restaurants in Area!") {
+            NSLog("Here");
             return;
         }
-        if (indexOfRestaurant < arrLength - 1) {
+        
+        var previousRestaurantID = self.restaurantList[indexOfRestaurant];
+        self.rejectedRestList.append(previousRestaurantID);
+        self.updateWeights(previousRestaurantID);
+        var arrLength = count(self.restaurantList);
+        if (indexOfRestaurant < arrLength - 1 && indexOfRestaurant < 10) {
             indexOfRestaurant = indexOfRestaurant + 1;
         }
         else {
             indexOfRestaurant = 0;
+            self.findTopImage();
+            arrLength = count(self.restaurantList);
         }
-        NSLog(String(indexOfRestaurant));
-        
         var currentRestaurantID = self.restaurantList[indexOfRestaurant];
+        while (count(self.rejectedRestList) >= 10 && contains(self.rejectedRestList, currentRestaurantID)) {
+            indexOfRestaurant = indexOfRestaurant + 1;
+            if (indexOfRestaurant >= arrLength) {
+                self.restaurantNameLabel.text = "No More Restaurants in Area!";
+                return;
+            }
+            currentRestaurantID = self.restaurantList[indexOfRestaurant];
+        }
+        
         NSLog(currentRestaurantID);
+        
         defaults.setObject(currentRestaurantID, forKey:"rest_id");
 
         findRestaurantWithID(currentRestaurantID);
@@ -129,6 +146,23 @@ class ViewController: UIViewController {
     }
     
     // RUNS FINDS THE IMAGE OF THE FIRST RESTAURANT IN LIST
+    func updateWeights(var restaurantID: String) {
+        NSLog("In Function: Update Weights");
+        var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults();
+        var query = PFQuery(className:"Preferences");
+        var currentID = PFUser.currentUser()!.objectId;
+        query.whereKey("ID", equalTo:currentID!);
+        query.whereKey("Name", equalTo:currentProfileName);
+        
+        PFCloud.callFunctionInBackground("ChangeWeights", withParameters:["loc":[String(stringInterpolationSegment: self.latitude), String(stringInterpolationSegment: self.longitude)], "prefid":[String(stringInterpolationSegment: self.preferenceID)], "restid":[String(stringInterpolationSegment: restaurantID)]]) {
+                (result: AnyObject?, error: NSError?) -> Void in
+                if error == nil {
+                    println(result);
+                }
+            }
+    }
+    
+    // RUNS FINDS THE IMAGE OF THE FIRST RESTAURANT IN LIST
     func findTopImage() {
         NSLog("In Function: Second Function Called");
         var query = PFQuery(className:"Preferences");
@@ -143,6 +177,7 @@ class ViewController: UIViewController {
                 println(error);
             } else if let preference = preference{
                 NSLog("In First Async Call");
+                self.preferenceID = String(stringInterpolationSegment: preference.objectId!);
                 // GET DATE INFO
                 let date = NSDate();
                 let calendar = NSCalendar.currentCalendar();
@@ -187,7 +222,6 @@ class ViewController: UIViewController {
             if error != nil || restaurant == nil {
                 println(error);
             } else if let restaurant = restaurant{
-                NSLog("LOLOLOL NOT WORKING");
                 // LOADS IN FIELDS OF RESTAURANT
                 self.restaurantNameLabel.text = restaurant["name"] as? String;
                 NSLog("YOU EATIN HERE SON");
@@ -236,24 +270,6 @@ class ViewController: UIViewController {
         view.layer.cornerRadius = view.frame.size.width / 2;
         view.clipsToBounds = true;
     }
-    
-    // RETURNS A STRING IN THE FORMAT OF "[distance] miles away"
-
-    func calcDistance(var lat1: Double, var lon1: Double, var lat2: Double, var lon2: Double) -> String {
-        var radlat1 = M_PI * lat1/180;
-        var radlat2 = M_PI * lon1/180;
-        var radlon1 = M_PI * lat2/180;
-        var radlon2 = M_PI * lon2/180;
-        var theta = lon1-lon2;
-        var radtheta = M_PI * theta/180;
-        var dist = sin(radlat1) * sin(radlat2) + cos(radlat1) * cos(radlat2) * cos(radtheta);
-        dist = acos(dist);
-        dist = dist * 180/M_PI;
-        dist = dist * 60 * 1.1515;
-        var str:String = String(format:"%f",dist);
-        return str;
-    }
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -297,13 +313,6 @@ class ViewController: UIViewController {
                 }
             }
         }
-        var pulseAnimation:CABasicAnimation = CABasicAnimation(keyPath: "opacity");
-        pulseAnimation.duration = 30.0;
-        pulseAnimation.toValue = NSNumber(float: 1.0);
-        pulseAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut);
-        pulseAnimation.autoreverses = true;
-        pulseAnimation.repeatCount = FLT_MAX;
-        self.view.layer.addAnimation(pulseAnimation, forKey: nil)
 
         // Do any additional setup after loading the view.
     }

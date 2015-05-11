@@ -186,6 +186,7 @@ class PreferenceMenuViewController: UIViewController {
             newProfile["Distance"] = defaults.objectForKey("Distance") as! Int;
             newProfile["Ambience"] = defaults.objectForKey("Ambience") as! [String];
             newProfile["Options"] = defaults.objectForKey("Options") as! String;
+            newProfile["Weights"] = [1,1,1,1.5];
             
             // SAVES NEW PROFILE
             newProfile.saveInBackgroundWithBlock {
