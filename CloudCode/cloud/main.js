@@ -184,6 +184,65 @@ function sortfunction(a,b) {
       return (a.score >= b.score) ? 1 :-1;
 }
 
+Parse.Cloud.define("ChangeWeights", function(request, response) {
+   var currpref = new Parse.Query("Preferences");
+   var currrest = new Parse.Query("Restaurants");
+   var currloc = request.params.loc; //double array
+
+   currpref.get(request.params.objid[0], {
+      success: function(pref) {
+         currrest.get(request.params.objid[1], {
+            success: function(res) {
+               var scaling = 5;
+               var prefdist = pref.get("Distance");
+               var prefcost = pref.get("Cost");
+               var prefoptions = pref.get("Options");
+               var prefcousine = = pref.get("Cousine");
+               var restdist = res.get
+
+               //dist
+               var distval = distanceeval(rest.get("latitude"), rest.get("longitude"), currloc[0], currloc[1], distance);
+               //cost
+               var costval = costDiff(rest.get("cost").length, prefcost);
+               //cuisine
+               var cuisineval = 0;
+               if (checkCuisine(prefcuisine, rest.get("categories")))
+                  cuisineval = 0;
+               else
+                  cuisineval = scaling;
+               //options
+               var optionsval = compareOptions(prefoptions, rest.get("options"));
+
+               //change weights hierarchically
+               if (cuisineval != 0) {
+                  pref.get("Weights")[3]+=0.05;
+               };
+               else if (distval != prefdist) {
+                  pref.get("Weights")[0]+=0.05;
+               };
+               else if (costval != 0) {
+                  pref.get("Weights")[1]+=0.05;
+               };
+               else {
+                  pref.get("Weights")[2]+=0.05;
+               };
+            },
+            error: function(error) {
+               alert("Error: " + error.code + " " + error.message);
+            }
+         });
+      },
+      error: function(error) {
+         alert("Error: " + error.code + " " + error.message);
+      }
+   }); 
+});
+
+
+
+
+
+
 /*------------------------------------------------------------------------------*/
 
 /*request should have the following parameters
