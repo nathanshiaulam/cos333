@@ -164,12 +164,12 @@ function compareOptions (rest_options, user_options) {
    return total
 }
 
-/* cost1 and cost2 are dollar sign strings */ 
+// cost1 and cost2 are dollar sign strings
 function costDiff (cost1, cost2) {
    return Math.abs(cost1 - cost2)
 }
 
-/*run a for loop over all open restaurants and get the score sortmin*/
+//run a for loop over all open restaurants and get the score sortmin
 function finsAllScore(){
    var restlist //list of restaurants sorted by their score
    return restlist
@@ -184,6 +184,7 @@ function sortfunction(a,b) {
       return (a.score >= b.score) ? 1 :-1;
 }
 
+//change weights if user rejects a restaurant
 Parse.Cloud.define("ChangeWeights", function(request, response) {
    var currpref = new Parse.Query("Preferences");
    var currrest = new Parse.Query("Restaurants");
