@@ -99,6 +99,7 @@ class ViewController: UIViewController {
             indexOfRestaurant = indexOfRestaurant + 1;
             if (indexOfRestaurant >= arrLength) {
                 self.restaurantNameLabel.text = "No More Restaurants in Area!";
+                self.restaurantDistance.text = "";
                 return;
             }
             currentRestaurantID = self.restaurantList[indexOfRestaurant];
