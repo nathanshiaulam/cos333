@@ -124,8 +124,8 @@ function isOpen (current_time, current_day, hours){
    return false;
 }
 
-/* Yelp data has categories in array form, which includes the cuisine type */
-/* preferences is a String representing cuisine type */
+// Yelp data has categories in array form, which includes the cuisine type 
+// preferences is a String representing cuisine type 
 function checkCuisine(preferences, categories) {
    for (var j = 0; j < preferences.length; j++) {
       var pref = preferences[j].toLowerCase();
@@ -150,7 +150,7 @@ function matchStringOption(rest_ambience, user_ambience) {
    return false
 }
 
-/* given a String of length 12 with the options (0,1,2), calculates their similarity*/
+// given a String of length 12 with the options (0,1,2), calculates their similarity
 function compareOptions (rest_options, user_options) {
    total = 0
    for (var i = 0; i < 12; i++) {
@@ -232,12 +232,14 @@ Parse.Cloud.define("MatchRestaurant", function(request, response) {
                   var options = pref.get("Options"); //string
                   var ambience = pref.get("Ambience"); //string
 
-                  //ideally the numbers should be between 0 and 5
+                  // ideally the numbers should be between 0 and 5
                   var scaling = 5; //magic number to scale the values
-                  var distweight = 1;
-                  var costweight = 1;
-                  var optionsweight = 1;
-                  var cuisineweight = 1.5;
+                  // weights of preferences
+                  var distweight = pref.get("Weights")[0];
+                  var costweight = pref.get("Weights")[1];
+                  var optionsweight = pref.get("Weights")[2];
+                  var cuisineweight = pref.get("Weights")[3];
+                  // loop over restaurants
                   var rest = results[i];
                   //dist
                   var distval = distanceeval(rest.get("latitude"), rest.get("longitude"), currloc[0], currloc[1], distance);
