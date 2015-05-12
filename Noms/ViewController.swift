@@ -293,10 +293,38 @@ class ViewController: UIViewController {
         var updates = defaults.objectForKey("updated") as! String;
         if (self.restaurantNameLabel.text == "No More Restaurants in Area!" && updates == "true") {
             self.restaurantNameLabel.text = "Loading...";
-            self.updateProfilePage();
             self.indexOfRestaurant = 0;
+            self.firstCall = true;
+            self.tries = 0;
+            
+            // SETS UP DATASTORE
+            var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults();
+            // FINDS CURRENT PROFILE NAME
+            if let currentProfileNameIsNotNil = defaults.objectForKey("Name") as? String {
+                currentProfileName = defaults.objectForKey("Name") as! String
+            }
+            self.profileNameLabel.text = currentProfileName;
+            if currentRestaurantID != nil {
+                defaults.setObject(currentRestaurantID, forKey: "rest_id");
+            } else {
+                defaults.setObject("kepseEzLQJ", forKey:"rest_id");
+            }
+            // GETS GEOPOINT ON PAGE LOAD
+            PFGeoPoint.geoPointForCurrentLocationInBackground {
+                (geoPoint: PFGeoPoint?, error:NSError?) -> Void in
+                if error == nil {
+                    self.latitude = geoPoint?.latitude; // STORES LATITUDE
+                    self.longitude = geoPoint?.longitude; // STORES LONGITUDE
+                    if (self.currentProfileName != nil) {
+                        self.findTopImage();
+                    }
+                }
+            }
+
+            
         }
-        
+        NSLog("Appeared");
+        super.viewDidAppear(true);
         
     }
     override func viewDidLoad() {
