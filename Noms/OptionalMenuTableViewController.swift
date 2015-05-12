@@ -1,6 +1,7 @@
 //
 //  OptionalMenuTableViewController.swift
 //  Noms
+//  Manages the optional preferences available to the user during profile editing, such as ambiance.
 //
 //  Created by Annie Chu, Clement Lee, Evelyn Ding, Nathan Lam, and Sean Pan.
 //  Copyright (c) 2015 COS333. All rights reserved.

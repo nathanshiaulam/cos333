@@ -1,6 +1,7 @@
 //
 //  PreferenceMenuViewController.swift
 //  Noms
+//  Displays the initial preference menu with the most important options.
 //
 //  Created by Annie Chu, Clement Lee, Evelyn Ding, Nathan Lam, and Sean Pan.
 //  Copyright (c) 2015 COS333. All rights reserved.

@@ -1,6 +1,7 @@
 //
 //  CreateUserViewController.swift
 //  Noms
+//  Displays the necessary text fields for a user to be created.
 //
 //  Created by Annie Chu, Clement Lee, Evelyn Ding, Nathan Lam, and Sean Pan.
 //  Copyright (c) 2015 COS333. All rights reserved.
@@ -40,10 +41,13 @@ class CreateUserViewController: UIViewController {
         newUser.password = password;
         newUser.email = email;
         
+        
+        
         newUser.signUpInBackgroundWithBlock {
             (succeeded, error) -> Void in
             if (error == nil) {
                 self.dismissViewControllerAnimated(true, completion: { () -> Void in
+                    defaults.setObject("true", forKey: "seguingtut");
                     NSNotificationCenter.defaultCenter().postNotificationName("showTutorial", object: nil);
                 })
                 self.dismissViewControllerAnimated(true, completion: nil);
@@ -58,6 +62,7 @@ class CreateUserViewController: UIViewController {
 
     }
     func textFieldShouldReturn(textField: UITextField)-> Bool {
+        var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults();
         if (textField == usernameField) {
             passwordField.becomeFirstResponder();
         }
@@ -65,8 +70,10 @@ class CreateUserViewController: UIViewController {
             emailField.becomeFirstResponder();
         }
         else {
+            defaults.setObject("true", forKey: "seguingtut");
             self.createUser(usernameField.text, password: passwordField.text, email:emailField.text);
             textField.resignFirstResponder();
+            defaults.setObject("false", forKey: "seguingtut");
         }
         return true;
     }

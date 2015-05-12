@@ -1,6 +1,7 @@
 //
 //  ForgotPasswordViewController.swift
 //  Noms
+//  Displayed if a user forgets their password and allows a reminder email to be sent.
 //
 //  Created by Annie Chu, Clement Lee, Evelyn Ding, Nathan Lam, and Sean Pan.
 //  Copyright (c) 2015 COS333. All rights reserved.

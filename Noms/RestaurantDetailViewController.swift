@@ -1,6 +1,7 @@
 //
 //  RestaurantDetailViewController.swift
 //  Noms
+//  Displays additional information about a restaurant upon request.
 //
 //  Created by Annie Chu, Clement Lee, Evelyn Ding, Nathan Lam, and Sean Pan.
 //  Copyright (c) 2015 COS333. All rights reserved.

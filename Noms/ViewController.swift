@@ -1,6 +1,7 @@
 //
 //  ViewController.swift
 //  Noms
+//  The initial and home screen of the app, displaying the current recommendation and navigation to other views.
 //
 //  Created by Annie Chu, Clement Lee, Evelyn Ding, Nathan Lam, and Sean Pan.
 //  Copyright (c) 2015 COS333. All rights reserved.
@@ -388,7 +389,11 @@ class ViewController: UIViewController {
     
     // SHOW TUTORIAL SEGUE VIA ALERT
     func showTutorial() {
-        self.performSegueWithIdentifier("toNameProfile", sender: self);
+        var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults();
+
+        if (defaults.objectForKey("seguingtut") as! String == "true") {
+            self.performSegueWithIdentifier("toNameProfile", sender: self);
+        }
     }
     
 
