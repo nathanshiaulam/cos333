@@ -62,7 +62,7 @@ class ViewController: UIViewController {
                 }
         })
     }
-    // ON CLICK BLUE BUTTON
+    // ON CLICK BLUE (info) BUTTON
     @IBAction func more_details(sender: UIButton) {
         if (self.restaurantList == nil || (count(self.restaurantList) == 1 && self.restaurantList[0] == "kepseEzLQJ")) {
             return;
@@ -73,7 +73,7 @@ class ViewController: UIViewController {
         NSNotificationCenter.defaultCenter().postNotificationName("updateDetailInfo", object: nil);
     }
     
-    // ON CLICK RED BUTTON
+    // ON CLICK RED (retry) BUTTON
     @IBAction func refreshOption(sender: AnyObject) {
         var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults();
         if (self.restaurantList == nil || (count(self.restaurantList) == 1 && self.restaurantList[0] == "kepseEzLQJ")) {
@@ -92,7 +92,6 @@ class ViewController: UIViewController {
             self.indexOfRestaurant = self.indexOfRestaurant + 1;
         }
         else {
-            NSLog("FUCK EVERYTHING");
             self.indexOfRestaurant = 0;
             self.tries = 0;
             NSLog("Index" + String(self.indexOfRestaurant));

@@ -189,6 +189,8 @@ class OptionalMenuTableViewController: UITableViewController {
 //        
 //        
 //    }
+    
+    //outlets for the GUI elements
     @IBOutlet weak var reserveSwitch: UISegmentedControl!
     @IBOutlet weak var takeoutSwitch: UISegmentedControl!
     @IBOutlet weak var wifiSwitch: UISegmentedControl!
@@ -197,10 +199,14 @@ class OptionalMenuTableViewController: UITableViewController {
     @IBOutlet weak var creditSwitch: UISegmentedControl!
     @IBOutlet weak var loveSwitch: UISwitch!
     @IBOutlet weak var classySwitch: UISwitch!
+    
+    
     @IBOutlet weak var casualSwitch: UISwitch!
     override func viewDidLoad() {
         super.viewDidLoad()
+
         
+        //load the preferences from Parse and update the GUI elements accordingly
         var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults();
         var currentProfileName = defaults.objectForKey("Name") as! String;
         var query = PFQuery(className:"Preferences");
@@ -212,6 +218,7 @@ class OptionalMenuTableViewController: UITableViewController {
             if error != nil || preference == nil {
                 println(error);
             } else if let preference = preference{
+
                 let options = Array(preference["Options"] as! String);
                 println(options);
                 if (options[0] == "2") {

@@ -231,6 +231,7 @@ class PreferenceMenuViewController: UIViewController {
     }
     
 
+    //sets current preferences from the profile
     override func viewDidLoad() {
         super.viewDidLoad()
         
