@@ -1,6 +1,7 @@
 //
 //  RestaurantDetailViewController.swift
 //  Noms
+//  Displays additional information about a restaurant upon request.
 //
 //  Created by Annie Chu, Clement Lee, Evelyn Ding, Nathan Lam, and Sean Pan.
 //  Copyright (c) 2015 COS333. All rights reserved.
@@ -41,6 +42,7 @@ class RestaurantDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults();
+        defaults.setObject("true", forKey:"fromInfo");
         defaults.setObject("true", forKey:"updated");
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateDetailInfo", name: "updateDetailInfo", object: nil);
         updateDetailInfo();
@@ -49,9 +51,12 @@ class RestaurantDetailViewController: UIViewController {
     
     func updateDetailInfo() {
         categoryLabel.numberOfLines = 0;
-        
+
         var query = PFQuery(className: "Restaurants");
         let defaults = NSUserDefaults.standardUserDefaults()
+        
+        
+        
         let restaurantID: String = defaults.objectForKey("rest_id") as! String;
         query.whereKey("objectId", equalTo: restaurantID);
         query.getFirstObjectInBackgroundWithBlock{

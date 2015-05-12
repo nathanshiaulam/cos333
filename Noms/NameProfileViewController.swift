@@ -1,6 +1,7 @@
 //
 //  NameProfileViewController.swift
 //  Noms
+//  Allows the user to name their profile.
 //
 //  Created by Annie Chu, Clement Lee, Evelyn Ding, Nathan Lam, and Sean Pan.
 //  Copyright (c) 2015 COS333. All rights reserved.
@@ -18,6 +19,7 @@ class NameProfileViewController: UIViewController {
         nameProfileField.layer.cornerRadius = 0;
         nameProfileField.textColor = UIColor.whiteColor();
         // Do any additional setup after loading the view.
+        var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,7 +30,11 @@ class NameProfileViewController: UIViewController {
         self.view.endEditing(true);
         
     }
-    
+    override func viewWillDisappear(animated: Bool) {
+        var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults();
+        defaults.setObject("true", forKey:"fromInfo");
+        super.viewWillDisappear(true);
+    }
     // only allow creation of profile if one with the given name doesn't already exist
     func textFieldShouldReturn(textField: UITextField)-> Bool {
         textField.resignFirstResponder();

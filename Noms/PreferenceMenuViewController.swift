@@ -1,6 +1,7 @@
 //
 //  PreferenceMenuViewController.swift
 //  Noms
+//  Displays the initial preference menu with the most important options.
 //
 //  Created by Annie Chu, Clement Lee, Evelyn Ding, Nathan Lam, and Sean Pan.
 //  Copyright (c) 2015 COS333. All rights reserved.
@@ -127,13 +128,14 @@ class PreferenceMenuViewController: UIViewController {
         defaults.setObject(Int(floatDistance), forKey:"Distance");
     }
     
-    
+
     // SAVE ITEM
     @IBAction func onClickSaveButton(sender: UIButton) {
         var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         currentProfileName = defaults.objectForKey("Name") as! String;
         defaults.setObject(currentProfileName, forKey: "Name")
         defaults.setObject("true", forKey:"updated");
+        defaults.setObject("false", forKey:"fromInfo");
         NSNotificationCenter.defaultCenter().postNotificationName("updateProfilePage", object: nil);
         
         // Sets the text from the tokens

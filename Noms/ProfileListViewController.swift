@@ -1,6 +1,7 @@
 //
 //  ProfileListViewController.swift
 //  Noms
+//  Displays the list of profiles available to a user.
 //
 //  Created by Annie Chu, Clement Lee, Evelyn Ding, Nathan Lam, and Sean Pan.
 //  Copyright (c) 2015 COS333. All rights reserved.

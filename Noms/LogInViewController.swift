@@ -1,6 +1,7 @@
 //
 //  LogInViewController.swift
 //  Noms
+//  Allow login for users or creating additional users.
 //
 //  Created by Annie Chu, Clement Lee, Evelyn Ding, Nathan Lam, and Sean Pan.
 //  Copyright (c) 2015 COS333. All rights reserved.
@@ -21,6 +22,8 @@ class LogInViewController: UIViewController {
     func userLogin(username: String, password: String) {
         var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults();
         defaults.setObject("true", forKey: "fromNew");
+        defaults.setObject("false", forKey:"fromInfo");
+
         //ensures validity of login
         var usernameLen = count(username);
         var passwordLen = count(password);

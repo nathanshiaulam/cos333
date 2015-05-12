@@ -1,6 +1,7 @@
 //
 //  CreateUserViewController.swift
 //  Noms
+//  Displays the necessary text fields for a user to be created.
 //
 //  Created by Annie Chu, Clement Lee, Evelyn Ding, Nathan Lam, and Sean Pan.
 //  Copyright (c) 2015 COS333. All rights reserved.
@@ -26,6 +27,8 @@ class CreateUserViewController: UIViewController {
         var newUser = PFUser();
         var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults();
         defaults.setObject("true", forKey: "fromNew");
+        defaults.setObject("false", forKey:"fromInfo");
+
         // ENSURES FIELDS ARE NOT EMPTY
         if (count(username) == 0 || count(password) == 0 || count(email) == 0) {
             var alert = UIAlertController(title: "Submission Failure", message: "Invalid username, password, or email", preferredStyle: UIAlertControllerStyle.Alert);
@@ -39,6 +42,8 @@ class CreateUserViewController: UIViewController {
         newUser.username = username;
         newUser.password = password;
         newUser.email = email;
+        
+        
         
         newUser.signUpInBackgroundWithBlock {
             (succeeded, error) -> Void in
@@ -58,6 +63,7 @@ class CreateUserViewController: UIViewController {
 
     }
     func textFieldShouldReturn(textField: UITextField)-> Bool {
+        var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults();
         if (textField == usernameField) {
             NSLog("here");
             passwordField.becomeFirstResponder();
@@ -68,7 +74,6 @@ class CreateUserViewController: UIViewController {
             emailField.becomeFirstResponder();
         }
         else {
-            NSLog("here");
             self.createUser(usernameField.text, password: passwordField.text, email:emailField.text);
             textField.resignFirstResponder();
         }
