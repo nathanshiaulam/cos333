@@ -74,7 +74,7 @@ class ViewController: UIViewController {
     // ON CLICK BLUE (info) BUTTON
     @IBAction func more_details(sender: UIButton) {
         if (self.restaurantNameLabel.text == "No More Restaurants in Area!") {
-            let errorString = "Sorry, but we're out of options! Update your preferences and find new restaurants.";
+            let errorString = "Sorry, but we're out of options! Update your preferences to find more food.";
             var alert = UIAlertController(title: "Find more food", message: errorString as String, preferredStyle: UIAlertControllerStyle.Alert);
             alert.addAction(UIAlertAction(title:"Ok", style: UIAlertActionStyle.Default, handler: nil));
             self.presentViewController(alert, animated: true, completion: nil);
@@ -96,12 +96,10 @@ class ViewController: UIViewController {
         if (self.restaurantList == nil || (count(self.restaurantList) == 1 && self.restaurantList[0] == "kepseEzLQJ")) {
             return;
         }
-        if (self.restaurantNameLabel.text == "No More Restaurants in Area!" && updates == "false") {
-            NSLog("Here");
-            return;
-        }
+
         NSLog("Index" + String(self.indexOfRestaurant));
-        if (self.indexOfRestaurant == count(self.restaurantList) && updates == "true") {
+        if (self.indexOfRestaurant == count(self.restaurantList) && self.restaurantNameLabel.text == "No More Restaurants in Area!"){
+            NSLog("Here");
             return;
         }
         var previousRestaurantID = self.restaurantList[self.indexOfRestaurant];

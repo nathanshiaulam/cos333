@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Noms/ViewController.swift"
-            timestampString = "453149319.759312"
+            timestampString = "453153659.410144"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
             landmarkName = "refreshOption(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -263,11 +263,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Noms/ViewController.swift"
-            timestampString = "453149319.759312"
+            timestampString = "453153659.410144"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
             landmarkName = "showMap()"
             landmarkType = "5">
          </BreakpointContent>
@@ -279,11 +279,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Noms/ViewController.swift"
-            timestampString = "453149319.759312"
+            timestampString = "453153659.410144"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "144"
-            endingLineNumber = "144"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
             landmarkName = "showMap()"
             landmarkType = "5">
          </BreakpointContent>
@@ -311,11 +311,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Noms/ViewController.swift"
-            timestampString = "453149319.759312"
+            timestampString = "453153659.410144"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151"
+            startingLineNumber = "149"
+            endingLineNumber = "149"
             landmarkName = "updateProfilePage()"
             landmarkType = "5">
          </BreakpointContent>
@@ -327,11 +327,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Noms/ViewController.swift"
-            timestampString = "453149319.759312"
+            timestampString = "453153659.410144"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151"
+            startingLineNumber = "149"
+            endingLineNumber = "149"
             landmarkName = "updateProfilePage()"
             landmarkType = "5">
             <Locations>
@@ -493,22 +493,6 @@
             startingLineNumber = "222"
             endingLineNumber = "222"
             landmarkName = "onClickSaveButton(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Noms/ViewController.swift"
-            timestampString = "453149319.759312"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
-            landmarkName = "refreshOption(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
