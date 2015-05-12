@@ -299,7 +299,6 @@ class ViewController: UIViewController {
         view.clipsToBounds = true;
     }
     override func viewDidAppear(animated: Bool) {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "showTutorial", name: "showTutorial", object: nil);
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateProfilePage", name: "updateProfilePage", object: nil);
         var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults();
         
@@ -355,14 +354,14 @@ class ViewController: UIViewController {
         defaults.setObject("true", forKey: "updated");
         
         // CREATES LISTENERS WHEN SEGUING FROM OTHER VCS
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "showTutorial", name: "showTutorial", object: nil);
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateProfilePage", name: "updateProfilePage", object: nil);
         // SEGUE IF USER IS NOT LOGGED IN
         if (!self.userLoggedIn()) {
             self.performSegueWithIdentifier("toUserLogin", sender: self);
         }
         else {
-            
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: "showTutorial", name: "showTutorial", object: nil);
+
             self.rejectedRestList = [];
             // SETS INDEX OF ARRAY TO ZERO AT START
             self.indexOfRestaurant = 0;

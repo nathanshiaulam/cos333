@@ -60,19 +60,20 @@ class CreateUserViewController: UIViewController {
     func textFieldShouldReturn(textField: UITextField)-> Bool {
         NSLog("first here");
         if (textField == usernameField) {
-            //NSLog("here");
+            NSLog("here");
             passwordField.becomeFirstResponder();
         }
         else if (textField == passwordField) {
-            //NSLog("here");
+            NSLog("here");
+            textField.resignFirstResponder()
             emailField.becomeFirstResponder();
         }
         else {
-            //NSLog("here");
+            NSLog("here");
             self.createUser(usernameField.text, password: passwordField.text, email:emailField.text);
             textField.resignFirstResponder();
         }
-        return true;
+        return false;
     }
     
     override func viewDidLoad() {
