@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     var latitude:Double!;
     var longitude:Double!;
     var restaurantList:[String]! = ["kepseEzLQJ"];
-    var rejectedRestList:[String]! = [];
+    var rejectedRestList:[String]!;
     var indexOfRestaurant:Int!;
     var currentRestaurantID:String!;
     var placemarkMade:CLPlacemark!;
@@ -296,6 +296,7 @@ class ViewController: UIViewController {
             self.indexOfRestaurant = 0;
             self.firstCall = true;
             self.tries = 0;
+            self.rejectedRestList = [];
             
             // SETS UP DATASTORE
             var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults();
@@ -332,6 +333,11 @@ class ViewController: UIViewController {
         formatView(grayOverlay); 
         self.restaurantNameLabel.numberOfLines = 0;
         restaurantNameLabel.textAlignment = NSTextAlignment.Center;
+        
+        // SETS UP DATASTORE
+        var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults();
+        defaults.setObject("false", forKey: "updated");
+        
         // CREATES LISTENERS WHEN SEGUING FROM OTHER VCS
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "showTutorial", name: "showTutorial", object: nil);
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateProfilePage", name: "updateProfilePage", object: nil);
@@ -341,14 +347,13 @@ class ViewController: UIViewController {
         }
         else {
             
+            self.rejectedRestList = [];
             // SETS INDEX OF ARRAY TO ZERO AT START
             self.indexOfRestaurant = 0;
             self.firstCall = true;
             self.tries = 0;
             
-            // SETS UP DATASTORE
-            var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults();
-            defaults.setObject("false", forKey: "updated");
+            
             // FINDS CURRENT PROFILE NAME
             if let currentProfileNameIsNotNil = defaults.objectForKey("Name") as? String {
                 currentProfileName = defaults.objectForKey("Name") as! String
