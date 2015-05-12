@@ -86,6 +86,9 @@ class ViewController: UIViewController {
             return;
         }
         NSLog("Index" + String(self.indexOfRestaurant));
+        if (self.indexOfRestaurant == count(self.restaurantList) && updates == "true") {
+            return;
+        }
         var previousRestaurantID = self.restaurantList[self.indexOfRestaurant];
         self.rejectedRestList.append(previousRestaurantID);
         self.updateWeights(previousRestaurantID);
