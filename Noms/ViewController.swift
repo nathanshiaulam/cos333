@@ -76,10 +76,12 @@ class ViewController: UIViewController {
     // ON CLICK RED (retry) BUTTON
     @IBAction func refreshOption(sender: AnyObject) {
         var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults();
+        
+        var updates: String = defaults.objectForKey("updated") as! String;
         if (self.restaurantList == nil || (count(self.restaurantList) == 1 && self.restaurantList[0] == "kepseEzLQJ")) {
             return;
         }
-        if (self.restaurantNameLabel.text == "No More Restaurants in Area!") {
+        if (self.restaurantNameLabel.text == "No More Restaurants in Area!" && updates == "false") {
             NSLog("Here");
             return;
         }
@@ -283,7 +285,10 @@ class ViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "showTutorial", name: "showTutorial", object: nil);
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateProfilePage", name: "updateProfilePage", object: nil);
-        if (self.restaurantNameLabel.text == "No More Restaurants in Area!") {
+        var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults();
+        
+        var updates = defaults.objectForKey("updated") as! String;
+        if (self.restaurantNameLabel.text == "No More Restaurants in Area!" && updates == "true") {
             self.restaurantNameLabel.text = "Loading...";
         }
         
@@ -310,7 +315,7 @@ class ViewController: UIViewController {
             
             // SETS UP DATASTORE
             var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults();
-            
+            defaults.setObject("false", forKey: "updated");
             // FINDS CURRENT PROFILE NAME
             if let currentProfileNameIsNotNil = defaults.objectForKey("Name") as? String {
                 currentProfileName = defaults.objectForKey("Name") as! String

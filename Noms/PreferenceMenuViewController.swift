@@ -159,6 +159,7 @@ class PreferenceMenuViewController: UIViewController {
         currentProfileName = defaults.objectForKey("Name") as! String;
         NSLog(currentProfileName);
         defaults.setObject(currentProfileName, forKey: "Name")
+        defaults.setObject("true", forKey:"updated");
         NSNotificationCenter.defaultCenter().postNotificationName("updateProfilePage", object: nil);
         
         // Sets the text from the tokens

@@ -39,6 +39,8 @@ class RestaurantDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults();
+        defaults.setObject("true", forKey:"updated");
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateDetailInfo", name: "updateDetailInfo", object: nil);
         
         updateDetailInfo();

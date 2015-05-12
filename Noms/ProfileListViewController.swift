@@ -18,6 +18,8 @@ class ProfileListViewController: UIViewController, UITableViewDelegate, UITableV
     
     var items: [String] = ["Temp"]
     func handleTap(recognizer: UITapGestureRecognizer) {
+        var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        defaults.setObject("true", forKey:"updated");
         self.dismissViewControllerAnimated(true, completion: nil);
     }
     override func viewDidLoad() {
@@ -72,6 +74,7 @@ class ProfileListViewController: UIViewController, UITableViewDelegate, UITableV
             var index:NSIndexPath = self.profileList.indexPathForSelectedRow()!;
             defaults.setObject(self.items[index.row], forKey: "Name");
             self.dismissViewControllerAnimated(true, completion: {
+                defaults.setObject("true", forKey:"updated");
                 NSNotificationCenter.defaultCenter().postNotificationName("updateProfilePage", object: nil);
             });
 
@@ -101,6 +104,7 @@ class ProfileListViewController: UIViewController, UITableViewDelegate, UITableV
         defaults.setObject(self.items[indexPath.row], forKey: "Name");
         // Return to ViewController with updated profile
         self.dismissViewControllerAnimated(true, completion: {
+            defaults.setObject("true", forKey:"updated");
             NSNotificationCenter.defaultCenter().postNotificationName("updateProfilePage", object: nil);
         });
     }
