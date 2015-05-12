@@ -74,7 +74,7 @@ class ViewController: UIViewController {
     // ON CLICK BLUE (info) BUTTON
     @IBAction func more_details(sender: UIButton) {
         if (self.restaurantNameLabel.text == "No More Restaurants in Area!") {
-            let errorString = "Sorry, but we're out of options! Update your preferences to find more food.";
+            let errorString = "Sorry, but we're out of options! Update your preferences and find new restaurants.";
             var alert = UIAlertController(title: "Find more food", message: errorString as String, preferredStyle: UIAlertControllerStyle.Alert);
             alert.addAction(UIAlertAction(title:"Ok", style: UIAlertActionStyle.Default, handler: nil));
             self.presentViewController(alert, animated: true, completion: nil);
@@ -95,9 +95,10 @@ class ViewController: UIViewController {
         if (self.restaurantList == nil || (count(self.restaurantList) == 1 && self.restaurantList[0] == "kepseEzLQJ")) {
             return;
         }
-        NSLog("Index" + String(self.indexOfRestaurant));
-        if (self.indexOfRestaurant == count(self.restaurantList) && self.restaurantNameLabel.text == "No More Restaurants in Area!"){
-            NSLog("Here");
+        if (self.restaurantNameLabel.text == "No More Restaurants in Area!" && updates == "false") {
+            return;
+        }
+        if (self.indexOfRestaurant == count(self.restaurantList) && updates == "true") {
             return;
         }
         var previousRestaurantID = self.restaurantList[self.indexOfRestaurant];
@@ -278,6 +279,7 @@ class ViewController: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "showTutorial", name: "showTutorial", object: nil);
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateProfilePage", name: "updateProfilePage", object: nil);
         var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults();
         
@@ -291,7 +293,7 @@ class ViewController: UIViewController {
         self.tries = 0;
         self.rejectedRestList = [];
         self.restaurantDistance.text = "";
-        
+
         // FINDS CURRENT PROFILE NAME
         if let currentProfileNameIsNotNil = defaults.objectForKey("Name") as? String {
             currentProfileName = defaults.objectForKey("Name") as! String
@@ -314,8 +316,6 @@ class ViewController: UIViewController {
             }
         }
 
-        
-        NSLog("Appeared");
         super.viewDidAppear(true);
         
     }
@@ -331,14 +331,14 @@ class ViewController: UIViewController {
         defaults.setObject("true", forKey: "updated");
         
         // CREATES LISTENERS WHEN SEGUING FROM OTHER VCS
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "showTutorial", name: "showTutorial", object: nil);
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateProfilePage", name: "updateProfilePage", object: nil);
         // SEGUE IF USER IS NOT LOGGED IN
         if (!self.userLoggedIn()) {
             self.performSegueWithIdentifier("toUserLogin", sender: self);
         }
         else {
-            NSNotificationCenter.defaultCenter().addObserver(self, selector: "showTutorial", name: "showTutorial", object: nil);
-
+            
             self.rejectedRestList = [];
             // SETS INDEX OF ARRAY TO ZERO AT START
             self.indexOfRestaurant = 0;
@@ -369,7 +369,6 @@ class ViewController: UIViewController {
             }
         }
 
-        // Do any additional setup after loading the view.
     }
     
     // CHECKS FOR USER LOGIN
