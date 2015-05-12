@@ -4,7 +4,7 @@
 % customizations and command definitions. The preamble is everything
 % between \documentclass and \begin{document}.
 
-\usepackage[letterspace=50]{microtype} %change tracking
+%\usepackage[letterspace=50]{microtype} %change tracking
 \usepackage[margin=1in]{geometry}  % set the margins to 1in on all sides
 \usepackage{graphicx}              % to include figures
 \usepackage{subfig}				   % sublfloat
@@ -18,7 +18,7 @@
 \usepackage[usenames,dvipsnames]{xcolor}			   % for colored text
 \usepackage{libertine}			   % linux libertine
 \usepackage[T1]{fontenc}
-\usepackage[scaled=0.85]{zi4}	   %incosolata for monospace
+%\usepackage[scaled=0.85]{zi4}	   %incosolata for monospace
 \usepackage{verbatim}			   % for verbatim txt file
 \usepackage{csvsimple}			   % for csv file input
 %\usepackage[scaled]{beramono}     %beramono for monospace
@@ -41,7 +41,7 @@
 
 
 \begin{document}
-	
+
 \title{\textbf{COS 333 Spring 2015 Report: Noms}}
 	
 \author{
@@ -54,7 +54,7 @@
 We started with two brainstorming sessions where we fired off and accumulated a list of possible project ideas. We then narrowed down the list based on feasibility and the interest of the group. Eventually we decided on doing a timeline and calendar integration app, something we could each see ourselves using and benefiting from. However, when we actually started planning the development of the application, we quickly realized that the complexity of the timeline design would mean that it would not necessarily be a better alternative to traditional calendars. Furthermore, we saw that the main component and challenge of the application was user interface design. Since we all agreed that wanted to put more of our efforts into learning new technologies, figuring out algorithmic challenges, and creating something that would be universally useful, we decided to scrap the idea and go back to the drawing board. Thinking again about the problems we face everyday, we decided on creating a single-decision restaurant finder. We chose to create an iOS application over Android because none of us had previous experience with iOS development and we were all eager to learn. Armed with four Macbooks, one iPhone, and a Lenovo PC, we were now ready to go.
 
 \subsection{Motivation}
-Too often have we deliberated for too long on a simple question: Where shall we go for dinner? The advent of the internet turned word-of-mouth recommendations into detailed lists and ratings and reviews, but that has not changed the core of the problem: we simply cannot make up our minds given the choices. This decision apathy is what Noms is trying to solve, by giving users a consolidated page of information such that they can focus on the deciding and not on the deliberating.
+Too often have we deliberated for too long on a simple question: Where shall we go for dinner? The advent of the Internet turned word-of-mouth recommendations into detailed lists and ratings and reviews, but that has not changed the core of the problem: we simply cannot make up our minds given the choices. This decision apathy is what Noms is trying to solve, by giving users a consolidated page of information such that they can focus on the deciding and not on the deliberating.
 
 \section{Design}
 We worked concurrently on three separate parts of the application: data collection, back-end algorithms, and front-end (iOS) development. Because of the mutual independence of the three parts, individual members of our team can work on separate parts independently. We also found that division into these three categories was appropriate as we were able to seamlessly link together the three parts once they were completed, and the bugs in any one component did not severely hinder the progress of another. We also chose to use the Parse framework, which helped facilitate this division of backend from frontend, and allowed us to focus our efforts on developing the actual application and not be bogged down with initial details such as setting up servers and databases.  
@@ -76,7 +76,7 @@ We began the frontend application development with creating mockups of the major
 
 \section{Testing}
 \subsection{Alpha}
-We felt that our alpha test was a bit behind and not as complete as it could have been when we showed it to our TA Kelvin. Had it been more complete, we potentially could have received more detailed feedback to use. 
+We felt that our alpha test was a bit behind and not as complete as it could have been when we showed it to our TA Kelvin. At that point in time we had linked up the frontend with the backend and the skeletal framework works, but we lacked polishing of the user interface. Had it been more complete, we potentially could have received more detailed feedback in terns of use experience.
 
 \subsection{Beta}
 We released a beta test at the beginning of reading period. Because of the restrictions of iOS development, we were only able to show the app to our testers using our own phone. While this restricted the amount of testing we could do, we found that we still received valuable feedback. We asked our testers to focus on functionality and ease of use, as during our beta the full aesthetic appeal of the user interface was not yet finished. We received many comments requesting a simplification of the options menu. We originally had 12 additional options listed, many of which our testers identified as not important to their restaurant choice. We iterated on this feedback and ended up keeping only 6 of the original 12. Testers also replied that our information page was awkwardly placed because it took too many click to navigate in between the main view and restaurant information page, in response we shifted the restaurant information page button onto the main view and added a separate button for committing to a restaurant. In so doing the use does not need to navigate more than one click away from the main view in any situation.
@@ -94,10 +94,10 @@ Lastly, we learned about the challenges of different screen sizes in mobile deve
 \section{Future Work}
 
 If we had more time, there are a variety of features that we believe would have enhanced our application. Enabling Facebook login to the application would allow us to add number of features relying on friends and collaboration. One key feature is the ability to create group preference profiles that is shared and can be edited among groups of friends. Another similar feature is the ability to take into account multiple preference profiles (especially those of different people) and find restaurants that optimize for the set of preference profiles. 
-Additionally, our application is not made to scale to different screen sizes. While it looks great on iPhone 5 and 5S screens, there are a few components of the user interface that are off on an iPhone 6. With more time, we would definitely make it so that all common iPhones would be able to use our application to the full extent. Furthermore, we would like to extend this application to Android and the web as well, since having only an iOS application largely limits our user base.
+Additionally, our application is not made to scale to different screen sizes. While it looks great on iPhone 5 and 5S screens, there are a few components of the user interface that appearing in unintended places on the iPhone 6. With more time, we would definitely make it so that all common iPhones would be able to use our application to the full extent. Furthermore, we would like to extend this application to Android and the web as well, since having only an iOS application largely limits our user base.
 
 \section{Acknowledgments}
-The project was an extremely valuable learning opportunity for Team Noms. Although we would have liked to accomplish a lot more with the application, we felt that we did create a substantial product that is worthwhile to keep working on in the future. We were able to get a glimpse of what it’s like to work on a project in the industry and felt that we learned valuable skills pertinent to our careers all around. Although we faced many challenges, hurdles, and mishaps, they were all valuable learning opportunities both technically and otherwise. 
+The project was an extremely valuable learning opportunity for Team Noms. Although we would have liked to accomplish a lot more with the application, we felt that we did create a substantial product that is worthwhile to keep working on in the future. We were able to get a glimpse of what it's like to work on a project in industry and felt that we learned valuable skills pertinent to our careers all around. Although we faced many challenges, hurdles, and mishaps, they were all valuable learning opportunities both technically and otherwise. 
 Team Noms would like to thank Professor Brian Kernighan, Chris Moretti, and our TA Kelvin for providing the wonderful opportunity to work on a complete software project through the COS 333 course and for all the mentorship and guidance throughout.
 
 \end{document}	
