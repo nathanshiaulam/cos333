@@ -4,16 +4,14 @@
 //
 //  Created by Annie Chu, Clement Lee, Evelyn Ding, Nathan Lam, and Sean Pan.
 //  Copyright (c) 2015 COS333. All rights reserved.
-//
+//  Creates the view that shows the list of profiles that have already been created.
+//  Handles user's decision to select new profile.
 
 import UIKit
 import Parse
 import Bolts
 
 class ProfileListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
-    
-
     @IBOutlet weak var profileList: UITableView!
     
     var items: [String] = ["Temp"]
@@ -30,7 +28,6 @@ class ProfileListViewController: UIViewController, UITableViewDelegate, UITableV
         self.view.addGestureRecognizer(test);
         
         self.profileList.delegate = self;
-        //self.profileList.allowsSelectionDuringEditing = true;
         self.profileList.dataSource = self;
         
         self.profileList.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -60,9 +57,7 @@ class ProfileListViewController: UIViewController, UITableViewDelegate, UITableV
             let ip = NSIndexPath(forRow: 0, inSection: 0);
             self.profileList.selectRowAtIndexPath(ip, animated: true, scrollPosition: UITableViewScrollPosition.Middle);
         }
-        
 
-        // Do any additional setup after loading the view.
     }
 
     

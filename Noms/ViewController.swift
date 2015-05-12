@@ -279,7 +279,6 @@ class ViewController: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        NSLog("called view did appear");
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "showTutorial", name: "showTutorial", object: nil);
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateProfilePage", name: "updateProfilePage", object: nil);
         var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults();
@@ -295,31 +294,29 @@ class ViewController: UIViewController {
         self.rejectedRestList = [];
         self.restaurantDistance.text = "";
             
-            // SETS UP DATASTORE
-            // FINDS CURRENT PROFILE NAME
-            if let currentProfileNameIsNotNil = defaults.objectForKey("Name") as? String {
-                currentProfileName = defaults.objectForKey("Name") as! String
-            }
-            self.profileNameLabel.text = currentProfileName;
-            if currentRestaurantID != nil {
-                defaults.setObject(currentRestaurantID, forKey: "rest_id");
-            } else {
-                defaults.setObject("kepseEzLQJ", forKey:"rest_id");
-            }
-            // GETS GEOPOINT ON PAGE LOAD
-            PFGeoPoint.geoPointForCurrentLocationInBackground {
-                (geoPoint: PFGeoPoint?, error:NSError?) -> Void in
-                if error == nil {
-                    self.latitude = geoPoint?.latitude; // STORES LATITUDE
-                    self.longitude = geoPoint?.longitude; // STORES LONGITUDE
-                    if (self.currentProfileName != nil) {
-                        self.findTopImage();
-                    }
+        // SETS UP DATASTORE
+        // FINDS CURRENT PROFILE NAME
+        if let currentProfileNameIsNotNil = defaults.objectForKey("Name") as? String {
+            currentProfileName = defaults.objectForKey("Name") as! String
+        }
+        self.profileNameLabel.text = currentProfileName;
+        if currentRestaurantID != nil {
+            defaults.setObject(currentRestaurantID, forKey: "rest_id");
+        } else {
+            defaults.setObject("kepseEzLQJ", forKey:"rest_id");
+        }
+        // GETS GEOPOINT ON PAGE LOAD
+        PFGeoPoint.geoPointForCurrentLocationInBackground {
+            (geoPoint: PFGeoPoint?, error:NSError?) -> Void in
+            if error == nil {
+                self.latitude = geoPoint?.latitude; // STORES LATITUDE
+                self.longitude = geoPoint?.longitude; // STORES LONGITUDE
+                if (self.currentProfileName != nil) {
+                    self.findTopImage();
                 }
             }
+        }
 
-        
-        NSLog("Appeared");
         super.viewDidAppear(true);
         
     }
@@ -373,7 +370,6 @@ class ViewController: UIViewController {
             }
         }
 
-        // Do any additional setup after loading the view.
     }
     
     // CHECKS FOR USER LOGIN
