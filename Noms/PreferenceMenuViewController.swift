@@ -128,13 +128,14 @@ class PreferenceMenuViewController: UIViewController {
         defaults.setObject(Int(floatDistance), forKey:"Distance");
     }
     
-    
+
     // SAVE ITEM
     @IBAction func onClickSaveButton(sender: UIButton) {
         var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         currentProfileName = defaults.objectForKey("Name") as! String;
         defaults.setObject(currentProfileName, forKey: "Name")
         defaults.setObject("true", forKey:"updated");
+        defaults.setObject("false", forKey:"fromInfo");
         NSNotificationCenter.defaultCenter().postNotificationName("updateProfilePage", object: nil);
         
         // Sets the text from the tokens

@@ -30,7 +30,11 @@ class NameProfileViewController: UIViewController {
         self.view.endEditing(true);
         
     }
-    
+    override func viewWillDisappear(animated: Bool) {
+        var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults();
+        defaults.setObject("true", forKey:"fromInfo");
+        super.viewWillDisappear(true);
+    }
     // only allow creation of profile if one with the given name doesn't already exist
     func textFieldShouldReturn(textField: UITextField)-> Bool {
         textField.resignFirstResponder();

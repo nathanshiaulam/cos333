@@ -282,7 +282,12 @@ class ViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateProfilePage", name: "updateProfilePage", object: nil);
         var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults();
+        var fromInfo = defaults.objectForKey("fromInfo") as! String;
         
+        if fromInfo == "true" {
+            defaults.setObject("false", forKey:"fromInfo");
+            return;
+        }
         var updates = defaults.objectForKey("updated") as! String;
         if self.restaurantNameLabel.text == "Loading..." {
             self.firstCall = true;
@@ -329,7 +334,6 @@ class ViewController: UIViewController {
         // SETS UP DATASTORE
         var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults();
         defaults.setObject("true", forKey: "updated");
-        
         // CREATES LISTENERS WHEN SEGUING FROM OTHER VCS
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateProfilePage", name: "updateProfilePage", object: nil);
         // SEGUE IF USER IS NOT LOGGED IN
