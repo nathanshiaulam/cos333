@@ -85,7 +85,7 @@ class RestaurantDetailViewController: UIViewController {
                 self.categories = restaurant["categories"] as! [String];
                 let string_cat = ", ".join(self.categories)
                 self.categoryLabel.text = string_cat;
-                self.restNameLabel.text = restaurant["name"] as! String;
+                self.restNameLabel.text = restaurant["name"] as? String;
                 
                 let latitude = restaurant["latitude"] as! Double;
                 let longitude = restaurant["longitude"] as! Double;
@@ -135,7 +135,6 @@ class RestaurantDetailViewController: UIViewController {
         let locValue = manager.location.coordinate
         curr_lat = locValue.latitude
         curr_long = locValue.longitude
-        println("locations = \(locValue.latitude) \(locValue.longitude)")
     }
     
     override func didReceiveMemoryWarning() {

@@ -93,7 +93,6 @@ class OptionalMenuTableViewController: UITableViewController {
                 println(error);
             } else if let preference = preference{
                 preference["Options"] = options;
-                println(ambi);
                 preference["Ambience"] = ambi;
                 preference.saveInBackground();
             }
@@ -220,7 +219,6 @@ class OptionalMenuTableViewController: UITableViewController {
             } else if let preference = preference{
 
                 let options = Array(preference["Options"] as! String);
-                println(options);
                 if (options[0] == "2") {
                     self.reserveSwitch.selectedSegmentIndex = 1;
                 }
@@ -240,7 +238,7 @@ class OptionalMenuTableViewController: UITableViewController {
                     self.wifiSwitch.selectedSegmentIndex = 1;
                 }
                 let am = preference["Ambience"] as! [String];
-                println(am);
+                
                 if (find(am, "Romantic") == nil) {
                     self.loveSwitch.on = false;
                 }

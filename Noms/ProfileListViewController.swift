@@ -99,7 +99,6 @@ class ProfileListViewController: UIViewController, UITableViewDelegate, UITableV
     
     func tableView(profileList: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         //load the selected profile and exit the modal.
-        //println("Loading profile "+self.items[indexPath.row])
         var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults();
         defaults.setObject(self.items[indexPath.row], forKey: "Name");
         // Return to ViewController with updated profile
