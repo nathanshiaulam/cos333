@@ -290,6 +290,8 @@ class ViewController: UIViewController {
         var updates = defaults.objectForKey("updated") as! String;
         if (self.restaurantNameLabel.text == "No More Restaurants in Area!" && updates == "true") {
             self.restaurantNameLabel.text = "Loading...";
+            self.updateProfilePage();
+            self.indexOfRestaurant = 0;
         }
         
         
