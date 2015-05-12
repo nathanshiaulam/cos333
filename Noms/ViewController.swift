@@ -280,7 +280,11 @@ class ViewController: UIViewController {
         view.layer.cornerRadius = view.frame.size.width / 2;
         view.clipsToBounds = true;
     }
-
+    override func viewDidAppear(animated: Bool) {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "showTutorial", name: "showTutorial", object: nil);
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateProfilePage", name: "updateProfilePage", object: nil);
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         formatView(grayOverlay); 
