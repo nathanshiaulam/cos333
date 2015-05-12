@@ -24,7 +24,8 @@ class CreateUserViewController: UIViewController {
     }
     func createUser(username: String, password: String, email: String) {
         var newUser = PFUser();
-        
+        var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults();
+        defaults.setObject("true", forKey: "fromNew");
         // ENSURES FIELDS ARE NOT EMPTY
         if (count(username) == 0 || count(password) == 0 || count(email) == 0) {
             var alert = UIAlertController(title: "Submission Failure", message: "Invalid username, password, or email", preferredStyle: UIAlertControllerStyle.Alert);
@@ -70,9 +71,8 @@ class CreateUserViewController: UIViewController {
             //NSLog("here");
             self.createUser(usernameField.text, password: passwordField.text, email:emailField.text);
             textField.resignFirstResponder();
-            return true;
         }
-        return false;
+        return true;
     }
     
     override func viewDidLoad() {

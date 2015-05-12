@@ -19,7 +19,8 @@ class LogInViewController: UIViewController {
     }
 
     func userLogin(username: String, password: String) {
-        
+        var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults();
+        defaults.setObject("true", forKey: "fromNew");
         //ensures validity of login
         var usernameLen = count(username);
         var passwordLen = count(password);
