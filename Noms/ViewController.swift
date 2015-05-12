@@ -39,9 +39,7 @@ class ViewController: UIViewController {
     
     // LOGS USER OUT
     @IBAction func userLogOut(sender: UIButton) {
-        for key in NSUserDefaults.standardUserDefaults().dictionaryRepresentation().keys {
-            NSUserDefaults.standardUserDefaults().removeObjectForKey(key.description)
-        }
+        
         PFUser.logOut();
         self.performSegueWithIdentifier("toUserLogin", sender: self);
     }
@@ -306,7 +304,7 @@ class ViewController: UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "showTutorial", name: "showTutorial", object: nil);
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateProfilePage", name: "updateProfilePage", object: nil);
         var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults();
-        defaults.setObject("true", forKey:"updated");
+        
         var updates = defaults.objectForKey("updated") as! String;
         if self.restaurantNameLabel.text == "Loading..." {
             self.firstCall = true;
