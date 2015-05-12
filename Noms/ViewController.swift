@@ -280,43 +280,49 @@ class ViewController: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateProfilePage", name: "updateProfilePage", object: nil);
-        var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults();
-        var fromInfo = defaults.objectForKey("fromInfo") as! String;
+        if (!self.userLoggedIn()) {
+            self.performSegueWithIdentifier("toUserLogin", sender: self);
+        }
+        else {
+//            NSNotificationCenter.defaultCenter().addObserver(self, selector: "showTutorial", name: "showTutorial", object: nil);
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateProfilePage", name: "updateProfilePage", object: nil);
+            var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults();
+            var fromInfo = defaults.objectForKey("fromInfo") as! String;
         
-        if fromInfo == "true" {
-            defaults.setObject("false", forKey:"fromInfo");
-            return;
-        }
-        var updates = defaults.objectForKey("updated") as! String;
-        if self.restaurantNameLabel.text == "Loading..." {
+            if fromInfo == "true" {
+                defaults.setObject("false", forKey:"fromInfo");
+                return;
+            }
+            var updates = defaults.objectForKey("updated") as! String;
+            if self.restaurantNameLabel.text == "Loading..." {
+                self.firstCall = true;
+            }
+            self.restaurantNameLabel.text = "Loading...";
+            self.indexOfRestaurant = 0;
             self.firstCall = true;
-        }
-        self.restaurantNameLabel.text = "Loading...";
-        self.indexOfRestaurant = 0;
-        self.firstCall = true;
-        self.tries = 0;
-        self.rejectedRestList = [];
-        self.restaurantDistance.text = "";
+            self.tries = 0;
+            self.rejectedRestList = [];
+            self.restaurantDistance.text = "";
 
-        // FINDS CURRENT PROFILE NAME
-        if let currentProfileNameIsNotNil = defaults.objectForKey("Name") as? String {
-            currentProfileName = defaults.objectForKey("Name") as! String
-        }
-        self.profileNameLabel.text = currentProfileName;
-        if currentRestaurantID != nil {
-            defaults.setObject(currentRestaurantID, forKey: "rest_id");
-        } else {
-            defaults.setObject("kepseEzLQJ", forKey:"rest_id");
-        }
-        // GETS GEOPOINT ON PAGE LOAD
-        PFGeoPoint.geoPointForCurrentLocationInBackground {
-            (geoPoint: PFGeoPoint?, error:NSError?) -> Void in
-            if error == nil {
-                self.latitude = geoPoint?.latitude; // STORES LATITUDE
-                self.longitude = geoPoint?.longitude; // STORES LONGITUDE
-                if (self.currentProfileName != nil) {
-                    self.findTopImage();
+            // FINDS CURRENT PROFILE NAME
+            if let currentProfileNameIsNotNil = defaults.objectForKey("Name") as? String {
+                currentProfileName = defaults.objectForKey("Name") as! String
+            }
+            self.profileNameLabel.text = currentProfileName;
+            if currentRestaurantID != nil {
+                defaults.setObject(currentRestaurantID, forKey: "rest_id");
+            } else {
+                defaults.setObject("kepseEzLQJ", forKey:"rest_id");
+            }
+            // GETS GEOPOINT ON PAGE LOAD
+            PFGeoPoint.geoPointForCurrentLocationInBackground {
+                (geoPoint: PFGeoPoint?, error:NSError?) -> Void in
+                if error == nil {
+                    self.latitude = geoPoint?.latitude; // STORES LATITUDE
+                    self.longitude = geoPoint?.longitude; // STORES LONGITUDE
+                    if (self.currentProfileName != nil) {
+                        self.findTopImage();
+                    }
                 }
             }
         }
@@ -330,7 +336,7 @@ class ViewController: UIViewController {
         formatView(grayOverlay); 
         self.restaurantNameLabel.numberOfLines = 0;
         restaurantNameLabel.textAlignment = NSTextAlignment.Center;
-        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "showTutorial", name: "showTutorial", object: nil);
         // SETS UP DATASTORE
         var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults();
         defaults.setObject("true", forKey: "updated");
@@ -341,7 +347,7 @@ class ViewController: UIViewController {
             self.performSegueWithIdentifier("toUserLogin", sender: self);
         }
         else {
-            NSNotificationCenter.defaultCenter().addObserver(self, selector: "showTutorial", name: "showTutorial", object: nil);
+            
 
             self.rejectedRestList = [];
             // SETS INDEX OF ARRAY TO ZERO AT START
