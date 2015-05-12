@@ -19,6 +19,8 @@ class LogInViewController: UIViewController {
     }
 
     func userLogin(username: String, password: String) {
+        
+        //ensures validity of login
         var usernameLen = count(username);
         var passwordLen = count(password);
         if (usernameLen == 0 || passwordLen == 0) {
@@ -27,6 +29,8 @@ class LogInViewController: UIViewController {
             self.presentViewController(alert, animated: true, completion: nil);
             return;
         }
+        
+        //parse login
         PFUser.logInWithUsernameInBackground(username, password: password) {
             (user, error) -> Void in
             if (user != nil) {

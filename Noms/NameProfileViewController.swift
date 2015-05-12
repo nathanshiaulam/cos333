@@ -28,6 +28,8 @@ class NameProfileViewController: UIViewController {
         self.view.endEditing(true);
         
     }
+    
+    // only allow creation of profile if one with the given name doesn't already exist
     func textFieldShouldReturn(textField: UITextField)-> Bool {
         textField.resignFirstResponder();
         
@@ -53,6 +55,8 @@ class NameProfileViewController: UIViewController {
         }
         return true;
     }
+    
+    // creates a new profile and prepares for editing
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "toNewProfileSettings") {
 

@@ -34,6 +34,8 @@ class ProfileListViewController: UIViewController, UITableViewDelegate, UITableV
         self.profileList.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
         self.items = []; //load the things here
+        
+        //loads the profile names
         var query = PFQuery(className:"Preferences");
         var currentID = PFUser.currentUser()!.objectId;
         query.whereKey("ID", equalTo:currentID!);
@@ -44,6 +46,8 @@ class ProfileListViewController: UIViewController, UITableViewDelegate, UITableV
             }
         
         }
+        
+        //sets the currently selected profile
         var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults();
         let index = find(items, defaults.objectForKey("Name")! as! String);
         if (index != nil) {
@@ -58,7 +62,9 @@ class ProfileListViewController: UIViewController, UITableViewDelegate, UITableV
 
         // Do any additional setup after loading the view.
     }
+
     
+    // in the case that no profile is selected but the modal is closed.
     func handleCancel(sender: UIGestureRecognizer) -> Void {
 
         if (!self.view.pointInside(sender.locationInView(self.profileList), withEvent: nil)) {
@@ -89,7 +95,8 @@ class ProfileListViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(profileList: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        println("Loading profile "+self.items[indexPath.row])
+        //load the selected profile and exit the modal.
+        //println("Loading profile "+self.items[indexPath.row])
         var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults();
         defaults.setObject(self.items[indexPath.row], forKey: "Name");
         // Return to ViewController with updated profile

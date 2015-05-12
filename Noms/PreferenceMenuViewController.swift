@@ -231,6 +231,7 @@ class PreferenceMenuViewController: UIViewController {
     }
     
 
+    //sets current preferences from the profile
     override func viewDidLoad() {
         super.viewDidLoad()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil);
