@@ -70,8 +70,9 @@ class CreateUserViewController: UIViewController {
             //NSLog("here");
             self.createUser(usernameField.text, password: passwordField.text, email:emailField.text);
             textField.resignFirstResponder();
+            return true;
         }
-        return true;
+        return false;
     }
     
     override func viewDidLoad() {
