@@ -46,11 +46,8 @@ class RestaurantDetailViewController: UIViewController {
         updateDetailInfo();
         
     }
-//    override func viewDidAppear(animated:Bool) {
-//        updateDetailInfo();
-//        super.viewDidAppear(true);
-//    }
-//    
+
+    
     func updateDetailInfo() {
         categoryLabel.numberOfLines = 0;
         
@@ -125,8 +122,6 @@ class RestaurantDetailViewController: UIViewController {
                 let url = NSURL(string: restaurant["big_img_url"]! as! String);
                 let data = NSData(contentsOfURL: url!);
                 self.restaurantImage.image = UIImage(data:data!);
-                //  self.restaurantImage.contentMode = UIViewContentMode.ScaleAspectFit;
-            
             }
         }
     }
@@ -191,15 +186,5 @@ class RestaurantDetailViewController: UIViewController {
         num = num.stringByReplacingOccurrencesOfString("-", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil);
         return num;
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

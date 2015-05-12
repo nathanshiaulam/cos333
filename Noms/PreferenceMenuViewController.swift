@@ -23,18 +23,11 @@ class PreferenceMenuViewController: UIViewController {
     @IBOutlet weak var distanceTextField: UILabel!
     @IBOutlet weak var distanceSlider: UISlider!
     
-    // CUISINE PICKER
-//    @IBOutlet weak var cuisinePickerView: UIPickerView!
-    
     @IBOutlet var tokenView: KSTokenView!
     let names: Array<String> = List.names()
     // DECLARE VARIABLES
     var fromNew:Bool!;
     var currentProfileName:String!;
-    
-    
-    // VAR PICKER DATA
-//    var pickerData = ["Chinese", "Indian", "Mexican", "American", "Coffee & Tea", "Thai", "Greek", "Japanese", "French", "Italian", "German", "Mediterranean", "Vietnamese", "Bubble Tea", "Korean", "African", "Spanish", "Brazillian", "Cupcakes", "Filipino", "Greek", "Seafood", "Steakhouses", "Breweries", "Malaysian", "Bakeries", "Dessert"];
     
     // DOLLAR SIGN CHANGE
     @IBAction func onClickOneDollar(sender: UIButton) {
@@ -134,24 +127,6 @@ class PreferenceMenuViewController: UIViewController {
         defaults.setObject(Int(floatDistance), forKey:"Distance");
     }
     
-//    // FUNCTIONS FOR PICKER 
-//    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
-//        return 1;
-//    }
-//    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-//        return pickerData.count;
-//    }
-//    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
-//        return pickerData[row];
-//    }
-//    func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-//        let titleData = pickerData[row];
-//        var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
-//        var myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 15.0)!,NSForegroundColorAttributeName:UIColor.whiteColor()]);
-//        var stringArray = [myTitle.string];
-//        defaults.setObject(stringArray, forKey:"Cuisine");
-//        return myTitle;
-//    }
     
     // SAVE ITEM
     @IBAction func onClickSaveButton(sender: UIButton) {

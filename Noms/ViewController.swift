@@ -83,7 +83,6 @@ class ViewController: UIViewController {
             return;
         }
         let defaults = NSUserDefaults.standardUserDefaults();
-//        defaults.setObject(currentRestaurantID, forKey: "rest_id");
         defaults.setDouble(self.distSend, forKey:"dist_string");
         NSNotificationCenter.defaultCenter().postNotificationName("updateDetailInfo", object: nil);
     }
@@ -414,16 +413,5 @@ class ViewController: UIViewController {
             }
         }
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

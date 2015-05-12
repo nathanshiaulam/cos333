@@ -44,32 +44,11 @@ class LogInViewController: UIViewController {
             }
         }
     }
-//    func keyboardWillShowTop (sender: NSNotification) {
-//        self.view.frame.origin.y -= 32
-//    }
-//    func keyboardWillHideTop (sender: NSNotification) {
-//        self.view.frame.origin.y += 92
-//    }
-//    func keyboardWillShowBottom (sender: NSNotification) {
-//        self.view.frame.origin.y -= 32
-//    }
-//    func keyboardWillHideBottom (sender: NSNotification) {
-//        self.view.frame.origin.y += 92
-//    }
+    
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         self.view.endEditing(true);
         
     }
-//    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidShow", name: UIKeyboardDidShowNotification, object: nil);
-//        return true;
-//    }
-//    
-//    func textFieldShouldEndEditing(textField: UITextField) -> Bool {
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidHide", name: UIKeyboardDidHideNotification, object: nil);
-//        self.view.endEditing(true);
-//        return true;
-//    }
     
    
     override func viewDidLoad() {
@@ -81,11 +60,7 @@ class LogInViewController: UIViewController {
         usernameField.layer.cornerRadius = 0;
         passwordField.layer.cornerRadius = 0;
         passwordField.secureTextEntry = true;
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShowTop:"), name:UIKeyboardWillShowNotification, object: nil);
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHideTop:"), name:UIKeyboardWillHideNotification, object: nil);
-//        
         
-        // Do any additional setup after loading the view.
     }
 
     
@@ -105,15 +80,5 @@ class LogInViewController: UIViewController {
         }
         return true;
     }
-  
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

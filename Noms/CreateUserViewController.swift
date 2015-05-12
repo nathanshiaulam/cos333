@@ -83,15 +83,7 @@ class CreateUserViewController: UIViewController {
         passwordField.layer.cornerRadius = 0;
         emailField.layer.cornerRadius = 0;
         passwordField.secureTextEntry = true;
-
-        // Do any additional setup after loading the view.
     }
-//    func keyboardWillShow (sender: NSNotification) {
-//        self.view.frame.origin.y -= 32
-//    }
-//    func keyboardWillHide (sender: NSNotification) {
-//        self.view.frame.origin.y += 96
-//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -101,16 +93,4 @@ class CreateUserViewController: UIViewController {
         self.view.endEditing(true);
         
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
