@@ -303,6 +303,9 @@ class ViewController: UIViewController {
             self.indexOfRestaurant = 0;
             self.firstCall = true;
             self.tries = 0;
+            if (self.restaurantNameLabel.text == "No More Restaurants in Area!") {
+                self.restaurantNameLabel.text = "Loading...";
+            }
         
             // SETS UP DATASTORE
             var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults();
