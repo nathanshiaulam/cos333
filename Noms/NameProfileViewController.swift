@@ -14,6 +14,7 @@ class NameProfileViewController: UIViewController {
 
     @IBOutlet weak var nameProfileField: UITextField!
     override func viewDidLoad() {
+        println("login loading");
         super.viewDidLoad()
         nameProfileField.layer.cornerRadius = 0;
         nameProfileField.textColor = UIColor.whiteColor();

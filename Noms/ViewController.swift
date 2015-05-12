@@ -279,6 +279,7 @@ class ViewController: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
+        NSLog("called view did appear");
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "showTutorial", name: "showTutorial", object: nil);
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateProfilePage", name: "updateProfilePage", object: nil);
         var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults();
@@ -287,15 +288,14 @@ class ViewController: UIViewController {
         if self.restaurantNameLabel.text == "Loading..." {
             self.firstCall = true;
         }
-        if (self.restaurantNameLabel.text == "No More Restaurants in Area!" && updates == "true") {
-            self.restaurantNameLabel.text = "Loading...";
-            self.indexOfRestaurant = 0;
-            self.firstCall = true;
-            self.tries = 0;
-            self.rejectedRestList = [];
+        self.restaurantNameLabel.text = "Loading...";
+        self.indexOfRestaurant = 0;
+        self.firstCall = true;
+        self.tries = 0;
+        self.rejectedRestList = [];
+        self.restaurantDistance.text = "";
             
             // SETS UP DATASTORE
-            var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults();
             // FINDS CURRENT PROFILE NAME
             if let currentProfileNameIsNotNil = defaults.objectForKey("Name") as? String {
                 currentProfileName = defaults.objectForKey("Name") as! String
@@ -318,8 +318,7 @@ class ViewController: UIViewController {
                 }
             }
 
-            
-        }
+        
         NSLog("Appeared");
         super.viewDidAppear(true);
         
