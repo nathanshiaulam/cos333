@@ -86,9 +86,7 @@ class CreateUserViewController: UIViewController {
         passwordField.layer.cornerRadius = 0;
         emailField.layer.cornerRadius = 0;
         passwordField.secureTextEntry = true;
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil);
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil);
-        
+
         // Do any additional setup after loading the view.
     }
 //    func keyboardWillShow (sender: NSNotification) {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="I0G-7g-b9w">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="I0G-7g-b9w">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -542,11 +542,6 @@
                                     <action selector="onClickFourDollar:" destination="oUA-AU-Rob" eventType="touchUpInside" id="0es-oX-Her"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cuisine" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a27-zQ-2Qo">
-                                <rect key="frame" x="76" y="243" width="79" height="33"/>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="24"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="price" translatesAutoresizingMaskIntoConstraints="NO" id="HdL-bU-T3o">
                                 <rect key="frame" x="36" y="119" width="30" height="30"/>
                                 <constraints>
@@ -569,7 +564,7 @@
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PVv-7W-vEF" customClass="KSTokenView" customModule="Noms" customModuleProvider="target">
-                                <rect key="frame" x="76" y="286" width="200" height="30"/>
+                                <rect key="frame" x="74" y="245" width="200" height="30"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="a8F-sL-BMQ"/>
@@ -591,7 +586,7 @@
                             <constraint firstItem="kIP-x5-kZ9" firstAttribute="leading" secondItem="5ss-2z-2yv" secondAttribute="leadingMargin" constant="20" id="36b-p5-dh8"/>
                             <constraint firstItem="9vA-3L-UQ4" firstAttribute="baseline" secondItem="4zi-9L-9re" secondAttribute="baseline" id="3zA-3B-Alt"/>
                             <constraint firstAttribute="trailingMargin" secondItem="W5K-QP-aPi" secondAttribute="trailing" constant="429" id="49D-6k-hRs"/>
-                            <constraint firstItem="PVv-7W-vEF" firstAttribute="leading" secondItem="a27-zQ-2Qo" secondAttribute="leading" id="4Nd-X3-Pbm"/>
+                            <constraint firstItem="ixH-Ao-FYa" firstAttribute="top" secondItem="kIP-x5-kZ9" secondAttribute="bottom" constant="53" id="6ef-Wc-2Ag"/>
                             <constraint firstItem="tPK-vs-cCs" firstAttribute="top" secondItem="Sff-bh-LgZ" secondAttribute="bottom" constant="10" id="7r1-kE-kNw"/>
                             <constraint firstItem="D4X-FT-mdb" firstAttribute="trailing" secondItem="qRy-PS-Qey" secondAttribute="trailing" constant="-36" id="8Ld-YM-Ugn"/>
                             <constraint firstItem="8Fp-dh-zxL" firstAttribute="centerY" secondItem="W5K-QP-aPi" secondAttribute="centerY" id="9md-Bu-DD1"/>
@@ -599,11 +594,11 @@
                             <constraint firstAttribute="centerX" secondItem="D4X-FT-mdb" secondAttribute="centerX" id="BVt-HB-3W9"/>
                             <constraint firstAttribute="trailingMargin" secondItem="D4X-FT-mdb" secondAttribute="trailing" constant="20" id="CCs-8B-NJX"/>
                             <constraint firstAttribute="trailingMargin" secondItem="9vA-3L-UQ4" secondAttribute="trailing" constant="20" id="DNS-8M-OjX"/>
+                            <constraint firstItem="PVv-7W-vEF" firstAttribute="top" secondItem="0P4-gb-rgx" secondAttribute="bottom" constant="12" id="Fhf-U0-kVz"/>
                             <constraint firstItem="UaZ-kg-Tmc" firstAttribute="leading" secondItem="4zi-9L-9re" secondAttribute="leading" id="G9g-Si-BBa"/>
                             <constraint firstItem="HdL-bU-T3o" firstAttribute="leading" secondItem="5ss-2z-2yv" secondAttribute="leadingMargin" constant="20" id="HWk-bP-1bn"/>
                             <constraint firstItem="4zi-9L-9re" firstAttribute="top" secondItem="UaZ-kg-Tmc" secondAttribute="bottom" constant="10" id="J7Y-aS-kxy"/>
                             <constraint firstAttribute="trailingMargin" secondItem="W5K-QP-aPi" secondAttribute="trailing" constant="20" id="NAD-oE-wiF"/>
-                            <constraint firstItem="UaZ-kg-Tmc" firstAttribute="leading" secondItem="a27-zQ-2Qo" secondAttribute="leading" id="Pmv-Kl-ycs"/>
                             <constraint firstAttribute="trailingMargin" secondItem="PVv-7W-vEF" secondAttribute="trailing" constant="158" id="Qbq-Ud-xnV"/>
                             <constraint firstItem="0P4-gb-rgx" firstAttribute="leading" secondItem="4zi-9L-9re" secondAttribute="leading" id="RDl-aF-oUS"/>
                             <constraint firstItem="PVv-7W-vEF" firstAttribute="trailing" secondItem="5ss-2z-2yv" secondAttribute="trailingMargin" constant="-20" id="Ul1-CJ-4vo"/>
@@ -612,12 +607,10 @@
                             <constraint firstItem="kIP-x5-kZ9" firstAttribute="centerX" secondItem="ixH-Ao-FYa" secondAttribute="centerX" id="VwB-PS-lCj"/>
                             <constraint firstItem="W5K-QP-aPi" firstAttribute="leading" secondItem="8Fp-dh-zxL" secondAttribute="trailing" constant="-7" id="Yoe-eh-0lp"/>
                             <constraint firstAttribute="trailingMargin" secondItem="qRy-PS-Qey" secondAttribute="trailing" constant="-16" id="ZCP-8S-krv"/>
-                            <constraint firstItem="a27-zQ-2Qo" firstAttribute="top" secondItem="0P4-gb-rgx" secondAttribute="bottom" constant="10" id="ZJ9-7y-ReY"/>
                             <constraint firstItem="0P4-gb-rgx" firstAttribute="top" secondItem="4zi-9L-9re" secondAttribute="bottom" constant="10" id="aCG-VW-5YY"/>
                             <constraint firstItem="qRy-PS-Qey" firstAttribute="top" secondItem="D4X-FT-mdb" secondAttribute="bottom" constant="31" id="ay3-MH-bK6"/>
-                            <constraint firstItem="ixH-Ao-FYa" firstAttribute="centerY" secondItem="a27-zQ-2Qo" secondAttribute="centerY" id="b8K-pK-PU0"/>
+                            <constraint firstItem="PVv-7W-vEF" firstAttribute="leading" secondItem="ixH-Ao-FYa" secondAttribute="trailing" constant="8" id="cw9-kV-rsu"/>
                             <constraint firstItem="W5K-QP-aPi" firstAttribute="trailing" secondItem="8Fp-dh-zxL" secondAttribute="trailing" constant="-5" id="dCX-IW-0zy"/>
-                            <constraint firstItem="PVv-7W-vEF" firstAttribute="top" secondItem="a27-zQ-2Qo" secondAttribute="bottom" constant="10" id="eKP-6P-LtL"/>
                             <constraint firstItem="UaZ-kg-Tmc" firstAttribute="top" secondItem="tPK-vs-cCs" secondAttribute="bottom" constant="10" id="gy5-oj-aP0"/>
                             <constraint firstAttribute="trailingMargin" secondItem="D4X-FT-mdb" secondAttribute="trailing" constant="37" id="hc1-cU-ZNT"/>
                             <constraint firstAttribute="centerX" secondItem="qRy-PS-Qey" secondAttribute="centerX" id="j6L-8i-AD3"/>
