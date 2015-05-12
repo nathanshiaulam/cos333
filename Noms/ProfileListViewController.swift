@@ -2,7 +2,7 @@
 //  ProfileListViewController.swift
 //  Noms
 //
-//  Created by Nathan Lam on 4/20/15.
+//  Created by Annie Chu, Clement Lee, Evelyn Ding, Nathan Lam, and Sean Pan.
 //  Copyright (c) 2015 COS333. All rights reserved.
 //
 
@@ -99,7 +99,6 @@ class ProfileListViewController: UIViewController, UITableViewDelegate, UITableV
     
     func tableView(profileList: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         //load the selected profile and exit the modal.
-        //println("Loading profile "+self.items[indexPath.row])
         var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults();
         defaults.setObject(self.items[indexPath.row], forKey: "Name");
         // Return to ViewController with updated profile
@@ -108,16 +107,5 @@ class ProfileListViewController: UIViewController, UITableViewDelegate, UITableV
             NSNotificationCenter.defaultCenter().postNotificationName("updateProfilePage", object: nil);
         });
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

@@ -2,7 +2,7 @@
 //  RestaurantDetailViewController.swift
 //  Noms
 //
-//  Created by Nathan Lam on 4/26/15.
+//  Created by Annie Chu, Clement Lee, Evelyn Ding, Nathan Lam, and Sean Pan.
 //  Copyright (c) 2015 COS333. All rights reserved.
 //
 
@@ -46,11 +46,8 @@ class RestaurantDetailViewController: UIViewController {
         updateDetailInfo();
         
     }
-//    override func viewDidAppear(animated:Bool) {
-//        updateDetailInfo();
-//        super.viewDidAppear(true);
-//    }
-//    
+
+    
     func updateDetailInfo() {
         categoryLabel.numberOfLines = 0;
         
@@ -85,7 +82,7 @@ class RestaurantDetailViewController: UIViewController {
                 self.categories = restaurant["categories"] as! [String];
                 let string_cat = ", ".join(self.categories)
                 self.categoryLabel.text = string_cat;
-                self.restNameLabel.text = restaurant["name"] as! String;
+                self.restNameLabel.text = restaurant["name"] as? String;
                 
                 let latitude = restaurant["latitude"] as! Double;
                 let longitude = restaurant["longitude"] as! Double;
@@ -125,8 +122,6 @@ class RestaurantDetailViewController: UIViewController {
                 let url = NSURL(string: restaurant["big_img_url"]! as! String);
                 let data = NSData(contentsOfURL: url!);
                 self.restaurantImage.image = UIImage(data:data!);
-                //  self.restaurantImage.contentMode = UIViewContentMode.ScaleAspectFit;
-            
             }
         }
     }
@@ -135,7 +130,6 @@ class RestaurantDetailViewController: UIViewController {
         let locValue = manager.location.coordinate
         curr_lat = locValue.latitude
         curr_long = locValue.longitude
-        println("locations = \(locValue.latitude) \(locValue.longitude)")
     }
     
     override func didReceiveMemoryWarning() {
@@ -192,15 +186,5 @@ class RestaurantDetailViewController: UIViewController {
         num = num.stringByReplacingOccurrencesOfString("-", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil);
         return num;
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

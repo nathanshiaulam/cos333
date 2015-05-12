@@ -2,7 +2,7 @@
 //  CreateUserViewController.swift
 //  Noms
 //
-//  Created by Nathan Lam on 4/12/15.
+//  Created by Annie Chu, Clement Lee, Evelyn Ding, Nathan Lam, and Sean Pan.
 //  Copyright (c) 2015 COS333. All rights reserved.
 //
 
@@ -58,7 +58,6 @@ class CreateUserViewController: UIViewController {
 
     }
     func textFieldShouldReturn(textField: UITextField)-> Bool {
-        NSLog("first here");
         if (textField == usernameField) {
             NSLog("here");
             passwordField.becomeFirstResponder();
@@ -88,15 +87,7 @@ class CreateUserViewController: UIViewController {
         passwordField.layer.cornerRadius = 0;
         emailField.layer.cornerRadius = 0;
         passwordField.secureTextEntry = true;
-
-        // Do any additional setup after loading the view.
     }
-//    func keyboardWillShow (sender: NSNotification) {
-//        self.view.frame.origin.y -= 32
-//    }
-//    func keyboardWillHide (sender: NSNotification) {
-//        self.view.frame.origin.y += 96
-//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -106,16 +97,4 @@ class CreateUserViewController: UIViewController {
         self.view.endEditing(true);
         
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

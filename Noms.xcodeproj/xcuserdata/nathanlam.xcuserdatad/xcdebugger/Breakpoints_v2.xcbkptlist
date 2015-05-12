@@ -268,7 +268,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "140"
             endingLineNumber = "140"
-            landmarkName = "showMap()"
+            landmarkName = "refreshOption(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -285,7 +285,7 @@
             startingLineNumber = "142"
             endingLineNumber = "142"
             landmarkName = "showMap()"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -316,7 +316,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "149"
             endingLineNumber = "149"
-            landmarkName = "updateProfilePage()"
+            landmarkName = "refreshOption(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -332,7 +332,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "149"
             endingLineNumber = "149"
-            landmarkName = "updateProfilePage()"
+            landmarkName = "refreshOption(_:)"
             landmarkType = "5">
             <Locations>
                <Location

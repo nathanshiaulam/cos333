@@ -1,4 +1,5 @@
 /*-----------Send email-----------------------------------*/
+/* Sends email to user if the user forgot password */
 
 Parse.Cloud.define("sendMail", function(request, response) {
    var Mandrill = require('mandrill');
@@ -39,7 +40,7 @@ Parse.Cloud.define("sendMail", function(request, response) {
       error: function(error) {
          alert("Error: " + error.code + " " + error.message);
       }
-});
+   });
 });
 
 /*---------------All helper functions here----------------------*/
@@ -169,7 +170,8 @@ function sortfunction(a,b) {
       return (a.score >= b.score) ? 1 :-1;
 }
 
-//change weights if user rejects a restaurant
+/* changes weights if user rejects a restaurant for a specific
+preference profile */
 Parse.Cloud.define("ChangeWeights", function(request, response) {
    var currpref = new Parse.Query("Preferences");
    var currrest = new Parse.Query("Restaurants");

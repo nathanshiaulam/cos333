@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  Noms
 //
-//  Created by Nathan Lam on 4/12/15.
+//  Created by Annie Chu, Clement Lee, Evelyn Ding, Nathan Lam, and Sean Pan.
 //  Copyright (c) 2015 COS333. All rights reserved.
 //
 
@@ -83,7 +83,6 @@ class ViewController: UIViewController {
             return;
         }
         let defaults = NSUserDefaults.standardUserDefaults();
-//        defaults.setObject(currentRestaurantID, forKey: "rest_id");
         defaults.setDouble(self.distSend, forKey:"dist_string");
         NSNotificationCenter.defaultCenter().postNotificationName("updateDetailInfo", object: nil);
     }
@@ -96,7 +95,6 @@ class ViewController: UIViewController {
         if (self.restaurantList == nil || (count(self.restaurantList) == 1 && self.restaurantList[0] == "kepseEzLQJ")) {
             return;
         }
-
         NSLog("Index" + String(self.indexOfRestaurant));
         if (self.indexOfRestaurant == count(self.restaurantList) && self.restaurantNameLabel.text == "No More Restaurants in Area!"){
             NSLog("Here");
@@ -112,7 +110,6 @@ class ViewController: UIViewController {
         else {
             self.indexOfRestaurant = 0;
             self.tries = 0;
-            NSLog("Index" + String(self.indexOfRestaurant));
             self.findTopImage();
             arrLength = count(self.restaurantList);
         }
@@ -127,13 +124,10 @@ class ViewController: UIViewController {
             currentRestaurantID = self.restaurantList[self.indexOfRestaurant];
         }
         
-        //NSLog(currentRestaurantID);
-        
         defaults.setObject(currentRestaurantID, forKey:"rest_id");
         
         self.tries = self.tries + 1;
         findRestaurantWithID(currentRestaurantID);
-        NSLog("Index3 " + String(self.indexOfRestaurant));
     }
     
     func showMap() {
@@ -148,7 +142,6 @@ class ViewController: UIViewController {
     func updateProfilePage() {
         var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults();
 
-        NSLog(defaults.objectForKey("Name") as! String);
         // CHECKS THE DATASTORE FOR PROFILE NAME ON VIEW POP
         if let currentProfileNameIsNotNil = defaults.objectForKey("Name") as? String {
             currentProfileName = defaults.objectForKey("Name") as! String
@@ -165,14 +158,12 @@ class ViewController: UIViewController {
                 self.findTopImage();
             }
         }
-        NSLog("Second Function Called");
         
         
     }
     
     // RUNS FINDS THE IMAGE OF THE FIRST RESTAURANT IN LIST
     func updateWeights(var restaurantID: String) {
-        NSLog("In Function: Update Weights");
         var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults();
         var query = PFQuery(className:"Preferences");
         var currentID = PFUser.currentUser()!.objectId;
@@ -181,15 +172,11 @@ class ViewController: UIViewController {
         
         PFCloud.callFunctionInBackground("ChangeWeights", withParameters:["loc":[String(stringInterpolationSegment: self.latitude), String(stringInterpolationSegment: self.longitude)], "prefid":[String(stringInterpolationSegment: self.preferenceID)], "restid":[String(stringInterpolationSegment: restaurantID)]]) {
                 (result: AnyObject?, error: NSError?) -> Void in
-                if error == nil {
-                    //println(result);
-                }
             }
     }
     
     // RUNS FINDS THE IMAGE OF THE FIRST RESTAURANT IN LIST
     func findTopImage() {
-        NSLog("In Function: Second Function Called");
         var query = PFQuery(className:"Preferences");
         var currentID = PFUser.currentUser()!.objectId;
         query.whereKey("ID", equalTo:currentID!);
@@ -201,7 +188,6 @@ class ViewController: UIViewController {
             if error != nil || preference == nil {
                 println(error);
             } else if let preference = preference{
-                NSLog("In First Async Call");
                 self.preferenceID = String(stringInterpolationSegment: preference.objectId!);
                 // GET DATE INFO
                 let date = NSDate();
@@ -218,15 +204,10 @@ class ViewController: UIViewController {
                     hourString = "0" + hourString;
                 }
                 let timeString = hourString + ":" + minuteString;
-                NSLog("THIS IS YO ID SON")
-                NSLog(String(stringInterpolationSegment: preference.objectId!));
-                NSLog(String(stringInterpolationSegment: self.latitude));
-                NSLog(String(stringInterpolationSegment: self.longitude));
                 // SET COMPONENTS OF RESPONSE OBJECT AND FINDS RESTAURANT ID
                 PFCloud.callFunctionInBackground("MatchRestaurant", withParameters:["loc":[String(stringInterpolationSegment: self.latitude), String(stringInterpolationSegment: self.longitude)], "objid":[String(stringInterpolationSegment: preference.objectId!)], "currtime":[String(stringInterpolationSegment: timeString)], "day":[String(stringInterpolationSegment: day)]]) {
                     (result: AnyObject?, error: NSError?) -> Void in
                     if error == nil {
-                        println(result);
                         var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults();
                         self.restaurantList = result as! [String];
                         if (self.firstCall == true) {
@@ -252,9 +233,6 @@ class ViewController: UIViewController {
             } else if let restaurant = restaurant{
                 // LOADS IN FIELDS OF RESTAURANT
                 self.restaurantNameLabel.text = restaurant["name"] as? String;
-                NSLog("YOU EATIN HERE SON");
-                NSLog(self.restaurantNameLabel.text!);
-                NSLog(String(count(String(stringInterpolationSegment: restaurant["big_img_url"]!))));
                 if count(String(stringInterpolationSegment: restaurant["big_img_url"]!)) != 0{
                     let url = NSURL(string: restaurant["big_img_url"]! as! String);
                     let data = NSData(contentsOfURL: url!);
@@ -298,6 +276,7 @@ class ViewController: UIViewController {
         view.layer.cornerRadius = view.frame.size.width / 2;
         view.clipsToBounds = true;
     }
+    
     override func viewDidAppear(animated: Bool) {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateProfilePage", name: "updateProfilePage", object: nil);
         var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults();
@@ -306,15 +285,14 @@ class ViewController: UIViewController {
         if self.restaurantNameLabel.text == "Loading..." {
             self.firstCall = true;
         }
-        if (self.restaurantNameLabel.text == "No More Restaurants in Area!" && updates == "true") {
-            self.restaurantNameLabel.text = "Loading...";
-            self.indexOfRestaurant = 0;
-            self.firstCall = true;
-            self.tries = 0;
-            self.rejectedRestList = [];
+        self.restaurantNameLabel.text = "Loading...";
+        self.indexOfRestaurant = 0;
+        self.firstCall = true;
+        self.tries = 0;
+        self.rejectedRestList = [];
+        self.restaurantDistance.text = "";
             
             // SETS UP DATASTORE
-            var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults();
             // FINDS CURRENT PROFILE NAME
             if let currentProfileNameIsNotNil = defaults.objectForKey("Name") as? String {
                 currentProfileName = defaults.objectForKey("Name") as! String
@@ -337,12 +315,12 @@ class ViewController: UIViewController {
                 }
             }
 
-            
-        }
+        
         NSLog("Appeared");
         super.viewDidAppear(true);
         
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         formatView(grayOverlay); 
@@ -431,16 +409,5 @@ class ViewController: UIViewController {
             }
         }
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

@@ -2,7 +2,7 @@
 //  ForgotPasswordViewController.swift
 //  Noms
 //
-//  Created by Evelyn Ding on 5/7/15.
+//  Created by Annie Chu, Clement Lee, Evelyn Ding, Nathan Lam, and Sean Pan.
 //  Copyright (c) 2015 COS333. All rights reserved.
 //
 
@@ -25,10 +25,9 @@ class ForgotPasswordViewController: UIViewController, MFMailComposeViewControlle
         
     }
     @IBAction func sendPass(sender: UIButton) {
-        // preferably gives some response that it has sent its password
+        // gives some response that it has sent its password
         // need to send email the password of their account
         let email = emailAddr.text;
-        println(email)
         PFCloud.callFunctionInBackground("sendMail", withParameters:["email":email]) {
             (result: AnyObject?, error: NSError?) -> Void in
             if error == nil {

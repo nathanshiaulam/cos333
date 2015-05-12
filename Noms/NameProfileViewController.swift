@@ -2,7 +2,7 @@
 //  NameProfileViewController.swift
 //  Noms
 //
-//  Created by Nathan Lam on 4/16/15.
+//  Created by Annie Chu, Clement Lee, Evelyn Ding, Nathan Lam, and Sean Pan.
 //  Copyright (c) 2015 COS333. All rights reserved.
 //
 
@@ -14,6 +14,7 @@ class NameProfileViewController: UIViewController {
 
     @IBOutlet weak var nameProfileField: UITextField!
     override func viewDidLoad() {
+        println("login loading");
         super.viewDidLoad()
         nameProfileField.layer.cornerRadius = 0;
         nameProfileField.textColor = UIColor.whiteColor();
@@ -41,7 +42,6 @@ class NameProfileViewController: UIViewController {
         var preference = query.getFirstObject();
         
         if (preference != nil) {
-            println(preference?.objectForKey("Name") as! String)
             let errorString = "Already Exists";
             var alert = UIAlertController(title: "Can't Create Profile", message: errorString as String, preferredStyle: UIAlertControllerStyle.Alert);
             alert.addAction(UIAlertAction(title:"Ok", style: UIAlertActionStyle.Default, handler: nil));
@@ -76,15 +76,5 @@ class NameProfileViewController: UIViewController {
         }
     
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
