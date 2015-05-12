@@ -2,7 +2,7 @@
 //  ForgotPasswordViewController.swift
 //  Noms
 //
-//  Created by Evelyn Ding on 5/7/15.
+//  Created by Annie Chu, Clement Lee, Evelyn Ding, Nathan Lam, and Sean Pan.
 //  Copyright (c) 2015 COS333. All rights reserved.
 //
 

@@ -2,7 +2,7 @@
 //  OptionalMenuTableViewController.swift
 //  Noms
 //
-//  Created by Annie Chu on 5/1/15.
+//  Created by Annie Chu, Clement Lee, Evelyn Ding, Nathan Lam, and Sean Pan.
 //  Copyright (c) 2015 COS333. All rights reserved.
 //
 

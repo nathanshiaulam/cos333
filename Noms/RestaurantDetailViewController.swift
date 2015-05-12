@@ -2,7 +2,7 @@
 //  RestaurantDetailViewController.swift
 //  Noms
 //
-//  Created by Nathan Lam on 4/26/15.
+//  Created by Annie Chu, Clement Lee, Evelyn Ding, Nathan Lam, and Sean Pan.
 //  Copyright (c) 2015 COS333. All rights reserved.
 //
 
