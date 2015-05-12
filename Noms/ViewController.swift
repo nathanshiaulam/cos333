@@ -280,7 +280,6 @@ class ViewController: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "showTutorial", name: "showTutorial", object: nil);
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateProfilePage", name: "updateProfilePage", object: nil);
         var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults();
         
@@ -288,40 +287,35 @@ class ViewController: UIViewController {
         if self.restaurantNameLabel.text == "Loading..." {
             self.firstCall = true;
         }
-        if (self.restaurantNameLabel.text == "No More Restaurants in Area!" && updates == "true") {
-            self.restaurantNameLabel.text = "Loading...";
-            self.indexOfRestaurant = 0;
-            self.firstCall = true;
-            self.tries = 0;
-            self.rejectedRestList = [];
-            
-            // SETS UP DATASTORE
-            var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults();
-            // FINDS CURRENT PROFILE NAME
-            if let currentProfileNameIsNotNil = defaults.objectForKey("Name") as? String {
-                currentProfileName = defaults.objectForKey("Name") as! String
-            }
-            self.profileNameLabel.text = currentProfileName;
-            if currentRestaurantID != nil {
-                defaults.setObject(currentRestaurantID, forKey: "rest_id");
-            } else {
-                defaults.setObject("kepseEzLQJ", forKey:"rest_id");
-            }
-            // GETS GEOPOINT ON PAGE LOAD
-            PFGeoPoint.geoPointForCurrentLocationInBackground {
-                (geoPoint: PFGeoPoint?, error:NSError?) -> Void in
-                if error == nil {
-                    self.latitude = geoPoint?.latitude; // STORES LATITUDE
-                    self.longitude = geoPoint?.longitude; // STORES LONGITUDE
-                    if (self.currentProfileName != nil) {
-                        self.findTopImage();
-                    }
+        self.restaurantNameLabel.text = "Loading...";
+        self.indexOfRestaurant = 0;
+        self.firstCall = true;
+        self.tries = 0;
+        self.rejectedRestList = [];
+        self.restaurantDistance.text = "";
+
+        // FINDS CURRENT PROFILE NAME
+        if let currentProfileNameIsNotNil = defaults.objectForKey("Name") as? String {
+            currentProfileName = defaults.objectForKey("Name") as! String
+        }
+        self.profileNameLabel.text = currentProfileName;
+        if currentRestaurantID != nil {
+            defaults.setObject(currentRestaurantID, forKey: "rest_id");
+        } else {
+            defaults.setObject("kepseEzLQJ", forKey:"rest_id");
+        }
+        // GETS GEOPOINT ON PAGE LOAD
+        PFGeoPoint.geoPointForCurrentLocationInBackground {
+            (geoPoint: PFGeoPoint?, error:NSError?) -> Void in
+            if error == nil {
+                self.latitude = geoPoint?.latitude; // STORES LATITUDE
+                self.longitude = geoPoint?.longitude; // STORES LONGITUDE
+                if (self.currentProfileName != nil) {
+                    self.findTopImage();
                 }
             }
-
-            
         }
-        NSLog("Appeared");
+
         super.viewDidAppear(true);
         
     }
@@ -337,14 +331,14 @@ class ViewController: UIViewController {
         defaults.setObject("true", forKey: "updated");
         
         // CREATES LISTENERS WHEN SEGUING FROM OTHER VCS
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "showTutorial", name: "showTutorial", object: nil);
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateProfilePage", name: "updateProfilePage", object: nil);
         // SEGUE IF USER IS NOT LOGGED IN
         if (!self.userLoggedIn()) {
             self.performSegueWithIdentifier("toUserLogin", sender: self);
         }
         else {
-            
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: "showTutorial", name: "showTutorial", object: nil);
+
             self.rejectedRestList = [];
             // SETS INDEX OF ARRAY TO ZERO AT START
             self.indexOfRestaurant = 0;
@@ -375,7 +369,6 @@ class ViewController: UIViewController {
             }
         }
 
-        // Do any additional setup after loading the view.
     }
     
     // CHECKS FOR USER LOGIN
@@ -389,11 +382,7 @@ class ViewController: UIViewController {
     
     // SHOW TUTORIAL SEGUE VIA ALERT
     func showTutorial() {
-        var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults();
-
-        if (defaults.objectForKey("seguingtut") as! String == "true") {
-            self.performSegueWithIdentifier("toNameProfile", sender: self);
-        }
+        self.performSegueWithIdentifier("toNameProfile", sender: self);
     }
     
 

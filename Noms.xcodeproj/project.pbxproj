@@ -155,8 +155,8 @@
 		1620DC2A1ADB4FAE00CDA88A /* Noms */ = {
 			isa = PBXGroup;
 			children = (
-				D185B3BF1AF3731A002C4BF3 /* KSToken.swift */,
 				D185B3C01AF3731A002C4BF3 /* KSTokenField.swift */,
+				D185B3BF1AF3731A002C4BF3 /* KSToken.swift */,
 				D185B3C11AF3731A002C4BF3 /* KSTokenView.swift */,
 				D185B3C21AF3731A002C4BF3 /* KSUtils.swift */,
 				37D6ACA51AF359CA002E239A /* OptionalMenuTableViewController.swift */,

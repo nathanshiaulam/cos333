@@ -5,7 +5,8 @@
 //
 //  Created by Annie Chu, Clement Lee, Evelyn Ding, Nathan Lam, and Sean Pan.
 //  Copyright (c) 2015 COS333. All rights reserved.
-//
+//  View that shows additional information about the restaurant that is selected.
+//  Loads relevant information such as Yelp link, call button, and map.
 
 import UIKit
 import Parse
@@ -43,9 +44,7 @@ class RestaurantDetailViewController: UIViewController {
         var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults();
         defaults.setObject("true", forKey:"updated");
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateDetailInfo", name: "updateDetailInfo", object: nil);
-        
         updateDetailInfo();
-        
     }
 
     
@@ -109,6 +108,7 @@ class RestaurantDetailViewController: UIViewController {
                 
                 // Create pin for map of restaurant
                 let locationAnnotation = MKPointAnnotation();
+                
                 //set properties of the MKPointAnnotation object
                 locationAnnotation.coordinate = restLocation;
                 locationAnnotation.title = self.restNameLabel.text;

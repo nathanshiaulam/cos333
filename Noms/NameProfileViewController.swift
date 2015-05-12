@@ -20,7 +20,6 @@ class NameProfileViewController: UIViewController {
         nameProfileField.textColor = UIColor.whiteColor();
         // Do any additional setup after loading the view.
         var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        defaults.setObject("false", forKey: "seguingtut");
     }
 
     override func didReceiveMemoryWarning() {

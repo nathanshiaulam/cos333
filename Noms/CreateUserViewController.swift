@@ -47,7 +47,6 @@ class CreateUserViewController: UIViewController {
             (succeeded, error) -> Void in
             if (error == nil) {
                 self.dismissViewControllerAnimated(true, completion: { () -> Void in
-                    defaults.setObject("true", forKey: "seguingtut");
                     NSNotificationCenter.defaultCenter().postNotificationName("showTutorial", object: nil);
                 })
                 self.dismissViewControllerAnimated(true, completion: nil);
@@ -64,18 +63,19 @@ class CreateUserViewController: UIViewController {
     func textFieldShouldReturn(textField: UITextField)-> Bool {
         var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults();
         if (textField == usernameField) {
+            NSLog("here");
             passwordField.becomeFirstResponder();
         }
         else if (textField == passwordField) {
+            NSLog("here");
+            textField.resignFirstResponder()
             emailField.becomeFirstResponder();
         }
         else {
-            defaults.setObject("true", forKey: "seguingtut");
             self.createUser(usernameField.text, password: passwordField.text, email:emailField.text);
             textField.resignFirstResponder();
-            defaults.setObject("false", forKey: "seguingtut");
         }
-        return true;
+        return false;
     }
     
     override func viewDidLoad() {

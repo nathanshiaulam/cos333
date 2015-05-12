@@ -258,8 +258,6 @@ class PreferenceMenuViewController: UIViewController {
         // SETS DISTANCE VALUE
         distanceTextField.text = NSString(format:"%.0f", Float(distance)) as String + " miles";
         distanceSlider.setValue(Float(distance), animated: true);
-        
-        // Do any additional setup after loading the view.
     }
     
 
