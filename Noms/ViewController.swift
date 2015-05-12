@@ -25,6 +25,8 @@ class ViewController: UIViewController {
     var placemarkMade:CLPlacemark!;
     var distSend:Double!;
     var preferenceID:String!;
+    var firstCall:Bool!;
+    var tries:Int!;
     
     // PROFILE NAME LABEL
     @IBOutlet weak var profileNameLabel: UILabel!
@@ -81,35 +83,40 @@ class ViewController: UIViewController {
             NSLog("Here");
             return;
         }
-        
-        var previousRestaurantID = self.restaurantList[indexOfRestaurant];
+        NSLog("Index" + String(self.indexOfRestaurant));
+        var previousRestaurantID = self.restaurantList[self.indexOfRestaurant];
         self.rejectedRestList.append(previousRestaurantID);
         self.updateWeights(previousRestaurantID);
         var arrLength = count(self.restaurantList);
-        if (indexOfRestaurant < arrLength - 1 && indexOfRestaurant < 10) {
-            indexOfRestaurant = indexOfRestaurant + 1;
+        if (self.indexOfRestaurant < arrLength - 1 && self.tries < 10) {
+            self.indexOfRestaurant = self.indexOfRestaurant + 1;
         }
         else {
-            indexOfRestaurant = 0;
+            NSLog("FUCK EVERYTHING");
+            self.indexOfRestaurant = 0;
+            self.tries = 0;
+            NSLog("Index" + String(self.indexOfRestaurant));
             self.findTopImage();
             arrLength = count(self.restaurantList);
         }
-        var currentRestaurantID = self.restaurantList[indexOfRestaurant];
+        var currentRestaurantID = self.restaurantList[self.indexOfRestaurant];
         while (count(self.rejectedRestList) >= 10 && contains(self.rejectedRestList, currentRestaurantID)) {
-            indexOfRestaurant = indexOfRestaurant + 1;
-            if (indexOfRestaurant >= arrLength) {
+            self.indexOfRestaurant = self.indexOfRestaurant + 1;
+            if (self.indexOfRestaurant >= arrLength) {
                 self.restaurantNameLabel.text = "No More Restaurants in Area!";
                 self.restaurantDistance.text = "";
                 return;
             }
-            currentRestaurantID = self.restaurantList[indexOfRestaurant];
+            currentRestaurantID = self.restaurantList[self.indexOfRestaurant];
         }
         
-        NSLog(currentRestaurantID);
+        //NSLog(currentRestaurantID);
         
         defaults.setObject(currentRestaurantID, forKey:"rest_id");
-
+        
+        self.tries = self.tries + 1;
         findRestaurantWithID(currentRestaurantID);
+        NSLog("Index3 " + String(self.indexOfRestaurant));
     }
     
     func showMap() {
@@ -158,7 +165,7 @@ class ViewController: UIViewController {
         PFCloud.callFunctionInBackground("ChangeWeights", withParameters:["loc":[String(stringInterpolationSegment: self.latitude), String(stringInterpolationSegment: self.longitude)], "prefid":[String(stringInterpolationSegment: self.preferenceID)], "restid":[String(stringInterpolationSegment: restaurantID)]]) {
                 (result: AnyObject?, error: NSError?) -> Void in
                 if error == nil {
-                    println(result);
+                    //println(result);
                 }
             }
     }
@@ -205,9 +212,12 @@ class ViewController: UIViewController {
                         println(result);
                         var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults();
                         self.restaurantList = result as! [String];
-                        self.currentRestaurantID = self.restaurantList[0];
-                        defaults.setObject(self.currentRestaurantID, forKey:"rest_id");
-                        self.findRestaurantWithID(self.currentRestaurantID); // FINDS RESTAURANT WITH ID
+                        if (self.firstCall == true) {
+                            self.firstCall = false;
+                            self.currentRestaurantID = self.restaurantList[0];
+                            defaults.setObject(self.currentRestaurantID, forKey:"rest_id");
+                            self.findRestaurantWithID(self.currentRestaurantID); // FINDS RESTAURANT WITH ID
+                        }
                     }
                 }
             }
@@ -287,7 +297,9 @@ class ViewController: UIViewController {
         else {
             
             // SETS INDEX OF ARRAY TO ZERO AT START
-            indexOfRestaurant = 0;
+            self.indexOfRestaurant = 0;
+            self.firstCall = true;
+            self.tries = 0;
         
             // SETS UP DATASTORE
             var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults();
