@@ -45,6 +45,14 @@ class ViewController: UIViewController {
     
     //ON CLICK GREEN BUTTON
     @IBAction func goToMap(sender: UIButton) {
+        if (self.restaurantNameLabel.text == "No More Restaurants in Area!") {
+            let errorString = "Sorry, but we're out of options! Update your preferences to find more food.";
+            var alert = UIAlertController(title: "Find more food", message: errorString as String, preferredStyle: UIAlertControllerStyle.Alert);
+            alert.addAction(UIAlertAction(title:"Ok", style: UIAlertActionStyle.Default, handler: nil));
+            self.presentViewController(alert, animated: true, completion: nil);
+            return;
+        }
+
         if (self.restaurantList == nil || (count(self.restaurantList) == 1 && self.restaurantList[0] == "kepseEzLQJ")) {
             return;
         }
@@ -64,6 +72,12 @@ class ViewController: UIViewController {
     }
     // ON CLICK BLUE (info) BUTTON
     @IBAction func more_details(sender: UIButton) {
+        if (self.restaurantNameLabel.text == "No More Restaurants in Area!") {
+            let errorString = "Sorry, but we're out of options! Update your preferences and find new restaurants.";
+            var alert = UIAlertController(title: "Find more food", message: errorString as String, preferredStyle: UIAlertControllerStyle.Alert);
+            alert.addAction(UIAlertAction(title:"Ok", style: UIAlertActionStyle.Default, handler: nil));
+            self.presentViewController(alert, animated: true, completion: nil);
+        }
         if (self.restaurantList == nil || (count(self.restaurantList) == 1 && self.restaurantList[0] == "kepseEzLQJ")) {
             return;
         }
@@ -336,7 +350,7 @@ class ViewController: UIViewController {
         
         // SETS UP DATASTORE
         var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults();
-        defaults.setObject("false", forKey: "updated");
+        defaults.setObject("true", forKey: "updated");
         
         // CREATES LISTENERS WHEN SEGUING FROM OTHER VCS
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "showTutorial", name: "showTutorial", object: nil);
